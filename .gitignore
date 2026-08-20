@@ -4,6 +4,12 @@
 # Dependencies
 node_modules/
 
+# Build Output
+dist/
+
+# Test logs & scratch
+test-output*.txt
+
 # OS / Editor files
 .DS_Store
 Thumbs.db
