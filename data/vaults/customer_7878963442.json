@@ -1,0 +1,536 @@
+{
+  "businessName": "Acemoney",
+  "industry": "Technology",
+  "businessStage": "Growth",
+  "businessDescription": "Start banking with Radiant Acemoney. Become a trusted Banking Partner & provide essential BC services like cash withdrawals, deposits, and transfers to your community.",
+  "products": [],
+  "services": [
+    "Redefining Access to Everyday Banking",
+    "Enterprise-Grade Financial Infrastructure",
+    "Business Correspondent",
+    "Merchant Payments",
+    "Banks & NBFCs",
+    "Government & PSU",
+    "Fintech APIs"
+  ],
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 45,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-20T13:35:09.182Z",
+  "websiteUrl": "https://acemoney.in/",
+  "websiteAnalyzedAt": "2026-08-20T13:30:17.281Z",
+  "websiteContentHash": "3a3f00",
+  "websiteEvidenceItems": [
+    {
+      "evidenceId": "FAST_EV_1787232614342_title",
+      "observation": "Page title: \"Acemoney | Radiant Acemoney BC services / Banking Partner Service\"",
+      "evidence": "Acemoney | Radiant Acemoney BC services / Banking Partner Service",
+      "source": "https://acemoney.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "identity",
+      "checkedAt": "2026-08-20T13:30:14.342Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787232614342_meta",
+      "observation": "Meta description found",
+      "evidence": "Start banking with Radiant Acemoney. Become a trusted Banking Partner &amp; provide essential BC services like cash withdrawals, deposits, and transfers to your community.",
+      "source": "https://acemoney.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "business_description",
+      "checkedAt": "2026-08-20T13:30:14.342Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787232614342_headings",
+      "observation": "Page headings: 8 headings found",
+      "evidence": "Redefining Access to Everyday Banking | Enterprise-Grade Financial Infrastructure | Business Correspondent | Merchant Payments | Banks &amp; NBFCs | Government &amp; PSU | Fintech APIs | Our Products",
+      "source": "https://acemoney.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "services",
+      "checkedAt": "2026-08-20T13:30:14.342Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787232614342_body",
+      "observation": "Main page body text retrieved",
+      "evidence": "Acemoney | Radiant Acemoney BC services / Banking Partner Service Together we grow digitally Solutions Company Resources Products Support Contact Now LIVE across 28 States Redefining Access to Everyda",
+      "source": "https://acemoney.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "general",
+      "checkedAt": "2026-08-20T13:30:14.342Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787232614342_social",
+      "observation": "Social media presence: 4 profiles",
+      "evidence": "https://www.facebook.com/acemoneyin, https://twitter.com/acewaretech, https://www.instagram.com/acemoney.in/, https://www.linkedin.com/company/1634138/admin/",
+      "source": "https://acemoney.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "social_presence",
+      "checkedAt": "2026-08-20T13:30:14.342Z",
+      "stage": "FAST_PATH"
+    }
+  ],
+  "websiteRetrievalMeta": {
+    "finalUrl": "https://acemoney.in/",
+    "httpStatus": 200,
+    "pagesInspected": [
+      "https://acemoney.in/"
+    ]
+  },
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-20T13:35:09.182Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "industry",
+        "businessStage",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "Acemoney",
+        "industry": "Technology",
+        "businessStage": "Growth",
+        "businessDescription": "Start banking with Radiant Acemoney. Become a trusted Banking Partner & provide essential BC services like cash withdrawals, deposits, and transfers to your community.",
+        "products": [],
+        "services": [
+          "Redefining Access to Everyday Banking",
+          "Enterprise-Grade Financial Infrastructure",
+          "Business Correspondent",
+          "Merchant Payments",
+          "Banks & NBFCs",
+          "Government & PSU",
+          "Fintech APIs"
+        ],
+        "websiteUrl": "https://acemoney.in/"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T13:30:17.917Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "industry",
+        "businessStage",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "Acemoney",
+        "industry": "Technology",
+        "businessStage": "Growth",
+        "businessDescription": "Start banking with Radiant Acemoney. Become a trusted Banking Partner & provide essential BC services like cash withdrawals, deposits, and transfers to your community.",
+        "products": [],
+        "services": [
+          "Redefining Access to Everyday Banking",
+          "Enterprise-Grade Financial Infrastructure",
+          "Business Correspondent",
+          "Merchant Payments",
+          "Banks & NBFCs",
+          "Government & PSU",
+          "Fintech APIs"
+        ],
+        "websiteUrl": "https://acemoney.in/"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T13:30:17.283Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://acemoney.in",
+        "websiteAnalyzedAt": "2026-08-20T13:30:17.281Z",
+        "websiteContentHash": "3a3f00",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787232614342_title",
+            "observation": "Page title: \"Acemoney | Radiant Acemoney BC services / Banking Partner Service\"",
+            "evidence": "Acemoney | Radiant Acemoney BC services / Banking Partner Service",
+            "source": "https://acemoney.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-20T13:30:14.342Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787232614342_meta",
+            "observation": "Meta description found",
+            "evidence": "Start banking with Radiant Acemoney. Become a trusted Banking Partner &amp; provide essential BC services like cash withdrawals, deposits, and transfers to your community.",
+            "source": "https://acemoney.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-08-20T13:30:14.342Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787232614342_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "Redefining Access to Everyday Banking | Enterprise-Grade Financial Infrastructure | Business Correspondent | Merchant Payments | Banks &amp; NBFCs | Government &amp; PSU | Fintech APIs | Our Products",
+            "source": "https://acemoney.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-20T13:30:14.342Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787232614342_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Acemoney | Radiant Acemoney BC services / Banking Partner Service Together we grow digitally Solutions Company Resources Products Support Contact Now LIVE across 28 States Redefining Access to Everyda",
+            "source": "https://acemoney.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-20T13:30:14.342Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787232614342_social",
+            "observation": "Social media presence: 4 profiles",
+            "evidence": "https://www.facebook.com/acemoneyin, https://twitter.com/acewaretech, https://www.instagram.com/acemoney.in/, https://www.linkedin.com/company/1634138/admin/",
+            "source": "https://acemoney.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "social_presence",
+            "checkedAt": "2026-08-20T13:30:14.342Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://acemoney.in/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://acemoney.in/"
+          ]
+        },
+        "businessName": "Acemoney",
+        "industry": "Technology",
+        "businessDescription": "Start banking with Radiant Acemoney. Become a trusted Banking Partner & provide essential BC services like cash withdrawals, deposits, and transfers to your community.",
+        "services": [
+          "Redefining Access to Everyday Banking",
+          "Enterprise-Grade Financial Infrastructure",
+          "Business Correspondent",
+          "Merchant Payments",
+          "Banks & NBFCs",
+          "Government & PSU",
+          "Fintech APIs"
+        ],
+        "products": [],
+        "businessStage": "Growth",
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [
+          "https://www.facebook.com/acemoneyin",
+          "https://twitter.com/acewaretech",
+          "https://www.instagram.com/acemoney.in/",
+          "https://www.linkedin.com/company/1634138/admin/"
+        ],
+        "aiConfidenceScore": 92,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Acemoney is a technology company specializing in redefining access to everyday banking, enterprise-grade financial infrastructure, business correspondent, merchant payments and banks & nbfcs Start banking with Radiant Acemoney..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 80,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T13:29:49.270Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7878963442",
+        "authProvider": "phone",
+        "userId": "customer_7878963442",
+        "lastLoginAt": "2026-08-20T13:29:49.264Z"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": "7878963442",
+  "email": null,
+  "authProvider": "phone",
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-20T13:29:49.251Z",
+  "lastLoginAt": "2026-08-20T13:29:49.264Z",
+  "fieldProvenance": {
+    "phoneNumber": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:29:49.270Z",
+      "valueSummary": "7878963442"
+    },
+    "authProvider": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:29:49.270Z",
+      "valueSummary": "phone"
+    },
+    "userId": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:29:49.270Z",
+      "valueSummary": "customer_7878963442"
+    },
+    "lastLoginAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:29:49.270Z",
+      "valueSummary": "2026-08-20T13:29:49.264Z"
+    },
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.917Z",
+      "valueSummary": "https://acemoney.in/"
+    },
+    "websiteAnalyzedAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "2026-08-20T13:30:17.281Z"
+    },
+    "websiteContentHash": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "3a3f00"
+    },
+    "websiteEvidenceItems": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "5 items"
+    },
+    "websiteRetrievalMeta": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "{\"finalUrl\":\"https://acemoney.in/\",\"httpStatus\":200,\"pagesInspected\":[\"https://acemoney.in/\"]}"
+    },
+    "businessName": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "Acemoney"
+    },
+    "industry": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "Technology"
+    },
+    "businessDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "Start banking with Radiant Acemoney. Become a trusted Banking Partner & provide essential BC service"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:35:09.182Z",
+      "valueSummary": "7 items"
+    },
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:35:09.182Z",
+      "valueSummary": "0 items"
+    },
+    "businessStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "Growth"
+    },
+    "contactInfo": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "{\"email\":null,\"phone\":null}"
+    },
+    "socialLinks": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "4 items"
+    },
+    "confidenceStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "PARTIAL_EVIDENCE"
+    },
+    "confidenceReason": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "AI enriched partial deterministic profile"
+    },
+    "sourceType": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "VERIFIED_WEBSITE"
+    },
+    "summary": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "Acemoney is a technology company specializing in redefining access to everyday banking, enterprise-g"
+    },
+    "summaryProvenance": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "EVIDENCE_ANCHORED"
+    },
+    "discoveredAssets": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "0 items"
+    },
+    "analysisStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "FAST_PATH"
+    },
+    "classification": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T13:30:17.283Z",
+      "valueSummary": "{\"class\":\"DYNAMIC\",\"reason\":\"HEAVY_JS_OR_FRAMEWORK\"}"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "userId": "customer_7878963442",
+  "contactInfo": {
+    "email": null,
+    "phone": null
+  },
+  "socialLinks": [
+    "https://www.facebook.com/acemoneyin",
+    "https://twitter.com/acewaretech",
+    "https://www.instagram.com/acemoney.in/",
+    "https://www.linkedin.com/company/1634138/admin/"
+  ],
+  "confidenceStatus": "PARTIAL_EVIDENCE",
+  "confidenceReason": "AI enriched partial deterministic profile",
+  "sourceType": "VERIFIED_WEBSITE",
+  "summary": "Acemoney is a technology company specializing in redefining access to everyday banking, enterprise-grade financial infrastructure, business correspondent, merchant payments and banks & nbfcs Start banking with Radiant Acemoney..",
+  "summaryProvenance": "EVIDENCE_ANCHORED",
+  "analysisStage": "FAST_PATH",
+  "classification": {
+    "class": "DYNAMIC",
+    "reason": "HEAVY_JS_OR_FRAMEWORK"
+  }
+}

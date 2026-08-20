@@ -1,0 +1,11 @@
+{
+  "userId": "customer_completed_test",
+  "phoneNumber": "8888888888",
+  "email": "completed@test.com",
+  "websiteUrl": "https://www.completed-test.com",
+  "businessName": "Completed Test Business",
+  "onboardingStatus": "completed",
+  "lastVisitedScreen": "dashboard",
+  "createdAt": "2026-08-17T12:54:44.821Z",
+  "lastLoginAt": "2026-08-17T12:54:44.822Z"
+}

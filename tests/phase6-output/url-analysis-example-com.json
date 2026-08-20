@@ -1,0 +1,322 @@
+{
+  "success": false,
+  "sourceStatus": "INSUFFICIENT_EVIDENCE",
+  "retrievalMeta": {
+    "requestedUrl": "https://example.com",
+    "normalizedUrl": "https://example.com/",
+    "finalUrl": "https://example.com/",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "responseTimeMs": 575,
+    "retrievalSuccess": true,
+    "checkedAt": "2026-08-16T06:06:52.383Z",
+    "pagesInspected": [
+      "https://example.com/"
+    ],
+    "error": null,
+    "attempts": 1
+  },
+  "evidenceItems": [
+    {
+      "evidenceId": "EV_1786860412989_title",
+      "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+      "businessId": null,
+      "productId": null,
+      "projectId": null,
+      "sourceId": "SRC_example.com_1786860412989",
+      "sourceUrl": "https://example.com/",
+      "finalUrl": "https://example.com/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "sourceType": "WEBSITE",
+      "evidenceType": "identity",
+      "title": "Page title: \"Example Domain\"",
+      "content": "Example Domain",
+      "extractedValue": null,
+      "confidence": "HIGH",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-16T06:06:52.383Z",
+      "freshness": "CURRENT",
+      "qualityScore": 95,
+      "duplicateOf": null,
+      "relatedEvidence": [],
+      "relatedEntity": null,
+      "metadata": {}
+    },
+    {
+      "evidenceId": "EV_1786860412989_headings",
+      "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+      "businessId": null,
+      "productId": null,
+      "projectId": null,
+      "sourceId": "SRC_example.com_1786860412990",
+      "sourceUrl": "https://example.com/",
+      "finalUrl": "https://example.com/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "sourceType": "WEBSITE",
+      "evidenceType": "services",
+      "title": "Page headings: 1 headings found",
+      "content": "Example Domain",
+      "extractedValue": null,
+      "confidence": "MEDIUM",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-16T06:06:52.383Z",
+      "freshness": "CURRENT",
+      "qualityScore": 75,
+      "duplicateOf": null,
+      "relatedEvidence": [],
+      "relatedEntity": null,
+      "metadata": {}
+    },
+    {
+      "evidenceId": "EV_1786860412989_body",
+      "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+      "businessId": null,
+      "productId": null,
+      "projectId": null,
+      "sourceId": "SRC_example.com_1786860412990",
+      "sourceUrl": "https://example.com/",
+      "finalUrl": "https://example.com/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "sourceType": "WEBSITE",
+      "evidenceType": "general",
+      "title": "Main page body text retrieved",
+      "content": "Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "extractedValue": null,
+      "confidence": "MEDIUM",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-16T06:06:52.383Z",
+      "freshness": "CURRENT",
+      "qualityScore": 65,
+      "duplicateOf": null,
+      "relatedEvidence": [],
+      "relatedEntity": null,
+      "metadata": {}
+    },
+    {
+      "evidenceId": "EV_1786860412989_colors",
+      "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+      "businessId": null,
+      "productId": null,
+      "projectId": null,
+      "sourceId": "SRC_example.com_1786860412990",
+      "sourceUrl": "https://example.com/",
+      "finalUrl": "https://example.com/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "sourceType": "WEBSITE",
+      "evidenceType": "brand",
+      "title": "Brand colors detected: 2 colors",
+      "content": "#eee, #348",
+      "extractedValue": null,
+      "confidence": "LOW",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-16T06:06:52.383Z",
+      "freshness": "CURRENT",
+      "qualityScore": 65,
+      "duplicateOf": null,
+      "relatedEvidence": [],
+      "relatedEntity": null,
+      "metadata": {}
+    }
+  ],
+  "discoveredAssets": [
+    {
+      "assetId": "AST_1786860412990_favicon",
+      "assetType": "favicon",
+      "assetUrl": "data:,",
+      "sourceUrl": "https://example.com/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "discoveredAt": "2026-08-16T06:06:52.990Z"
+    },
+    {
+      "assetId": "AST_1786860412990_colors",
+      "assetType": "brand_colors",
+      "assetUrl": null,
+      "sourceUrl": "https://example.com/",
+      "sourceType": "WEBSITE",
+      "metadata": {
+        "colors": [
+          "#eee",
+          "#348"
+        ]
+      },
+      "confidence": "low",
+      "discoveredAt": "2026-08-16T06:06:52.990Z"
+    }
+  ],
+  "insufficientEvidence": true,
+  "reason": "We accessed the website, but couldn't find enough information to confidently identify the business.",
+  "failureReason": "INSUFFICIENT_CONTENT",
+  "userMessage": "We accessed the website, but couldn't find enough information to confidently identify the business.",
+  "retryable": false,
+  "requiresManualInput": true,
+  "evidenceCount": 4,
+  "attempts": 1,
+  "primaryPage": {
+    "title": "Example Domain",
+    "metaDescription": "",
+    "og": {
+      "title": "",
+      "description": "",
+      "image": ""
+    },
+    "contactInfo": {
+      "emails": [],
+      "phones": []
+    },
+    "socialLinks": [],
+    "headings": [
+      {
+        "level": 1,
+        "text": "Example Domain"
+      }
+    ]
+  },
+  "sourceClassification": {
+    "status": "POSSIBLE_BUSINESS_SOURCE",
+    "signals": [
+      "title",
+      "favicon",
+      "brandColors"
+    ],
+    "reasoning": "Some business-related signals found, but evidence is limited."
+  },
+  "analysis": {
+    "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+    "generatedAt": "2026-08-16T06:06:52.383Z",
+    "evidenceSufficiency": {
+      "sufficient": false,
+      "score": 100,
+      "meaningfulCount": 4,
+      "highQualityCount": 4,
+      "coveredTypes": [
+        "identity",
+        "services",
+        "general",
+        "brand"
+      ],
+      "missingTypes": [
+        "business_description"
+      ],
+      "weaknesses": [
+        "Missing evidence types: business_description"
+      ],
+      "recommendations": []
+    },
+    "evidenceSummary": {
+      "totalItems": 4,
+      "meaningfulItems": 4,
+      "highQualityItems": 4,
+      "typesCovered": [
+        "identity",
+        "services",
+        "general",
+        "brand"
+      ],
+      "topEvidence": [
+        {
+          "evidenceId": "EV_1786860412989_title",
+          "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+          "businessId": null,
+          "productId": null,
+          "projectId": null,
+          "sourceId": "SRC_example.com_1786860412989",
+          "sourceUrl": "https://example.com/",
+          "finalUrl": "https://example.com/",
+          "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+          "sourceType": "WEBSITE",
+          "evidenceType": "identity",
+          "title": "Page title: \"Example Domain\"",
+          "content": "Example Domain",
+          "extractedValue": null,
+          "confidence": "HIGH",
+          "provenance": "OBSERVED",
+          "timestamp": "2026-08-16T06:06:52.383Z",
+          "freshness": "CURRENT",
+          "qualityScore": 95,
+          "duplicateOf": null,
+          "relatedEvidence": [],
+          "relatedEntity": null,
+          "metadata": {}
+        },
+        {
+          "evidenceId": "EV_1786860412989_headings",
+          "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+          "businessId": null,
+          "productId": null,
+          "projectId": null,
+          "sourceId": "SRC_example.com_1786860412990",
+          "sourceUrl": "https://example.com/",
+          "finalUrl": "https://example.com/",
+          "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+          "sourceType": "WEBSITE",
+          "evidenceType": "services",
+          "title": "Page headings: 1 headings found",
+          "content": "Example Domain",
+          "extractedValue": null,
+          "confidence": "MEDIUM",
+          "provenance": "OBSERVED",
+          "timestamp": "2026-08-16T06:06:52.383Z",
+          "freshness": "CURRENT",
+          "qualityScore": 75,
+          "duplicateOf": null,
+          "relatedEvidence": [],
+          "relatedEntity": null,
+          "metadata": {}
+        },
+        {
+          "evidenceId": "EV_1786860412989_body",
+          "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+          "businessId": null,
+          "productId": null,
+          "projectId": null,
+          "sourceId": "SRC_example.com_1786860412990",
+          "sourceUrl": "https://example.com/",
+          "finalUrl": "https://example.com/",
+          "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+          "sourceType": "WEBSITE",
+          "evidenceType": "general",
+          "title": "Main page body text retrieved",
+          "content": "Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+          "extractedValue": null,
+          "confidence": "MEDIUM",
+          "provenance": "OBSERVED",
+          "timestamp": "2026-08-16T06:06:52.383Z",
+          "freshness": "CURRENT",
+          "qualityScore": 65,
+          "duplicateOf": null,
+          "relatedEvidence": [],
+          "relatedEntity": null,
+          "metadata": {}
+        },
+        {
+          "evidenceId": "EV_1786860412989_colors",
+          "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+          "businessId": null,
+          "productId": null,
+          "projectId": null,
+          "sourceId": "SRC_example.com_1786860412990",
+          "sourceUrl": "https://example.com/",
+          "finalUrl": "https://example.com/",
+          "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+          "sourceType": "WEBSITE",
+          "evidenceType": "brand",
+          "title": "Brand colors detected: 2 colors",
+          "content": "#eee, #348",
+          "extractedValue": null,
+          "confidence": "LOW",
+          "provenance": "OBSERVED",
+          "timestamp": "2026-08-16T06:06:52.383Z",
+          "freshness": "CURRENT",
+          "qualityScore": 65,
+          "duplicateOf": null,
+          "relatedEvidence": [],
+          "relatedEntity": null,
+          "metadata": {}
+        }
+      ],
+      "weakEvidence": 0,
+      "duplicates": 0
+    }
+  }
+}

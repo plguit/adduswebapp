@@ -1,0 +1,3084 @@
+{
+  "businessName": "Example Domain",
+  "industry": "E-commerce",
+  "businessStage": "Established",
+  "businessDescription": "This domain is for use in documentation examples without needing permission.",
+  "products": [],
+  "services": [],
+  "targetAudience": "people creating documentation examples",
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 50,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-20T04:58:55.195Z",
+  "websiteUrl": "https://example.com",
+  "websiteAnalyzedAt": "2026-08-20T04:58:55.194Z",
+  "websiteContentHash": "f80",
+  "websiteEvidenceItems": [
+    {
+      "evidenceId": "FAST_EV_1787201932826_title",
+      "observation": "Page title: \"Example Domain\"",
+      "evidence": "Example Domain",
+      "source": "https://example.com/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "identity",
+      "checkedAt": "2026-08-20T04:58:52.826Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787201932826_headings",
+      "observation": "Page headings: 1 headings found",
+      "evidence": "Example Domain",
+      "source": "https://example.com/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "services",
+      "checkedAt": "2026-08-20T04:58:52.826Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787201932826_body",
+      "observation": "Main page body text retrieved",
+      "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "source": "https://example.com/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "general",
+      "checkedAt": "2026-08-20T04:58:52.826Z",
+      "stage": "FAST_PATH"
+    }
+  ],
+  "websiteRetrievalMeta": {
+    "finalUrl": "https://example.com/",
+    "httpStatus": 200,
+    "pagesInspected": [
+      "https://example.com/"
+    ]
+  },
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-20T04:58:55.195Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-20T04:58:55.194Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787201932826_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-20T04:58:52.826Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787201932826_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-20T04:58:52.826Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787201932826_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-20T04:58:52.826Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "businessName": "Example Domain",
+        "businessDescription": "This domain is for use in documentation examples without needing permission.",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 85,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Example Domain is a business This domain is for use in documentation examples without needing permission..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 40,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T04:08:22.101Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-20T04:08:22.098Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787198895120_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-20T04:08:15.120Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787198895120_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-20T04:08:15.120Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787198895120_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-20T04:08:15.120Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "businessName": "Example Domain",
+        "businessDescription": "This domain is for use in documentation examples without needing permission. Avoid use in operations.",
+        "services": [],
+        "products": [],
+        "targetAudience": "people creating documentation examples",
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 85,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Example Domain is a business This domain is for use in documentation examples without needing permission..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 40,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T15:06:19.400Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://oyo.in",
+        "websiteAnalyzedAt": "2026-08-19T15:06:19.399Z",
+        "websiteContentHash": "17dd6fd",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787151704744_title",
+            "observation": "Page title: \"Under Construction\"",
+            "evidence": "Under Construction",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T15:01:44.744Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787151704744_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Under Construction",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T15:01:44.744Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787151704744_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Under Construction Under Construction ⚠️ Please be wary, if some broker is offering this domain for sale. We will never contact you on WhatsApp, Telegram, Instagram etc. Please contact ✉ Click to Reve",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T15:01:44.744Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "pagesInspected": []
+        },
+        "businessName": "Under Construction",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 100,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T15:05:16.131Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://oyo.in",
+        "websiteAnalyzedAt": "2026-08-19T15:05:16.130Z",
+        "websiteContentHash": "17dd6fd",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787151704744_title",
+            "observation": "Page title: \"Under Construction\"",
+            "evidence": "Under Construction",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T15:01:44.744Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787151704744_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Under Construction",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T15:01:44.744Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787151704744_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Under Construction Under Construction ⚠️ Please be wary, if some broker is offering this domain for sale. We will never contact you on WhatsApp, Telegram, Instagram etc. Please contact ✉ Click to Reve",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T15:01:44.744Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "pagesInspected": []
+        },
+        "businessName": "Under Construction",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 100,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T15:01:48.119Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://oyo.in",
+        "websiteAnalyzedAt": "2026-08-19T15:01:48.118Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787151704744_title",
+            "observation": "Page title: \"Under Construction\"",
+            "evidence": "Under Construction",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T15:01:44.744Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787151704744_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Under Construction",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T15:01:44.744Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787151704744_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Under Construction Under Construction ⚠️ Please be wary, if some broker is offering this domain for sale. We will never contact you on WhatsApp, Telegram, Instagram etc. Please contact ✉ Click to Reve",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T15:01:44.744Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.hitmedia.in/uc/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.hitmedia.in/uc/"
+          ]
+        },
+        "industry": "E-commerce",
+        "services": [],
+        "products": [],
+        "businessStage": "Established",
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 10,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "is an e-commerce business.",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T14:50:01.711Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://oyo.in",
+        "websiteAnalyzedAt": "2026-08-19T14:50:01.709Z",
+        "websiteContentHash": "17dd6fd",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787150634939_title",
+            "observation": "Page title: \"Under Construction\"",
+            "evidence": "Under Construction",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T14:43:54.939Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787150634939_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Under Construction",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T14:43:54.939Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787150634939_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Under Construction Under Construction ⚠️ Please be wary, if some broker is offering this domain for sale. We will never contact you on WhatsApp, Telegram, Instagram etc. Please contact ✉ Click to Reve",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T14:43:54.939Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "pagesInspected": []
+        },
+        "businessName": "Under Construction",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 12,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Under Construction is a business.",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T14:47:24.910Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://oyo.in",
+        "websiteAnalyzedAt": "2026-08-19T14:47:24.909Z",
+        "websiteContentHash": "17dd6fd",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787150634939_title",
+            "observation": "Page title: \"Under Construction\"",
+            "evidence": "Under Construction",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T14:43:54.939Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787150634939_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Under Construction",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T14:43:54.939Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787150634939_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Under Construction Under Construction ⚠️ Please be wary, if some broker is offering this domain for sale. We will never contact you on WhatsApp, Telegram, Instagram etc. Please contact ✉ Click to Reve",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T14:43:54.939Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "pagesInspected": []
+        },
+        "businessName": "Under Construction",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 12,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Under Construction is a business.",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T14:26:27.991Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-19T14:26:27.990Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787149584811_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T14:26:24.811Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787149584811_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T14:26:24.811Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787149584811_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T14:26:24.811Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "businessName": "Example Domain",
+        "businessDescription": "This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 85,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Example Domain is a business This domain is for use in documentation examples without needing permission..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 40,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T13:31:26.942Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "customerProvidedDescription"
+      ],
+      "data": {
+        "customerProvidedDescription": "Rapido is India's largest bike taxi app. We provide affordable and reliable bike rides across major cities in India."
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T07:18:54.595Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://news.ycombinator.com",
+        "websiteAnalyzedAt": "2026-08-19T07:18:54.594Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787123933278_title",
+            "observation": "Page title: \"Hacker News\"",
+            "evidence": "Hacker News",
+            "source": "https://news.ycombinator.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T07:18:53.278Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123933278_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Hacker News Hacker News new | past | comments | ask | show | jobs | submit login 1. OpenLogi ( openlogi.org ) 375 points by amatheus 5 hours ago | hide | 78&nbsp;comments 2. Scientists stunned by chil",
+            "source": "https://news.ycombinator.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T07:18:53.278Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123933278_social",
+            "observation": "Social media presence: 4 profiles",
+            "evidence": "https://www.youtube.com/watch?v=Co57SfcT-h0, https://news.ycombinator.com/from?site=youtube.com, https://twitter.com/kuberwastaken/status/2089377982536388964, https://news.ycombinator.com/from?site=twitter.com/kuberwastaken",
+            "source": "https://news.ycombinator.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "social_presence",
+            "checkedAt": "2026-08-19T07:18:53.278Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://news.ycombinator.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://news.ycombinator.com/"
+          ]
+        },
+        "industry": "E-commerce",
+        "services": [],
+        "products": [],
+        "businessStage": "Startup",
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "is an e-commerce business.",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "LARGE",
+          "reason": "HIGH_CONTENT_VOLUME"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T07:18:52.008Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://www.wikipedia.org",
+        "websiteAnalyzedAt": "2026-08-19T07:18:52.007Z",
+        "websiteContentHash": "1e0fc",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787123929912_title",
+            "observation": "Page title: \"Wikipedia\"",
+            "evidence": "Wikipedia",
+            "source": "https://www.wikipedia.org/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T07:18:49.912Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123929912_meta",
+            "observation": "Meta description found",
+            "evidence": "Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.",
+            "source": "https://www.wikipedia.org/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-08-19T07:18:49.912Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123929912_headings",
+            "observation": "Page headings: 7 headings found",
+            "evidence": "Wikipedia\n\nThe Free Encyclopedia | 1,000,000+\n\n\narticles | 100,000+\n\n\narticles | 10,000+\n\n\narticles | 1,000+\n\n\narticles | 100+\n\n\narticles | We owe you an explanation.",
+            "source": "https://www.wikipedia.org/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T07:18:49.912Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123929912_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Wikipedia Wikipedia The Free Encyclopedia English 7,189,000+ articles 日本語 1,503,000+ 記事 Deutsch 3.125.000+ Artikel Русский 2 103 000+ статей Français 2 761 000+ articles Español 2.116.000+ artículos 中",
+            "source": "https://www.wikipedia.org/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T07:18:49.912Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.wikipedia.org/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.wikipedia.org/"
+          ]
+        },
+        "industry": "News & Media",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "is a news & media business.",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "LARGE",
+          "reason": "HIGH_CONTENT_VOLUME"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T07:18:47.546Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://www.apple.com",
+        "websiteAnalyzedAt": "2026-08-19T07:18:47.545Z",
+        "websiteContentHash": "1e0fc",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787123925592_title",
+            "observation": "Page title: \"Apple\"",
+            "evidence": "Apple",
+            "source": "https://www.apple.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T07:18:45.592Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123925592_meta",
+            "observation": "Meta description found",
+            "evidence": "Discover the innovative world of Apple and shop everything iPhone, iPad, Apple Watch, Mac, and Apple TV, plus explore accessories, entertainment, and expert device support.",
+            "source": "https://www.apple.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-08-19T07:18:45.592Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123925592_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "Apple | College, sorted. | iPhone | MacBook Air | iPad Air | MacBook Pro | Apple Watch Series 11 | iPad Pro",
+            "source": "https://www.apple.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T07:18:45.592Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123925592_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Apple Apple Apple Store Mac iPad iPhone Watch Vision AirPods TV &amp; Home Entertainment Accessories Support 0 + College, sorted. Get a gift card from $100 to $150 * when you buy Mac or iPad with educ",
+            "source": "https://www.apple.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T07:18:45.592Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.apple.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.apple.com/"
+          ]
+        },
+        "industry": "E-commerce",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "is an e-commerce business.",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T07:18:44.924Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://www.google.com",
+        "websiteAnalyzedAt": "2026-08-19T07:18:44.923Z",
+        "websiteContentHash": "7c",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787123924491_title",
+            "observation": "Page title: \"Google\"",
+            "evidence": "Google",
+            "source": "https://www.google.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T07:18:44.491Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123924491_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Google Gmail Images Sign in &nbsp; Advanced search Google offered in: हिन्दी বাংলা తెలుగు मराठी தமிழ் ગુજરાતી ಕನ್ನಡ മലയാളം ਪੰਜਾਬੀ Advertising Business Solutions About Google Google.co.in &copy; 2026 -",
+            "source": "https://www.google.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T07:18:44.491Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.google.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.google.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T07:18:43.866Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://www.reddit.com",
+        "websiteAnalyzedAt": "2026-08-19T07:18:43.865Z",
+        "websiteContentHash": null,
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787123923133_title",
+            "observation": "Page title: \"Reddit\"",
+            "evidence": "Reddit",
+            "source": "https://www.reddit.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T07:18:43.133Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.reddit.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.reddit.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T07:18:42.627Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-19T07:18:42.626Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787123921704_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T07:18:41.704Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123921704_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T07:18:41.704Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123921704_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T07:18:41.704Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T07:06:55.400Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-19T07:06:55.399Z",
+        "websiteContentHash": "2fc0fe42",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787123212790_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T07:06:52.790Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123212790_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T07:06:52.790Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123212790_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T07:06:52.790Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "pagesInspected": []
+        },
+        "businessName": "Example Domain",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Example Domain is a business.",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T07:06:53.830Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-19T07:06:53.828Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787123212790_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T07:06:52.790Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123212790_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T07:06:52.790Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123212790_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T07:06:52.790Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T07:05:23.584Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-19T07:05:23.583Z",
+        "websiteContentHash": "2fc0fe42",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787123121604_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T07:05:21.604Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123121604_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T07:05:21.604Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123121604_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T07:05:21.604Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "pagesInspected": []
+        },
+        "businessName": "Example Domain",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Example Domain is a business.",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T07:05:22.483Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-19T07:05:22.482Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787123121604_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T07:05:21.604Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123121604_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T07:05:21.604Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787123121604_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T07:05:21.604Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T06:51:27.413Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://www.apple.com",
+        "websiteAnalyzedAt": "2026-08-19T06:51:27.412Z",
+        "websiteContentHash": "1e0fc",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787122286015_title",
+            "observation": "Page title: \"Apple\"",
+            "evidence": "Apple",
+            "source": "https://www.apple.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T06:51:26.015Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787122286015_meta",
+            "observation": "Meta description found",
+            "evidence": "Discover the innovative world of Apple and shop everything iPhone, iPad, Apple Watch, Mac, and Apple TV, plus explore accessories, entertainment, and expert device support.",
+            "source": "https://www.apple.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-08-19T06:51:26.015Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787122286015_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "Apple | College, sorted. | iPhone | MacBook Air | iPad Air | MacBook Pro | Apple Watch Series 11 | iPad Pro",
+            "source": "https://www.apple.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T06:51:26.015Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787122286015_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Apple Apple Apple Store Mac iPad iPhone Watch Vision AirPods TV &amp; Home Entertainment Accessories Support 0 + College, sorted. Get a gift card from $100 to $150 * when you buy Mac or iPad with educ",
+            "source": "https://www.apple.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T06:51:26.015Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.apple.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.apple.com/"
+          ]
+        },
+        "industry": "E-commerce",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "is an e-commerce business.",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T06:50:46.788Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://www.google.com",
+        "websiteAnalyzedAt": "2026-08-19T06:50:46.788Z",
+        "websiteContentHash": "7c",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787122244400_title",
+            "observation": "Page title: \"Google\"",
+            "evidence": "Google",
+            "source": "https://www.google.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T06:50:44.400Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787122244400_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Google Gmail Images Sign in &nbsp; Advanced search Google offered in: हिन्दी বাংলা తెలుగు मराठी தமிழ் ગુજરાતી ಕನ್ನಡ മലയാളം ਪੰਜਾਬੀ Advertising Business Solutions About Google Google.co.in &copy; 2026 -",
+            "source": "https://www.google.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T06:50:44.400Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.google.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.google.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T06:49:36.433Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://www.reddit.com",
+        "websiteAnalyzedAt": "2026-08-19T06:49:36.432Z",
+        "websiteContentHash": null,
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787122174458_title",
+            "observation": "Page title: \"Reddit\"",
+            "evidence": "Reddit",
+            "source": "https://www.reddit.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T06:49:34.458Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.reddit.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.reddit.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T06:35:14.876Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://news.ycombinator.com",
+        "websiteAnalyzedAt": "2026-08-19T06:35:14.875Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787121311893_title",
+            "observation": "Page title: \"Hacker News\"",
+            "evidence": "Hacker News",
+            "source": "https://news.ycombinator.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T06:35:11.893Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787121311893_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Hacker News Hacker News new | past | comments | ask | show | jobs | submit login 1. Meta&#x27;s blockbuster trial draws parallels to big tobacco ( economist.com ) 183 points by newsomix9xl 4 hours ago",
+            "source": "https://news.ycombinator.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T06:35:11.893Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787121311893_social",
+            "observation": "Social media presence: 4 profiles",
+            "evidence": "https://www.youtube.com/watch?v=Co57SfcT-h0, https://news.ycombinator.com/from?site=youtube.com, https://twitter.com/kuberwastaken/status/2089377982536388964, https://news.ycombinator.com/from?site=twitter.com/kuberwastaken",
+            "source": "https://news.ycombinator.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "social_presence",
+            "checkedAt": "2026-08-19T06:35:11.893Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://news.ycombinator.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://news.ycombinator.com/"
+          ]
+        },
+        "industry": "E-commerce",
+        "services": [],
+        "products": [],
+        "businessStage": "Startup",
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "is an e-commerce business.",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "LARGE",
+          "reason": "HIGH_CONTENT_VOLUME"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T06:34:15.479Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://www.wikipedia.org",
+        "websiteAnalyzedAt": "2026-08-19T06:34:15.478Z",
+        "websiteContentHash": "1e0fc",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787121249796_title",
+            "observation": "Page title: \"Wikipedia\"",
+            "evidence": "Wikipedia",
+            "source": "https://www.wikipedia.org/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T06:34:09.796Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787121249796_meta",
+            "observation": "Meta description found",
+            "evidence": "Wikipedia is a free online encyclopedia, created and edited by volunteers around the world and hosted by the Wikimedia Foundation.",
+            "source": "https://www.wikipedia.org/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-08-19T06:34:09.796Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787121249796_headings",
+            "observation": "Page headings: 7 headings found",
+            "evidence": "Wikipedia\n\nThe Free Encyclopedia | 1,000,000+\n\n\narticles | 100,000+\n\n\narticles | 10,000+\n\n\narticles | 1,000+\n\n\narticles | 100+\n\n\narticles | We owe you an explanation.",
+            "source": "https://www.wikipedia.org/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T06:34:09.796Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787121249796_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Wikipedia Wikipedia The Free Encyclopedia English 7,189,000+ articles 日本語 1,503,000+ 記事 Deutsch 3.125.000+ Artikel Русский 2 103 000+ статей Français 2 761 000+ articles Español 2.116.000+ artículos 中",
+            "source": "https://www.wikipedia.org/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T06:34:09.796Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.wikipedia.org/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.wikipedia.org/"
+          ]
+        },
+        "industry": "News & Media",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "is a news & media business.",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "LARGE",
+          "reason": "HIGH_CONTENT_VOLUME"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T06:33:12.738Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-19T06:33:12.737Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787121189900_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T06:33:09.900Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787121189900_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T06:33:09.900Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787121189900_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T06:33:09.900Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T06:32:23.944Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-19T06:32:23.942Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787121141853_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T06:32:21.853Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787121141853_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T06:32:21.853Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787121141853_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T06:32:21.853Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T06:26:04.937Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-19T06:26:04.936Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787120763806_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T06:26:03.806Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787120763806_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T06:26:03.806Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787120763806_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T06:26:03.806Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T06:19:14.947Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-19T06:19:14.946Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787120354006_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T06:19:14.006Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787120354006_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T06:19:14.006Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787120354006_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T06:19:14.006Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T06:18:44.729Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-19T06:18:44.727Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787120323800_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T06:18:43.800Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787120323800_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T06:18:43.800Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787120323800_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T06:18:43.800Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": ".",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": null,
+  "email": null,
+  "authProvider": null,
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-19T06:15:49.470Z",
+  "lastLoginAt": "2026-08-19T06:15:49.470Z",
+  "fieldProvenance": {
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:08:22.100Z",
+      "valueSummary": "https://example.com"
+    },
+    "websiteAnalyzedAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:58:55.195Z",
+      "valueSummary": "2026-08-20T04:58:55.194Z"
+    },
+    "websiteContentHash": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:08:22.100Z",
+      "valueSummary": "f80"
+    },
+    "websiteEvidenceItems": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:58:55.195Z",
+      "valueSummary": "3 items"
+    },
+    "websiteRetrievalMeta": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:58:55.195Z",
+      "valueSummary": "{\"finalUrl\":\"https://example.com/\",\"httpStatus\":200,\"pagesInspected\":[\"https://example.com/\"]}"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:58:55.195Z",
+      "valueSummary": "0 items"
+    },
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:58:55.195Z",
+      "valueSummary": "0 items"
+    },
+    "contactInfo": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:58:55.195Z",
+      "valueSummary": "{\"email\":null,\"phone\":null}"
+    },
+    "socialLinks": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:58:55.195Z",
+      "valueSummary": "0 items"
+    },
+    "confidenceStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T06:18:44.728Z",
+      "valueSummary": "PARTIAL_EVIDENCE"
+    },
+    "confidenceReason": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T06:18:44.728Z",
+      "valueSummary": "AI enriched partial deterministic profile"
+    },
+    "sourceType": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T06:18:44.728Z",
+      "valueSummary": "VERIFIED_WEBSITE"
+    },
+    "summary": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:08:22.101Z",
+      "valueSummary": "Example Domain is a business This domain is for use in documentation examples without needing permis"
+    },
+    "summaryProvenance": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T06:18:44.728Z",
+      "valueSummary": "EVIDENCE_ANCHORED"
+    },
+    "discoveredAssets": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:58:55.195Z",
+      "valueSummary": "0 items"
+    },
+    "analysisStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T06:18:44.729Z",
+      "valueSummary": "FAST_PATH"
+    },
+    "classification": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:58:55.195Z",
+      "valueSummary": "{\"class\":\"SIMPLE\",\"reason\":\"STATIC_OR_MINIMAL\"}"
+    },
+    "industry": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T07:18:54.595Z",
+      "valueSummary": "E-commerce"
+    },
+    "businessStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T15:01:48.119Z",
+      "valueSummary": "Established"
+    },
+    "businessName": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:08:22.101Z",
+      "valueSummary": "Example Domain"
+    },
+    "customerProvidedDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T13:31:26.942Z",
+      "valueSummary": "Rapido is India's largest bike taxi app. We provide affordable and reliable bike rides across major "
+    },
+    "businessDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:58:55.195Z",
+      "valueSummary": "This domain is for use in documentation examples without needing permission."
+    },
+    "targetAudience": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T04:08:22.101Z",
+      "valueSummary": "people creating documentation examples"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "contactInfo": {
+    "email": null,
+    "phone": null
+  },
+  "socialLinks": [],
+  "confidenceStatus": "PARTIAL_EVIDENCE",
+  "confidenceReason": "AI enriched partial deterministic profile",
+  "sourceType": "VERIFIED_WEBSITE",
+  "summary": "Example Domain is a business This domain is for use in documentation examples without needing permission..",
+  "summaryProvenance": "EVIDENCE_ANCHORED",
+  "analysisStage": "FAST_PATH",
+  "classification": {
+    "class": "SIMPLE",
+    "reason": "STATIC_OR_MINIMAL"
+  },
+  "customerProvidedDescription": "Rapido is India's largest bike taxi app. We provide affordable and reliable bike rides across major cities in India."
+}

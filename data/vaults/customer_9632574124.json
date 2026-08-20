@@ -1,0 +1,206 @@
+{
+  "businessName": null,
+  "industry": null,
+  "businessStage": null,
+  "businessDescription": null,
+  "products": [],
+  "services": null,
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 0,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-17T13:59:21.884Z",
+  "websiteUrl": null,
+  "websiteAnalyzedAt": null,
+  "websiteContentHash": null,
+  "websiteEvidenceItems": [],
+  "websiteRetrievalMeta": null,
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-17T13:59:21.884Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9632574124",
+        "authProvider": "phone",
+        "userId": "customer_9632574124",
+        "lastLoginAt": "2026-08-17T13:59:21.883Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-17T13:38:09.982Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9632574124",
+        "authProvider": "phone",
+        "userId": "customer_9632574124",
+        "lastLoginAt": "2026-08-17T13:38:09.981Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-17T13:29:22.719Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9632574124",
+        "authProvider": "phone",
+        "userId": "customer_9632574124",
+        "lastLoginAt": "2026-08-17T13:29:22.718Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-17T13:23:26.344Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9632574124",
+        "authProvider": "phone",
+        "userId": "customer_9632574124",
+        "lastLoginAt": "2026-08-17T13:23:26.343Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-17T13:11:57.411Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9632574124",
+        "authProvider": "phone",
+        "userId": "customer_9632574124",
+        "lastLoginAt": "2026-08-17T13:11:57.410Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-17T13:03:34.243Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9632574124",
+        "authProvider": "phone",
+        "userId": "customer_9632574124",
+        "lastLoginAt": "2026-08-17T13:03:34.242Z"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": "9632574124",
+  "email": null,
+  "authProvider": "phone",
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-17T13:03:34.241Z",
+  "lastLoginAt": "2026-08-17T13:59:21.883Z",
+  "fieldProvenance": {
+    "phoneNumber": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T13:03:34.243Z",
+      "valueSummary": "9632574124"
+    },
+    "authProvider": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T13:03:34.243Z",
+      "valueSummary": "phone"
+    },
+    "userId": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T13:03:34.243Z",
+      "valueSummary": "customer_9632574124"
+    },
+    "lastLoginAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T13:59:21.884Z",
+      "valueSummary": "2026-08-17T13:59:21.883Z"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "userId": "customer_9632574124"
+}

@@ -1,0 +1,432 @@
+{
+  "businessName": null,
+  "industry": "E-commerce",
+  "businessStage": "Established",
+  "businessDescription": "is an e-commerce business.",
+  "products": [],
+  "services": [],
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 25,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-19T14:43:57.776Z",
+  "websiteUrl": "https://www.hitmedia.in/uc/",
+  "websiteAnalyzedAt": "2026-08-19T14:43:57.136Z",
+  "websiteContentHash": "f80",
+  "websiteEvidenceItems": [
+    {
+      "evidenceId": "FAST_EV_1787150634939_title",
+      "observation": "Page title: \"Under Construction\"",
+      "evidence": "Under Construction",
+      "source": "https://oyo.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "identity",
+      "checkedAt": "2026-08-19T14:43:54.939Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787150634939_headings",
+      "observation": "Page headings: 1 headings found",
+      "evidence": "Under Construction",
+      "source": "https://oyo.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "services",
+      "checkedAt": "2026-08-19T14:43:54.939Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787150634939_body",
+      "observation": "Main page body text retrieved",
+      "evidence": "Under Construction Under Construction ⚠️ Please be wary, if some broker is offering this domain for sale. We will never contact you on WhatsApp, Telegram, Instagram etc. Please contact ✉ Click to Reve",
+      "source": "https://oyo.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "general",
+      "checkedAt": "2026-08-19T14:43:54.939Z",
+      "stage": "FAST_PATH"
+    }
+  ],
+  "websiteRetrievalMeta": {
+    "finalUrl": "https://www.hitmedia.in/uc/",
+    "httpStatus": 200,
+    "pagesInspected": [
+      "https://www.hitmedia.in/uc/"
+    ]
+  },
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-19T14:43:57.776Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "industry",
+        "businessStage",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "industry": "E-commerce",
+        "businessStage": "Established",
+        "businessDescription": "is an e-commerce business.",
+        "products": [],
+        "services": [],
+        "websiteUrl": "https://www.hitmedia.in/uc/"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T14:43:57.137Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://oyo.in",
+        "websiteAnalyzedAt": "2026-08-19T14:43:57.136Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787150634939_title",
+            "observation": "Page title: \"Under Construction\"",
+            "evidence": "Under Construction",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-19T14:43:54.939Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787150634939_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Under Construction",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-19T14:43:54.939Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787150634939_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Under Construction Under Construction ⚠️ Please be wary, if some broker is offering this domain for sale. We will never contact you on WhatsApp, Telegram, Instagram etc. Please contact ✉ Click to Reve",
+            "source": "https://oyo.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-19T14:43:54.939Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.hitmedia.in/uc/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.hitmedia.in/uc/"
+          ]
+        },
+        "industry": "E-commerce",
+        "services": [],
+        "products": [],
+        "businessStage": "Established",
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 10,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "is an e-commerce business.",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T14:43:33.716Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "https://rapido.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-19T14:43:09.325Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907898988",
+        "authProvider": "phone",
+        "userId": "customer_7907898988",
+        "lastLoginAt": "2026-08-19T14:43:09.323Z"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": "7907898988",
+  "email": null,
+  "authProvider": "phone",
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-19T14:43:09.318Z",
+  "lastLoginAt": "2026-08-19T14:43:09.323Z",
+  "fieldProvenance": {
+    "phoneNumber": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:09.325Z",
+      "valueSummary": "7907898988"
+    },
+    "authProvider": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:09.325Z",
+      "valueSummary": "phone"
+    },
+    "userId": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:09.325Z",
+      "valueSummary": "customer_7907898988"
+    },
+    "lastLoginAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:09.325Z",
+      "valueSummary": "2026-08-19T14:43:09.323Z"
+    },
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.776Z",
+      "valueSummary": "0 items"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.776Z",
+      "valueSummary": "0 items"
+    },
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.776Z",
+      "valueSummary": "https://www.hitmedia.in/uc/"
+    },
+    "websiteAnalyzedAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "2026-08-19T14:43:57.136Z"
+    },
+    "websiteContentHash": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "f80"
+    },
+    "websiteEvidenceItems": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "3 items"
+    },
+    "websiteRetrievalMeta": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "{\"finalUrl\":\"https://www.hitmedia.in/uc/\",\"httpStatus\":200,\"pagesInspected\":[\"https://www.hitmedia.i"
+    },
+    "industry": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "E-commerce"
+    },
+    "businessStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "Established"
+    },
+    "contactInfo": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "{\"email\":null,\"phone\":null}"
+    },
+    "socialLinks": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "0 items"
+    },
+    "confidenceStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "PARTIAL_EVIDENCE"
+    },
+    "confidenceReason": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "AI enriched partial deterministic profile"
+    },
+    "sourceType": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "VERIFIED_WEBSITE"
+    },
+    "summary": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "is an e-commerce business."
+    },
+    "summaryProvenance": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "EVIDENCE_ANCHORED"
+    },
+    "discoveredAssets": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "0 items"
+    },
+    "analysisStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "FAST_PATH"
+    },
+    "classification": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.137Z",
+      "valueSummary": "{\"class\":\"DYNAMIC\",\"reason\":\"HEAVY_JS_OR_FRAMEWORK\"}"
+    },
+    "businessDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-19T14:43:57.776Z",
+      "valueSummary": "is an e-commerce business."
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "userId": "customer_7907898988",
+  "contactInfo": {
+    "email": null,
+    "phone": null
+  },
+  "socialLinks": [],
+  "confidenceStatus": "PARTIAL_EVIDENCE",
+  "confidenceReason": "AI enriched partial deterministic profile",
+  "sourceType": "VERIFIED_WEBSITE",
+  "summary": "is an e-commerce business.",
+  "summaryProvenance": "EVIDENCE_ANCHORED",
+  "analysisStage": "FAST_PATH",
+  "classification": {
+    "class": "DYNAMIC",
+    "reason": "HEAVY_JS_OR_FRAMEWORK"
+  }
+}

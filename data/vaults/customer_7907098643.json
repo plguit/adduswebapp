@@ -1,0 +1,429 @@
+{
+  "businessName": "La Estuaire Cherai",
+  "industry": "Hospitality",
+  "businessStage": null,
+  "businessDescription": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
+  "products": [],
+  "services": [
+    "Pool access",
+    "Backwater views",
+    "Kayaking",
+    "Kerala dining",
+    "Comfortable stays"
+  ],
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 45,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-20T06:35:28.544Z",
+  "websiteUrl": "https://laestuaire.in/",
+  "websiteAnalyzedAt": "2026-08-20T06:35:27.922Z",
+  "websiteContentHash": "7c",
+  "websiteEvidenceItems": [
+    {
+      "evidenceId": "FAST_EV_1787207723296_title",
+      "observation": "Page title: \"Best Beach Resort in Cherai | Pool &amp; Backwater Resort Near Cherai Beach\"",
+      "evidence": "Best Beach Resort in Cherai | Pool &amp; Backwater Resort Near Cherai Beach",
+      "source": "https://laestuaire.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "identity",
+      "checkedAt": "2026-08-20T06:35:23.296Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787207723296_meta",
+      "observation": "Meta description found",
+      "evidence": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
+      "source": "https://laestuaire.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "business_description",
+      "checkedAt": "2026-08-20T06:35:23.296Z",
+      "stage": "FAST_PATH"
+    }
+  ],
+  "websiteRetrievalMeta": {
+    "finalUrl": "https://laestuaire.in/",
+    "httpStatus": 200,
+    "pagesInspected": [
+      "https://laestuaire.in/"
+    ]
+  },
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-20T06:35:28.544Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "industry",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "La Estuaire Cherai",
+        "industry": "Hospitality",
+        "businessDescription": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
+        "products": [],
+        "services": [
+          "Pool access",
+          "Backwater views",
+          "Kayaking",
+          "Kerala dining",
+          "Comfortable stays"
+        ],
+        "websiteUrl": "https://laestuaire.in/"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T06:35:27.923Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://laestuaire.in",
+        "websiteAnalyzedAt": "2026-08-20T06:35:27.922Z",
+        "websiteContentHash": "7c",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787207723296_title",
+            "observation": "Page title: \"Best Beach Resort in Cherai | Pool &amp; Backwater Resort Near Cherai Beach\"",
+            "evidence": "Best Beach Resort in Cherai | Pool &amp; Backwater Resort Near Cherai Beach",
+            "source": "https://laestuaire.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-20T06:35:23.296Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787207723296_meta",
+            "observation": "Meta description found",
+            "evidence": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
+            "source": "https://laestuaire.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-08-20T06:35:23.296Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://laestuaire.in/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://laestuaire.in/"
+          ]
+        },
+        "businessName": "La Estuaire Cherai",
+        "industry": "Hospitality",
+        "businessDescription": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
+        "services": [
+          "Pool access",
+          "Backwater views",
+          "Kayaking",
+          "Kerala dining",
+          "Comfortable stays"
+        ],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 92,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "La Estuaire Cherai is a hospitality property specializing in pool access, backwater views, kayaking, kerala dining and comfortable stays La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 80,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T06:28:12.326Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "https://laestuair.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T06:27:47.813Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907098643",
+        "authProvider": "phone",
+        "userId": "customer_7907098643",
+        "lastLoginAt": "2026-08-20T06:27:47.812Z"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": "7907098643",
+  "email": null,
+  "authProvider": "phone",
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-20T06:27:47.809Z",
+  "lastLoginAt": "2026-08-20T06:27:47.812Z",
+  "fieldProvenance": {
+    "phoneNumber": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:27:47.813Z",
+      "valueSummary": "7907098643"
+    },
+    "authProvider": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:27:47.813Z",
+      "valueSummary": "phone"
+    },
+    "userId": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:27:47.813Z",
+      "valueSummary": "customer_7907098643"
+    },
+    "lastLoginAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:27:47.813Z",
+      "valueSummary": "2026-08-20T06:27:47.812Z"
+    },
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:28.544Z",
+      "valueSummary": "0 items"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:28.544Z",
+      "valueSummary": "5 items"
+    },
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:28.544Z",
+      "valueSummary": "https://laestuaire.in/"
+    },
+    "websiteAnalyzedAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.922Z",
+      "valueSummary": "2026-08-20T06:35:27.922Z"
+    },
+    "websiteContentHash": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.922Z",
+      "valueSummary": "7c"
+    },
+    "websiteEvidenceItems": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.922Z",
+      "valueSummary": "2 items"
+    },
+    "websiteRetrievalMeta": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.922Z",
+      "valueSummary": "{\"finalUrl\":\"https://laestuaire.in/\",\"httpStatus\":200,\"pagesInspected\":[\"https://laestuaire.in/\"]}"
+    },
+    "businessName": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.922Z",
+      "valueSummary": "La Estuaire Cherai"
+    },
+    "industry": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.922Z",
+      "valueSummary": "Hospitality"
+    },
+    "businessDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.923Z",
+      "valueSummary": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaki"
+    },
+    "contactInfo": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.923Z",
+      "valueSummary": "{\"email\":null,\"phone\":null}"
+    },
+    "socialLinks": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.923Z",
+      "valueSummary": "0 items"
+    },
+    "confidenceStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.923Z",
+      "valueSummary": "PARTIAL_EVIDENCE"
+    },
+    "confidenceReason": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.923Z",
+      "valueSummary": "AI enriched partial deterministic profile"
+    },
+    "sourceType": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.923Z",
+      "valueSummary": "VERIFIED_WEBSITE"
+    },
+    "summary": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.923Z",
+      "valueSummary": "La Estuaire Cherai is a hospitality property specializing in pool access, backwater views, kayaking,"
+    },
+    "summaryProvenance": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.923Z",
+      "valueSummary": "EVIDENCE_ANCHORED"
+    },
+    "discoveredAssets": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.923Z",
+      "valueSummary": "0 items"
+    },
+    "analysisStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.923Z",
+      "valueSummary": "FAST_PATH"
+    },
+    "classification": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T06:35:27.923Z",
+      "valueSummary": "{\"class\":\"SIMPLE\",\"reason\":\"STATIC_OR_MINIMAL\"}"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "userId": "customer_7907098643",
+  "contactInfo": {
+    "email": null,
+    "phone": null
+  },
+  "socialLinks": [],
+  "confidenceStatus": "PARTIAL_EVIDENCE",
+  "confidenceReason": "AI enriched partial deterministic profile",
+  "sourceType": "VERIFIED_WEBSITE",
+  "summary": "La Estuaire Cherai is a hospitality property specializing in pool access, backwater views, kayaking, kerala dining and comfortable stays La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach..",
+  "summaryProvenance": "EVIDENCE_ANCHORED",
+  "analysisStage": "FAST_PATH",
+  "classification": {
+    "class": "SIMPLE",
+    "reason": "STATIC_OR_MINIMAL"
+  }
+}

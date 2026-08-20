@@ -1,0 +1,551 @@
+{
+  "businessName": null,
+  "industry": null,
+  "businessStage": null,
+  "businessDescription": null,
+  "products": [],
+  "services": null,
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null
+  },
+  "missingAssets": [],
+  "aiConfidenceScore": 0,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-13T03:29:42.286Z",
+  "websiteUrl": "https://acemoney.in",
+  "websiteAnalyzedAt": "2026-08-13T03:29:41.307Z",
+  "websiteEvidenceItems": [
+    {
+      "evidenceId": "EV_1786591780734_title",
+      "analysisId": "ANALYSIS_1786591778210_uzlapl7",
+      "sourceId": "SRC_acemoney.in_1786591780734",
+      "sourceUrl": "https://acemoney.in/",
+      "finalUrl": "https://acemoney.in/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "evidenceType": "identity",
+      "title": "Page title: \"Acemoney | Radiant Acemoney BC services / Banking Partner Service\"",
+      "content": "Acemoney | Radiant Acemoney BC services / Banking Partner Service",
+      "extractedValue": null,
+      "confidence": "HIGH",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-13T03:29:38.210Z",
+      "freshness": "CURRENT",
+      "qualityScore": 100,
+      "duplicateOf": null,
+      "relatedEvidence": []
+    },
+    {
+      "evidenceId": "EV_1786591780734_contact",
+      "analysisId": "ANALYSIS_1786591778210_uzlapl7",
+      "sourceId": "SRC_acemoney.in_1786591780735",
+      "sourceUrl": "https://acemoney.in/",
+      "finalUrl": "https://acemoney.in/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "evidenceType": "contact",
+      "title": "Contact email found on website",
+      "content": "compliance@acemoney.in, support@acemoney.in, career@acemoney.in",
+      "extractedValue": null,
+      "confidence": "HIGH",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-13T03:29:38.210Z",
+      "freshness": "CURRENT",
+      "qualityScore": 95,
+      "duplicateOf": null,
+      "relatedEvidence": []
+    },
+    {
+      "evidenceId": "EV_1786591780734_meta",
+      "analysisId": "ANALYSIS_1786591778210_uzlapl7",
+      "sourceId": "SRC_acemoney.in_1786591780735",
+      "sourceUrl": "https://acemoney.in/",
+      "finalUrl": "https://acemoney.in/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "evidenceType": "business_description",
+      "title": "Meta description found",
+      "content": "Start banking with Radiant Acemoney. Become a trusted Banking Partner &amp;amp; provide essential BC services like cash withdrawals, deposits, and transfers to your community.",
+      "extractedValue": null,
+      "confidence": "HIGH",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-13T03:29:38.210Z",
+      "freshness": "CURRENT",
+      "qualityScore": 90,
+      "duplicateOf": null,
+      "relatedEvidence": []
+    },
+    {
+      "evidenceId": "EV_1786591780734_headings",
+      "analysisId": "ANALYSIS_1786591778210_uzlapl7",
+      "sourceId": "SRC_acemoney.in_1786591780735",
+      "sourceUrl": "https://acemoney.in/",
+      "finalUrl": "https://acemoney.in/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "evidenceType": "services",
+      "title": "Page headings: 15 headings found",
+      "content": "Redefining Access to Everyday Banking | Enterprise-Grade Financial Infrastructure | Business Correspondent | Merchant Payments | Banks &amp;amp; NBFCs | Government &amp;amp; PSU | Fintech APIs | Our Products | Micro ATM | Find the Right Solution | 1. What type of organization are you? | Our Impact | Why Radiant Acemoney | Trusted at Scale | Comprehensive Solutions",
+      "extractedValue": null,
+      "confidence": "MEDIUM",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-13T03:29:38.210Z",
+      "freshness": "CURRENT",
+      "qualityScore": 85,
+      "duplicateOf": null,
+      "relatedEvidence": []
+    },
+    {
+      "evidenceId": "EV_1786591780734_og",
+      "analysisId": "ANALYSIS_1786591778210_uzlapl7",
+      "sourceId": "SRC_acemoney.in_1786591780735",
+      "sourceUrl": "https://acemoney.in/",
+      "finalUrl": "https://acemoney.in/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "evidenceType": "business_description",
+      "title": "OpenGraph description found",
+      "content": "Start banking with Radiant Acemoney. Become a trusted Banking Partner &amp;amp; provide essential BC services like cash withdrawals, deposits, and transfers to your community.",
+      "extractedValue": null,
+      "confidence": "HIGH",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-13T03:29:38.210Z",
+      "freshness": "CURRENT",
+      "qualityScore": 70,
+      "duplicateOf": "EV_1786591780734_meta",
+      "relatedEvidence": []
+    },
+    {
+      "evidenceId": "EV_1786591780734_body",
+      "analysisId": "ANALYSIS_1786591778210_uzlapl7",
+      "sourceId": "SRC_acemoney.in_1786591780735",
+      "sourceUrl": "https://acemoney.in/",
+      "finalUrl": "https://acemoney.in/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "evidenceType": "general",
+      "title": "Main page body text retrieved",
+      "content": "Together we grow digitally Solutions Company Resources Products Support Contact Now LIVE across 28 States Redefining Access to Everyday Banking Providing most trusted Fintech solutions including BC Business, Merchants and Business Payment and API Suits. BC / Agent Merchant Bank / NBFC Government We make digital banking &amp;amp; payment solutions available from your store. Get more customers &amp;amp; extra income. AI powered Futuristic Fintech Solutions Products to serve Businesses to Bharat Users Contributing largely to Financial Inclusion Get Started Become an Agent Enterprise-Grade Financial Infrastructure See how our platform orchestrates millions of transactions daily with bank-grade reliability &amp;amp; security. Core Platform 99.99% Reliability Active Business Correspondent Merchant Payments",
+      "extractedValue": null,
+      "confidence": "MEDIUM",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-13T03:29:38.210Z",
+      "freshness": "CURRENT",
+      "qualityScore": 70,
+      "duplicateOf": null,
+      "relatedEvidence": []
+    }
+  ],
+  "websiteRetrievalMeta": {
+    "finalUrl": "https://acemoney.in/",
+    "httpStatus": 200,
+    "pagesInspected": [
+      "https://acemoney.in/",
+      "https://acemoney.in/solutions/business-correspondent",
+      "https://acemoney.in/company/history",
+      "https://acemoney.in/contact"
+    ],
+    "checkedAt": "2026-08-13T03:29:38.210Z"
+  },
+  "addiRecommendations": {
+    "summary": "AI analysis failed. Manual expert review required.",
+    "observations": [],
+    "strengths": [],
+    "gaps": [],
+    "recommendations": [],
+    "predictions": [],
+    "confidence": "UNKNOWN",
+    "evidenceRefs": [
+      "EV_1786591780734_title",
+      "EV_1786591780734_contact",
+      "EV_1786591780734_meta",
+      "EV_1786591780734_headings",
+      "EV_1786591780734_og"
+    ],
+    "insufficientEvidence": true,
+    "humanReviewRequired": true,
+    "generatedAt": "2026-08-13T03:29:42.285Z",
+    "requiresExpertReview": true,
+    "humanReviewReasons": [
+      "Insufficient evidence for reliable analysis",
+      "Expert review recommended before acting on recommendations"
+    ],
+    "humanReviewFlaggedAt": "2026-08-13T03:29:42.285Z",
+    "userId": "test_customer_sajan",
+    "websiteInspectionPerformed": true,
+    "budgetStatus": "requires_admin_pricing"
+  },
+  "addiRecommendationsGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-13T03:29:42.286Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "strategicIntelligence"
+      ],
+      "data": {
+        "strategicIntelligence": []
+      }
+    },
+    {
+      "timestamp": "2026-08-13T03:29:42.285Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "addiRecommendations"
+      ],
+      "data": {
+        "addiRecommendations": {
+          "summary": "AI analysis failed. Manual expert review required.",
+          "observations": [],
+          "strengths": [],
+          "gaps": [],
+          "recommendations": [],
+          "predictions": [],
+          "confidence": "UNKNOWN",
+          "evidenceRefs": [
+            "EV_1786591780734_title",
+            "EV_1786591780734_contact",
+            "EV_1786591780734_meta",
+            "EV_1786591780734_headings",
+            "EV_1786591780734_og"
+          ],
+          "insufficientEvidence": true,
+          "humanReviewRequired": true,
+          "generatedAt": "2026-08-13T03:29:42.285Z",
+          "requiresExpertReview": true,
+          "humanReviewReasons": [
+            "Insufficient evidence for reliable analysis",
+            "Expert review recommended before acting on recommendations"
+          ],
+          "humanReviewFlaggedAt": "2026-08-13T03:29:42.285Z",
+          "userId": "test_customer_sajan",
+          "websiteInspectionPerformed": true,
+          "budgetStatus": "requires_admin_pricing"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-13T03:29:41.783Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "addiRecommendations",
+        "strategicIntelligence"
+      ],
+      "data": {
+        "addiRecommendations": {
+          "summary": "AI analysis failed. Manual expert review required.",
+          "observations": [],
+          "strengths": [],
+          "gaps": [],
+          "recommendations": [],
+          "predictions": [],
+          "confidence": "UNKNOWN",
+          "evidenceRefs": [
+            "EV_1786591780734_title",
+            "EV_1786591780734_contact",
+            "EV_1786591780734_meta",
+            "EV_1786591780734_headings",
+            "EV_1786591780734_og"
+          ],
+          "insufficientEvidence": true,
+          "humanReviewRequired": true,
+          "generatedAt": "2026-08-13T03:29:41.782Z",
+          "requiresExpertReview": true,
+          "humanReviewReasons": [
+            "Insufficient evidence for reliable analysis",
+            "Expert review recommended before acting on recommendations"
+          ],
+          "humanReviewFlaggedAt": "2026-08-13T03:29:41.782Z",
+          "userId": "test_customer_sajan",
+          "websiteInspectionPerformed": true,
+          "budgetStatus": "requires_admin_pricing"
+        },
+        "strategicIntelligence": []
+      }
+    },
+    {
+      "timestamp": "2026-08-13T03:29:41.308Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta"
+      ],
+      "data": {
+        "websiteUrl": "https://acemoney.in",
+        "websiteAnalyzedAt": "2026-08-13T03:29:41.307Z",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_1786591780734_title",
+            "analysisId": "ANALYSIS_1786591778210_uzlapl7",
+            "sourceId": "SRC_acemoney.in_1786591780734",
+            "sourceUrl": "https://acemoney.in/",
+            "finalUrl": "https://acemoney.in/",
+            "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+            "evidenceType": "identity",
+            "title": "Page title: \"Acemoney | Radiant Acemoney BC services / Banking Partner Service\"",
+            "content": "Acemoney | Radiant Acemoney BC services / Banking Partner Service",
+            "extractedValue": null,
+            "confidence": "HIGH",
+            "provenance": "OBSERVED",
+            "timestamp": "2026-08-13T03:29:38.210Z",
+            "freshness": "CURRENT",
+            "qualityScore": 100,
+            "duplicateOf": null,
+            "relatedEvidence": []
+          },
+          {
+            "evidenceId": "EV_1786591780734_contact",
+            "analysisId": "ANALYSIS_1786591778210_uzlapl7",
+            "sourceId": "SRC_acemoney.in_1786591780735",
+            "sourceUrl": "https://acemoney.in/",
+            "finalUrl": "https://acemoney.in/",
+            "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+            "evidenceType": "contact",
+            "title": "Contact email found on website",
+            "content": "compliance@acemoney.in, support@acemoney.in, career@acemoney.in",
+            "extractedValue": null,
+            "confidence": "HIGH",
+            "provenance": "OBSERVED",
+            "timestamp": "2026-08-13T03:29:38.210Z",
+            "freshness": "CURRENT",
+            "qualityScore": 95,
+            "duplicateOf": null,
+            "relatedEvidence": []
+          },
+          {
+            "evidenceId": "EV_1786591780734_meta",
+            "analysisId": "ANALYSIS_1786591778210_uzlapl7",
+            "sourceId": "SRC_acemoney.in_1786591780735",
+            "sourceUrl": "https://acemoney.in/",
+            "finalUrl": "https://acemoney.in/",
+            "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+            "evidenceType": "business_description",
+            "title": "Meta description found",
+            "content": "Start banking with Radiant Acemoney. Become a trusted Banking Partner &amp;amp; provide essential BC services like cash withdrawals, deposits, and transfers to your community.",
+            "extractedValue": null,
+            "confidence": "HIGH",
+            "provenance": "OBSERVED",
+            "timestamp": "2026-08-13T03:29:38.210Z",
+            "freshness": "CURRENT",
+            "qualityScore": 90,
+            "duplicateOf": null,
+            "relatedEvidence": []
+          },
+          {
+            "evidenceId": "EV_1786591780734_headings",
+            "analysisId": "ANALYSIS_1786591778210_uzlapl7",
+            "sourceId": "SRC_acemoney.in_1786591780735",
+            "sourceUrl": "https://acemoney.in/",
+            "finalUrl": "https://acemoney.in/",
+            "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+            "evidenceType": "services",
+            "title": "Page headings: 15 headings found",
+            "content": "Redefining Access to Everyday Banking | Enterprise-Grade Financial Infrastructure | Business Correspondent | Merchant Payments | Banks &amp;amp; NBFCs | Government &amp;amp; PSU | Fintech APIs | Our Products | Micro ATM | Find the Right Solution | 1. What type of organization are you? | Our Impact | Why Radiant Acemoney | Trusted at Scale | Comprehensive Solutions",
+            "extractedValue": null,
+            "confidence": "MEDIUM",
+            "provenance": "OBSERVED",
+            "timestamp": "2026-08-13T03:29:38.210Z",
+            "freshness": "CURRENT",
+            "qualityScore": 85,
+            "duplicateOf": null,
+            "relatedEvidence": []
+          },
+          {
+            "evidenceId": "EV_1786591780734_og",
+            "analysisId": "ANALYSIS_1786591778210_uzlapl7",
+            "sourceId": "SRC_acemoney.in_1786591780735",
+            "sourceUrl": "https://acemoney.in/",
+            "finalUrl": "https://acemoney.in/",
+            "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+            "evidenceType": "business_description",
+            "title": "OpenGraph description found",
+            "content": "Start banking with Radiant Acemoney. Become a trusted Banking Partner &amp;amp; provide essential BC services like cash withdrawals, deposits, and transfers to your community.",
+            "extractedValue": null,
+            "confidence": "HIGH",
+            "provenance": "OBSERVED",
+            "timestamp": "2026-08-13T03:29:38.210Z",
+            "freshness": "CURRENT",
+            "qualityScore": 70,
+            "duplicateOf": "EV_1786591780734_meta",
+            "relatedEvidence": []
+          },
+          {
+            "evidenceId": "EV_1786591780734_body",
+            "analysisId": "ANALYSIS_1786591778210_uzlapl7",
+            "sourceId": "SRC_acemoney.in_1786591780735",
+            "sourceUrl": "https://acemoney.in/",
+            "finalUrl": "https://acemoney.in/",
+            "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+            "evidenceType": "general",
+            "title": "Main page body text retrieved",
+            "content": "Together we grow digitally Solutions Company Resources Products Support Contact Now LIVE across 28 States Redefining Access to Everyday Banking Providing most trusted Fintech solutions including BC Business, Merchants and Business Payment and API Suits. BC / Agent Merchant Bank / NBFC Government We make digital banking &amp;amp; payment solutions available from your store. Get more customers &amp;amp; extra income. AI powered Futuristic Fintech Solutions Products to serve Businesses to Bharat Users Contributing largely to Financial Inclusion Get Started Become an Agent Enterprise-Grade Financial Infrastructure See how our platform orchestrates millions of transactions daily with bank-grade reliability &amp;amp; security. Core Platform 99.99% Reliability Active Business Correspondent Merchant Payments",
+            "extractedValue": null,
+            "confidence": "MEDIUM",
+            "provenance": "OBSERVED",
+            "timestamp": "2026-08-13T03:29:38.210Z",
+            "freshness": "CURRENT",
+            "qualityScore": 70,
+            "duplicateOf": null,
+            "relatedEvidence": []
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://acemoney.in/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://acemoney.in/",
+            "https://acemoney.in/solutions/business-correspondent",
+            "https://acemoney.in/company/history",
+            "https://acemoney.in/contact"
+          ],
+          "checkedAt": "2026-08-13T03:29:38.210Z"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-13T03:29:38.191Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9999999999",
+        "authProvider": "phone",
+        "userId": "test_customer_sajan",
+        "lastLoginAt": "2026-08-13T03:29:38.190Z"
+      }
+    },
+    {
+      "timestamp": "2026-08-13T03:27:12.374Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "strategicIntelligence"
+      ],
+      "data": {
+        "strategicIntelligence": []
+      }
+    },
+    {
+      "timestamp": "2026-08-13T03:27:12.373Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "addiRecommendations"
+      ],
+      "data": {
+        "addiRecommendations": {
+          "summary": "AI analysis failed. Manual expert review required.",
+          "observations": [],
+          "strengths": [],
+          "gaps": [],
+          "recommendations": [],
+          "predictions": [],
+          "confidence": "UNKNOWN",
+          "evidenceRefs": [],
+          "insufficientEvidence": true,
+          "humanReviewRequired": true,
+          "generatedAt": "2026-08-13T03:27:12.372Z",
+          "requiresExpertReview": true,
+          "humanReviewReasons": [
+            "Insufficient evidence for reliable analysis",
+            "Expert review recommended before acting on recommendations"
+          ],
+          "humanReviewFlaggedAt": "2026-08-13T03:27:12.372Z",
+          "userId": "test_customer_sajan",
+          "websiteInspectionPerformed": false,
+          "budgetStatus": "requires_admin_pricing"
+        }
+      }
+    },
+    {
+      "timestamp": "2026-08-13T03:27:11.994Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "addiRecommendations",
+        "strategicIntelligence"
+      ],
+      "data": {
+        "addiRecommendations": {
+          "summary": "AI analysis failed. Manual expert review required.",
+          "observations": [],
+          "strengths": [],
+          "gaps": [],
+          "recommendations": [],
+          "predictions": [],
+          "confidence": "UNKNOWN",
+          "evidenceRefs": [],
+          "insufficientEvidence": true,
+          "humanReviewRequired": true,
+          "generatedAt": "2026-08-13T03:27:11.993Z",
+          "requiresExpertReview": true,
+          "humanReviewReasons": [
+            "Insufficient evidence for reliable analysis",
+            "Expert review recommended before acting on recommendations"
+          ],
+          "humanReviewFlaggedAt": "2026-08-13T03:27:11.993Z",
+          "userId": "test_customer_sajan",
+          "websiteInspectionPerformed": false,
+          "budgetStatus": "requires_admin_pricing"
+        },
+        "strategicIntelligence": []
+      }
+    },
+    {
+      "timestamp": "2026-08-13T03:27:07.717Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9999999999",
+        "authProvider": "phone",
+        "userId": "test_customer_sajan",
+        "lastLoginAt": "2026-08-13T03:27:07.716Z"
+      }
+    }
+  ],
+  "name": null,
+  "phoneNumber": "9999999999",
+  "email": null,
+  "authProvider": "phone",
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-13T03:27:07.714Z",
+  "lastLoginAt": "2026-08-13T03:29:38.190Z",
+  "userId": "test_customer_sajan"
+}

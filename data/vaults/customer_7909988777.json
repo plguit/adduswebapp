@@ -1,0 +1,246 @@
+{
+  "businessName": null,
+  "industry": null,
+  "businessStage": null,
+  "businessDescription": null,
+  "products": [],
+  "services": [],
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 0,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-18T04:56:10.917Z",
+  "websiteUrl": "https://amritara.co.in",
+  "websiteAnalyzedAt": null,
+  "websiteContentHash": null,
+  "websiteEvidenceItems": [],
+  "websiteRetrievalMeta": null,
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-18T04:56:10.917Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "https://amritara.co.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-18T04:52:08.116Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "https://amritara.co.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-18T04:49:11.493Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "https://thegrandcliff.com"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-18T04:33:40.597Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "https://msn.com"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-18T04:31:40.624Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "https://indiatoday.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-18T04:29:46.782Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "https://trylo.com"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-18T04:27:30.853Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "https://trylo.com"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-18T04:25:29.107Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7909988777",
+        "authProvider": "phone",
+        "userId": "customer_7909988777",
+        "lastLoginAt": "2026-08-18T04:25:29.106Z"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": "7909988777",
+  "email": null,
+  "authProvider": "phone",
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-18T04:25:29.100Z",
+  "lastLoginAt": "2026-08-18T04:25:29.106Z",
+  "fieldProvenance": {
+    "phoneNumber": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-18T04:25:29.107Z",
+      "valueSummary": "7909988777"
+    },
+    "authProvider": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-18T04:25:29.107Z",
+      "valueSummary": "phone"
+    },
+    "userId": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-18T04:25:29.107Z",
+      "valueSummary": "customer_7909988777"
+    },
+    "lastLoginAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-18T04:25:29.107Z",
+      "valueSummary": "2026-08-18T04:25:29.106Z"
+    },
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-18T04:56:10.917Z",
+      "valueSummary": "0 items"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-18T04:56:10.917Z",
+      "valueSummary": "0 items"
+    },
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-18T04:52:08.116Z",
+      "valueSummary": "https://amritara.co.in"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "userId": "customer_7909988777"
+}

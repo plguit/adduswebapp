@@ -1,0 +1,578 @@
+{
+  "businessName": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today",
+  "industry": null,
+  "businessStage": null,
+  "businessDescription": "Check out the latest news from India and around the world. Latest India news on Bollywood, Politics, Business, Cricket, Technology and Travel.",
+  "products": [],
+  "services": [
+    "Download App",
+    "News"
+  ],
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 35,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-20T08:22:38.692Z",
+  "websiteUrl": "https://indiatoday.in",
+  "websiteAnalyzedAt": "2026-08-20T08:17:29.351Z",
+  "websiteContentHash": "5250fefa",
+  "websiteEvidenceItems": [
+    {
+      "evidenceId": "FAST_EV_1787213405721_title",
+      "observation": "Page title: \"Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today\"",
+      "evidence": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today",
+      "source": "https://indiatoday.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "identity",
+      "checkedAt": "2026-08-20T08:10:05.721Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787213405721_meta",
+      "observation": "Meta description found",
+      "evidence": "Check out the latest news from India and around the world. Latest India news on Bollywood, Politics, Business, Cricket, Technology and Travel.",
+      "source": "https://indiatoday.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "business_description",
+      "checkedAt": "2026-08-20T08:10:05.721Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787213405721_headings",
+      "observation": "Page headings: 8 headings found",
+      "evidence": "Download App | News | Congress insulting freedom fighters: Amit Shah attacks party&#x27;s Vande Mataram stand | Telangana principal stabbed 27 times, one word leads cops to Class 10 killers | Moderna ",
+      "source": "https://indiatoday.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "services",
+      "checkedAt": "2026-08-20T08:10:05.721Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787213405721_body",
+      "observation": "Main page body text retrieved",
+      "evidence": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today India Today Aaj Tak India Today Hindi NewsTak GNTTV Lallantop Business Today Bangla Malayalam Northeast BT B",
+      "source": "https://indiatoday.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "general",
+      "checkedAt": "2026-08-20T08:10:05.721Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787213405721_social",
+      "observation": "Social media presence: 4 profiles",
+      "evidence": "https://www.facebook.com/IndiaToday/, https://x.com/indiatoday, https://www.youtube.com/@indiatoday, https://www.instagram.com/indiatoday/",
+      "source": "https://indiatoday.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "social_presence",
+      "checkedAt": "2026-08-20T08:10:05.721Z",
+      "stage": "FAST_PATH"
+    }
+  ],
+  "websiteRetrievalMeta": {
+    "pagesInspected": []
+  },
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-20T08:22:38.692Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today",
+        "businessDescription": "Check out the latest news from India and around the world. Latest India news on Bollywood, Politics, Business, Cricket, Technology and Travel.",
+        "products": [],
+        "services": [
+          "Download App",
+          "News"
+        ],
+        "websiteUrl": "https://indiatoday.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T08:22:38.679Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today",
+        "businessDescription": "Check out the latest news from India and around the world. Latest India news on Bollywood, Politics, Business, Cricket, Technology and Travel.",
+        "products": [],
+        "services": [
+          "Download App",
+          "News"
+        ],
+        "websiteUrl": "https://indiatoday.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T08:22:18.455Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today",
+        "businessDescription": "Check out the latest news from India and around the world. Latest India news on Bollywood, Politics, Business, Cricket, Technology and Travel.",
+        "products": [],
+        "services": [
+          "Download App",
+          "News"
+        ],
+        "websiteUrl": "https://indiatoday.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T08:22:18.446Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today",
+        "businessDescription": "Check out the latest news from India and around the world. Latest India news on Bollywood, Politics, Business, Cricket, Technology and Travel.",
+        "products": [],
+        "services": [
+          "Download App",
+          "News"
+        ],
+        "websiteUrl": "https://indiatoday.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T08:17:55.061Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today",
+        "businessDescription": "Check out the latest news from India and around the world. Latest India news on Bollywood, Politics, Business, Cricket, Technology and Travel.",
+        "products": [],
+        "services": [
+          "Download App",
+          "News"
+        ],
+        "websiteUrl": "https://indiatoday.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T08:17:29.990Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today",
+        "businessDescription": "Check out the latest news from India and around the world. Latest India news on Bollywood, Politics, Business, Cricket, Technology and Travel.",
+        "products": [],
+        "services": [
+          "Download App",
+          "News"
+        ],
+        "websiteUrl": "https://indiatoday.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T08:17:29.351Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://indiatoday.in",
+        "websiteAnalyzedAt": "2026-08-20T08:17:29.351Z",
+        "websiteContentHash": "5250fefa",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787213405721_title",
+            "observation": "Page title: \"Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today\"",
+            "evidence": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today",
+            "source": "https://indiatoday.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-20T08:10:05.721Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787213405721_meta",
+            "observation": "Meta description found",
+            "evidence": "Check out the latest news from India and around the world. Latest India news on Bollywood, Politics, Business, Cricket, Technology and Travel.",
+            "source": "https://indiatoday.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-08-20T08:10:05.721Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787213405721_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "Download App | News | Congress insulting freedom fighters: Amit Shah attacks party&#x27;s Vande Mataram stand | Telangana principal stabbed 27 times, one word leads cops to Class 10 killers | Moderna ",
+            "source": "https://indiatoday.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-20T08:10:05.721Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787213405721_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today India Today Aaj Tak India Today Hindi NewsTak GNTTV Lallantop Business Today Bangla Malayalam Northeast BT B",
+            "source": "https://indiatoday.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-20T08:10:05.721Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787213405721_social",
+            "observation": "Social media presence: 4 profiles",
+            "evidence": "https://www.facebook.com/IndiaToday/, https://x.com/indiatoday, https://www.youtube.com/@indiatoday, https://www.instagram.com/indiatoday/",
+            "source": "https://indiatoday.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "social_presence",
+            "checkedAt": "2026-08-20T08:10:05.721Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "pagesInspected": []
+        },
+        "businessName": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today",
+        "businessDescription": "Check out the latest news from India and around the world. Latest India news on Bollywood, Politics, Business, Cricket, Technology and Travel.",
+        "services": [
+          "Download App",
+          "News"
+        ],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [
+          "https://www.facebook.com/IndiaToday/",
+          "https://x.com/indiatoday",
+          "https://www.youtube.com/@indiatoday",
+          "https://www.instagram.com/indiatoday/"
+        ],
+        "aiConfidenceScore": 70,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today is a business specializing in download app and news Check out the latest news from India and around the world..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 60,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T08:17:08.596Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907790679",
+        "authProvider": "phone",
+        "userId": "customer_7907790679",
+        "lastLoginAt": "2026-08-20T08:17:08.596Z"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": "7907790679",
+  "email": null,
+  "authProvider": "phone",
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-20T08:17:08.590Z",
+  "lastLoginAt": "2026-08-20T08:17:08.596Z",
+  "fieldProvenance": {
+    "phoneNumber": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:08.596Z",
+      "valueSummary": "7907790679"
+    },
+    "authProvider": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:08.596Z",
+      "valueSummary": "phone"
+    },
+    "userId": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:08.596Z",
+      "valueSummary": "customer_7907790679"
+    },
+    "lastLoginAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:08.596Z",
+      "valueSummary": "2026-08-20T08:17:08.596Z"
+    },
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "https://indiatoday.in"
+    },
+    "websiteAnalyzedAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "2026-08-20T08:17:29.351Z"
+    },
+    "websiteContentHash": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "5250fefa"
+    },
+    "websiteEvidenceItems": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "5 items"
+    },
+    "websiteRetrievalMeta": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "{\"pagesInspected\":[]}"
+    },
+    "businessName": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today"
+    },
+    "businessDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "Check out the latest news from India and around the world. Latest India news on Bollywood, Politics,"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:22:38.692Z",
+      "valueSummary": "2 items"
+    },
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:22:38.692Z",
+      "valueSummary": "0 items"
+    },
+    "contactInfo": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "{\"email\":null,\"phone\":null}"
+    },
+    "socialLinks": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "4 items"
+    },
+    "confidenceStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "PARTIAL_EVIDENCE"
+    },
+    "confidenceReason": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "AI enriched partial deterministic profile"
+    },
+    "sourceType": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "VERIFIED_WEBSITE"
+    },
+    "summary": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today is a bus"
+    },
+    "summaryProvenance": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "EVIDENCE_ANCHORED"
+    },
+    "discoveredAssets": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "0 items"
+    },
+    "analysisStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "FAST_PATH"
+    },
+    "classification": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
+      "valueSummary": "{\"class\":\"DYNAMIC\",\"reason\":\"HEAVY_JS_OR_FRAMEWORK\"}"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "userId": "customer_7907790679",
+  "contactInfo": {
+    "email": null,
+    "phone": null
+  },
+  "socialLinks": [
+    "https://www.facebook.com/IndiaToday/",
+    "https://x.com/indiatoday",
+    "https://www.youtube.com/@indiatoday",
+    "https://www.instagram.com/indiatoday/"
+  ],
+  "confidenceStatus": "PARTIAL_EVIDENCE",
+  "confidenceReason": "AI enriched partial deterministic profile",
+  "sourceType": "VERIFIED_WEBSITE",
+  "summary": "Latest News, Breaking News Today - Entertainment, Cricket, Business, Politics - India Today is a business specializing in download app and news Check out the latest news from India and around the world..",
+  "summaryProvenance": "EVIDENCE_ANCHORED",
+  "analysisStage": "FAST_PATH",
+  "classification": {
+    "class": "DYNAMIC",
+    "reason": "HEAVY_JS_OR_FRAMEWORK"
+  }
+}

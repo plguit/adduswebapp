@@ -1,0 +1,158 @@
+{
+  "businessName": "36 Palms Beach Retreat",
+  "industry": null,
+  "businessStage": null,
+  "businessDescription": null,
+  "products": [],
+  "services": null,
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 10,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-15T08:10:39.429Z",
+  "websiteUrl": "https://www.36palms.com/",
+  "websiteAnalyzedAt": null,
+  "websiteContentHash": null,
+  "websiteEvidenceItems": [],
+  "websiteRetrievalMeta": null,
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-15T08:10:39.429Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "email",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "email": "duplicate_test@test.com",
+        "authProvider": "email",
+        "userId": "customer_duplicate_test@test.com",
+        "lastLoginAt": "2026-08-15T08:10:39.429Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-15T08:08:01.738Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "36 Palms Beach Retreat",
+        "websiteUrl": "https://www.36palms.com/"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-15T08:08:01.734Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "email",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "email": "duplicate_test@test.com",
+        "authProvider": "email",
+        "userId": "customer_duplicate_test@test.com",
+        "lastLoginAt": "2026-08-15T08:08:01.734Z"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": null,
+  "email": "duplicate_test@test.com",
+  "authProvider": "email",
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-15T08:08:01.733Z",
+  "lastLoginAt": "2026-08-15T08:10:39.429Z",
+  "fieldProvenance": {
+    "email": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-15T08:08:01.734Z",
+      "valueSummary": "duplicate_test@test.com"
+    },
+    "authProvider": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-15T08:08:01.734Z",
+      "valueSummary": "email"
+    },
+    "userId": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-15T08:08:01.734Z",
+      "valueSummary": "customer_duplicate_test@test.com"
+    },
+    "lastLoginAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-15T08:10:39.429Z",
+      "valueSummary": "2026-08-15T08:10:39.429Z"
+    },
+    "businessName": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-15T08:08:01.738Z",
+      "valueSummary": "36 Palms Beach Retreat"
+    },
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-15T08:08:01.738Z",
+      "valueSummary": "https://www.36palms.com/"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "userId": "customer_duplicate_test@test.com"
+}

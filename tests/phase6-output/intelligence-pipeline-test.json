@@ -1,0 +1,13 @@
+{
+  "summary": "AI analysis failed. Manual expert review required.",
+  "observations": [],
+  "strengths": [],
+  "gaps": [],
+  "recommendations": [],
+  "predictions": [],
+  "confidence": "UNKNOWN",
+  "evidenceRefs": [],
+  "insufficientEvidence": true,
+  "humanReviewRequired": true,
+  "generatedAt": "2026-08-20T14:14:05.900Z"
+}

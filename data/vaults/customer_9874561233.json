@@ -1,0 +1,545 @@
+{
+  "businessName": "Hotels and Resorts in India - Amritara Hotels",
+  "industry": "Hospitality",
+  "businessStage": null,
+  "businessDescription": "Amritara Hotels- A group of hotels with the best luxury and heritage hotels and resorts in India. Stay in the best accommodations with all the contemporary amenities. Book now.",
+  "products": [],
+  "services": [],
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [
+    {
+      "assetId": "AST_1787003516664_favicon",
+      "assetType": "favicon",
+      "assetUrl": "https://www.amritara.co.in/favicon.ico",
+      "sourceUrl": "https://www.amritara.co.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "discoveredAt": "2026-08-17T21:51:56.664Z"
+    },
+    {
+      "assetId": "AST_1787003516664_og_image",
+      "assetType": "hero_image",
+      "assetUrl": "https://www.amritara.co.in/img/logo.png",
+      "sourceUrl": "https://www.amritara.co.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "discoveredAt": "2026-08-17T21:51:56.664Z"
+    }
+  ],
+  "missingAssets": [],
+  "aiConfidenceScore": 35,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-17T21:51:58.617Z",
+  "websiteUrl": "https://www.amritara.co.in",
+  "websiteAnalyzedAt": "2026-08-17T21:51:58.616Z",
+  "websiteContentHash": "fcee449",
+  "websiteEvidenceItems": [
+    {
+      "evidenceId": "EV_1787003516664_title",
+      "analysisId": "ANALYSIS_1787003515902_c58ajg5",
+      "businessId": null,
+      "productId": null,
+      "projectId": null,
+      "sourceId": "SRC_www.amritara.co.in_1787003516664",
+      "sourceUrl": "https://www.amritara.co.in/",
+      "finalUrl": "https://www.amritara.co.in/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "sourceType": "WEBSITE",
+      "evidenceType": "identity",
+      "title": "Page title: \"Hotels and Resorts in India - Amritara Hotels\"",
+      "content": "Hotels and Resorts in India - Amritara Hotels",
+      "extractedValue": null,
+      "confidence": "HIGH",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-17T21:51:55.902Z",
+      "freshness": "CURRENT",
+      "qualityScore": 95,
+      "duplicateOf": null,
+      "relatedEvidence": [],
+      "relatedEntity": null,
+      "metadata": {}
+    },
+    {
+      "evidenceId": "EV_1787003516664_meta",
+      "analysisId": "ANALYSIS_1787003515902_c58ajg5",
+      "businessId": null,
+      "productId": null,
+      "projectId": null,
+      "sourceId": "SRC_www.amritara.co.in_1787003516664",
+      "sourceUrl": "https://www.amritara.co.in/",
+      "finalUrl": "https://www.amritara.co.in/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "sourceType": "WEBSITE",
+      "evidenceType": "business_description",
+      "title": "Meta description found",
+      "content": "Amritara Hotels- A group of hotels with the best luxury and heritage hotels and resorts in India. Stay in the best accommodations with all the contemporary amenities. Book now.",
+      "extractedValue": null,
+      "confidence": "HIGH",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-17T21:51:55.902Z",
+      "freshness": "CURRENT",
+      "qualityScore": 90,
+      "duplicateOf": null,
+      "relatedEvidence": [],
+      "relatedEntity": null,
+      "metadata": {}
+    },
+    {
+      "evidenceId": "EV_1787003516664_og",
+      "analysisId": "ANALYSIS_1787003515902_c58ajg5",
+      "businessId": null,
+      "productId": null,
+      "projectId": null,
+      "sourceId": "SRC_www.amritara.co.in_1787003516664",
+      "sourceUrl": "https://www.amritara.co.in/",
+      "finalUrl": "https://www.amritara.co.in/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "sourceType": "WEBSITE",
+      "evidenceType": "business_description",
+      "title": "OpenGraph description found",
+      "content": "Amritara Hotels - A group of luxury and heritage hotels and resorts in India. Stay in the best accommodations with contemporary amenities.",
+      "extractedValue": null,
+      "confidence": "HIGH",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-17T21:51:55.902Z",
+      "freshness": "CURRENT",
+      "qualityScore": 90,
+      "duplicateOf": null,
+      "relatedEvidence": [],
+      "relatedEntity": null,
+      "metadata": {}
+    },
+    {
+      "evidenceId": "EV_1787003516664_favicon",
+      "analysisId": "ANALYSIS_1787003515902_c58ajg5",
+      "businessId": null,
+      "productId": null,
+      "projectId": null,
+      "sourceId": "SRC_www.amritara.co.in_1787003516664",
+      "sourceUrl": "https://www.amritara.co.in/",
+      "finalUrl": "https://www.amritara.co.in/",
+      "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+      "sourceType": "WEBSITE",
+      "evidenceType": "brand",
+      "title": "Favicon detected",
+      "content": "https://www.amritara.co.in/favicon.ico",
+      "extractedValue": null,
+      "confidence": "MEDIUM",
+      "provenance": "OBSERVED",
+      "timestamp": "2026-08-17T21:51:55.902Z",
+      "freshness": "CURRENT",
+      "qualityScore": 70,
+      "duplicateOf": null,
+      "relatedEvidence": [],
+      "relatedEntity": null,
+      "metadata": {}
+    }
+  ],
+  "websiteRetrievalMeta": {
+    "finalUrl": "https://www.amritara.co.in/",
+    "httpStatus": 200,
+    "pagesInspected": [
+      "https://www.amritara.co.in/"
+    ],
+    "checkedAt": "2026-08-17T21:51:55.902Z"
+  },
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-17T21:51:58.617Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets"
+      ],
+      "data": {
+        "websiteUrl": "https://www.amritara.co.in",
+        "websiteAnalyzedAt": "2026-08-17T21:51:58.616Z",
+        "websiteContentHash": "fcee449",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_1787003516664_title",
+            "analysisId": "ANALYSIS_1787003515902_c58ajg5",
+            "businessId": null,
+            "productId": null,
+            "projectId": null,
+            "sourceId": "SRC_www.amritara.co.in_1787003516664",
+            "sourceUrl": "https://www.amritara.co.in/",
+            "finalUrl": "https://www.amritara.co.in/",
+            "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+            "sourceType": "WEBSITE",
+            "evidenceType": "identity",
+            "title": "Page title: \"Hotels and Resorts in India - Amritara Hotels\"",
+            "content": "Hotels and Resorts in India - Amritara Hotels",
+            "extractedValue": null,
+            "confidence": "HIGH",
+            "provenance": "OBSERVED",
+            "timestamp": "2026-08-17T21:51:55.902Z",
+            "freshness": "CURRENT",
+            "qualityScore": 95,
+            "duplicateOf": null,
+            "relatedEvidence": [],
+            "relatedEntity": null,
+            "metadata": {}
+          },
+          {
+            "evidenceId": "EV_1787003516664_meta",
+            "analysisId": "ANALYSIS_1787003515902_c58ajg5",
+            "businessId": null,
+            "productId": null,
+            "projectId": null,
+            "sourceId": "SRC_www.amritara.co.in_1787003516664",
+            "sourceUrl": "https://www.amritara.co.in/",
+            "finalUrl": "https://www.amritara.co.in/",
+            "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+            "sourceType": "WEBSITE",
+            "evidenceType": "business_description",
+            "title": "Meta description found",
+            "content": "Amritara Hotels- A group of hotels with the best luxury and heritage hotels and resorts in India. Stay in the best accommodations with all the contemporary amenities. Book now.",
+            "extractedValue": null,
+            "confidence": "HIGH",
+            "provenance": "OBSERVED",
+            "timestamp": "2026-08-17T21:51:55.902Z",
+            "freshness": "CURRENT",
+            "qualityScore": 90,
+            "duplicateOf": null,
+            "relatedEvidence": [],
+            "relatedEntity": null,
+            "metadata": {}
+          },
+          {
+            "evidenceId": "EV_1787003516664_og",
+            "analysisId": "ANALYSIS_1787003515902_c58ajg5",
+            "businessId": null,
+            "productId": null,
+            "projectId": null,
+            "sourceId": "SRC_www.amritara.co.in_1787003516664",
+            "sourceUrl": "https://www.amritara.co.in/",
+            "finalUrl": "https://www.amritara.co.in/",
+            "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+            "sourceType": "WEBSITE",
+            "evidenceType": "business_description",
+            "title": "OpenGraph description found",
+            "content": "Amritara Hotels - A group of luxury and heritage hotels and resorts in India. Stay in the best accommodations with contemporary amenities.",
+            "extractedValue": null,
+            "confidence": "HIGH",
+            "provenance": "OBSERVED",
+            "timestamp": "2026-08-17T21:51:55.902Z",
+            "freshness": "CURRENT",
+            "qualityScore": 90,
+            "duplicateOf": null,
+            "relatedEvidence": [],
+            "relatedEntity": null,
+            "metadata": {}
+          },
+          {
+            "evidenceId": "EV_1787003516664_favicon",
+            "analysisId": "ANALYSIS_1787003515902_c58ajg5",
+            "businessId": null,
+            "productId": null,
+            "projectId": null,
+            "sourceId": "SRC_www.amritara.co.in_1787003516664",
+            "sourceUrl": "https://www.amritara.co.in/",
+            "finalUrl": "https://www.amritara.co.in/",
+            "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
+            "sourceType": "WEBSITE",
+            "evidenceType": "brand",
+            "title": "Favicon detected",
+            "content": "https://www.amritara.co.in/favicon.ico",
+            "extractedValue": null,
+            "confidence": "MEDIUM",
+            "provenance": "OBSERVED",
+            "timestamp": "2026-08-17T21:51:55.902Z",
+            "freshness": "CURRENT",
+            "qualityScore": 70,
+            "duplicateOf": null,
+            "relatedEvidence": [],
+            "relatedEntity": null,
+            "metadata": {}
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.amritara.co.in/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.amritara.co.in/"
+          ],
+          "checkedAt": "2026-08-17T21:51:55.902Z"
+        },
+        "businessName": "Hotels and Resorts in India - Amritara Hotels",
+        "industry": "Hospitality",
+        "businessDescription": "Amritara Hotels- A group of hotels with the best luxury and heritage hotels and resorts in India. Stay in the best accommodations with all the contemporary amenities. Book now.",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Hotels and Resorts in India - Amritara Hotels is a hospitality property Amritara Hotels- A group of hotels with the best luxury and heritage hotels and resorts in India..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 60,
+        "discoveredAssets": [
+          {
+            "assetId": "AST_1787003516664_favicon",
+            "assetType": "favicon",
+            "assetUrl": "https://www.amritara.co.in/favicon.ico",
+            "sourceUrl": "https://www.amritara.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "discoveredAt": "2026-08-17T21:51:56.664Z"
+          },
+          {
+            "assetId": "AST_1787003516664_og_image",
+            "assetType": "hero_image",
+            "assetUrl": "https://www.amritara.co.in/img/logo.png",
+            "sourceUrl": "https://www.amritara.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "discoveredAt": "2026-08-17T21:51:56.664Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-17T21:51:33.960Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9874561233",
+        "authProvider": "phone",
+        "userId": "customer_9874561233",
+        "lastLoginAt": "2026-08-17T21:51:33.960Z"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": "9874561233",
+  "email": null,
+  "authProvider": "phone",
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-17T21:51:33.958Z",
+  "lastLoginAt": "2026-08-17T21:51:33.960Z",
+  "fieldProvenance": {
+    "phoneNumber": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:33.960Z",
+      "valueSummary": "9874561233"
+    },
+    "authProvider": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:33.960Z",
+      "valueSummary": "phone"
+    },
+    "userId": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:33.960Z",
+      "valueSummary": "customer_9874561233"
+    },
+    "lastLoginAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:33.960Z",
+      "valueSummary": "2026-08-17T21:51:33.960Z"
+    },
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.616Z",
+      "valueSummary": "https://www.amritara.co.in"
+    },
+    "websiteAnalyzedAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.616Z",
+      "valueSummary": "2026-08-17T21:51:58.616Z"
+    },
+    "websiteContentHash": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.616Z",
+      "valueSummary": "fcee449"
+    },
+    "websiteEvidenceItems": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "4 items"
+    },
+    "websiteRetrievalMeta": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "{\"finalUrl\":\"https://www.amritara.co.in/\",\"httpStatus\":200,\"pagesInspected\":[\"https://www.amritara.c"
+    },
+    "businessName": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "Hotels and Resorts in India - Amritara Hotels"
+    },
+    "industry": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "Hospitality"
+    },
+    "businessDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "Amritara Hotels- A group of hotels with the best luxury and heritage hotels and resorts in India. St"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "0 items"
+    },
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "0 items"
+    },
+    "contactInfo": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "{\"email\":null,\"phone\":null}"
+    },
+    "socialLinks": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "0 items"
+    },
+    "confidenceStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "PARTIAL_EVIDENCE"
+    },
+    "confidenceReason": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "AI enriched partial deterministic profile"
+    },
+    "sourceType": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "VERIFIED_WEBSITE"
+    },
+    "summary": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "Hotels and Resorts in India - Amritara Hotels is a hospitality property Amritara Hotels- A group of "
+    },
+    "summaryProvenance": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "EVIDENCE_ANCHORED"
+    },
+    "discoveredAssets": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-17T21:51:58.617Z",
+      "valueSummary": "2 items"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "userId": "customer_9874561233",
+  "contactInfo": {
+    "email": null,
+    "phone": null
+  },
+  "socialLinks": [],
+  "confidenceStatus": "PARTIAL_EVIDENCE",
+  "confidenceReason": "AI enriched partial deterministic profile",
+  "sourceType": "VERIFIED_WEBSITE",
+  "summary": "Hotels and Resorts in India - Amritara Hotels is a hospitality property Amritara Hotels- A group of hotels with the best luxury and heritage hotels and resorts in India..",
+  "summaryProvenance": "EVIDENCE_ANCHORED"
+}

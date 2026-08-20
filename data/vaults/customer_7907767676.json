@@ -1,0 +1,492 @@
+{
+  "businessName": "BBC",
+  "industry": "Technology",
+  "businessStage": "Startup",
+  "businessDescription": "Visit BBC for trusted reporting on the latest world and US news, sports, business, climate, innovation, culture and much more.",
+  "products": [],
+  "services": [],
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 35,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-20T05:26:40.820Z",
+  "websiteUrl": "https://www.bbc.com/",
+  "websiteAnalyzedAt": "2026-08-20T05:26:40.194Z",
+  "websiteContentHash": "3a3f00",
+  "websiteEvidenceItems": [
+    {
+      "evidenceId": "FAST_EV_1787203597443_title",
+      "observation": "Page title: \"BBC Home - Breaking News, World News, US News, Sports, Business, Innovation, Climate, Culture, Travel, Video &amp; Audio\"",
+      "evidence": "BBC Home - Breaking News, World News, US News, Sports, Business, Innovation, Climate, Culture, Travel, Video &amp; Audio",
+      "source": "https://bbc.com/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "identity",
+      "checkedAt": "2026-08-20T05:26:37.443Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787203597443_meta",
+      "observation": "Meta description found",
+      "evidence": "Visit BBC for trusted reporting on the latest world and US news, sports, business, climate, innovation, culture and much more.",
+      "source": "https://bbc.com/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "business_description",
+      "checkedAt": "2026-08-20T05:26:37.443Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787203597443_headings",
+      "observation": "Page headings: 8 headings found",
+      "evidence": "Russia launches missile strikes on Kyiv and surrounding region, killing at least eight | Prince Harry and Meghan moving back to UK later this month | Harry and Meghan are experts in surprise - but is ",
+      "source": "https://bbc.com/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "services",
+      "checkedAt": "2026-08-20T05:26:37.443Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787203597444_body",
+      "observation": "Main page body text retrieved",
+      "evidence": "BBC Home - Breaking News, World News, US News, Sports, Business, Innovation, Climate, Culture, Travel, Video &amp; Audio Skip to content British Broadcasting Corporation Home News Sport Business Techn",
+      "source": "https://bbc.com/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "general",
+      "checkedAt": "2026-08-20T05:26:37.443Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787203597444_social",
+      "observation": "Social media presence: 2 profiles",
+      "evidence": "https://www.britbox.com/?utm_source=bbc.com&amp;utm_medium=referral&amp;utm_campaign=bottom-anchored-rail, https://www.britbox.com/?utm_source=bbc.com&amp;utm_medium=referral&amp;utm_campaign=footer",
+      "source": "https://bbc.com/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "social_presence",
+      "checkedAt": "2026-08-20T05:26:37.443Z",
+      "stage": "FAST_PATH"
+    }
+  ],
+  "websiteRetrievalMeta": {
+    "finalUrl": "https://www.bbc.com/",
+    "httpStatus": 200,
+    "pagesInspected": [
+      "https://www.bbc.com/"
+    ]
+  },
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-20T05:26:40.820Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "industry",
+        "businessStage",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "BBC",
+        "industry": "Technology",
+        "businessStage": "Startup",
+        "businessDescription": "Visit BBC for trusted reporting on the latest world and US news, sports, business, climate, innovation, culture and much more.",
+        "products": [],
+        "services": [],
+        "websiteUrl": "https://www.bbc.com/"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T05:26:40.194Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://bbc.com",
+        "websiteAnalyzedAt": "2026-08-20T05:26:40.194Z",
+        "websiteContentHash": "3a3f00",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787203597443_title",
+            "observation": "Page title: \"BBC Home - Breaking News, World News, US News, Sports, Business, Innovation, Climate, Culture, Travel, Video &amp; Audio\"",
+            "evidence": "BBC Home - Breaking News, World News, US News, Sports, Business, Innovation, Climate, Culture, Travel, Video &amp; Audio",
+            "source": "https://bbc.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-20T05:26:37.443Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787203597443_meta",
+            "observation": "Meta description found",
+            "evidence": "Visit BBC for trusted reporting on the latest world and US news, sports, business, climate, innovation, culture and much more.",
+            "source": "https://bbc.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-08-20T05:26:37.443Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787203597443_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "Russia launches missile strikes on Kyiv and surrounding region, killing at least eight | Prince Harry and Meghan moving back to UK later this month | Harry and Meghan are experts in surprise - but is ",
+            "source": "https://bbc.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-20T05:26:37.443Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787203597444_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "BBC Home - Breaking News, World News, US News, Sports, Business, Innovation, Climate, Culture, Travel, Video &amp; Audio Skip to content British Broadcasting Corporation Home News Sport Business Techn",
+            "source": "https://bbc.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-20T05:26:37.443Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787203597444_social",
+            "observation": "Social media presence: 2 profiles",
+            "evidence": "https://www.britbox.com/?utm_source=bbc.com&amp;utm_medium=referral&amp;utm_campaign=bottom-anchored-rail, https://www.britbox.com/?utm_source=bbc.com&amp;utm_medium=referral&amp;utm_campaign=footer",
+            "source": "https://bbc.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "social_presence",
+            "checkedAt": "2026-08-20T05:26:37.443Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.bbc.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.bbc.com/"
+          ]
+        },
+        "businessName": "BBC",
+        "industry": "Technology",
+        "businessDescription": "Visit BBC for trusted reporting on the latest world and US news, sports, business, climate, innovation, culture and much more.",
+        "services": [],
+        "products": [],
+        "businessStage": "Startup",
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [
+          "https://www.britbox.com/?utm_source=bbc.com&utm_medium=referral&utm_campaign=bottom-anchored-rail",
+          "https://www.britbox.com/?utm_source=bbc.com&utm_medium=referral&utm_campaign=footer"
+        ],
+        "aiConfidenceScore": 85,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "BBC is a technology company Visit BBC for trusted reporting on the latest world and US news, sports, business, climate, innovation, culture and much more..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 60,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T05:19:34.315Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "https://blossom.co.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-20T05:17:40.732Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907767676",
+        "authProvider": "phone",
+        "userId": "customer_7907767676",
+        "lastLoginAt": "2026-08-20T05:17:40.731Z"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": "7907767676",
+  "email": null,
+  "authProvider": "phone",
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-20T05:17:40.729Z",
+  "lastLoginAt": "2026-08-20T05:17:40.731Z",
+  "fieldProvenance": {
+    "phoneNumber": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:17:40.732Z",
+      "valueSummary": "7907767676"
+    },
+    "authProvider": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:17:40.732Z",
+      "valueSummary": "phone"
+    },
+    "userId": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:17:40.732Z",
+      "valueSummary": "customer_7907767676"
+    },
+    "lastLoginAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:17:40.732Z",
+      "valueSummary": "2026-08-20T05:17:40.731Z"
+    },
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.820Z",
+      "valueSummary": "0 items"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.820Z",
+      "valueSummary": "0 items"
+    },
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.820Z",
+      "valueSummary": "https://www.bbc.com/"
+    },
+    "websiteAnalyzedAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "2026-08-20T05:26:40.194Z"
+    },
+    "websiteContentHash": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "3a3f00"
+    },
+    "websiteEvidenceItems": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "5 items"
+    },
+    "websiteRetrievalMeta": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "{\"finalUrl\":\"https://www.bbc.com/\",\"httpStatus\":200,\"pagesInspected\":[\"https://www.bbc.com/\"]}"
+    },
+    "businessName": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "BBC"
+    },
+    "industry": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "Technology"
+    },
+    "businessDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "Visit BBC for trusted reporting on the latest world and US news, sports, business, climate, innovati"
+    },
+    "businessStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "Startup"
+    },
+    "contactInfo": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "{\"email\":null,\"phone\":null}"
+    },
+    "socialLinks": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "2 items"
+    },
+    "confidenceStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "PARTIAL_EVIDENCE"
+    },
+    "confidenceReason": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "AI enriched partial deterministic profile"
+    },
+    "sourceType": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "VERIFIED_WEBSITE"
+    },
+    "summary": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "BBC is a technology company Visit BBC for trusted reporting on the latest world and US news, sports,"
+    },
+    "summaryProvenance": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "EVIDENCE_ANCHORED"
+    },
+    "discoveredAssets": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "0 items"
+    },
+    "analysisStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "FAST_PATH"
+    },
+    "classification": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-20T05:26:40.194Z",
+      "valueSummary": "{\"class\":\"DYNAMIC\",\"reason\":\"HEAVY_JS_OR_FRAMEWORK\"}"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "userId": "customer_7907767676",
+  "contactInfo": {
+    "email": null,
+    "phone": null
+  },
+  "socialLinks": [
+    "https://www.britbox.com/?utm_source=bbc.com&utm_medium=referral&utm_campaign=bottom-anchored-rail",
+    "https://www.britbox.com/?utm_source=bbc.com&utm_medium=referral&utm_campaign=footer"
+  ],
+  "confidenceStatus": "PARTIAL_EVIDENCE",
+  "confidenceReason": "AI enriched partial deterministic profile",
+  "sourceType": "VERIFIED_WEBSITE",
+  "summary": "BBC is a technology company Visit BBC for trusted reporting on the latest world and US news, sports, business, climate, innovation, culture and much more..",
+  "summaryProvenance": "EVIDENCE_ANCHORED",
+  "analysisStage": "FAST_PATH",
+  "classification": {
+    "class": "DYNAMIC",
+    "reason": "HEAVY_JS_OR_FRAMEWORK"
+  }
+}

@@ -1,0 +1,11 @@
+# Environment variables (contains sensitive secrets)
+.env
+
+# Dependencies
+node_modules/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
