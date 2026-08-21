@@ -27,7 +27,7 @@
   "missingAssets": [],
   "aiConfidenceScore": 0,
   "conversationStatus": "discovering",
-  "lastUpdated": "2026-08-20T14:14:05.827Z",
+  "lastUpdated": "2026-08-21T05:53:05.903Z",
   "websiteUrl": null,
   "websiteAnalyzedAt": null,
   "websiteEvidenceItems": [
@@ -38,7 +38,7 @@
       "observation": "Dup Test",
       "evidence": "Duplicate evidence test.",
       "confidence": "medium",
-      "checkedAt": "2026-08-20T14:14:05.826Z"
+      "checkedAt": "2026-08-21T05:53:05.900Z"
     }
   ],
   "websiteRetrievalMeta": null,
@@ -46,6 +46,50 @@
   "addiRecommendationsGeneratedAt": null,
   "strategicIntelligence": [],
   "auditLog": [
+    {
+      "timestamp": "2026-08-21T05:53:05.903Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_DUP",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Dup Test",
+            "evidence": "Duplicate evidence test.",
+            "confidence": "medium",
+            "checkedAt": "2026-08-21T05:53:05.900Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-21T05:50:52.625Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_DUP",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Dup Test",
+            "evidence": "Duplicate evidence test.",
+            "confidence": "medium",
+            "checkedAt": "2026-08-21T05:50:52.625Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
     {
       "timestamp": "2026-08-20T14:14:05.827Z",
       "actor": "system",
@@ -1101,48 +1145,6 @@
         ]
       },
       "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-13T12:35:13.134Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_DUP",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Dup Test",
-            "evidence": "Duplicate evidence test.",
-            "confidence": "medium",
-            "checkedAt": "2026-08-13T12:35:13.133Z"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-08-13T12:26:30.186Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_DUP",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Dup Test",
-            "evidence": "Duplicate evidence test.",
-            "confidence": "medium",
-            "checkedAt": "2026-08-13T12:26:30.185Z"
-          }
-        ]
-      }
     }
   ],
   "name": null,
@@ -1165,7 +1167,7 @@
     "websiteEvidenceItems": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-08-20T14:14:05.827Z",
+      "lastVerifiedAt": "2026-08-21T05:53:05.903Z",
       "valueSummary": "1 items"
     }
   }

@@ -272,5 +272,25 @@ export const profileService = {
     if (!profile) return null;
     const conversations = (profile.conversations || []).filter(c => c.conversationId !== conversationId);
     return this.saveProfile({ ...profile, conversations });
+  },
+
+  migrateProfile(oldUserId, newUserId) {
+    if (!oldUserId || !newUserId || oldUserId === newUserId) return false;
+    const profiles = this.getAllProfiles();
+    const idx = profiles.findIndex(p => p.userId === oldUserId || p.customerId === oldUserId);
+    if (idx === -1) return false;
+
+    const profile = profiles[idx];
+    const updated = {
+      ...profile,
+      userId: newUserId,
+      customerId: newUserId,
+      businessId: profile.businessId || newUserId,
+    };
+
+    const filtered = profiles.filter(p => p.userId !== oldUserId && p.customerId !== oldUserId);
+    filtered.push(updated);
+    storage.set(ACCOUNTS_STORAGE_KEY, filtered);
+    return true;
   }
 };

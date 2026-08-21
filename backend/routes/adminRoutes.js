@@ -1,5 +1,5 @@
 import express from 'express';
-import { getBusinessVault, getAllVaults, updateBusinessVault } from '../../ai/business-brain/vaultService.js';
+import { getBusinessVault, getAllVaults, updateBusinessVault, clearBusinessVault } from '../../ai/business-brain/vaultService.js';
 import { requireAuth, requireRole } from '../middleware/auth.js';
 import { generateToken } from '../utils/tokenService.js';
 import { getObservations, getObservationStats, clearObservations } from '../services/observationStore.js';
@@ -230,9 +230,18 @@ router.post('/user/:userId/unblock', (req, res) => {
   res.json({ success: true, profile: updated });
 });
 
+router.delete('/user/:userId', (req, res) => {
+  try {
+    const { userId } = req.params;
+    const vault = getBusinessVault(userId);
+    if (!vault) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    clearBusinessVault(userId);
+    auditStore.log('DELETE_USER', req.auth?.userId || 'admin', 'AdminBusinessesTab', 'User', { userId, entity: 'user' });
     res.json({ success: true, message: 'User deleted permanently' });
   } catch (err) {
-    auditStore.logError('DELETE_USER_FAILED', req.auth?.userId || 'admin', 'AdminBusinessesTab', 'User', err, { userId, entity: 'user' });
+    auditStore.logError('DELETE_USER_FAILED', req.auth?.userId || 'admin', 'AdminBusinessesTab', 'User', err, { userId: req.params.userId, entity: 'user' });
     res.status(500).json({ error: err.message });
   }
 });

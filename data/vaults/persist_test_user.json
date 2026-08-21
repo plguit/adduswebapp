@@ -27,7 +27,7 @@
   "missingAssets": [],
   "aiConfidenceScore": 0,
   "conversationStatus": "discovering",
-  "lastUpdated": "2026-08-20T14:14:05.818Z",
+  "lastUpdated": "2026-08-21T05:53:05.893Z",
   "websiteUrl": null,
   "websiteAnalyzedAt": null,
   "websiteEvidenceItems": [
@@ -38,7 +38,7 @@
       "observation": "Test Business",
       "evidence": "Test Business is a consulting firm.",
       "confidence": "high",
-      "checkedAt": "2026-08-20T14:14:05.815Z"
+      "checkedAt": "2026-08-21T05:53:05.890Z"
     }
   ],
   "websiteRetrievalMeta": null,
@@ -46,6 +46,50 @@
   "addiRecommendationsGeneratedAt": null,
   "strategicIntelligence": [],
   "auditLog": [
+    {
+      "timestamp": "2026-08-21T05:53:05.893Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-21T05:53:05.890Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-21T05:50:52.613Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-21T05:50:52.608Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
     {
       "timestamp": "2026-08-20T14:14:05.818Z",
       "actor": "system",
@@ -1101,48 +1145,6 @@
         ]
       },
       "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-13T12:35:13.126Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-13T12:35:13.123Z"
-          }
-        ]
-      }
-    },
-    {
-      "timestamp": "2026-08-13T12:26:30.175Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-13T12:26:30.173Z"
-          }
-        ]
-      }
     }
   ],
   "name": null,
@@ -1165,7 +1167,7 @@
     "websiteEvidenceItems": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-08-20T14:14:05.817Z",
+      "lastVerifiedAt": "2026-08-21T05:53:05.893Z",
       "valueSummary": "1 items"
     }
   }

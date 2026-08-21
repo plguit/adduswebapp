@@ -790,7 +790,7 @@ export function ConversationalOnboarding({ onProjectCreated }) {
   const [otherServiceInput, setOtherServiceInput] = useState('');
   const [otherGoalInput, setOtherGoalInput] = useState('');
   const [otherCategoryInput, setOtherCategoryInput] = useState('');
-  const [legalAgreed, setLegalAgreed] = useState(false);
+  const [legalAgreed, setLegalAgreed] = useState(true);
   const [businessUploadTab, setBusinessUploadTab] = useState('text');
   const [legalViewType, setLegalViewType] = useState(null);
   const [isGeneratingRecommendation, setIsGeneratingRecommendation] = useState(false);
@@ -958,24 +958,7 @@ export function ConversationalOnboarding({ onProjectCreated }) {
         const cleanOtp = text.replace(/\D/g, '');
         setOtpInput(cleanOtp || text);
         if ((cleanOtp || text).length >= 4) {
-          const authIdentifier = authMethod === 'phone' ? `+91 ${phoneInput}` : emailInput;
-          setShowCelebrationModal(true);
-          setTimeout(() => {
-            try {
-              setShowCelebrationModal(false);
-              changeLanguage(localStorage.getItem('APP_LANGUAGE') || 'en');
-              addHistoryItem(
-                "Welcome to ADDUS! Let's get started with your authentication.",
-                "Verified Account",
-                `Verified: ${authIdentifier}`
-              );
-              setStepIndex(3);
-            } catch (err) {
-              console.warn('Post-OTP transition error:', err);
-              setShowCelebrationModal(false);
-              setStepIndex(3);
-            }
-          }, 2000);
+          await handleVerifyOTP({ preventDefault: () => {} });
         }
       }
       return;
@@ -1065,9 +1048,14 @@ try {
   };
 
   // ── RECOVERED LOGIN FLOW ────────────────────────────────────────────────
-  const handleSendOTP = (e) => {
+  const handleSendOTP = async (e) => {
     if (e) e.preventDefault();
     setLoginError('');
+
+    if (!legalAgreed) {
+      setLoginError('Please agree to the Terms & Conditions and Privacy Policy to continue.');
+      return;
+    }
 
     if (authMethod === 'phone') {
       const pVal = validatePhone(phoneInput);
@@ -1075,10 +1063,30 @@ try {
         setLoginError(pVal.message);
         return;
       }
+      try {
+        const res = await otpService.sendOTP(phoneInput);
+        if (!res.success) {
+          setLoginError(res.message || 'Failed to send OTP. Please try again.');
+          return;
+        }
+      } catch (err) {
+        setLoginError(err.message || 'Failed to send OTP. Please try again.');
+        return;
+      }
     } else {
       const eVal = validateEmail(emailInput);
       if (!eVal.isValid) {
         setLoginError(eVal.message);
+        return;
+      }
+      try {
+        const res = await emailAuthService.sendEmailOTP(emailInput);
+        if (!res.success) {
+          setLoginError(res.message || 'Failed to send email OTP. Please try again.');
+          return;
+        }
+      } catch (err) {
+        setLoginError(err.message || 'Failed to send email OTP. Please try again.');
         return;
       }
     }
@@ -1130,16 +1138,8 @@ try {
     );
 
     let finalUserId = `user_${Date.now()}`;
-    let isExistingUser = false;
-    
     if (existing) {
       finalUserId = existing.userId || existing.customerId || finalUserId;
-      isExistingUser = true;
-    }
-
-    if (authFlowType === 'login' && !isExistingUser) {
-      setLoginError("No existing account found with this number/email. If you are new to ADDUS, please select 'Get Started as a New Business'.");
-      return;
     }
 
     updateState({ verified: true });
@@ -1151,22 +1151,33 @@ try {
       } else {
         loginRes = await authService.loginWithEmail(emailInput);
       }
-
-      if (loginRes?.error) {
-        updateState({ verified: false });
-        setLoginError(loginRes.error);
-        return;
-      }
-
-      if (loginRes?.profile) {
-        const profile = loginRes.profile;
-        if (profile.onboardingStatus === 'completed' || profile.lastVisitedScreen === 'dashboard') {
-          updateState({ currentStep: 'dashboard', verified: true });
-        }
-      }
     } catch (err) {
       updateState({ verified: false });
       setLoginError(err.message || 'Verification failed. Please try again.');
+      return;
+    }
+
+    const userProfile = loginRes?.profile || existing || {};
+    const hasEstablishedBusiness = Boolean(
+      userProfile.businessName ||
+      userProfile.businessBrain?.businessName ||
+      (Array.isArray(userProfile.services) && userProfile.services.length > 0) ||
+      (Array.isArray(userProfile.businessBrain?.services) && userProfile.businessBrain.services.length > 0) ||
+      userProfile.website ||
+      userProfile.businessBrain?.website
+    );
+
+    const isExistingUser = Boolean(
+      loginRes?.isReturningUser ||
+      (loginRes && !loginRes.isNewUser) ||
+      hasEstablishedBusiness ||
+      userProfile.onboardingStatus === 'completed' ||
+      userProfile.lastVisitedScreen === 'dashboard' ||
+      existing
+    );
+
+    if (authFlowType === 'login' && !isExistingUser) {
+      setLoginError("No existing account found with this number/email. If you are new to ADDUS, please select 'Get Started as a New Business'.");
       return;
     }
 
@@ -1180,16 +1191,42 @@ try {
         changeLanguage(localStorage.getItem('APP_LANGUAGE') || 'en');
         
         if (isExistingUser) {
+          const canonicalUserId = userProfile.userId || userProfile.customerId || finalUserId;
           try {
             if (typeof bindToUser === 'function') {
-              const canonicalUserId = loginRes?.profile?.userId || finalUserId;
-              bindToUser(canonicalUserId, existing);
+              bindToUser(canonicalUserId, userProfile);
             }
           } catch (bindErr) {
             console.warn('bindToUser warning:', bindErr);
           }
-          updateState({ currentStep: 'dashboard', verified: true });
+          sessionManager.createSession({
+            userId: canonicalUserId,
+            phone: phoneInput,
+            email: emailInput,
+            verified: true,
+            lastVisitedScreen: 'dashboard'
+          });
+          updateState({
+            ...userProfile,
+            userId: canonicalUserId,
+            currentStep: 'dashboard',
+            verified: true,
+            onboardingStatus: 'completed',
+            businessProfile: userProfile.businessBrain || userProfile.businessProfile || userProfile
+          });
         } else {
+          const newUserState = {
+            verified: true,
+            phone: phoneInput,
+            email: emailInput,
+            name: '',
+            currentStep: 'name',
+            lastVisitedScreen: 'name',
+            onboardingStatus: 'in_progress'
+          };
+          if (typeof bindToUser === 'function') {
+            bindToUser(canonicalUserId, newUserState);
+          }
           setHistory(prev => [...prev, {
             id: `turn_auth_${Date.now()}`,
             question: "Welcome to ADDUS! Let's get started with your authentication.",
@@ -2479,7 +2516,7 @@ try {
                     <button
                       type="submit"
                       className="floating-continue-btn"
-                      disabled={(authMethod === 'phone' ? phoneInput.length !== 10 : !emailInput.trim()) || !legalAgreed}
+                      disabled={authMethod === 'phone' ? phoneInput.length !== 10 : !emailInput.trim()}
                     >
                       <ArrowRight size={24} color="#fff" />
                     </button>

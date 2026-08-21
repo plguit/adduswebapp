@@ -1,15 +1,15 @@
 {
-  "success": false,
-  "sourceStatus": "INSUFFICIENT_EVIDENCE",
+  "success": true,
+  "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
   "retrievalMeta": {
     "requestedUrl": "https://example.com",
     "normalizedUrl": "https://example.com/",
     "finalUrl": "https://example.com/",
     "httpStatus": 200,
     "contentType": "text/html",
-    "responseTimeMs": 575,
+    "responseTimeMs": 800,
     "retrievalSuccess": true,
-    "checkedAt": "2026-08-16T06:06:52.383Z",
+    "checkedAt": "2026-08-21T05:53:06.057Z",
     "pagesInspected": [
       "https://example.com/"
     ],
@@ -18,12 +18,12 @@
   },
   "evidenceItems": [
     {
-      "evidenceId": "EV_1786860412989_title",
-      "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+      "evidenceId": "EV_1787291589522_title",
+      "analysisId": "ANALYSIS_1787291586057_tjomvk5",
       "businessId": null,
       "productId": null,
       "projectId": null,
-      "sourceId": "SRC_example.com_1786860412989",
+      "sourceId": "SRC_example.com_1787291589522",
       "sourceUrl": "https://example.com/",
       "finalUrl": "https://example.com/",
       "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
@@ -34,7 +34,7 @@
       "extractedValue": null,
       "confidence": "HIGH",
       "provenance": "OBSERVED",
-      "timestamp": "2026-08-16T06:06:52.383Z",
+      "timestamp": "2026-08-21T05:53:06.057Z",
       "freshness": "CURRENT",
       "qualityScore": 95,
       "duplicateOf": null,
@@ -43,12 +43,12 @@
       "metadata": {}
     },
     {
-      "evidenceId": "EV_1786860412989_headings",
-      "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+      "evidenceId": "EV_1787291589522_headings",
+      "analysisId": "ANALYSIS_1787291586057_tjomvk5",
       "businessId": null,
       "productId": null,
       "projectId": null,
-      "sourceId": "SRC_example.com_1786860412990",
+      "sourceId": "SRC_example.com_1787291589523",
       "sourceUrl": "https://example.com/",
       "finalUrl": "https://example.com/",
       "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
@@ -59,7 +59,7 @@
       "extractedValue": null,
       "confidence": "MEDIUM",
       "provenance": "OBSERVED",
-      "timestamp": "2026-08-16T06:06:52.383Z",
+      "timestamp": "2026-08-21T05:53:06.057Z",
       "freshness": "CURRENT",
       "qualityScore": 75,
       "duplicateOf": null,
@@ -68,12 +68,12 @@
       "metadata": {}
     },
     {
-      "evidenceId": "EV_1786860412989_body",
-      "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+      "evidenceId": "EV_1787291589522_body",
+      "analysisId": "ANALYSIS_1787291586057_tjomvk5",
       "businessId": null,
       "productId": null,
       "projectId": null,
-      "sourceId": "SRC_example.com_1786860412990",
+      "sourceId": "SRC_example.com_1787291589523",
       "sourceUrl": "https://example.com/",
       "finalUrl": "https://example.com/",
       "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
@@ -84,7 +84,7 @@
       "extractedValue": null,
       "confidence": "MEDIUM",
       "provenance": "OBSERVED",
-      "timestamp": "2026-08-16T06:06:52.383Z",
+      "timestamp": "2026-08-21T05:53:06.057Z",
       "freshness": "CURRENT",
       "qualityScore": 65,
       "duplicateOf": null,
@@ -93,12 +93,12 @@
       "metadata": {}
     },
     {
-      "evidenceId": "EV_1786860412989_colors",
-      "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+      "evidenceId": "EV_1787291589522_colors",
+      "analysisId": "ANALYSIS_1787291586057_tjomvk5",
       "businessId": null,
       "productId": null,
       "projectId": null,
-      "sourceId": "SRC_example.com_1786860412990",
+      "sourceId": "SRC_example.com_1787291589523",
       "sourceUrl": "https://example.com/",
       "finalUrl": "https://example.com/",
       "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
@@ -109,7 +109,7 @@
       "extractedValue": null,
       "confidence": "LOW",
       "provenance": "OBSERVED",
-      "timestamp": "2026-08-16T06:06:52.383Z",
+      "timestamp": "2026-08-21T05:53:06.057Z",
       "freshness": "CURRENT",
       "qualityScore": 65,
       "duplicateOf": null,
@@ -120,16 +120,16 @@
   ],
   "discoveredAssets": [
     {
-      "assetId": "AST_1786860412990_favicon",
+      "assetId": "AST_1787291589523_favicon",
       "assetType": "favicon",
       "assetUrl": "data:,",
       "sourceUrl": "https://example.com/",
       "sourceType": "WEBSITE",
       "confidence": "medium",
-      "discoveredAt": "2026-08-16T06:06:52.990Z"
+      "discoveredAt": "2026-08-21T05:53:09.523Z"
     },
     {
-      "assetId": "AST_1786860412990_colors",
+      "assetId": "AST_1787291589523_colors",
       "assetType": "brand_colors",
       "assetUrl": null,
       "sourceUrl": "https://example.com/",
@@ -141,7 +141,7 @@
         ]
       },
       "confidence": "low",
-      "discoveredAt": "2026-08-16T06:06:52.990Z"
+      "discoveredAt": "2026-08-21T05:53:09.523Z"
     }
   ],
   "insufficientEvidence": true,
@@ -179,11 +179,11 @@
       "favicon",
       "brandColors"
     ],
-    "reasoning": "Some business-related signals found, but evidence is limited."
+    "reasoning": "Website retrieved successfully, passing to AI for detailed extraction."
   },
   "analysis": {
-    "analysisId": "ANALYSIS_1786860412383_0i2scs0",
-    "generatedAt": "2026-08-16T06:06:52.383Z",
+    "analysisId": "ANALYSIS_1787291586057_tjomvk5",
+    "generatedAt": "2026-08-21T05:53:06.057Z",
     "evidenceSufficiency": {
       "sufficient": false,
       "score": 100,
@@ -215,12 +215,12 @@
       ],
       "topEvidence": [
         {
-          "evidenceId": "EV_1786860412989_title",
-          "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+          "evidenceId": "EV_1787291589522_title",
+          "analysisId": "ANALYSIS_1787291586057_tjomvk5",
           "businessId": null,
           "productId": null,
           "projectId": null,
-          "sourceId": "SRC_example.com_1786860412989",
+          "sourceId": "SRC_example.com_1787291589522",
           "sourceUrl": "https://example.com/",
           "finalUrl": "https://example.com/",
           "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
@@ -231,7 +231,7 @@
           "extractedValue": null,
           "confidence": "HIGH",
           "provenance": "OBSERVED",
-          "timestamp": "2026-08-16T06:06:52.383Z",
+          "timestamp": "2026-08-21T05:53:06.057Z",
           "freshness": "CURRENT",
           "qualityScore": 95,
           "duplicateOf": null,
@@ -240,12 +240,12 @@
           "metadata": {}
         },
         {
-          "evidenceId": "EV_1786860412989_headings",
-          "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+          "evidenceId": "EV_1787291589522_headings",
+          "analysisId": "ANALYSIS_1787291586057_tjomvk5",
           "businessId": null,
           "productId": null,
           "projectId": null,
-          "sourceId": "SRC_example.com_1786860412990",
+          "sourceId": "SRC_example.com_1787291589523",
           "sourceUrl": "https://example.com/",
           "finalUrl": "https://example.com/",
           "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
@@ -256,7 +256,7 @@
           "extractedValue": null,
           "confidence": "MEDIUM",
           "provenance": "OBSERVED",
-          "timestamp": "2026-08-16T06:06:52.383Z",
+          "timestamp": "2026-08-21T05:53:06.057Z",
           "freshness": "CURRENT",
           "qualityScore": 75,
           "duplicateOf": null,
@@ -265,12 +265,12 @@
           "metadata": {}
         },
         {
-          "evidenceId": "EV_1786860412989_body",
-          "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+          "evidenceId": "EV_1787291589522_body",
+          "analysisId": "ANALYSIS_1787291586057_tjomvk5",
           "businessId": null,
           "productId": null,
           "projectId": null,
-          "sourceId": "SRC_example.com_1786860412990",
+          "sourceId": "SRC_example.com_1787291589523",
           "sourceUrl": "https://example.com/",
           "finalUrl": "https://example.com/",
           "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
@@ -281,7 +281,7 @@
           "extractedValue": null,
           "confidence": "MEDIUM",
           "provenance": "OBSERVED",
-          "timestamp": "2026-08-16T06:06:52.383Z",
+          "timestamp": "2026-08-21T05:53:06.057Z",
           "freshness": "CURRENT",
           "qualityScore": 65,
           "duplicateOf": null,
@@ -290,12 +290,12 @@
           "metadata": {}
         },
         {
-          "evidenceId": "EV_1786860412989_colors",
-          "analysisId": "ANALYSIS_1786860412383_0i2scs0",
+          "evidenceId": "EV_1787291589522_colors",
+          "analysisId": "ANALYSIS_1787291586057_tjomvk5",
           "businessId": null,
           "productId": null,
           "projectId": null,
-          "sourceId": "SRC_example.com_1786860412990",
+          "sourceId": "SRC_example.com_1787291589523",
           "sourceUrl": "https://example.com/",
           "finalUrl": "https://example.com/",
           "sourceStatus": "LIKELY_BUSINESS_WEBSITE",
@@ -306,7 +306,7 @@
           "extractedValue": null,
           "confidence": "LOW",
           "provenance": "OBSERVED",
-          "timestamp": "2026-08-16T06:06:52.383Z",
+          "timestamp": "2026-08-21T05:53:06.057Z",
           "freshness": "CURRENT",
           "qualityScore": 65,
           "duplicateOf": null,

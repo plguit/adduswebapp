@@ -1,5 +1,6 @@
 import { profileService } from './profileService.js';
 import { sessionManager } from './sessionManager.js';
+import { syncService } from './syncService.js';
 
 /**
  * Centralized Project Service
@@ -121,6 +122,12 @@ export const projectService = {
       profileService.saveProfile(updatedProfile);
       sessionManager.updateLastVisitedScreen('dashboard');
       this.clearDraft();
+
+      try {
+        await syncService.syncProjects(userId, updatedProfile.projects || []);
+      } catch (e) {
+        console.warn('[ProjectService] Project sync failed:', e);
+      }
 
       return submittedProject;
     } catch (e) {

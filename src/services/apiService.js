@@ -11,7 +11,7 @@
 
 import { sessionManager } from './sessionManager.js';
 
-const API_BASE = '/api';
+const API_BASE = typeof window !== 'undefined' ? '/api' : (process.env.API_BASE_URL || 'http://localhost:3000/api');
 const RETRYABLE_METHODS = ['POST', 'PUT', 'PATCH'];
 const MAX_RETRIES = 2;
 const RETRY_DELAY = 800;

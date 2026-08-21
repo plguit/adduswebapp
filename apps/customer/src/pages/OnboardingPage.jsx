@@ -135,6 +135,7 @@ export function Onboarding() {
         projects: [project, ...existingProjects]
       });
       syncService.syncProfile(targetUserId, updatedProf);
+      syncService.syncProjects(targetUserId, updatedProf.projects || []);
       sessionManager.updateLastVisitedScreen('dashboard');
     }
     updateState({ currentStep: 'dashboard', verified: true, onboardingStatus: 'completed', lastCreatedProject: project });

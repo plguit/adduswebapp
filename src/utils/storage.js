@@ -4,10 +4,14 @@
  */
 
 const STORAGE_PREFIX = 'ADDUS_MVP_';
+const memoryStore = new Map();
 
 export const storage = {
   get(key, defaultValue = null) {
     try {
+      if (typeof localStorage === 'undefined') {
+        return memoryStore.has(STORAGE_PREFIX + key) ? memoryStore.get(STORAGE_PREFIX + key) : defaultValue;
+      }
       const item = localStorage.getItem(STORAGE_PREFIX + key);
       return item ? JSON.parse(item) : defaultValue;
     } catch (error) {
@@ -18,6 +22,10 @@ export const storage = {
 
   set(key, value) {
     try {
+      if (typeof localStorage === 'undefined') {
+        memoryStore.set(STORAGE_PREFIX + key, value);
+        return;
+      }
       localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(value));
     } catch (error) {
       console.warn(`[Storage Utility] Error writing key "${key}":`, error);
@@ -26,6 +34,10 @@ export const storage = {
 
   remove(key) {
     try {
+      if (typeof localStorage === 'undefined') {
+        memoryStore.delete(STORAGE_PREFIX + key);
+        return;
+      }
       localStorage.removeItem(STORAGE_PREFIX + key);
     } catch (error) {
       console.warn(`[Storage Utility] Error removing key "${key}":`, error);
@@ -34,6 +46,10 @@ export const storage = {
 
   clear() {
     try {
+      if (typeof localStorage === 'undefined') {
+        memoryStore.clear();
+        return;
+      }
       Object.keys(localStorage)
         .filter((k) => k.startsWith(STORAGE_PREFIX))
         .forEach((k) => localStorage.removeItem(k));

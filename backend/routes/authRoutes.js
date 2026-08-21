@@ -129,17 +129,9 @@ router.post('/check-duplicate', (req, res) => {
   }
 
   return res.json({
-    isDuplicate: uniqueMatches.length > 0,
-    matchCount: uniqueMatches.length,
-    matches: uniqueMatches
-  });
-});
-    }
-  }
-
-  res.json({
     success: true,
     isDuplicate: uniqueMatches.length > 0,
+    matchCount: uniqueMatches.length,
     matches: uniqueMatches
   });
 });
@@ -157,18 +149,47 @@ router.post('/login/customer', (req, res) => {
 
   let userId = preferredUserId || null;
   let accountData = {};
+  const cleanPhone = phone ? phone.replace(/\D/g, '') : null;
+  const cleanEmail = email ? email.trim().toLowerCase() : null;
 
   if (phone) {
-    const cleanPhone = phone.replace(/\D/g, '');
     if (!userId) userId = `customer_${cleanPhone}`;
     accountData = { phoneNumber: cleanPhone, authProvider: 'phone' };
   } else if (email) {
-    const cleanEmail = email.trim().toLowerCase();
     if (!userId) userId = `customer_${cleanEmail}`;
     accountData = { email: cleanEmail, authProvider: 'email' };
   }
 
-  const existingVault = getBusinessVault(userId);
+  let existingVault = getBusinessVault(userId);
+
+  // If not found by direct userId, or if direct vault is empty, search all vaults by phone/email to find the best match
+  if (!existingVault || !existingVault.businessName) {
+    const all = getAllVaults();
+    let bestVault = existingVault || null;
+    let bestUserId = userId;
+
+    for (const item of all) {
+      const v = item.vault;
+      if (!v) continue;
+      const vPhone = (v.phoneNumber || v.phone || '').replace(/\D/g, '');
+      const vEmail = (v.email || '').trim().toLowerCase();
+      const isPhoneMatch = cleanPhone && vPhone && (vPhone === cleanPhone || vPhone.endsWith(cleanPhone) || cleanPhone.endsWith(vPhone));
+      const isEmailMatch = cleanEmail && vEmail && vEmail === cleanEmail;
+
+      if (isPhoneMatch || isEmailMatch) {
+        if (!bestVault || (!bestVault.businessName && v.businessName) || ((v.services?.length || 0) > (bestVault.services?.length || 0))) {
+          bestVault = v;
+          bestUserId = item.userId;
+        }
+      }
+    }
+
+    if (bestVault) {
+      existingVault = bestVault;
+      userId = bestUserId;
+    }
+  }
+
   const isNewUser = !existingVault;
 
   if (existingVault && existingVault.blocked === true) {
@@ -186,19 +207,23 @@ router.post('/login/customer', (req, res) => {
   }
 
   if (isNewUser) {
+    const token = generateToken({ userId, role: 'CUSTOMER' });
     res.json({
       success: true,
       isNewUser: true,
+      token,
       userId,
       role: 'CUSTOMER',
       expiresIn: '7d',
       profile: {
         userId,
+        customerId: userId,
         name: null,
         phoneNumber: accountData.phoneNumber || null,
         email: accountData.email || null,
         authProvider: accountData.authProvider || null,
         onboardingStatus: null,
+        lastVisitedScreen: 'welcome',
         businessName: null,
         industry: null,
         businessStage: null,
@@ -207,6 +232,7 @@ router.post('/login/customer', (req, res) => {
         services: [],
         targetAudience: null,
         website: null,
+        projects: [],
         businessBrain: {
           businessName: null,
           industry: null,
@@ -226,9 +252,20 @@ router.post('/login/customer', (req, res) => {
     return;
   }
 
+  const hasEstablishedBusiness = Boolean(
+    existingVault.businessName ||
+    (Array.isArray(existingVault.services) && existingVault.services.length > 0) ||
+    existingVault.websiteUrl
+  );
+
+  const resolvedOnboardingStatus = existingVault.onboardingStatus || (hasEstablishedBusiness ? 'completed' : 'in_progress');
+  const resolvedLastVisitedScreen = existingVault.lastVisitedScreen || (hasEstablishedBusiness ? 'dashboard' : 'welcome');
+
   const updatedVault = updateBusinessVault(userId, {
     ...accountData,
     userId,
+    onboardingStatus: resolvedOnboardingStatus,
+    lastVisitedScreen: resolvedLastVisitedScreen,
     lastLoginAt: new Date().toISOString()
   });
 
@@ -242,12 +279,15 @@ router.post('/login/customer', (req, res) => {
     role: 'CUSTOMER',
     expiresIn: '7d',
     profile: {
-      userId: updatedVault.userId,
+      userId: updatedVault.userId || userId,
+      customerId: updatedVault.customerId || userId,
+      businessId: updatedVault.businessId || null,
       name: updatedVault.name || null,
-      phoneNumber: updatedVault.phoneNumber || null,
-      email: updatedVault.email || null,
-      authProvider: updatedVault.authProvider || null,
-      onboardingStatus: updatedVault.onboardingStatus || null,
+      phoneNumber: updatedVault.phoneNumber || accountData.phoneNumber || null,
+      email: updatedVault.email || accountData.email || null,
+      authProvider: updatedVault.authProvider || accountData.authProvider || null,
+      onboardingStatus: resolvedOnboardingStatus,
+      lastVisitedScreen: resolvedLastVisitedScreen,
       businessName: updatedVault.businessName || null,
       industry: updatedVault.industry || null,
       businessStage: updatedVault.businessStage || null,
@@ -256,6 +296,7 @@ router.post('/login/customer', (req, res) => {
       services: updatedVault.services || [],
       targetAudience: updatedVault.targetAudience || null,
       website: updatedVault.websiteUrl || null,
+      projects: updatedVault.projects || [],
       businessBrain: {
         businessName: updatedVault.businessName || null,
         industry: updatedVault.industry || null,

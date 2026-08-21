@@ -29,21 +29,101 @@ export const authService = {
 
     const fallbackUserId = preferredUserId || `customer_${cleanPhone}`;
     const backendUserId = backendRes?.userId || null;
-    const isNewUser = backendRes?.isNewUser || false;
     const canonicalUserId = backendUserId || fallbackUserId;
+
+    if (canonicalUserId !== preferredUserId && preferredUserId) {
+      const migrated = profileService.migrateProfile(preferredUserId, canonicalUserId);
+      if (migrated) {
+        console.log(`[authService] Migrated profile from ${preferredUserId} to ${canonicalUserId}`);
+      }
+    }
+
+    if (backendRes && !backendRes.isNewUser && backendRes.profile) {
+      const backendProf = backendRes.profile;
+      const hasBiz = Boolean(
+        backendProf.businessName ||
+        (Array.isArray(backendProf.services) && backendProf.services.length > 0) ||
+        backendProf.website
+      );
+
+      const targetStatus = (backendProf.onboardingStatus === 'completed' || hasBiz)
+        ? 'completed'
+        : (backendProf.onboardingStatus || existing?.onboardingStatus || 'in_progress');
+      const targetScreen = (backendProf.lastVisitedScreen === 'dashboard' || hasBiz)
+        ? 'dashboard'
+        : (backendProf.lastVisitedScreen || existing?.lastVisitedScreen || 'welcome');
+
+      const mergedProfile = profileService.saveProfile({
+        ...(existing || {}),
+        ...backendProf,
+        userId: canonicalUserId,
+        customerId: backendProf.customerId || existing?.customerId || canonicalUserId,
+        businessId: backendProf.businessId || existing?.businessId || null,
+        phoneNumber: cleanPhone,
+        phone: cleanPhone,
+        phoneVerified: true,
+        businessName: backendProf.businessName || existing?.businessName,
+        industry: backendProf.industry || existing?.industry,
+        services: backendProf.services?.length > 0 ? backendProf.services : (existing?.services || []),
+        products: backendProf.products?.length > 0 ? backendProf.products : (existing?.products || []),
+        businessDescription: backendProf.businessDescription || existing?.businessDescription,
+        businessBrain: {
+          ...(existing?.businessBrain || {}),
+          ...(backendProf.businessBrain || {}),
+          businessName: backendProf.businessName || existing?.businessBrain?.businessName,
+          industry: backendProf.industry || existing?.businessBrain?.industry,
+          services: backendProf.services?.length > 0 ? backendProf.services : (existing?.businessBrain?.services || []),
+          products: backendProf.products?.length > 0 ? backendProf.products : (existing?.businessBrain?.products || []),
+          businessDescription: backendProf.businessDescription || existing?.businessBrain?.businessDescription,
+          website: backendProf.website || existing?.businessBrain?.website
+        },
+        projects: backendProf.projects?.length > 0 ? backendProf.projects : (existing?.projects || []),
+        onboardingStatus: targetStatus,
+        lastVisitedScreen: targetScreen,
+        updatedAt: new Date().toISOString()
+      });
+
+      sessionManager.setSession(
+        mergedProfile.userId,
+        targetScreen,
+        backendRes.token
+      );
+
+      return {
+        isReturningUser: true,
+        isNewUser: false,
+        message: 'Welcome back! Resuming your account...',
+        profile: mergedProfile
+      };
+    }
 
     if (existing) {
       existing.phoneVerified = true;
       existing.updatedAt = new Date().toISOString();
+      const hasBiz = Boolean(
+        existing.businessName ||
+        existing.businessBrain?.businessName ||
+        (Array.isArray(existing.services) && existing.services.length > 0) ||
+        (Array.isArray(existing.businessBrain?.services) && existing.businessBrain.services.length > 0)
+      );
+      const targetStatus = (existing.onboardingStatus === 'completed' || hasBiz)
+        ? 'completed'
+        : (existing.onboardingStatus || 'in_progress');
+      const targetScreen = (existing.lastVisitedScreen === 'dashboard' || hasBiz)
+        ? 'dashboard'
+        : (existing.lastVisitedScreen || 'welcome');
+
       const updated = profileService.saveProfile({
         ...existing,
         userId: canonicalUserId,
-        customerId: canonicalUserId
+        customerId: existing.customerId || canonicalUserId,
+        onboardingStatus: targetStatus,
+        lastVisitedScreen: targetScreen
       });
       if (backendRes?.token) {
-        sessionManager.setSession(updated.userId, updated.lastVisitedScreen || 'welcome', backendRes.token);
+        sessionManager.setSession(updated.userId, targetScreen, backendRes.token);
       } else {
-        sessionManager.setSession(updated.userId, updated.lastVisitedScreen || 'welcome');
+        sessionManager.setSession(updated.userId, targetScreen);
       }
 
       return {
@@ -73,10 +153,8 @@ export const authService = {
 
     return {
       isReturningUser: false,
-      isNewUser,
-      message: isNewUser 
-        ? 'Account created successfully! Let\'s set up your profile.' 
-        : 'Welcome back! Resuming your account...',
+      isNewUser: true,
+      message: 'Account created successfully! Let\'s set up your profile.',
       profile: newProfile
     };
   },
@@ -106,18 +184,86 @@ export const authService = {
     const fallbackEmailUserId = preferredUserId || `customer_${cleanEmail.replace(/[^a-z0-9]/g, '_')}`;
     const canonicalUserId = backendUserId || fallbackEmailUserId;
 
+    if (canonicalUserId !== preferredUserId && preferredUserId) {
+      const migrated = profileService.migrateProfile(preferredUserId, canonicalUserId);
+      if (migrated) {
+        console.log(`[authService] Migrated profile from ${preferredUserId} to ${canonicalUserId}`);
+      }
+    }
+
+    // 1. If backend returned an existing user/vault, hydrate and save to local profileService
+    if (backendRes && !backendRes.isNewUser && backendRes.profile) {
+      const backendProf = backendRes.profile;
+      const hasBiz = Boolean(
+        backendProf.businessName ||
+        (Array.isArray(backendProf.services) && backendProf.services.length > 0) ||
+        backendProf.website
+      );
+
+      const targetStatus = backendProf.onboardingStatus || (hasBiz ? 'completed' : (existing?.onboardingStatus || 'in_progress'));
+      const targetScreen = backendProf.lastVisitedScreen || (hasBiz ? 'dashboard' : (existing?.lastVisitedScreen || 'welcome'));
+
+      const mergedProfile = profileService.saveProfile({
+        ...(existing || {}),
+        ...backendProf,
+        userId: canonicalUserId,
+        customerId: backendProf.customerId || existing?.customerId || canonicalUserId,
+        businessId: backendProf.businessId || existing?.businessId || null,
+        email: cleanEmail,
+        emailVerified: true,
+        businessName: backendProf.businessName || existing?.businessName,
+        industry: backendProf.industry || existing?.industry,
+        services: backendProf.services?.length > 0 ? backendProf.services : (existing?.services || []),
+        products: backendProf.products?.length > 0 ? backendProf.products : (existing?.products || []),
+        businessDescription: backendProf.businessDescription || existing?.businessDescription,
+        businessBrain: {
+          ...(existing?.businessBrain || {}),
+          ...(backendProf.businessBrain || {}),
+          businessName: backendProf.businessName || existing?.businessBrain?.businessName,
+          industry: backendProf.industry || existing?.businessBrain?.industry,
+          services: backendProf.services?.length > 0 ? backendProf.services : (existing?.businessBrain?.services || []),
+          products: backendProf.products?.length > 0 ? backendProf.products : (existing?.businessBrain?.products || []),
+          businessDescription: backendProf.businessDescription || existing?.businessBrain?.businessDescription,
+          website: backendProf.website || existing?.businessBrain?.website
+        },
+        projects: backendProf.projects?.length > 0 ? backendProf.projects : (existing?.projects || []),
+        onboardingStatus: targetStatus,
+        lastVisitedScreen: targetScreen,
+        updatedAt: new Date().toISOString()
+      });
+
+      sessionManager.setSession(
+        mergedProfile.userId,
+        targetScreen,
+        backendRes.token
+      );
+
+      return {
+        isReturningUser: true,
+        isNewUser: false,
+        message: 'Welcome back! Resuming your account...',
+        profile: mergedProfile
+      };
+    }
+
     if (existing) {
       existing.emailVerified = true;
       existing.updatedAt = new Date().toISOString();
+      const hasBiz = Boolean(existing.businessName || existing.businessBrain?.businessName);
+      const targetStatus = existing.onboardingStatus || (hasBiz ? 'completed' : 'in_progress');
+      const targetScreen = existing.lastVisitedScreen || (hasBiz ? 'dashboard' : 'welcome');
+
       const updated = profileService.saveProfile({
         ...existing,
         userId: canonicalUserId,
-        customerId: canonicalUserId
+        customerId: canonicalUserId,
+        onboardingStatus: targetStatus,
+        lastVisitedScreen: targetScreen
       });
       if (backendRes?.token) {
-        sessionManager.setSession(updated.userId, updated.lastVisitedScreen || 'welcome', backendRes.token);
+        sessionManager.setSession(updated.userId, targetScreen, backendRes.token);
       } else {
-        sessionManager.setSession(updated.userId, updated.lastVisitedScreen || 'welcome');
+        sessionManager.setSession(updated.userId, targetScreen);
       }
 
       return {
@@ -147,10 +293,8 @@ export const authService = {
 
     return {
       isReturningUser: false,
-      isNewUser,
-      message: isNewUser 
-        ? 'Account created successfully! Let\'s set up your profile.' 
-        : 'Welcome back! Resuming your account...',
+      isNewUser: true,
+      message: 'Account created successfully! Let\'s set up your profile.',
       profile: newProfile
     };
   },
@@ -168,9 +312,6 @@ export const authService = {
       : { phone: identifier, preferredUserId };
 
     const result = await apiService.post(endpoint, body);
-    if (result.success && result.token) {
-      sessionManager.setSession(result.userId, 'welcome', result.token);
-    }
     return result;
   },
 
