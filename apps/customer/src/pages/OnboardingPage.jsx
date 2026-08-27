@@ -106,20 +106,33 @@ export function Onboarding() {
     businessProfile: state.businessProfile || authoritativeState.businessProfile,
     project: authoritativeState.profile?.projects?.[0] || null,
     lastVisitedScreen: authoritativeState.lastVisitedScreen,
-    onboardingStatus: authoritativeState.profile?.onboardingStatus
+    onboardingStatus: authoritativeState.profile?.onboardingStatus || state.onboardingStatus
   });
 
-  const isDashboardStep = forceDashboard || flowResolution.appState === 'dashboard' || flowResolution.nextStep === 'dashboard' || state.currentStep === 'dashboard' || state.onboardingStatus === 'completed';
+  const isExplicitlyCompleted = Boolean(
+    sessionManager.isAuthenticated() && (
+      (state.onboardingStatus === 'completed' && state.currentStep === 'dashboard') ||
+      (currentProfile?.onboardingStatus === 'completed' && currentProfile?.lastVisitedScreen === 'dashboard') ||
+      (flowResolution.appState === 'dashboard' && authoritativeState.onboardingStatus === 'completed')
+    )
+  );
 
-  const handleProjectCreated = (project) => {
+  const isDashboardStep = forceDashboard || isExplicitlyCompleted;
+
+  const handleProjectCreated = async (project) => {
     const targetUserId = state.userId || session?.userId || `user_${Date.now()}`;
-    const sess = sessionManager.createSession({
-      userId: targetUserId,
-      phone: state.phone || state.phoneNumber || null,
-      email: state.email || null,
-      verified: true,
-      lastVisitedScreen: 'dashboard'
-    });
+    const existingSession = sessionManager.getSession();
+    if (existingSession?.token) {
+      sessionManager.setSession(targetUserId, 'dashboard', existingSession.token);
+    } else {
+      sessionManager.createSession({
+        userId: targetUserId,
+        phone: state.phone || state.phoneNumber || null,
+        email: state.email || null,
+        verified: true,
+        lastVisitedScreen: 'dashboard'
+      });
+    }
 
     if (targetUserId) {
       const profile = profileService.getProfileById(targetUserId) || {};

@@ -298,9 +298,9 @@ async function makeValidatedRequest(url, timeoutMs = FETCH_TIMEOUT_MS) {
     req.on('socket', (socket) => {
       const validateSocket = () => {
         const remoteAddress = socket.remoteAddress;
-        if (remoteAddress && !safeAddresses.some(addr => addr.ip === remoteAddress)) {
+        if (remoteAddress && isBlockedIp(remoteAddress)) {
           req.destroy();
-          reject(new Error(`Connection established to unexpected IP address: ${remoteAddress}`));
+          reject(new Error(`Connection established to blocked IP address: ${remoteAddress}`));
         }
       };
       

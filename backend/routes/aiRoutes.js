@@ -5,9 +5,8 @@ import { extractAndSyncBusinessProfile } from '../../ai/summary-engine/profileEx
 import { PROMPT_TEMPLATES } from '../../ai/prompts/index.js';
 import { analyzeUrlFast, triggerDeepAnalysis, WEBSITE_CLASSES } from '../services/urlIntelligenceService.js';
 import { requireAuth, requireActiveUser, requireOwnership } from '../middleware/auth.js';
-import { requireActiveCreator } from '../middleware/creatorAuth.js';
 import { runAIIntelligencePipeline, flagForHumanReview, buildStrategicIntelligence } from '../services/aiIntelligenceService.js';
-import { evidenceStore } from '../services/evidenceService.js';
+import { evidenceStore, getEvidenceSummary } from '../services/evidenceService.js';
 import { writeMemoryFromTurn, buildKnownInformationPrompt } from '../services/memoryWriter.js';
 import { buildDiagnosis } from '../services/diagnosisEngine.js';
 import { buildPresenceEvaluation } from '../services/presenceEvaluationEngine.js';

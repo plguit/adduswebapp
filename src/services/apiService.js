@@ -76,6 +76,11 @@ export const apiService = {
         }
       });
 
+      const contentType = res.headers.get('content-type') || '';
+      if (contentType.includes('text/html')) {
+        throw new Error('API server returned HTML page instead of JSON. Ensure backend is running.');
+      }
+
       if (!res.ok) {
         let err = {};
         try {

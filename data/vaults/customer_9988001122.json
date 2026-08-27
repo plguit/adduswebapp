@@ -1,0 +1,1303 @@
+{
+  "businessName": "Grand Hyatt Kochi",
+  "industry": "Hospitality",
+  "businessStage": null,
+  "businessDescription": "This domain is for use in documentation examples without needing permission. Avoid use in operations.",
+  "products": [],
+  "services": [],
+  "targetAudience": "Individuals using documentation examples",
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 50,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-22T10:12:50.504Z",
+  "websiteUrl": "https://example.com",
+  "websiteAnalyzedAt": "2026-08-22T10:12:50.502Z",
+  "websiteContentHash": "f80",
+  "websiteEvidenceItems": [
+    {
+      "evidenceId": "FAST_EV_1787393567839_title",
+      "observation": "Page title: \"Example Domain\"",
+      "evidence": "Example Domain",
+      "source": "https://example.com/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "identity",
+      "checkedAt": "2026-08-22T10:12:47.839Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787393567839_headings",
+      "observation": "Page headings: 1 headings found",
+      "evidence": "Example Domain",
+      "source": "https://example.com/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "services",
+      "checkedAt": "2026-08-22T10:12:47.839Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1787393567839_body",
+      "observation": "Main page body text retrieved",
+      "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+      "source": "https://example.com/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "general",
+      "checkedAt": "2026-08-22T10:12:47.839Z",
+      "stage": "FAST_PATH"
+    }
+  ],
+  "websiteRetrievalMeta": {
+    "finalUrl": "https://example.com/",
+    "httpStatus": 200,
+    "pagesInspected": [
+      "https://example.com/"
+    ]
+  },
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-22T10:12:50.504Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-22T10:12:50.502Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787393567839_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-22T10:12:47.839Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787393567839_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-22T10:12:47.839Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787393567839_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-22T10:12:47.839Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 60,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": null,
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 30,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:12:47.170Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9988001122",
+        "authProvider": "phone",
+        "userId": "customer_9988001122",
+        "onboardingStatus": "in_progress",
+        "lastVisitedScreen": "welcome",
+        "lastLoginAt": "2026-08-22T10:12:47.170Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:12:31.343Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:12:31.337Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:12:28.900Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:12:28.893Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:12:26.514Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9988001122",
+        "authProvider": "phone",
+        "userId": "customer_9988001122",
+        "onboardingStatus": "in_progress",
+        "lastVisitedScreen": "welcome",
+        "lastLoginAt": "2026-08-22T10:12:26.513Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:12:20.286Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "industry",
+        "services"
+      ],
+      "data": {
+        "businessName": "Grand Hyatt Kochi",
+        "industry": "Hospitality",
+        "services": [
+          "Photography",
+          "Brand Film"
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:12:20.243Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9988001122",
+        "authProvider": "phone",
+        "userId": "customer_9988001122",
+        "onboardingStatus": "in_progress",
+        "lastVisitedScreen": "welcome",
+        "lastLoginAt": "2026-08-22T10:12:20.242Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:39:46.276Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:39:46.269Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:39:46.259Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:38:50.467Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:38:50.298Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:38:50.284Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:38:50.278Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:38:50.269Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:38:50.243Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:38:21.763Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:38:21.726Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:38:21.580Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:38:21.574Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:38:21.563Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:38:21.542Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:07:28.072Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-22T09:07:28.071Z",
+        "websiteContentHash": "2fc0fe42",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787389561785_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-22T09:06:01.785Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787389561785_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-22T09:06:01.785Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787389561785_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-22T09:06:01.785Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "pagesInspected": []
+        },
+        "businessName": "Example Domain",
+        "businessDescription": "This domain is for use in documentation examples without needing permission. Avoid use in operations.",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 70,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Example Domain is a business This domain is for use in documentation examples without needing permission..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 40,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:07:25.552Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9988001122",
+        "authProvider": "phone",
+        "userId": "customer_9988001122",
+        "onboardingStatus": "in_progress",
+        "lastVisitedScreen": "welcome",
+        "lastLoginAt": "2026-08-22T09:07:25.551Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:07:08.398Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:07:08.390Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:07:05.062Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:07:05.052Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:07:02.658Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9988001122",
+        "authProvider": "phone",
+        "userId": "customer_9988001122",
+        "onboardingStatus": "in_progress",
+        "lastVisitedScreen": "welcome",
+        "lastLoginAt": "2026-08-22T09:07:02.657Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:06:55.221Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "industry",
+        "services"
+      ],
+      "data": {
+        "businessName": "Grand Hyatt Kochi",
+        "industry": "Hospitality",
+        "services": [
+          "Photography",
+          "Brand Film"
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:06:55.195Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9988001122",
+        "authProvider": "phone",
+        "userId": "customer_9988001122",
+        "onboardingStatus": "in_progress",
+        "lastVisitedScreen": "welcome",
+        "lastLoginAt": "2026-08-22T09:06:55.194Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:06:03.868Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "https://example.com",
+        "websiteAnalyzedAt": "2026-08-22T09:06:03.867Z",
+        "websiteContentHash": "f80",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787389561785_title",
+            "observation": "Page title: \"Example Domain\"",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-22T09:06:01.785Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787389561785_headings",
+            "observation": "Page headings: 1 headings found",
+            "evidence": "Example Domain",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-08-22T09:06:01.785Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787389561785_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Example Domain Example Domain This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+            "source": "https://example.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-08-22T09:06:01.785Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://example.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://example.com/"
+          ]
+        },
+        "businessName": "Example Domain",
+        "businessDescription": "This domain is for use in documentation examples without needing permission. Avoid use in operations. Learn more",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 70,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Example Domain is a business This domain is for use in documentation examples without needing permission..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 40,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:05:52.718Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9988001122",
+        "authProvider": "phone",
+        "userId": "customer_9988001122",
+        "onboardingStatus": "in_progress",
+        "lastVisitedScreen": "welcome",
+        "lastLoginAt": "2026-08-22T09:05:52.715Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:05:40.167Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:05:40.155Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:05:23.879Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:05:23.869Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:05:21.468Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9988001122",
+        "authProvider": "phone",
+        "userId": "customer_9988001122",
+        "onboardingStatus": "in_progress",
+        "lastVisitedScreen": "welcome",
+        "lastLoginAt": "2026-08-22T09:05:21.466Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:05:15.259Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "industry",
+        "services"
+      ],
+      "data": {
+        "businessName": "Grand Hyatt Kochi",
+        "industry": "Hospitality",
+        "services": [
+          "Photography",
+          "Brand Film"
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:05:15.229Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9988001122",
+        "authProvider": "phone",
+        "userId": "customer_9988001122",
+        "onboardingStatus": "in_progress",
+        "lastVisitedScreen": "welcome",
+        "lastLoginAt": "2026-08-22T09:05:15.228Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T07:38:54.224Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T07:38:54.145Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T07:38:49.689Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T07:38:49.578Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T07:38:47.022Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9988001122",
+        "authProvider": "phone",
+        "userId": "customer_9988001122",
+        "onboardingStatus": "in_progress",
+        "lastVisitedScreen": "welcome",
+        "lastLoginAt": "2026-08-22T07:38:47.021Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T07:38:30.962Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "industry",
+        "services"
+      ],
+      "data": {
+        "businessName": "Grand Hyatt Kochi",
+        "industry": "Hospitality",
+        "services": [
+          "Photography",
+          "Brand Film"
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T07:38:30.907Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "9988001122",
+        "authProvider": "phone",
+        "userId": "customer_9988001122",
+        "onboardingStatus": "in_progress",
+        "lastVisitedScreen": "welcome",
+        "lastLoginAt": "2026-08-22T07:38:30.907Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T07:36:04.042Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": "9988001122",
+  "email": null,
+  "authProvider": "phone",
+  "onboardingStatus": "in_progress",
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-22T06:15:56.250Z",
+  "lastLoginAt": "2026-08-22T10:12:47.170Z",
+  "fieldProvenance": {
+    "phoneNumber": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:15:56.304Z",
+      "valueSummary": "9988001122"
+    },
+    "authProvider": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:15:56.304Z",
+      "valueSummary": "phone"
+    },
+    "userId": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:15:56.304Z",
+      "valueSummary": "customer_9988001122"
+    },
+    "onboardingStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:15:56.304Z",
+      "valueSummary": "in_progress"
+    },
+    "lastVisitedScreen": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:15:56.304Z",
+      "valueSummary": "welcome"
+    },
+    "lastLoginAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:47.170Z",
+      "valueSummary": "2026-08-22T10:12:47.170Z"
+    },
+    "businessName": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:20.286Z",
+      "valueSummary": "Grand Hyatt Kochi"
+    },
+    "industry": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:15:56.327Z",
+      "valueSummary": "Hospitality"
+    },
+    "businessDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T09:07:28.072Z",
+      "valueSummary": "This domain is for use in documentation examples without needing permission. Avoid use in operations"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:50.504Z",
+      "valueSummary": "0 items"
+    },
+    "projects": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:31.343Z",
+      "valueSummary": "0 items"
+    },
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:48:08.389Z",
+      "valueSummary": "https://example.com"
+    },
+    "websiteAnalyzedAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:50.503Z",
+      "valueSummary": "2026-08-22T10:12:50.502Z"
+    },
+    "websiteContentHash": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:50.503Z",
+      "valueSummary": "f80"
+    },
+    "websiteEvidenceItems": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:50.503Z",
+      "valueSummary": "3 items"
+    },
+    "websiteRetrievalMeta": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:50.503Z",
+      "valueSummary": "{\"finalUrl\":\"https://example.com/\",\"httpStatus\":200,\"pagesInspected\":[\"https://example.com/\"]}"
+    },
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:50.504Z",
+      "valueSummary": "0 items"
+    },
+    "contactInfo": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:50.504Z",
+      "valueSummary": "{\"email\":null,\"phone\":null}"
+    },
+    "socialLinks": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:50.504Z",
+      "valueSummary": "0 items"
+    },
+    "confidenceStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:48:08.389Z",
+      "valueSummary": "PARTIAL_EVIDENCE"
+    },
+    "confidenceReason": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:48:08.389Z",
+      "valueSummary": "AI enriched partial deterministic profile"
+    },
+    "sourceType": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:48:08.389Z",
+      "valueSummary": "VERIFIED_WEBSITE"
+    },
+    "summary": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:48:08.389Z",
+      "valueSummary": "Example Domain is a business This domain is for use in documentation examples without needing permis"
+    },
+    "summaryProvenance": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:48:08.389Z",
+      "valueSummary": "EVIDENCE_ANCHORED"
+    },
+    "discoveredAssets": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:50.504Z",
+      "valueSummary": "0 items"
+    },
+    "analysisStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:48:08.389Z",
+      "valueSummary": "FAST_PATH"
+    },
+    "classification": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:12:50.504Z",
+      "valueSummary": "{\"class\":\"SIMPLE\",\"reason\":\"STATIC_OR_MINIMAL\"}"
+    },
+    "targetAudience": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T06:49:03.747Z",
+      "valueSummary": "Individuals using documentation examples"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "userId": "customer_9988001122",
+  "lastVisitedScreen": "welcome",
+  "contactInfo": {
+    "email": null,
+    "phone": null
+  },
+  "socialLinks": [],
+  "confidenceStatus": "PARTIAL_EVIDENCE",
+  "confidenceReason": "AI enriched partial deterministic profile",
+  "sourceType": "VERIFIED_WEBSITE",
+  "summary": "Example Domain is a business This domain is for use in documentation examples without needing permission..",
+  "summaryProvenance": "EVIDENCE_ANCHORED",
+  "analysisStage": "FAST_PATH",
+  "classification": {
+    "class": "SIMPLE",
+    "reason": "STATIC_OR_MINIMAL"
+  }
+}

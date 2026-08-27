@@ -1,0 +1,207 @@
+{
+  "businessName": null,
+  "industry": null,
+  "businessStage": null,
+  "businessDescription": null,
+  "products": [],
+  "services": [],
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 0,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-08-27T07:00:32.453Z",
+  "websiteUrl": "mummeesnaturals.com",
+  "websiteAnalyzedAt": null,
+  "websiteContentHash": null,
+  "websiteEvidenceItems": [],
+  "websiteRetrievalMeta": null,
+  "addiRecommendations": {
+    "summary": "AI analysis failed. Manual expert review required.",
+    "observations": [],
+    "strengths": [],
+    "gaps": [],
+    "recommendations": [],
+    "predictions": [],
+    "confidence": "UNKNOWN",
+    "evidenceRefs": [],
+    "insufficientEvidence": true,
+    "humanReviewRequired": true,
+    "generatedAt": "2026-08-27T07:00:32.392Z",
+    "recommendationSummary": {
+      "total": 0,
+      "recommended": 0,
+      "alreadySufficient": 0,
+      "notSuggested": 0,
+      "needsMoreInfo": 0,
+      "highPriority": 0
+    },
+    "requiresExpertReview": true,
+    "humanReviewReasons": [
+      "Insufficient evidence for reliable analysis",
+      "Expert review recommended before acting on recommendations"
+    ],
+    "humanReviewFlaggedAt": "2026-08-27T07:00:32.392Z",
+    "userId": "customer_9854159999",
+    "websiteInspectionPerformed": false,
+    "budgetStatus": "requires_admin_pricing"
+  },
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-08-27T07:00:32.453Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "mummeesnaturals.com"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-27T07:00:32.393Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "addiRecommendations",
+        "strategicIntelligence"
+      ],
+      "data": {
+        "addiRecommendations": {
+          "summary": "AI analysis failed. Manual expert review required.",
+          "observations": [],
+          "strengths": [],
+          "gaps": [],
+          "recommendations": [],
+          "predictions": [],
+          "confidence": "UNKNOWN",
+          "evidenceRefs": [],
+          "insufficientEvidence": true,
+          "humanReviewRequired": true,
+          "generatedAt": "2026-08-27T07:00:32.392Z",
+          "recommendationSummary": {
+            "total": 0,
+            "recommended": 0,
+            "alreadySufficient": 0,
+            "notSuggested": 0,
+            "needsMoreInfo": 0,
+            "highPriority": 0
+          },
+          "requiresExpertReview": true,
+          "humanReviewReasons": [
+            "Insufficient evidence for reliable analysis",
+            "Expert review recommended before acting on recommendations"
+          ],
+          "humanReviewFlaggedAt": "2026-08-27T07:00:32.392Z",
+          "userId": "customer_9854159999",
+          "websiteInspectionPerformed": false,
+          "budgetStatus": "requires_admin_pricing"
+        },
+        "strategicIntelligence": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-27T07:00:03.955Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "mummeesnaturals.com"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": null,
+  "email": null,
+  "authProvider": null,
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-08-27T06:58:32.968Z",
+  "lastLoginAt": "2026-08-27T06:58:32.968Z",
+  "fieldProvenance": {
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-27T07:00:32.453Z",
+      "valueSummary": "0 items"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-27T07:00:32.453Z",
+      "valueSummary": "0 items"
+    },
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-27T07:00:03.955Z",
+      "valueSummary": "mummeesnaturals.com"
+    },
+    "addiRecommendations": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-27T07:00:32.393Z",
+      "valueSummary": "{\"summary\":\"AI analysis failed. Manual expert review required.\",\"observations\":[],\"strengths\":[],\"ga"
+    },
+    "strategicIntelligence": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-27T07:00:32.393Z",
+      "valueSummary": "0 items"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  }
+}

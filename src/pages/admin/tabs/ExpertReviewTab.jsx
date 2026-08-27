@@ -13,7 +13,9 @@ export function ExpertReviewTab() {
     apiService.fetchAdminExpertReviews().then(setProfiles);
   };
 
-  useEffect(refresh, []);
+  useEffect(() => {
+    refresh();
+  }, []);
 
   const handleReviewAction = async (userId, actionStatus) => {
     const isReject = actionStatus === 'rejected';

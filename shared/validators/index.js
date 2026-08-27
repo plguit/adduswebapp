@@ -19,8 +19,8 @@ export const validators = {
   },
 
   validateOTP(code) {
-    if (!code || code.length !== 6 || !/^\d{6}$/.test(code)) {
-      return { isValid: false, message: 'Enter all 6 digits.' };
+    if (!code || !/^\d{4,6}$/.test(String(code).trim())) {
+      return { isValid: false, message: 'Please enter a valid verification code.' };
     }
     return { isValid: true };
   },

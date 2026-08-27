@@ -1,209 +1,40 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
-import {
-  Globe, Instagram, Upload, FileText, Image as ImageIcon, X,
-  Link, ArrowRight, Loader, CheckCircle, AlertCircle
-} from 'lucide-react';
-import { useOnboardingStore } from '../../store/onboardingStore.js';
-
-import { 
-  validateName, 
-  validateBusinessName, 
-  validateIndustryOrSegment, 
-  validateBusinessDescription, 
-  validateURL 
-} from '../../utils/validators.js';
+import React, { useState, useRef } from 'react';
+import { FileText, Globe, ArrowRight, AlertCircle, CheckCircle2, ChevronDown, ChevronRight, Loader2 } from 'lucide-react';
+import { businessAnalysisService } from '../../services/businessAnalysisService';
+import { useOnboardingStore } from '../../store/onboardingStore';
+import { validateURL, validateBusinessName, validateName, validateBusinessDescription } from '../../utils/validators';
 
 const ANALYSIS_STEPS = [
-  { id: 'reviewing', label: 'Reviewing your document...' },
-  { id: 'extracting', label: 'Extracting business information...' },
-  { id: 'understanding-business', label: 'Understanding your business...' },
-  { id: 'understanding-services', label: 'Understanding your services...' },
-  { id: 'understanding-audience', label: 'Understanding your audience...' },
-  { id: 'understanding-brand', label: 'Understanding your brand...' },
-  { id: 'building', label: 'Building your business profile...' },
-  { id: 'done', label: 'Business profile ready!' },
+  { label: 'Connecting to business sources...', duration: 600 },
+  { label: 'Reading business offering & segment...', duration: 800 },
+  { label: 'Evaluating brand identity & deliverables...', duration: 700 },
+  { label: 'Formulating strategic recommendation...', duration: 500 },
 ];
 
-function detectUrlType(url) {
-  if (!url) return 'website';
-  const lower = url.toLowerCase();
-  if (lower.includes('instagram.com') || lower.includes('facebook.com') || lower.includes('twitter.com') || lower.includes('linkedin.com')) return 'social';
-  if (lower.includes('maps.google') || lower.includes('g.page') || lower.includes('goo.gl/maps')) return 'google';
-  return 'website';
-}
-
-export function BusinessUploadWidget({ onAnalysisComplete, disabled = false, activeTab: controlledTab, onTabChange }) {
-  const { state, updateState } = useOnboardingStore();
-  const [internalTab, setInternalTab] = useState('text');
-  const activeTab = controlledTab || internalTab;
-  const setActiveTab = (tab) => {
-    if (onTabChange) onTabChange(tab);
-    setInternalTab(tab);
-  };
+export function BusinessUploadWidget({ onAnalysisComplete, activeTab: externalTab, onTabChange, disabled = false }) {
+  const [activeTab, setActiveTabInternal] = useState(externalTab || 'text');
   const [url, setUrl] = useState('');
-  const [textInput, setTextInput] = useState('');
-  const [files, setFiles] = useState([]); // [{ file, name, type }]
-  const [isDragging, setIsDragging] = useState(false);
-  const [analysisStep, setAnalysisStep] = useState(null); // null | index number
-  const [manualForm, setManualForm] = useState({ name: state?.name || '', businessName: '', industry: '', segment: '', description: '' });
-
-  useEffect(() => {
-    if (state?.name && !manualForm.name) {
-      setManualForm(prev => ({ ...prev, name: state.name }));
-    }
-  }, [state?.name]);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [error, setError] = useState('');
-  const fileInputRef = useRef(null);
-  const textSaveTimer = useRef(null);
+  const [analysisMethodUsed, setAnalysisMethodUsed] = useState(null);
 
-  const runAnalysisAnimation = useCallback(async (analyseFn) => {
+  const { state, updateState } = useOnboardingStore();
+
+  const [manualForm, setManualForm] = useState({
+    name: state.name || '',
+    businessName: state.businessProfile?.businessName || '',
+    industry: state.businessProfile?.industry || '',
+    segment: state.businessProfile?.segment || '',
+    description: state.businessProfile?.summary || state.businessProfile?.description || ''
+  });
+
+  const setActiveTab = (tabId) => {
+    setActiveTabInternal(tabId);
+    if (typeof onTabChange === 'function') {
+      onTabChange(tabId);
+    }
     setError('');
-    setAnalysisStep(0);
-    try {
-      // Show each step with delay
-      for (let i = 0; i < ANALYSIS_STEPS.length - 1; i++) {
-        setAnalysisStep(i);
-        await new Promise(r => setTimeout(r, 700));
-      }
-      const result = await analyseFn();
-      setAnalysisStep(ANALYSIS_STEPS.length - 1); // "done"
-      await new Promise(r => setTimeout(r, 600));
-      setAnalysisStep(null);
-      if (onAnalysisComplete) onAnalysisComplete(result);
-    } catch (err) {
-      setAnalysisStep(null);
-      setError("We couldn't understand enough from this information. Please try again or enter your business details manually.");
-    }
-  }, [onAnalysisComplete]);
-
-  const handleUrlSubmit = async () => {
-    setError('');
-    const nameVal = validateName(manualForm.name);
-    if (!nameVal.isValid) {
-      setError(nameVal.message);
-      return;
-    }
-
-    const urlVal = validateURL(url);
-    if (!urlVal.isValid) {
-      setError(urlVal.message);
-      return;
-    }
-
-    const targetUrl = urlVal.normalizedUrl;
-    const urlType = detectUrlType(targetUrl);
-    await runAnalysisAnimation(async () => {
-      const { businessAnalysisService } = await import('../../services/businessAnalysisService');
-      let profile;
-      if (urlType === 'social') {
-        profile = await businessAnalysisService.analyzeSocial(targetUrl);
-      } else if (urlType === 'google') {
-        profile = await businessAnalysisService.analyzeGoogleBusiness(targetUrl);
-      } else {
-        profile = await businessAnalysisService.analyzeWebsite(targetUrl);
-      }
-      profile = profile || {};
-      profile.customerName = nameVal.name;
-      return profile;
-    });
-  };
-
-  const handleFileSubmit = async () => {
-    setError('');
-    const nameVal = validateName(manualForm.name);
-    if (!nameVal.isValid) {
-      setError(nameVal.message);
-      return;
-    }
-
-    if (!files.length) {
-      setError('Please select or drop a valid file.');
-      return;
-    }
-    const f = files[0];
-    await runAnalysisAnimation(async () => {
-      const { businessAnalysisService } = await import('../../services/businessAnalysisService');
-      let profile = await businessAnalysisService.analyzeDocument(f.file, 'company_profile');
-      profile = profile || {};
-      profile.customerName = nameVal.name;
-      return profile;
-    });
-  };
-
-  const handleTextSubmit = async () => {
-    setError('');
-    const nameVal = validateName(manualForm.name);
-    if (!nameVal.isValid) {
-      setError(nameVal.message);
-      return;
-    }
-
-    const bizVal = validateBusinessName(manualForm.businessName);
-    if (!bizVal.isValid) {
-      setError(bizVal.message);
-      return;
-    }
-
-    if (manualForm.industry.trim()) {
-      const indVal = validateIndustryOrSegment(manualForm.industry, 'Industry');
-      if (!indVal.isValid) {
-        setError(indVal.message);
-        return;
-      }
-    }
-
-    if (manualForm.segment.trim()) {
-      const segVal = validateIndustryOrSegment(manualForm.segment, 'Segment');
-      if (!segVal.isValid) {
-        setError(segVal.message);
-        return;
-      }
-    }
-
-    const descVal = validateBusinessDescription(manualForm.description);
-    if (!descVal.isValid) {
-      setError(descVal.message);
-      return;
-    }
-
-    await runAnalysisAnimation(async () => {
-      const { businessAnalysisService } = await import('../../services/businessAnalysisService');
-      const combinedText = `Business Name: ${bizVal.name}\nIndustry: ${manualForm.industry}\nSegment: ${manualForm.segment}\nDescription: ${descVal.description}`;
-      const profile = await businessAnalysisService.analyzeBusinessDescription(combinedText);
-      profile.businessName = bizVal.name;
-      profile.industry = manualForm.industry.trim() || profile.industry || 'Professional Services';
-      profile.segment = manualForm.segment.trim() || profile.segment || 'Commercial';
-      profile.businessDescription = descVal.description;
-      profile.customerName = nameVal.name;
-      return profile;
-    });
-  };
-
-  const handleFileSelect = (selectedFiles) => {
-    setError('');
-    const rawArr = Array.from(selectedFiles);
-    if (!rawArr.length) return;
-
-    const validFiles = [];
-    for (const f of rawArr) {
-      const ext = f.name.split('.').pop().toLowerCase();
-      if (!['pdf', 'docx', 'doc', 'txt', 'png', 'jpg', 'jpeg', 'ppt', 'pptx'].includes(ext)) {
-        setError(`File "${f.name}" has an unsupported format.`);
-        return;
-      }
-      if (f.size > 25 * 1024 * 1024) {
-        setError(`File "${f.name}" exceeds the maximum 25MB file size limit.`);
-        return;
-      }
-      validFiles.push({ file: f, name: f.name, size: f.size });
-    }
-    setFiles(validFiles);
-  };
-
-  const handleDrop = (e) => {
-    e.preventDefault();
-    setIsDragging(false);
-    handleFileSelect(e.dataTransfer.files);
   };
 
   const handleTextChange = (field, val) => {
@@ -211,216 +42,277 @@ export function BusinessUploadWidget({ onAnalysisComplete, disabled = false, act
     if (field === 'name' && val.trim()) {
       updateState({ name: val.trim() });
     }
-    clearTimeout(textSaveTimer.current);
-    textSaveTimer.current = setTimeout(() => {}, 500);
   };
 
-  const urlType = detectUrlType(url);
-  const urlTypeLabel = { website: '🌐 Website', social: '📱 Social Profile', google: '📍 Google Business' }[urlType];
+  const runStepAnimation = () => {
+    let step = 0;
+    setCurrentStepIndex(0);
+    const interval = setInterval(() => {
+      step += 1;
+      if (step < ANALYSIS_STEPS.length) {
+        setCurrentStepIndex(step);
+      } else {
+        clearInterval(interval);
+      }
+    }, 700);
+    return () => clearInterval(interval);
+  };
 
-  if (analysisStep !== null) {
+  const handleUrlSubmit = async () => {
+    if (!url.trim()) {
+      setError('Please enter a valid website URL.');
+      return;
+    }
+    const valResult = validateURL(url);
+    if (!valResult.isValid) {
+      setError(valResult.message || 'Please enter a valid URL.');
+      return;
+    }
+
+    setError('');
+    setIsAnalyzing(true);
+    setAnalysisMethodUsed('url');
+    const stopAnim = runStepAnimation();
+
+    try {
+      const profile = await businessAnalysisService.analyzeUrlOrText(url.trim());
+      stopAnim();
+      setIsAnalyzing(false);
+      if (typeof onAnalysisComplete === 'function') {
+        onAnalysisComplete(profile);
+      }
+    } catch (err) {
+      stopAnim();
+      setIsAnalyzing(false);
+      setError(err.message || 'Unable to complete automated analysis. You can enter details manually.');
+    }
+  };
+
+  const handleTextSubmit = async () => {
+    const valName = validateName(manualForm.name);
+    if (!valName.isValid) {
+      setError(valName.message);
+      return;
+    }
+    const valBiz = validateBusinessName(manualForm.businessName);
+    if (!valBiz.isValid) {
+      setError(valBiz.message);
+      return;
+    }
+    const valDesc = validateBusinessDescription(manualForm.description);
+    if (!valDesc.isValid) {
+      setError(valDesc.message);
+      return;
+    }
+
+    setError('');
+    setIsAnalyzing(true);
+    setAnalysisMethodUsed('text');
+    const stopAnim = runStepAnimation();
+
+    try {
+      const summaryText = `${manualForm.businessName}. ${manualForm.industry ? 'Industry: ' + manualForm.industry + '. ' : ''}${manualForm.segment ? 'Segment: ' + manualForm.segment + '. ' : ''}${manualForm.description}`;
+      const profile = await businessAnalysisService.analyzeUrlOrText(summaryText);
+      stopAnim();
+      setIsAnalyzing(false);
+      if (typeof onAnalysisComplete === 'function') {
+        onAnalysisComplete({
+          ...profile,
+          customerName: manualForm.name.trim(),
+          businessName: manualForm.businessName.trim(),
+          industry: manualForm.industry.trim(),
+          segment: manualForm.segment.trim(),
+          summary: manualForm.description.trim()
+        });
+      }
+    } catch (err) {
+      stopAnim();
+      setIsAnalyzing(false);
+      // Fallback
+      if (typeof onAnalysisComplete === 'function') {
+        onAnalysisComplete({
+          customerName: manualForm.name.trim(),
+          businessName: manualForm.businessName.trim(),
+          industry: manualForm.industry.trim(),
+          segment: manualForm.segment.trim(),
+          summary: manualForm.description.trim(),
+          sourceStatus: 'LIKELY_BUSINESS_WEBSITE'
+        });
+      }
+    }
+  };
+
+  const handleAnalysisTrigger = () => {
+    if (activeTab === 'url') {
+      handleUrlSubmit();
+    } else {
+      handleTextSubmit();
+    }
+  };
+
+  const isTextReady = manualForm.name.trim() && manualForm.businessName.trim() && manualForm.description.trim().length >= 10;
+  const isUrlReady = url.trim().length > 3;
+  const canAnalyze = activeTab === 'url' ? isUrlReady : isTextReady;
+
+  if (isAnalyzing) {
     return (
-      <div className="buw-analysis-overlay">
-        {ANALYSIS_STEPS.map((step, idx) => (
-          <div key={step.id} className={`buw-analysis-step ${idx < analysisStep ? 'step-done' : idx === analysisStep ? 'step-active' : 'step-pending'}`}>
-            <div className="buw-step-icon">
-              {idx < analysisStep ? <CheckCircle size={14} /> : idx === analysisStep ? <Loader size={14} className="buw-spin" /> : <div className="buw-step-dot" />}
-            </div>
-            <span>{step.label}</span>
-          </div>
-        ))}
+      <div style={{ background: '#FFFFFF', border: '1.5px solid #E5E7EB', borderRadius: '16px', padding: '24px', textAlign: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
+          <Loader2 size={32} color="#8B5CF6" className="spin" style={{ animation: 'spin 1s linear infinite' }} />
+        </div>
+        <h3 style={{ fontSize: '17px', fontWeight: 800, color: '#000000', margin: '0 0 16px 0' }}>
+          Analyzing your business...
+        </h3>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', textAlign: 'left' }}>
+          {ANALYSIS_STEPS.map((step, idx) => {
+            const isDone = idx < currentStepIndex;
+            const isCurrent = idx === currentStepIndex;
+            return (
+              <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '13px', color: isCurrent ? '#7C5CFF' : isDone ? '#10B981' : '#9CA3AF', fontWeight: isCurrent ? 700 : 500 }}>
+                {isDone ? <CheckCircle2 size={16} color="#10B981" /> : isCurrent ? <Loader2 size={16} color="#7C5CFF" className="spin" /> : <div style={{ width: '16px', height: '16px', borderRadius: '50%', border: '1.5px solid #E5E7EB' }} />}
+                <span>{step.label}</span>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="buw-container">
-      {/* Tab selector: 1. Text Section, 2. Upload File, 3. URL */}
-      <div className="buw-tabs">
-        {[
-          { id: 'text', label: '✍️ Enter Business Info', icon: FileText },
-          { id: 'file', label: '📄 Upload File', icon: Upload },
-          { id: 'url', label: '🔗 URL', icon: Globe },
-        ].map(tab => (
+    <div style={{ width: '100%' }}>
+      {/* ── TWO ACCORDION CARDS ONLY (Upload File Removed) ── */}
+      <div className="accordion-cards-group">
+        {/* Card 1: Enter Business Info */}
+        <div className={`accordion-card ${activeTab === 'text' ? 'is-active' : ''}`}>
           <button
-            key={tab.id}
-            className={`buw-tab ${activeTab === tab.id ? 'buw-tab-active' : ''}`}
-            onClick={() => setActiveTab(tab.id)}
+            type="button"
+            className="accordion-header-btn"
+            onClick={() => setActiveTab(activeTab === 'text' ? '' : 'text')}
           >
-            {tab.label}
+            <div className="accordion-header-left">
+              <div className="accordion-header-icon">
+                <FileText size={20} strokeWidth={1.75} color="#000000" />
+              </div>
+              <span className="accordion-header-title">Enter Business Info</span>
+            </div>
+            <div className="accordion-header-chevron">
+              {activeTab === 'text' ? <ChevronDown size={18} color="#000000" /> : <ChevronRight size={18} color="#6B7280" />}
+            </div>
           </button>
-        ))}
+
+          {activeTab === 'text' && (
+            <div className="accordion-body">
+              <input
+                type="text"
+                className="clean-white-input"
+                placeholder="Your Name *"
+                value={manualForm.name}
+                onChange={e => handleTextChange('name', e.target.value)}
+                disabled={disabled}
+              />
+              <input
+                type="text"
+                className="clean-white-input"
+                placeholder="Business / Company Name *"
+                value={manualForm.businessName}
+                onChange={e => handleTextChange('businessName', e.target.value)}
+                disabled={disabled}
+              />
+              <div style={{ display: 'flex', gap: '10px' }}>
+                <input
+                  type="text"
+                  className="clean-white-input"
+                  placeholder="Industry (e.g. Fintech)"
+                  value={manualForm.industry}
+                  onChange={e => handleTextChange('industry', e.target.value)}
+                  disabled={disabled}
+                />
+                <input
+                  type="text"
+                  className="clean-white-input"
+                  placeholder="Segment (e.g. B2B)"
+                  value={manualForm.segment}
+                  onChange={e => handleTextChange('segment', e.target.value)}
+                  disabled={disabled}
+                />
+              </div>
+              <textarea
+                className="clean-white-textarea"
+                placeholder="Tell us briefly what your business does, what you offer, and who you serve. *"
+                value={manualForm.description}
+                onChange={e => handleTextChange('description', e.target.value)}
+                rows={4}
+                disabled={disabled}
+              />
+            </div>
+          )}
+        </div>
+
+        {/* Card 2: Add Website URL */}
+        <div className={`accordion-card ${activeTab === 'url' ? 'is-active' : ''}`}>
+          <button
+            type="button"
+            className="accordion-header-btn"
+            onClick={() => setActiveTab(activeTab === 'url' ? '' : 'url')}
+          >
+            <div className="accordion-header-left">
+              <div className="accordion-header-icon">
+                <Globe size={20} strokeWidth={1.75} color="#000000" />
+              </div>
+              <span className="accordion-header-title">Add Website URL</span>
+            </div>
+            <div className="accordion-header-chevron">
+              {activeTab === 'url' ? <ChevronDown size={18} color="#000000" /> : <ChevronRight size={18} color="#6B7280" />}
+            </div>
+          </button>
+
+          {activeTab === 'url' && (
+            <div className="accordion-body">
+              <input
+                type="text"
+                className="clean-white-input"
+                placeholder="Your Name *"
+                value={manualForm.name}
+                onChange={e => handleTextChange('name', e.target.value)}
+                disabled={disabled}
+              />
+              <input
+                type="url"
+                className="clean-white-input"
+                placeholder="https://yourwebsite.com"
+                value={url}
+                onChange={e => setUrl(e.target.value)}
+                onKeyDown={e => { if (e.key === 'Enter') handleUrlSubmit(); }}
+                disabled={disabled}
+                autoFocus
+              />
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* URL Tab */}
-      {activeTab === 'url' && (
-        <div className="buw-tab-content">
-          <div className="buw-url-hint">
-            Enter your website URL and ADDI will analyze it automatically.
-          </div>
-          <div style={{ margin: '8px 0' }}>
-            <input
-              type="text"
-              className="buw-text-input"
-              style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.2)', color: '#fff', fontSize: '13px' }}
-              placeholder="Your Name *"
-              value={manualForm.name}
-              onChange={e => handleTextChange('name', e.target.value)}
-              disabled={disabled}
-            />
-          </div>
-          <div className="buw-url-row">
-            <Globe size={16} className="buw-url-icon" />
-            <input
-              type="url"
-              className="buw-url-input"
-              placeholder="https://yourwebsite.com"
-              value={url}
-              onChange={e => setUrl(e.target.value)}
-              onKeyDown={e => { if (e.key === 'Enter') handleUrlSubmit(); }}
-              disabled={disabled}
-            />
-            {url && (
-              <span className="buw-url-type-chip">{urlTypeLabel}</span>
-            )}
-          </div>
-          {url.trim() && (
-            <button className="primary-btn btn-compact w-full buw-submit-btn" onClick={handleUrlSubmit} disabled={disabled || !manualForm.name.trim()}>
-              <span>Analyze {urlTypeLabel}</span><ArrowRight size={14} />
-            </button>
-          )}
-        </div>
-      )}
-
-      {/* File Upload Tab */}
-      {activeTab === 'file' && (
-        <div className="buw-tab-content">
-          <div style={{ margin: '0 0 10px 0' }}>
-            <input
-              type="text"
-              className="buw-text-input"
-              style={{ width: '100%', padding: '10px 12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.2)', color: '#fff', fontSize: '13px' }}
-              placeholder="Your Name *"
-              value={manualForm.name}
-              onChange={e => handleTextChange('name', e.target.value)}
-              disabled={disabled}
-            />
-          </div>
-          <div
-            className={`buw-drop-zone ${isDragging ? 'buw-drop-zone-active' : ''}`}
-            onDragOver={e => { e.preventDefault(); setIsDragging(true); }}
-            onDragLeave={() => setIsDragging(false)}
-            onDrop={handleDrop}
-            onClick={() => fileInputRef.current?.click()}
-          >
-            <input
-              ref={fileInputRef}
-              type="file"
-              accept=".pdf,.docx,.doc,.txt,.png,.jpg,.jpeg,.ppt,.pptx"
-              multiple={false}
-              style={{ display: 'none' }}
-              onChange={e => handleFileSelect(e.target.files)}
-            />
-            {files.length === 0 ? (
-              <>
-                <Upload size={28} className="buw-drop-icon" />
-                <div className="buw-drop-label">Drop your file here or click to browse</div>
-                <div className="buw-drop-types">PDF · DOCX · PPT · PNG · JPG</div>
-              </>
-            ) : (
-              <div className="buw-file-chips">
-                {files.map((f, i) => (
-                  <div key={i} className="buw-file-chip">
-                    <FileText size={14} />
-                    <span>{f.name}</span>
-                    <button onClick={e => { e.stopPropagation(); setFiles([]); }} className="buw-file-remove">
-                      <X size={12} />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-          {files.length > 0 && (
-            <button className="primary-btn btn-compact w-full buw-submit-btn" onClick={handleFileSubmit} disabled={disabled || !manualForm.name.trim()}>
-              <span>Analyze Document</span><ArrowRight size={14} />
-            </button>
-          )}
-        </div>
-      )}
-
-      {/* Free Text Tab */}
-      {activeTab === 'text' && (
-        <div className="buw-tab-content" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <input
-            type="text"
-            className="buw-text-input"
-            style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.2)', color: '#fff', fontSize: '14px' }}
-            placeholder="Your Name *"
-            value={manualForm.name}
-            onChange={e => handleTextChange('name', e.target.value)}
-            disabled={disabled}
-          />
-          <input
-            type="text"
-            className="buw-text-input"
-            style={{ width: '100%', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.2)', color: '#fff', fontSize: '14px' }}
-            placeholder="Business / Company Name *"
-            value={manualForm.businessName}
-            onChange={e => handleTextChange('businessName', e.target.value)}
-            disabled={disabled}
-          />
-          <div style={{ display: 'flex', gap: '12px' }}>
-            <input
-              type="text"
-              className="buw-text-input"
-              style={{ flex: 1, padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.2)', color: '#fff', fontSize: '14px' }}
-              placeholder="Industry (e.g. Fintech)"
-              value={manualForm.industry}
-              onChange={e => handleTextChange('industry', e.target.value)}
-              disabled={disabled}
-            />
-            <input
-              type="text"
-              className="buw-text-input"
-              style={{ flex: 1, padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.2)', color: '#fff', fontSize: '14px' }}
-              placeholder="Segment (e.g. B2B)"
-              value={manualForm.segment}
-              onChange={e => handleTextChange('segment', e.target.value)}
-              disabled={disabled}
-            />
-          </div>
-          <textarea
-            className="buw-textarea"
-            style={{ minHeight: '120px' }}
-            placeholder="Tell us briefly what your business does, what you offer, and who you serve. *"
-            value={manualForm.description}
-            onChange={e => {
-               const val = e.target.value;
-               // Simple validation for no bizarre special chars (allowing normal punctuation)
-               if (/^[\w\s.,!?'"-]*$/.test(val)) {
-                 handleTextChange('description', val);
-                 setError('');
-               }
-            }}
-            rows={5}
-            disabled={disabled}
-          />
-          <button
-            className="primary-btn btn-compact w-full buw-submit-btn"
-            disabled={!manualForm.name.trim() || !manualForm.businessName.trim() || manualForm.description.trim().length < 10 || disabled}
-            onClick={handleTextSubmit}
-          >
-            <span>Analyze Business</span><ArrowRight size={14} />
-          </button>
-        </div>
-      )}
-
       {error && (
-        <div className="error-banner flex-center" style={{ marginTop: '10px' }}>
-          <AlertCircle size={14} /><span>{error}</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 14px', background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '10px', color: '#EF4444', fontSize: '13px', fontWeight: 600, marginBottom: '14px' }}>
+          <AlertCircle size={15} /> <span>{error}</span>
         </div>
       )}
+
+      {/* ── ANALYSIS CONTROL (Left text: Analysis, Right button: Round Arrow) ── */}
+      <div className="analysis-action-bar">
+        <span className="analysis-action-text">Analysis</span>
+        <button
+          type="button"
+          className="analysis-go-circle-btn"
+          disabled={!canAnalyze || disabled}
+          onClick={handleAnalysisTrigger}
+          title="Start Analysis"
+        >
+          Go
+        </button>
+      </div>
     </div>
   );
 }
+
+export default BusinessUploadWidget;

@@ -55,6 +55,43 @@ export const PROJECT_STATES = {
   FAILED: 'failed'
 };
 
+export function resolveUserDestination(options = {}) {
+  const authoritativeState = getAuthoritativeState();
+  const session = options.session || authoritativeState.session;
+  const isAuthenticated = sessionManager.isAuthenticated();
+  const profile = options.profile || authoritativeState.profile;
+  const state = options.state || {};
+
+  if (!isAuthenticated || !session?.userId) {
+    return {
+      destination: 'AUTH',
+      step: 'welcome',
+      reason: 'User is not authenticated'
+    };
+  }
+
+  const isCompleted = 
+    profile?.onboardingStatus === 'completed' ||
+    state.onboardingStatus === 'completed' ||
+    session.lastVisitedScreen === 'dashboard' ||
+    profile?.lastVisitedScreen === 'dashboard' ||
+    state.currentStep === 'dashboard';
+
+  if (isCompleted) {
+    return {
+      destination: 'DASHBOARD',
+      step: 'dashboard',
+      reason: 'User has completed onboarding'
+    };
+  }
+
+  return {
+    destination: 'ONBOARDING',
+    step: state.currentStep || profile?.currentStep || 'business_input',
+    reason: 'Onboarding in progress'
+  };
+}
+
 /**
  * Resolves the current application state and recommended next step.
  * @param {Object} options
@@ -86,24 +123,11 @@ export function resolveFlow(options = {}) {
     };
   }
 
-  // Check onboarding completion first
-  const isOnboardingComplete = onboardingStatus === 'completed' ||
-    (lastVisitedScreen === 'dashboard') ||
-    (currentStep === 'dashboard');
-
-  if (isOnboardingComplete) {
-    return {
-      appState: APP_STATES.DASHBOARD,
-      nextStep: 'dashboard',
-      reason: 'Onboarding complete, showing dashboard'
-    };
-  }
-
   // Not authenticated → auth flow
   if (!isAuthenticated) {
     return {
       appState: APP_STATES.AUTH,
-      nextStep: currentStep === 'splash' ? 'welcome' : currentStep,
+      nextStep: currentStep === 'splash' ? 'welcome' : (currentStep || 'welcome'),
       reason: 'User not authenticated'
     };
   }
@@ -114,6 +138,19 @@ export function resolveFlow(options = {}) {
       appState: APP_STATES.AUTH,
       nextStep: currentStep || 'otp',
       reason: 'Authenticated but OTP not verified'
+    };
+  }
+
+  // Explicit onboarding completion
+  const isOnboardingComplete = onboardingStatus === 'completed' ||
+    lastVisitedScreen === 'dashboard' ||
+    currentStep === 'dashboard';
+
+  if (isOnboardingComplete) {
+    return {
+      appState: APP_STATES.DASHBOARD,
+      nextStep: 'dashboard',
+      reason: 'Onboarding complete, showing dashboard'
     };
   }
 
@@ -129,28 +166,13 @@ export function resolveFlow(options = {}) {
  * Resolves the next onboarding step based on current progress and collected data.
  */
 function resolveOnboardingStep(currentStep, businessProfile, project) {
-  // If user has an active project, go to dashboard
-  if (project && (project.projectId || project.status === 'SUBMITTED')) {
-    return 'dashboard';
-  }
-
-  // If business profile is confirmed, continue with project flow
-  if (businessProfile?.isConfirmed) {
-    const stepOrder = [
-      'welcome', 'phone', 'otp', 'name', 'business_input',
-      'business_analysis', 'expectation', 'business_summary',
-      'project_shortcut', 'inspiration_gallery', 'booking',
-      'project_details', 'final_review', 'dashboard'
-    ];
-    const currentIndex = stepOrder.indexOf(currentStep);
-    if (currentIndex >= 0 && currentIndex < stepOrder.length - 1) {
-      return stepOrder[currentIndex + 1];
-    }
+  // If user explicitly has an already completed project, go to dashboard
+  if (project && (project.status === 'completed' || project.status === 'active')) {
     return 'dashboard';
   }
 
   // Default: continue from current step
-  return currentStep || 'welcome';
+  return currentStep || 'business_input';
 }
 
 /**

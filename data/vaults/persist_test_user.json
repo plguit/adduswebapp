@@ -27,7 +27,7 @@
   "missingAssets": [],
   "aiConfidenceScore": 0,
   "conversationStatus": "discovering",
-  "lastUpdated": "2026-08-21T05:53:05.893Z",
+  "lastUpdated": "2026-08-26T19:14:24.655Z",
   "websiteUrl": null,
   "websiteAnalyzedAt": null,
   "websiteEvidenceItems": [
@@ -38,7 +38,7 @@
       "observation": "Test Business",
       "evidence": "Test Business is a consulting firm.",
       "confidence": "high",
-      "checkedAt": "2026-08-21T05:53:05.890Z"
+      "checkedAt": "2026-08-26T19:14:24.652Z"
     }
   ],
   "websiteRetrievalMeta": null,
@@ -46,6 +46,732 @@
   "addiRecommendationsGeneratedAt": null,
   "strategicIntelligence": [],
   "auditLog": [
+    {
+      "timestamp": "2026-08-26T19:14:24.655Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T19:14:24.652Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T18:44:54.961Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T18:44:54.957Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T18:38:22.895Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T18:38:22.892Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T18:30:05.861Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T18:30:05.857Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T18:22:48.955Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T18:22:48.953Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T18:12:33.741Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T18:12:33.738Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T17:56:04.761Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T17:56:04.758Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T17:45:19.907Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T17:45:19.904Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T17:40:05.154Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T17:40:05.151Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T17:34:45.445Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T17:34:45.443Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T17:17:44.344Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T17:17:44.341Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T17:10:23.661Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T17:10:23.658Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T15:57:10.416Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T15:57:10.413Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T15:38:29.798Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T15:38:29.796Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T15:33:23.707Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T15:33:23.705Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T15:15:48.046Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T15:15:48.044Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T15:06:41.901Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T15:06:41.898Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T14:49:41.295Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T14:49:41.293Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T14:42:33.568Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T14:42:33.565Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T14:41:05.254Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T14:41:05.252Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T14:35:04.431Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T14:35:04.428Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T14:22:02.894Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T14:22:02.892Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T14:10:52.263Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T14:10:52.256Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T14:10:21.435Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T14:10:21.432Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-26T14:10:10.284Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-26T14:10:10.282Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:07:44.112Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-22T10:07:44.109Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:08:55.473Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-22T09:08:55.469Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T07:18:28.105Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-22T07:18:28.055Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T06:54:57.322Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-22T06:54:57.319Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T06:52:57.157Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-22T06:52:57.154Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T05:41:19.582Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-22T05:41:19.580Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T05:07:03.809Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-22T05:07:03.807Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T05:06:29.049Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteEvidenceItems"
+      ],
+      "data": {
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "EV_PERSIST_1",
+            "sourceUrl": "https://example.com",
+            "field": "identity",
+            "observation": "Test Business",
+            "evidence": "Test Business is a consulting firm.",
+            "confidence": "high",
+            "checkedAt": "2026-08-22T05:06:29.047Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
     {
       "timestamp": "2026-08-21T05:53:05.893Z",
       "actor": "system",
@@ -419,732 +1145,6 @@
         ]
       },
       "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T07:10:14.259Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-20T07:10:14.257Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T07:06:05.606Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-20T07:06:05.604Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T07:03:45.367Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-20T07:03:45.365Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T07:02:46.250Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-20T07:02:46.248Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T06:39:38.417Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-20T06:39:38.415Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T06:26:53.935Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-20T06:26:53.932Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T06:26:11.728Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-20T06:26:11.725Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T06:06:13.570Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-20T06:06:13.568Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-16T12:18:44.399Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-16T12:18:44.396Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-16T06:06:52.209Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-16T06:06:52.207Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-16T05:46:17.834Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-16T05:46:17.800Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-16T05:02:13.320Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-16T05:02:13.317Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-15T15:44:01.199Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-15T15:44:01.196Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-15T13:52:03.180Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-15T13:52:03.177Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-15T12:59:52.881Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-15T12:59:52.879Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-15T12:30:16.347Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-15T12:30:16.343Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-15T12:24:34.821Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-15T12:24:34.818Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-15T12:10:55.522Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-15T12:10:55.518Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-15T12:06:53.887Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-15T12:06:53.883Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-14T07:00:01.620Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-14T07:00:01.606Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-14T06:53:44.769Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-14T06:53:44.767Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-14T06:50:50.617Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-14T06:50:50.612Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-14T06:48:46.478Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-14T06:48:46.475Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-13T16:58:02.055Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-13T16:58:02.052Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-13T16:51:50.745Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-13T16:51:50.742Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-13T16:12:26.803Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-13T16:12:26.800Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-13T16:07:16.491Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-13T16:07:16.489Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-13T15:33:19.129Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-13T15:33:19.127Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-13T14:53:44.655Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-13T14:53:44.652Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-13T14:51:55.950Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-13T14:51:55.946Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-13T14:21:39.914Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-13T14:21:39.911Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-13T13:37:20.278Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-13T13:37:20.274Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-13T13:30:57.711Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteEvidenceItems"
-      ],
-      "data": {
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "EV_PERSIST_1",
-            "sourceUrl": "https://example.com",
-            "field": "identity",
-            "observation": "Test Business",
-            "evidence": "Test Business is a consulting firm.",
-            "confidence": "high",
-            "checkedAt": "2026-08-13T13:30:57.709Z"
-          }
-        ]
-      },
-      "provenance": "AI_GENERATED"
     }
   ],
   "name": null,
@@ -1167,7 +1167,7 @@
     "websiteEvidenceItems": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-08-21T05:53:05.893Z",
+      "lastVerifiedAt": "2026-08-26T19:14:24.654Z",
       "valueSummary": "1 items"
     }
   }

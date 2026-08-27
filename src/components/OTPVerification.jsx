@@ -1,18 +1,17 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Lock, ArrowLeft, RefreshCw, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Smartphone, Edit2, ArrowRight, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { otpService } from '../services/otpService.js';
 
 export function OTPVerification({ phone, onEditPhone, onVerifiedSuccess }) {
   const [otp, setOtp] = useState(['', '', '', '']);
   const [error, setError] = useState('');
-  const [statusMessage, setStatusMessage] = useState('OTP sent to +91 ' + phone);
+  const [statusMessage, setStatusMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [resendTimer, setResendTimer] = useState(30);
   const [isVerified, setIsVerified] = useState(false);
 
   const inputRefs = [useRef(), useRef(), useRef(), useRef()];
 
-  // Countdown timer for Resend OTP
   useEffect(() => {
     let interval = null;
     if (resendTimer > 0) {
@@ -24,18 +23,16 @@ export function OTPVerification({ phone, onEditPhone, onVerifiedSuccess }) {
   }, [resendTimer]);
 
   const handleChange = (index, value) => {
-    const digit = value.replace(/\D/g, '').slice(-1); // Only allow numeric single digit
+    const digit = value.replace(/\D/g, '').slice(-1);
     const newOtp = [...otp];
     newOtp[index] = digit;
     setOtp(newOtp);
     setError('');
 
-    // Auto-advance to next input if digit entered
     if (digit && index < 3) {
       inputRefs[index + 1].current?.focus();
     }
 
-    // Auto-verify if all 4 digits entered
     const fullCode = newOtp.join('');
     if (fullCode.length === 4) {
       handleVerify(fullCode);
@@ -43,10 +40,8 @@ export function OTPVerification({ phone, onEditPhone, onVerifiedSuccess }) {
   };
 
   const handleKeyDown = (index, e) => {
-    // Backspace handling
     if (e.key === 'Backspace') {
       if (!otp[index] && index > 0) {
-        // Clear previous input and move focus back
         const newOtp = [...otp];
         newOtp[index - 1] = '';
         setOtp(newOtp);
@@ -56,15 +51,14 @@ export function OTPVerification({ phone, onEditPhone, onVerifiedSuccess }) {
   };
 
   const handlePaste = (e) => {
-    // Disable paste per requirements
     e.preventDefault();
-    setError('Pasting is disabled for security. Please type the 4-digit OTP code.');
+    setError('Pasting is disabled. Please type the 4-digit OTP.');
   };
 
   const handleVerify = async (codeToVerify) => {
     const code = codeToVerify || otp.join('');
     if (code.length !== 4) {
-      setError('Please enter all 4 digits of your OTP.');
+      setError('Please enter all 4 digits.');
       return;
     }
 
@@ -77,30 +71,29 @@ export function OTPVerification({ phone, onEditPhone, onVerifiedSuccess }) {
 
       if (res.success) {
         setIsVerified(true);
-        setStatusMessage('Perfect! Your account is ready.');
+        setStatusMessage('Verified successfully.');
         setTimeout(() => {
           if (typeof onVerifiedSuccess === 'function') {
             onVerifiedSuccess();
           }
-        }, 1500);
+        }, 800);
       } else {
         if (res.status === 'TOO_MANY_ATTEMPTS') {
           setError('Too many failed attempts. Please click Resend OTP.');
         } else if (res.status === 'OTP_EXPIRED') {
           setError('OTP has expired. Please click Resend OTP.');
         } else {
-          setError(res.message || 'Invalid OTP. (Hint: Use mock code 123456)');
+          setError(res.message || 'Invalid OTP code. Please try again.');
         }
       }
     } catch (err) {
       setLoading(false);
-      setError('Network error: Unable to verify OTP. Please try again.');
+      setError('Network error: Unable to verify OTP.');
     }
   };
 
   const handleResend = async () => {
     if (resendTimer > 0) return;
-
     setLoading(true);
     setError('');
     setOtp(['', '', '', '']);
@@ -109,7 +102,6 @@ export function OTPVerification({ phone, onEditPhone, onVerifiedSuccess }) {
       await otpService.sendOTP(phone);
       setLoading(false);
       setResendTimer(30);
-      setStatusMessage('A new OTP has been sent to +91 ' + phone);
       inputRefs[0].current?.focus();
     } catch (err) {
       setLoading(false);
@@ -118,89 +110,79 @@ export function OTPVerification({ phone, onEditPhone, onVerifiedSuccess }) {
   };
 
   return (
-    <div className="onboarding-card-wrapper fade-in">
-      <div className="step-header">
-        <div className="icon-badge">
-          {isVerified ? (
-            <CheckCircle2 size={24} className="success-icon" />
-          ) : (
-            <Lock size={22} className="accent-icon" />
-          )}
+    <div className="manrope-auth-viewport">
+      <div className="manrope-auth-container">
+        <div className="manrope-icon-header">
+          <Smartphone size={34} strokeWidth={1.5} color="#000000" />
         </div>
-        <h2 className="step-title">
-          {isVerified ? 'Perfect!' : 'Verification Code'}
-        </h2>
-        <p className="step-subtitle">
-          {isVerified ? (
-            <span className="success-subtitle">
-              Your account is ready.<br />Now let's understand your business.
-            </span>
-          ) : (
-            <>
-              Enter the 4-digit code sent to <strong>+91 {phone}</strong>
-              <button type="button" className="edit-phone-btn" onClick={onEditPhone}>
-                Edit
-              </button>
-            </>
-          )}
-        </p>
-      </div>
 
-      {!isVerified && (
-        <div className="otp-form">
-          <div className="otp-boxes-wrap">
-            {otp.map((digit, idx) => (
-              <input
-                key={idx}
-                ref={inputRefs[idx]}
-                type="text"
-                inputMode="numeric"
-                maxLength={1}
-                className={`otp-box ${digit ? 'box-filled' : ''} ${error ? 'box-error' : ''}`}
-                value={digit}
-                onChange={(e) => handleChange(idx, e.target.value)}
-                onKeyDown={(e) => handleKeyDown(idx, e)}
-                onPaste={handlePaste}
-                autoFocus={idx === 0}
-              />
-            ))}
-          </div>
+        <h1 className="manrope-auth-heading-otp">Enter the OTP</h1>
+        <button
+          type="button"
+          className="manrope-phone-edit-row"
+          onClick={onEditPhone}
+        >
+          <span>+91 {phone}</span>
+          <Edit2 size={14} />
+        </button>
 
-          {error && (
-            <div className="error-banner flex-center">
-              <AlertCircle size={15} />
-              <span>{error}</span>
+        {!isVerified ? (
+          <form onSubmit={(e) => { e.preventDefault(); handleVerify(); }} style={{ width: '100%' }}>
+            <div className="manrope-otp-boxes">
+              {otp.map((digit, idx) => (
+                <input
+                  key={idx}
+                  ref={inputRefs[idx]}
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={1}
+                  className={`manrope-otp-box ${digit ? 'filled' : ''} ${error ? 'error' : ''}`}
+                  value={digit}
+                  onChange={(e) => handleChange(idx, e.target.value)}
+                  onKeyDown={(e) => handleKeyDown(idx, e)}
+                  onPaste={handlePaste}
+                  autoFocus={idx === 0}
+                />
+              ))}
             </div>
-          )}
 
-          <div className="hint-pill">
-            <span>💡 Mock OTP Code: <strong>1234</strong></span>
+            {error && (
+              <div className="manrope-error-msg">
+                <AlertCircle size={14} /> <span>{error}</span>
+              </div>
+            )}
+
+            <div className="manrope-timer-text">
+              {resendTimer > 0 ? (
+                <span>00:{resendTimer < 10 ? `0${resendTimer}` : resendTimer}</span>
+              ) : (
+                <button
+                  type="button"
+                  className="manrope-resend-btn"
+                  onClick={handleResend}
+                >
+                  Resend OTP
+                </button>
+              )}
+            </div>
+
+            <div className="manrope-cta-right-row">
+              <button
+                type="submit"
+                disabled={otp.join('').length !== 4 || loading}
+                className="manrope-circle-cta"
+                title="Continue"
+              >
+                <ArrowRight size={22} color="#FFFFFF" strokeWidth={2.5} />
+              </button>
+            </div>
+          </form>
+        ) : (
+          <div style={{ color: '#059669', display: 'flex', alignItems: 'center', gap: '6px', marginTop: '16px', fontWeight: 600 }}>
+            <CheckCircle2 size={18} /> <span>{statusMessage}</span>
           </div>
-
-          <div className="otp-actions flex-between">
-            <button
-              type="button"
-              className="resend-btn"
-              disabled={resendTimer > 0 || loading}
-              onClick={handleResend}
-            >
-              <RefreshCw size={14} className={loading ? 'spin' : ''} />
-              <span>
-                {resendTimer > 0 ? `Resend OTP in ${resendTimer}s` : 'Resend OTP'}
-              </span>
-            </button>
-
-            <button
-              type="button"
-              className="primary-btn btn-compact"
-              disabled={otp.join('').length !== 4 || loading}
-              onClick={() => handleVerify()}
-            >
-              {loading ? 'Verifying...' : 'Verify'}
-            </button>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }

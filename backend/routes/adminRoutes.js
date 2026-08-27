@@ -330,7 +330,23 @@ router.post('/chat/send', (req, res) => {
   
   // 1. If message is sent to a specific customer (Admin replying to customer)
   if (!isCustomerSender && recipientId && recipientId !== 'admin' && recipientId !== 'global') {
-    const vault = getBusinessVault(recipientId);
+    let targetVaultUserId = recipientId;
+    let vault = getBusinessVault(recipientId);
+    if (!vault || (!vault.businessName && !vault.chatMessages)) {
+      const allVaults = getAllVaults();
+      const normRecip = recipientId.replace(/\D/g, '').slice(-10);
+      const matched = allVaults.find(item => {
+        const vPhone = (item.vault?.phoneNumber || item.vault?.phone || '').replace(/\D/g, '').slice(-10);
+        return item.userId === recipientId ||
+          item.vault?.customerId === recipientId ||
+          (normRecip && vPhone && normRecip.length === 10 && vPhone.length === 10 && normRecip === vPhone);
+      });
+      if (matched) {
+        targetVaultUserId = matched.userId;
+        vault = matched.vault;
+      }
+    }
+
     const messages = vault.chatMessages || [];
     messages.push(message);
 
@@ -353,12 +369,28 @@ router.post('/chat/send', (req, res) => {
       createdAt: message.timestamp
     });
 
-    updateBusinessVault(recipientId, { chatMessages: messages, chatHistory, notifications: notifs });
+    updateBusinessVault(targetVaultUserId, { chatMessages: messages, chatHistory, notifications: notifs });
   }
 
   // 2. If message is sent by a customer to Admin
   if (isCustomerSender && senderId && senderId !== 'admin') {
-    const vault = getBusinessVault(senderId);
+    let targetSenderUserId = senderId;
+    let vault = getBusinessVault(senderId);
+    if (!vault || (!vault.businessName && !vault.chatMessages)) {
+      const allVaults = getAllVaults();
+      const normSender = senderId.replace(/\D/g, '').slice(-10);
+      const matched = allVaults.find(item => {
+        const vPhone = (item.vault?.phoneNumber || item.vault?.phone || '').replace(/\D/g, '').slice(-10);
+        return item.userId === senderId ||
+          item.vault?.customerId === senderId ||
+          (normSender && vPhone && normSender.length === 10 && vPhone.length === 10 && normSender === vPhone);
+      });
+      if (matched) {
+        targetSenderUserId = matched.userId;
+        vault = matched.vault;
+      }
+    }
+
     const messages = vault.chatMessages || [];
     messages.push(message);
 
@@ -372,7 +404,7 @@ router.post('/chat/send', (req, res) => {
       timestamp: message.timestamp
     });
 
-    updateBusinessVault(senderId, { chatMessages: messages, chatHistory });
+    updateBusinessVault(targetSenderUserId, { chatMessages: messages, chatHistory });
   }
   
   auditStore.log('SEND_CHAT_MESSAGE', senderId, 'AdminChatTab', 'ChatMessage', { messageId: message.id, recipientId, conversationId, entity: 'chat' });

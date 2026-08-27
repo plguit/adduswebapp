@@ -181,12 +181,97 @@ router.put('/conversations/:userId/:conversationId', requireOwnership, (req, res
   res.json({ success: true, conversations: updated.conversations || [] });
 });
 
-router.delete('/conversations/:userId/:conversationId', requireOwnership, (req, res) => {
-  const { userId, conversationId } = req.params;
+// ── Customer Chat ──────────────────────────────────────────────────────────
+router.get('/chat/messages/:userId', requireOwnership, (req, res) => {
+  const { userId } = req.params;
+  let vault = getBusinessVault(userId);
+  if (!vault || (!vault.chatMessages && !vault.chatHistory)) {
+    const all = getAllVaults();
+    const normUser = userId.replace(/\D/g, '').slice(-10);
+    const matched = all.find(item => {
+      const vPhone = (item.vault?.phoneNumber || item.vault?.phone || '').replace(/\D/g, '').slice(-10);
+      return item.userId === userId ||
+        item.vault?.customerId === userId ||
+        (normUser && vPhone && normUser.length === 10 && vPhone.length === 10 && normUser === vPhone);
+    });
+    if (matched) {
+      vault = matched.vault;
+    }
+  }
+
+  const rawMessages = vault?.chatMessages || [];
+  const rawHistory = vault?.chatHistory || [];
+
+  // Merge chatMessages and chatHistory for complete coverage
+  const msgMap = new Map();
+  rawMessages.forEach(m => {
+    const key = m.id || `${m.content || m.text}_${m.timestamp}`;
+    msgMap.set(key, {
+      id: m.id,
+      senderId: m.senderId || (m.role === 'admin' || m.sender === 'admin' ? 'admin' : userId),
+      senderRole: m.senderRole || (m.role === 'admin' || m.sender === 'admin' ? 'ADMIN' : 'CUSTOMER'),
+      senderName: m.senderName || (m.role === 'admin' || m.sender === 'admin' ? 'Admin Team' : 'You'),
+      content: m.content || m.text || '',
+      timestamp: m.timestamp || new Date().toISOString()
+    });
+  });
+
+  rawHistory.forEach((h, idx) => {
+    const text = h.text || h.content || '';
+    const ts = h.timestamp || new Date().toISOString();
+    const key = h.id || `${text}_${ts}`;
+    if (!msgMap.has(key)) {
+      const isAdmin = h.role === 'admin' || h.sender === 'admin';
+      msgMap.set(key, {
+        id: h.id || `hist_${idx}`,
+        senderId: isAdmin ? 'admin' : (h.sender === 'user' ? userId : 'addi_bot'),
+        senderRole: isAdmin ? 'ADMIN' : (h.sender === 'user' ? 'CUSTOMER' : 'AI_STRATEGIST'),
+        senderName: h.senderName || (isAdmin ? 'Admin Team' : (h.sender === 'user' ? 'You' : 'ADDI')),
+        content: text,
+        timestamp: ts
+      });
+    }
+  });
+
+  const messages = Array.from(msgMap.values()).sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+  res.json({ success: true, messages });
+});
+
+router.post('/chat/send/:userId', requireOwnership, (req, res) => {
+  const { userId } = req.params;
+  const { content, senderName, recipientId } = req.body || {};
+  if (!content || !content.trim()) {
+    return res.status(400).json({ error: 'Message content is required.' });
+  }
+
   const vault = getBusinessVault(userId);
-  const conversations = (vault.conversations || []).filter(c => c.conversationId !== conversationId);
-  const updated = updateBusinessVault(userId, { conversations });
-  res.json({ success: true, conversations: updated.conversations || [] });
+  const messages = vault.chatMessages || [];
+  const chatHistory = vault.chatHistory || [];
+
+  const newMsg = {
+    id: `msg_cust_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
+    senderId: userId,
+    senderRole: 'CUSTOMER',
+    senderName: senderName || vault.name || 'Customer',
+    recipientId: recipientId || 'admin',
+    recipientRole: 'ADMIN',
+    content: content.trim(),
+    timestamp: new Date().toISOString(),
+    conversationId: `admin_${userId}`
+  };
+
+  messages.push(newMsg);
+  chatHistory.push({
+    id: newMsg.id,
+    sender: 'user',
+    role: 'user',
+    senderName: newMsg.senderName,
+    text: newMsg.content,
+    timestamp: newMsg.timestamp
+  });
+
+  updateBusinessVault(userId, { chatMessages: messages, chatHistory });
+  res.json({ success: true, message: newMsg });
 });
 
 export default router;

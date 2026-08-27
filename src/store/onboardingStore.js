@@ -72,66 +72,80 @@ const INITIAL_ONBOARDING_STATE = {
  * Persists state under a user-specific key so each account has isolated state.
  */
 export function useOnboardingStore() {
-  const [storeKey, setStoreKey] = useState(() => {
+  const getActiveKey = useCallback(() => {
     try {
       const session = storage.get('ACTIVE_AUTH_SESSION', null);
       return getStoreKey(session?.userId || null);
     } catch {
       return BASE_KEY;
     }
-  });
+  }, []);
+
+  const [storeKey, setStoreKey] = useState(getActiveKey);
 
   const [state, setState] = useState(() => {
     try {
-      const session = storage.get('ACTIVE_AUTH_SESSION', null);
-      const key = getStoreKey(session?.userId || null);
+      const key = getActiveKey();
       return storage.get(key, INITIAL_ONBOARDING_STATE);
     } catch {
       return INITIAL_ONBOARDING_STATE;
     }
   });
 
+  // Cross-component state synchronization via custom event
   useEffect(() => {
     const handleSync = (e) => {
-      if (e.detail) {
-        setState(e.detail);
+      if (e.detail && typeof e.detail === 'object') {
+        setState((prev) => {
+          // Only update if state actually changed to avoid re-render loops
+          if (JSON.stringify(prev) === JSON.stringify(e.detail)) {
+            return prev;
+          }
+          return e.detail;
+        });
       }
     };
     window.addEventListener('addus_onboarding_state_updated', handleSync);
     return () => window.removeEventListener('addus_onboarding_state_updated', handleSync);
   }, []);
 
-  useEffect(() => {
-    storage.set(storeKey, state);
-  }, [state, storeKey]);
-
   const updateState = useCallback((patch) => {
     setState((prev) => {
       const next = typeof patch === 'function' ? patch(prev) : { ...prev, ...patch };
-      storage.set(storeKey, next);
+      const currentKey = next.userId ? getStoreKey(next.userId) : getActiveKey();
+      storage.set(currentKey, next);
       window.dispatchEvent(new CustomEvent('addus_onboarding_state_updated', { detail: next }));
       return next;
     });
-  }, [storeKey]);
+  }, [getActiveKey]);
 
   const bindToUser = useCallback((userId, savedState = null) => {
-    const key = getStoreKey(userId);
-    setStoreKey(key);
-    const loaded = savedState || storage.get(key, { ...INITIAL_ONBOARDING_STATE, userId });
-    const merged = { ...INITIAL_ONBOARDING_STATE, ...loaded, userId };
+    if (!userId) return null;
+    const newKey = getStoreKey(userId);
+    setStoreKey(newKey);
+
+    const existing = storage.get(newKey, null);
+    const merged = {
+      ...INITIAL_ONBOARDING_STATE,
+      ...(existing || {}),
+      ...(savedState || {}),
+      userId
+    };
+
+    storage.set(newKey, merged);
     setState(merged);
-    storage.set(key, merged);
     window.dispatchEvent(new CustomEvent('addus_onboarding_state_updated', { detail: merged }));
     return merged;
   }, []);
 
   const resetState = useCallback(() => {
-    storage.remove(storeKey);
+    const currentKey = getActiveKey();
+    storage.remove(currentKey);
     storage.remove(BASE_KEY);
     setState(INITIAL_ONBOARDING_STATE);
     setStoreKey(BASE_KEY);
     window.dispatchEvent(new CustomEvent('addus_onboarding_state_updated', { detail: INITIAL_ONBOARDING_STATE }));
-  }, [storeKey]);
+  }, [getActiveKey]);
 
   return {
     state,

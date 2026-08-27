@@ -137,5 +137,21 @@ export const adminApiService = {
     const res = await fetch(`${API_BASE}/admin/url-analysis/${encodeURIComponent(id)}`, { headers: { Authorization: `Bearer ${localStorage.getItem('ADMIN_AUTH_TOKEN')}` } });
     if (!res.ok) return null;
     return res.json();
+  },
+
+  async sendChatMessage(payload) {
+    await this.ensureAuthenticated();
+    return request('/admin/chat/send', {
+      method: 'POST',
+      body: JSON.stringify(payload)
+    });
+  },
+
+  async getChatMessages(filters = {}) {
+    await this.ensureAuthenticated();
+    const params = new URLSearchParams();
+    if (filters.userId) params.append('userId', filters.userId);
+    if (filters.conversationId) params.append('conversationId', filters.conversationId);
+    return request(`/admin/chat/messages?${params.toString()}`);
   }
 };

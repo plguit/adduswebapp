@@ -193,7 +193,11 @@ export function PhoneVerificationStep() {
   const isPhoneValid = validation.validateIndianPhone(phone).isValid;
 
   return (
-    <div className="onboarding-card-wrapper fade-in">
+    <div className="arike-login-screen-wrapper">
+      <div className="arike-login-card">
+        <div className="arike-logo-row">
+          <img src="/ADDUS.png" alt="ADDUS" className="arike-logo-img" onError={(e) => { e.target.onerror = null; e.target.src = "/ADDUS_opt.png"; }} />
+        </div>
       <div className="step-header">
         <div className="icon-badge">
           <ShieldCheck size={24} className="accent-icon" />
@@ -328,6 +332,7 @@ export function PhoneVerificationStep() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

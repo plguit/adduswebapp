@@ -65,8 +65,10 @@ router.post('/check-duplicate', (req, res) => {
     const vaultDomain = extractDomain(rawVaultWebsite);
     const vaultBusinessName = (vault.businessName || '').trim().toLowerCase() || null;
 
-    // Phone match
-    if (cleanPhone && vaultPhone && cleanPhone.length >= 10 && (cleanPhone === vaultPhone || vaultPhone.endsWith(cleanPhone) || cleanPhone.endsWith(vaultPhone))) {
+    // Phone match (strict 10-digit normalization)
+    const clean10 = cleanPhone ? cleanPhone.slice(-10) : '';
+    const vault10 = vaultPhone ? vaultPhone.slice(-10) : '';
+    if (clean10 && vault10 && clean10.length === 10 && vault10.length === 10 && clean10 === vault10) {
       matches.push({
         matchType: 'EXACT_PHONE',
         confidence: 'HIGH',
@@ -165,15 +167,19 @@ router.post('/login/customer', (req, res) => {
   // If not found by direct userId, or if direct vault is empty, search all vaults by phone/email to find the best match
   if (!existingVault || !existingVault.businessName) {
     const all = getAllVaults();
-    let bestVault = existingVault || null;
+    let bestVault = null;
     let bestUserId = userId;
+
+    const normPhone = cleanPhone ? cleanPhone.slice(-10) : null;
 
     for (const item of all) {
       const v = item.vault;
       if (!v) continue;
       const vPhone = (v.phoneNumber || v.phone || '').replace(/\D/g, '');
+      const normVPhone = vPhone ? vPhone.slice(-10) : null;
       const vEmail = (v.email || '').trim().toLowerCase();
-      const isPhoneMatch = cleanPhone && vPhone && (vPhone === cleanPhone || vPhone.endsWith(cleanPhone) || cleanPhone.endsWith(vPhone));
+
+      const isPhoneMatch = normPhone && normVPhone && normPhone.length === 10 && normVPhone.length === 10 && normPhone === normVPhone;
       const isEmailMatch = cleanEmail && vEmail && vEmail === cleanEmail;
 
       if (isPhoneMatch || isEmailMatch) {
@@ -190,7 +196,16 @@ router.post('/login/customer', (req, res) => {
     }
   }
 
-  const isNewUser = !existingVault;
+  const hasEstablishedBusiness = Boolean(
+    existingVault && (
+      existingVault.businessName ||
+      (Array.isArray(existingVault.services) && existingVault.services.length > 0) ||
+      existingVault.websiteUrl ||
+      existingVault.onboardingStatus === 'completed'
+    )
+  );
+
+  const isNewUser = !existingVault || (!hasEstablishedBusiness && existingVault.onboardingStatus !== 'completed');
 
   if (existingVault && existingVault.blocked === true) {
     return res.status(403).json({ 
@@ -251,12 +266,6 @@ router.post('/login/customer', (req, res) => {
     });
     return;
   }
-
-  const hasEstablishedBusiness = Boolean(
-    existingVault.businessName ||
-    (Array.isArray(existingVault.services) && existingVault.services.length > 0) ||
-    existingVault.websiteUrl
-  );
 
   const resolvedOnboardingStatus = existingVault.onboardingStatus || (hasEstablishedBusiness ? 'completed' : 'in_progress');
   const resolvedLastVisitedScreen = existingVault.lastVisitedScreen || (hasEstablishedBusiness ? 'dashboard' : 'welcome');

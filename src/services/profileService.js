@@ -25,10 +25,12 @@ export const profileService = {
   findProfileByPhone(phone) {
     if (!phone) return null;
     const clean = phone.replace(/\D/g, '');
-    if (!clean) return null;
+    if (!clean || clean.length < 10) return null;
+    const normClean = clean.slice(-10);
     return this.getAllProfiles().find((p) => {
       const pPhone = (p.phoneNumber || p.phone || '').replace(/\D/g, '');
-      return pPhone && (pPhone === clean || pPhone.endsWith(clean) || clean.endsWith(pPhone));
+      if (!pPhone || pPhone.length < 10) return false;
+      return pPhone.slice(-10) === normClean;
     }) || null;
   },
 
@@ -291,6 +293,12 @@ export const profileService = {
     const filtered = profiles.filter(p => p.userId !== oldUserId && p.customerId !== oldUserId);
     filtered.push(updated);
     storage.set(ACCOUNTS_STORAGE_KEY, filtered);
+    return true;
+  },
+
+  saveAllProfiles(profiles) {
+    if (!Array.isArray(profiles)) return false;
+    storage.set(ACCOUNTS_STORAGE_KEY, profiles);
     return true;
   }
 };

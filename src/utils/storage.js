@@ -28,7 +28,24 @@ export const storage = {
       }
       localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(value));
     } catch (error) {
-      console.warn(`[Storage Utility] Error writing key "${key}":`, error);
+      if (error && error.name === 'QuotaExceededError') {
+        try {
+          const fallbackKey = STORAGE_PREFIX + key;
+          const oldestKey = Object.keys(localStorage)
+            .filter(k => k.startsWith(STORAGE_PREFIX) && k !== fallbackKey)
+            .sort((a, b) => (localStorage.getItem(a) || '').length - (localStorage.getItem(b) || '').length)[0];
+          if (oldestKey) {
+            localStorage.removeItem(oldestKey);
+            localStorage.setItem(STORAGE_PREFIX + key, JSON.stringify(value));
+            return;
+          }
+        } catch (cleanupError) {
+          console.warn('[Storage Utility] Quota cleanup failed, using memory fallback for key:', key);
+          memoryStore.set(STORAGE_PREFIX + key, value);
+        }
+      } else {
+        console.warn(`[Storage Utility] Error writing key "${key}":`, error);
+      }
     }
   },
 

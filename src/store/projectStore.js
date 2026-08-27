@@ -628,8 +628,6 @@ export function useProjectStore(userId = null) {
 
     setProjects((prev) => {
       const updated = [newProject, ...prev];
-      storage.set(storeKey, updated);
-      window.dispatchEvent(new CustomEvent('addus_project_store_updated'));
       return updated;
     });
 
@@ -648,8 +646,6 @@ export function useProjectStore(userId = null) {
   const updateProject = useCallback((id, patch) => {
     setProjects((prev) => {
       const updated = prev.map((p) => p.id === id ? { ...p, ...patch, updatedAt: new Date().toISOString() } : p);
-      storage.set(storeKey, updated);
-      window.dispatchEvent(new CustomEvent('addus_project_store_updated'));
       return updated;
     });
   }, [storeKey]);
@@ -657,8 +653,6 @@ export function useProjectStore(userId = null) {
   const deleteProject = useCallback((id) => {
     setProjects((prev) => {
       const updated = prev.filter((p) => p.id !== id);
-      storage.set(storeKey, updated);
-      window.dispatchEvent(new CustomEvent('addus_project_store_updated'));
       return updated;
     });
   }, [storeKey]);
@@ -700,8 +694,6 @@ export function useProjectStore(userId = null) {
           activityLog: [activityEntry, ...(p.activityLog || [])]
         };
       });
-      storage.set(storeKey, updated);
-      window.dispatchEvent(new CustomEvent('addus_project_store_updated'));
       return updated;
     });
   }, [storeKey]);

@@ -188,7 +188,8 @@ export function AuthScreen() {
   };
 
   return (
-    <div className="onboarding-card-wrapper fade-in">
+    <div className="arike-login-screen-wrapper">
+    <div className="arike-login-card">
       <div className="step-header">
         <div className="icon-badge">
           <ShieldCheck size={24} className="accent-icon" />
@@ -330,6 +331,7 @@ export function AuthScreen() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

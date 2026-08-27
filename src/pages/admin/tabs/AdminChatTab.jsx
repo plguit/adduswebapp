@@ -60,7 +60,21 @@ export function AdminChatTab() {
       let vaultUsers = [];
       try {
         const data = await apiService.fetchAdminVaults();
-        vaultUsers = (data || []).filter(u => u.userId && u.userId !== 'admin');
+        vaultUsers = (data || []).map(item => {
+          const v = item.vault || item || {};
+          const uId = item.userId || v.userId || v.customerId;
+          return {
+            userId: uId,
+            customerId: v.customerId || (uId && uId.startsWith('ACA') ? uId : null),
+            name: v.name || v.customerName || 'Customer',
+            businessName: v.businessName || v.businessBrain?.businessName || v.name || 'Business Account',
+            industry: v.industry || v.businessBrain?.industry || 'General',
+            phoneNumber: v.phoneNumber || v.phone || '',
+            email: v.email || '',
+            chatHistory: v.chatHistory || [],
+            chatRestricted: v.chatRestricted || false
+          };
+        }).filter(u => u.userId && u.userId !== 'admin');
       } catch (e) {
         console.warn('Backend vaults fetch notice:', e);
       }
@@ -69,6 +83,7 @@ export function AdminChatTab() {
       const localProfiles = profileService.getAllProfiles() || [];
       const localUsers = localProfiles.map(p => ({
         userId: p.userId || p.customerId,
+        customerId: p.customerId || (p.userId && p.userId.startsWith('ACA') ? p.userId : null),
         name: p.name || p.customerName || 'Customer',
         businessName: p.businessBrain?.businessName || p.businessName || p.name || 'Business Account',
         industry: p.businessBrain?.industry || p.industry || 'General',
@@ -110,13 +125,17 @@ export function AdminChatTab() {
         console.warn('Backend chat fetch notice:', e);
       }
 
-      const userProf = profileService.getProfileById(userId);
+      // Search local profile by exact userId or phone
+      const allLocal = profileService.getAllProfiles() || [];
+      const userProf = profileService.getProfileById(userId) ||
+        allLocal.find(p => p.customerId === userId || (p.phoneNumber && userId.includes(p.phoneNumber.slice(-10))));
+
       const localChat = (userProf?.chatHistory || []).map((m, idx) => ({
         id: m.id || `msg_${idx}`,
         userId: userId,
         senderId: m.sender === 'user' ? userId : (m.sender === 'admin' ? 'admin' : 'addi_bot'),
         senderRole: m.sender === 'user' ? 'CUSTOMER' : (m.sender === 'admin' ? 'ADMIN' : 'AI_STRATEGIST'),
-        senderName: m.senderName || (m.sender === 'user' ? (userProf.name || 'Customer') : (m.sender === 'admin' ? 'Admin Team' : 'ADDI')),
+        senderName: m.senderName || (m.sender === 'user' ? (userProf?.name || 'Customer') : (m.sender === 'admin' ? 'Admin Team' : 'ADDI')),
         content: m.text || m.content || '',
         timestamp: m.timestamp || new Date().toISOString()
       }));
@@ -161,7 +180,15 @@ export function AdminChatTab() {
 
     // 2. Save into Customer Profile Chat History so customer gets it in real-time
     try {
-      const userProf = profileService.getProfileById(selectedUser.userId);
+      const allLocal = profileService.getAllProfiles() || [];
+      const normPhone = selectedUser.phoneNumber ? selectedUser.phoneNumber.replace(/\D/g, '').slice(-10) : '';
+      const userProf = profileService.getProfileById(selectedUser.userId) ||
+        allLocal.find(p => 
+          p.customerId === selectedUser.userId || 
+          p.userId === selectedUser.customerId ||
+          (normPhone && p.phoneNumber && p.phoneNumber.replace(/\D/g, '').slice(-10) === normPhone)
+        );
+
       if (userProf) {
         const chat = userProf.chatHistory || [];
         const updatedChat = [...chat, {
@@ -185,7 +212,7 @@ export function AdminChatTab() {
           chatHistory: updatedChat,
           notifications: notifs
         });
-        syncService.syncProfile(selectedUser.userId, updated);
+        syncService.syncProfile(userProf.userId || selectedUser.userId, updated);
       }
     } catch (profErr) {
       console.warn('Profile save error:', profErr);
@@ -315,7 +342,7 @@ export function AdminChatTab() {
                     {selectedUser.businessName || selectedUser.name || selectedUser.userId}
                   </div>
                   <div style={{ fontSize: '11px', color: '#9CA3AF', marginTop: '2px' }}>
-                    Contact: {selectedUser.name} · Phone: {selectedUser.phoneNumber || 'N/A'} · ID: {selectedUser.userId}
+                    Contact: {selectedUser.name} · Phone: {selectedUser.phoneNumber || 'N/A'} · Customer ID: {selectedUser.customerId || (selectedUser.userId.startsWith('customer_') ? `ACA${selectedUser.userId.replace('customer_', '').slice(-6)}` : selectedUser.userId)}
                   </div>
                 </div>
                 <button

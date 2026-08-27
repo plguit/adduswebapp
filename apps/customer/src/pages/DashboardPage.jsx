@@ -322,7 +322,7 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef(null);
+  const chatMessagesAreaRef = useRef(null);
 
   const activeUser = sessionManager.getCurrentUser();
   const profile = userId ? profileService.getProfileById(userId) : null;
@@ -335,27 +335,36 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
   const cleanBizName = rawBizName.includes(' - ') ? rawBizName.split(' - ')[0].trim() : rawBizName;
   const businessName = cleanBizName.length > 50 ? cleanBizName.slice(0, 48) + '...' : cleanBizName;
 
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, isTyping]);
+  const scrollChatContainerOnly = () => {
+    setTimeout(() => {
+      if (chatMessagesAreaRef.current) {
+        chatMessagesAreaRef.current.scrollTop = chatMessagesAreaRef.current.scrollHeight;
+      }
+    }, 50);
+  };
 
   const syncChatFromStorageAndBackend = async () => {
     if (!userId) return;
-    const userProf = profileService.getProfileById(userId);
+    const allLocal = profileService.getAllProfiles() || [];
+    const userProf = profileService.getProfileById(userId) ||
+      allLocal.find(p => p.customerId === userId || (p.phoneNumber && userId.includes(p.phoneNumber.slice(-10))));
+
     let chatList = userProf?.chatHistory || [];
 
-    // Also attempt to fetch latest backend chat messages
+    // Also fetch latest backend chat messages
     try {
       const backendMsgs = await apiService.fetchChatMessages({ userId });
       if (Array.isArray(backendMsgs) && backendMsgs.length > 0) {
         const merged = [...chatList];
         backendMsgs.forEach(bm => {
-          if (!merged.some(m => m.id === bm.id || (m.text === bm.content && Math.abs(new Date(m.timestamp) - new Date(bm.timestamp)) < 5000))) {
+          const msgContent = bm.content || bm.text || '';
+          if (msgContent && !merged.some(m => m.id === bm.id || ((m.text === msgContent || m.content === msgContent) && Math.abs(new Date(m.timestamp) - new Date(bm.timestamp)) < 10000))) {
             merged.push({
               id: bm.id,
               sender: bm.senderRole === 'ADMIN' ? 'admin' : (bm.senderId === userId ? 'user' : 'assistant'),
               senderName: bm.senderRole === 'ADMIN' ? 'Admin Team' : 'ADDI',
-              text: bm.content,
+              text: msgContent,
+              content: msgContent,
               timestamp: bm.timestamp
             });
           }
@@ -367,25 +376,60 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
       // fallback to local profile
     }
 
+    // Also merge project chat messages if a project is active
+    if (project && Array.isArray(project.chat)) {
+      project.chat.forEach(c => {
+        const text = c.text || c.content || '';
+        if (text && !chatList.some(m => m.id === c.id || m.text === text || m.content === text)) {
+          const isAdmin = c.senderRole === 'Admin' || c.senderType === 'admin' || c.senderId === 'admin_team';
+          chatList.push({
+            id: c.id || `proj_${Math.random()}`,
+            sender: isAdmin ? 'admin' : (c.senderId === userId ? 'user' : 'assistant'),
+            role: isAdmin ? 'admin' : (c.senderId === userId ? 'user' : 'assistant'),
+            senderName: c.senderName || (isAdmin ? 'Admin Team' : 'ADDI'),
+            text: text,
+            content: text,
+            timestamp: c.timestamp || new Date().toISOString()
+          });
+        }
+      });
+      chatList.sort((a, b) => new Date(a.timestamp || 0) - new Date(b.timestamp || 0));
+    }
+
     if (chatList.length > 0) {
-      const mapped = chatList.map(m => ({
-        id: m.id,
-        role: m.sender === 'user' ? 'user' : (m.sender === 'admin' ? 'admin' : 'assistant'),
-        senderName: m.senderName || (m.sender === 'admin' ? 'Admin Team' : (m.sender === 'user' ? resolvedUserName : 'ADDI')),
-        text: m.text
-      }));
-      setMessages(mapped);
+      const mapped = chatList.map(m => {
+        const isAdmin = m.sender === 'admin' || m.role === 'admin' || m.senderRole === 'Admin' || m.senderType === 'admin' || (m.senderName && m.senderName.toLowerCase().includes('admin'));
+        return {
+          id: m.id || `msg_${Math.random()}`,
+          role: isAdmin ? 'admin' : ((m.sender === 'user' || m.role === 'user') ? 'user' : 'assistant'),
+          senderName: isAdmin ? (m.senderName || 'Admin Team') : ((m.sender === 'user' || m.role === 'user') ? resolvedUserName : 'ADDI'),
+          text: m.text || m.content || ''
+        };
+      });
+
+      setMessages(prev => {
+        if (
+          prev.length === mapped.length &&
+          prev.every((p, idx) => p.id === mapped[idx].id && p.text === mapped[idx].text && p.role === mapped[idx].role)
+        ) {
+          return prev;
+        }
+        return mapped;
+      });
     } else {
       const initialGreeting = resolvedUserName !== 'there'
         ? `Hi ${resolvedUserName}! 👋 I'm ADDI, your AI Creative Strategist. I can assist with shoot schedules, drone footage, budget adjustments, branding, reels, or package updates for ${businessName}. What would you like to work on today?`
         : `Hi! 👋 I'm ADDI, your AI Creative Strategist. I can assist with shoot schedules, drone footage, budget adjustments, branding, reels, or package updates for ${businessName}. What would you like to work on today?`;
-      setMessages([{ role: 'assistant', text: initialGreeting, senderName: 'ADDI' }]);
+      setMessages(prev => {
+        if (prev.length === 1 && prev[0].text === initialGreeting) return prev;
+        return [{ role: 'assistant', text: initialGreeting, senderName: 'ADDI' }];
+      });
     }
   };
 
   useEffect(() => {
     syncChatFromStorageAndBackend();
-    const interval = setInterval(syncChatFromStorageAndBackend, 4000);
+    const interval = setInterval(syncChatFromStorageAndBackend, 3000);
     window.addEventListener('addus_profile_updated', syncChatFromStorageAndBackend);
     window.addEventListener('addus_chat_updated', syncChatFromStorageAndBackend);
 
@@ -418,7 +462,9 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
         await apiService.sendChatMessage({
           recipientId: 'admin',
           content: text,
-          conversationId: `admin_${userId}`
+          conversationId: `admin_${userId}`,
+          senderId: userId,
+          senderName: resolvedUserName
         });
       }
     } catch (err) {
@@ -456,6 +502,7 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
     setMessages(prev => [...prev, { role: 'user', text: userMsgText, senderName: resolvedUserName }]);
     setInput('');
     setIsTyping(true);
+    scrollChatContainerOnly();
 
     await saveChatMessage('user', userMsgText);
 
@@ -513,6 +560,47 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
       }
 
       if (shouldNotifyAdmin) {
+        const revId = `rev_${Date.now()}`;
+        const newRevRequest = {
+          id: revId,
+          type: intent,
+          details: userMsgText,
+          requestedAt: new Date().toISOString(),
+          status: 'pending',
+          customerId: userId,
+          customerName: resolvedUserName !== 'there' ? resolvedUserName : (businessName || 'Customer'),
+          projectId: project?.id || `proj_${userId}`,
+          projectName: project?.service || project?.title || `${businessName} Campaign`,
+          impact: {
+            timeline: intent.includes('Date') || intent.includes('Shoot') ? 'Schedule Reschedule' : '+2-3 Days',
+            budget: intent.includes('Budget') ? 'Adjustment Requested' : (intent.includes('Drone') || intent.includes('Reels') || intent.includes('Photo') || intent.includes('Brand') ? 'Add-on Estimate' : 'Standard')
+          }
+        };
+
+        if (project) {
+          const existingRevs = project.revisionRequests || [];
+          updateProjectInStore(project.id, {
+            revisionRequests: [newRevRequest, ...existingRevs]
+          });
+        }
+
+        // Also record on user profile
+        try {
+          if (userId) {
+            const prof = profileService.getProfileById(userId);
+            if (prof) {
+              const profRevs = prof.revisionRequests || [];
+              const updatedProf = profileService.saveProfile({
+                ...prof,
+                revisionRequests: [newRevRequest, ...profRevs]
+              });
+              syncService.syncProfile(userId, updatedProf);
+            }
+          }
+        } catch (profErr) {
+          console.warn('Profile rev save notice:', profErr);
+        }
+
         // Dispatch High-Priority Notification to Admin
         NotificationEngine.dispatchNotification({
           userId: 'admin',
@@ -521,19 +609,20 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
           title: `⚡ Action Required: ${resolvedUserName !== 'there' ? resolvedUserName : 'Customer'}`,
           message: `${resolvedUserName !== 'there' ? resolvedUserName : 'Customer'} (${businessName}) requested: "${userMsgText}" [Intent: ${intent}]`,
           priority: 'high',
-          deepLink: '/admin?tab=chat'
+          deepLink: '/admin?tab=approvals'
         });
 
         // Store in local action popup queue for immediate Admin Dashboard popup
         try {
           const popupQueue = JSON.parse(localStorage.getItem('ADDUS_ADMIN_POPUP_QUEUE') || '[]');
           popupQueue.unshift({
-            id: `action_${Date.now()}`,
+            id: revId,
             customerName: resolvedUserName !== 'there' ? resolvedUserName : 'Customer',
             businessName: businessName,
             requestText: userMsgText,
             intent: intent,
             timestamp: new Date().toISOString(),
+            status: 'pending',
             unread: true
           });
           localStorage.setItem('ADDUS_ADMIN_POPUP_QUEUE', JSON.stringify(popupQueue.slice(0, 10)));
@@ -541,6 +630,8 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
         } catch (err) {
           console.warn('Action popup dispatch error:', err);
         }
+
+        window.dispatchEvent(new CustomEvent('addus_approvals_updated'));
       }
 
       setMessages(prev => [...prev, { role: 'assistant', text: botReply, senderName: 'ADDI' }]);
@@ -562,7 +653,7 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
         <span style={{ fontSize: '11px', color: '#34d399', display: 'flex', alignItems: 'center', gap: '4px' }}>● Live Sync</span>
       </div>
 
-      <div className="addi-chat-messages-area" style={{ maxHeight: '220px', overflowY: 'auto', marginBottom: '10px' }}>
+      <div ref={chatMessagesAreaRef} className="addi-chat-messages-area" style={{ maxHeight: '220px', overflowY: 'auto', marginBottom: '10px' }}>
         {messages.length === 0 && (
           <div style={{ fontSize: '12px', color: 'var(--text-secondary)', padding: '8px 0' }}>
             Ask ADDI about your project, request changes, or message support.
@@ -598,7 +689,6 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
             ))}
           </div>
         )}
-        <div ref={messagesEndRef} />
       </div>
 
       <div className="addi-strip-suggestion-chips">
@@ -636,6 +726,9 @@ export function DashboardPage({ showToast, onToastDismiss }) {
   const [selectedDetailProject, setSelectedDetailProject] = useState(null);
   const [showStylePreview, setShowStylePreview] = useState(false);
   const [selectedDeliverable, setSelectedDeliverable] = useState(null);
+  const [selectedProductId, setSelectedProductId] = useState(null);
+  const [isNotificationCenterOpen, setIsNotificationCenterOpen] = useState(false);
+  const [galleryCategory, setGalleryCategory] = useState('All');
 
   const session = sessionManager.getSession();
   const userId = session?.userId || state.userId;
@@ -699,10 +792,8 @@ export function DashboardPage({ showToast, onToastDismiss }) {
   const expertStatus = userProfile?.expertReviewStatus || state.expertReviewStatus;
   const expertSubmitted = userProfile?.expertReviewSubmittedAt || state.expertReviewSubmittedAt;
   const expertCompleted = userProfile?.expertReviewCompletedAt || state.expertReviewCompletedAt;
-  const expertNotes = userProfile?.expertNotes;
+  const expertNotes = userProfile?.expertNotes ?? '';
   const products = userProfile?.products || [];
-  const [selectedProductId, setSelectedProductId] = useState(null);
-  const [isNotificationCenterOpen, setIsNotificationCenterOpen] = useState(false);
   const unreadNotifications = (userProfile?.notifications || []).filter(n => !n.read).length;
 
   // Persist session to last screen
@@ -861,8 +952,6 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       }
     ];
   };
-
-  const [galleryCategory, setGalleryCategory] = useState('All');
 
   const handleQuickAction = (action) => {
     setGalleryCategory(action.category || action.exploreLabel || 'All');

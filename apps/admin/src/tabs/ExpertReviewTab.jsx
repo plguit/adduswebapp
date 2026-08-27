@@ -32,7 +32,9 @@ export function ExpertReviewTab({ dataSource = 'localStorage', adminReady = fals
     }
   };
 
-  useEffect(refresh, []);
+  useEffect(() => {
+    refresh();
+  }, []);
 
   const handleApproveAndSend = async (userId) => {
     setCompleting(c => ({ ...c, [userId]: true }));

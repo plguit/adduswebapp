@@ -277,26 +277,49 @@ export async function resolveHostname(hostname) {
     fallbackUsed: false
   };
 
-  // Resolve IPv4
+  // 1. Try standard resolve4
   result.attempted.ipv4 = true;
   try {
     const ipv4Addresses = await withTimeout(resolve4(hostname), DNS_RESOLVE_TIMEOUT_MS, 'IPv4 DNS resolution');
-    result.addresses.push(...ipv4Addresses.map(ip => ({ ip, family: 4 })));
+    if (Array.isArray(ipv4Addresses)) {
+      result.addresses.push(...ipv4Addresses.map(ip => ({ ip, family: 4 })));
+    }
   } catch (err) {
     result.errors.ipv4 = err.message;
-    // ENODATA (no A records) is not a failure; other errors are noted
   }
 
-  // Resolve IPv6
+  // 2. Try resolve6
   result.attempted.ipv6 = true;
   try {
     const ipv6Addresses = await withTimeout(resolve6(hostname), DNS_RESOLVE_TIMEOUT_MS, 'IPv6 DNS resolution');
-    result.addresses.push(...ipv6Addresses.map(ip => ({ ip, family: 6 })));
+    if (Array.isArray(ipv6Addresses)) {
+      result.addresses.push(...ipv6Addresses.map(ip => ({ ip, family: 6 })));
+    }
   } catch (err) {
     result.errors.ipv6 = err.message;
   }
 
-  // Fallback to DNS-over-HTTPS if system DNS returned no addresses
+  // 3. Resilient OS DNS lookup fallback if resolve4/6 failed or returned empty
+  if (result.addresses.length === 0) {
+    try {
+      const osLookups = await new Promise((resolve) => {
+        dns.lookup(hostname, { all: true }, (err, addresses) => {
+          if (err || !addresses || addresses.length === 0) {
+            resolve([]);
+          } else {
+            resolve(addresses.map(a => ({ ip: a.address, family: a.family })));
+          }
+        });
+      });
+      if (osLookups.length > 0) {
+        result.addresses.push(...osLookups);
+        result.errors.ipv4 = null;
+        result.errors.ipv6 = null;
+      }
+    } catch (e) {}
+  }
+
+  // 4. Fallback to DNS-over-HTTPS if still empty
   if (result.addresses.length === 0) {
     result.fallbackUsed = true;
     try {

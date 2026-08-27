@@ -13,7 +13,7 @@ export const syncService = {
   async syncProjects(userId, projects) {
     if (!userId || !projects) return;
     try {
-      await apiService.post(`/projects/${encodeURIComponent(userId)}`, { projects });
+      await apiService.post(`/customer/projects/${encodeURIComponent(userId)}`, { projects });
     } catch (e) {
       console.warn('[Sync] Projects sync failed:', e.message);
     }
@@ -22,7 +22,7 @@ export const syncService = {
   async syncConversations(userId, conversations) {
     if (!userId || !conversations) return;
     try {
-      await apiService.post(`/conversations/${encodeURIComponent(userId)}`, { conversations });
+      await apiService.post(`/customer/conversations/${encodeURIComponent(userId)}`, { conversations });
     } catch (e) {
       console.warn('[Sync] Conversations sync failed:', e.message);
     }

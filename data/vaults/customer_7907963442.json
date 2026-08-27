@@ -35,7 +35,7 @@
   "missingAssets": [],
   "aiConfidenceScore": 45,
   "conversationStatus": "discovering",
-  "lastUpdated": "2026-08-20T14:15:24.711Z",
+  "lastUpdated": "2026-08-22T10:57:35.793Z",
   "websiteUrl": "https://laestuaire.in/",
   "websiteAnalyzedAt": "2026-08-20T13:37:20.086Z",
   "websiteContentHash": "7c",
@@ -76,6 +76,910 @@
   "diagnosisGeneratedAt": null,
   "strategicIntelligence": [],
   "auditLog": [
+    {
+      "timestamp": "2026-08-22T10:57:35.793Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:57:35.782Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:57:33.397Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T10:57:33.396Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:48:32.069Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "industry",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta"
+      ],
+      "data": {
+        "businessName": "La Estuaire Cherai",
+        "industry": "Hospitality",
+        "businessDescription": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
+        "products": [],
+        "services": [
+          "Pool access",
+          "Backwater views",
+          "Kayaking",
+          "Kerala dining",
+          "Accommodation"
+        ],
+        "websiteUrl": "https://laestuaire.in/",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787233037312_title",
+            "observation": "Page title: \"Best Beach Resort in Cherai | Pool &amp; Backwater Resort Near Cherai Beach\"",
+            "evidence": "Best Beach Resort in Cherai | Pool &amp; Backwater Resort Near Cherai Beach",
+            "source": "https://laestuaire.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-20T13:37:17.312Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787233037312_meta",
+            "observation": "Meta description found",
+            "evidence": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
+            "source": "https://laestuaire.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-08-20T13:37:17.312Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://laestuaire.in/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://laestuaire.in/"
+          ]
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:48:32.060Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "industry",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta"
+      ],
+      "data": {
+        "businessName": "La Estuaire Cherai",
+        "industry": "Hospitality",
+        "businessDescription": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
+        "products": [],
+        "services": [
+          "Pool access",
+          "Backwater views",
+          "Kayaking",
+          "Kerala dining",
+          "Accommodation"
+        ],
+        "websiteUrl": "https://laestuaire.in/",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1787233037312_title",
+            "observation": "Page title: \"Best Beach Resort in Cherai | Pool &amp; Backwater Resort Near Cherai Beach\"",
+            "evidence": "Best Beach Resort in Cherai | Pool &amp; Backwater Resort Near Cherai Beach",
+            "source": "https://laestuaire.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-08-20T13:37:17.312Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1787233037312_meta",
+            "observation": "Meta description found",
+            "evidence": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
+            "source": "https://laestuaire.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-08-20T13:37:17.312Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://laestuaire.in/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://laestuaire.in/"
+          ]
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:48:24.654Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:48:24.646Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:48:22.349Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T10:48:22.348Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:39:10.163Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:39:10.154Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:39:07.848Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T10:39:07.848Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:25:28.384Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:25:28.376Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:25:26.025Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T10:25:26.024Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:24:38.520Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "chatMessages",
+        "chatHistory"
+      ],
+      "data": {
+        "chatMessages": [
+          {
+            "id": "msg_cust_1787393144671_qqthx",
+            "senderId": "customer_7907963442",
+            "senderRole": "CUSTOMER",
+            "senderName": "La Estuaire Team",
+            "recipientId": "admin",
+            "recipientRole": "ADMIN",
+            "content": "Thanks Admin! Everything looks great.",
+            "timestamp": "2026-08-22T10:05:44.671Z",
+            "conversationId": "admin_customer_7907963442"
+          },
+          {
+            "id": "msg_1787394278473_iqllh6",
+            "senderId": "admin_admin@addus.in",
+            "senderRole": "ADMIN",
+            "senderName": "Admin Team",
+            "recipientId": "customer_7907963442",
+            "recipientRole": "CUSTOMER",
+            "content": "Hi from Admin Team! (Ref #1787394278470)",
+            "timestamp": "2026-08-22T10:24:38.473Z",
+            "deleted": false,
+            "conversationId": "admin_customer_7907963442"
+          },
+          {
+            "id": "msg_cust_1787394278519_icdoz",
+            "senderId": "customer_7907963442",
+            "senderRole": "CUSTOMER",
+            "senderName": "La Estuaire Cherai",
+            "recipientId": "admin",
+            "recipientRole": "ADMIN",
+            "content": "Hi Admin, received your message loud and clear! (Ref #1787394278470)",
+            "timestamp": "2026-08-22T10:24:38.519Z",
+            "conversationId": "admin_customer_7907963442"
+          }
+        ],
+        "chatHistory": [
+          {
+            "id": "msg_cust_1787393144671_qqthx",
+            "sender": "user",
+            "role": "user",
+            "senderName": "La Estuaire Team",
+            "text": "Thanks Admin! Everything looks great.",
+            "timestamp": "2026-08-22T10:05:44.671Z"
+          },
+          {
+            "id": "msg_1787394278473_iqllh6",
+            "sender": "admin",
+            "role": "admin",
+            "senderName": "Admin Team",
+            "text": "Hi from Admin Team! (Ref #1787394278470)",
+            "timestamp": "2026-08-22T10:24:38.473Z"
+          },
+          {
+            "id": "msg_cust_1787394278519_icdoz",
+            "sender": "user",
+            "role": "user",
+            "senderName": "La Estuaire Cherai",
+            "text": "Hi Admin, received your message loud and clear! (Ref #1787394278470)",
+            "timestamp": "2026-08-22T10:24:38.519Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:24:38.478Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "chatMessages",
+        "chatHistory",
+        "notifications"
+      ],
+      "data": {
+        "chatMessages": [
+          {
+            "id": "msg_cust_1787393144671_qqthx",
+            "senderId": "customer_7907963442",
+            "senderRole": "CUSTOMER",
+            "senderName": "La Estuaire Team",
+            "recipientId": "admin",
+            "recipientRole": "ADMIN",
+            "content": "Thanks Admin! Everything looks great.",
+            "timestamp": "2026-08-22T10:05:44.671Z",
+            "conversationId": "admin_customer_7907963442"
+          },
+          {
+            "id": "msg_1787394278473_iqllh6",
+            "senderId": "admin_admin@addus.in",
+            "senderRole": "ADMIN",
+            "senderName": "Admin Team",
+            "recipientId": "customer_7907963442",
+            "recipientRole": "CUSTOMER",
+            "content": "Hi from Admin Team! (Ref #1787394278470)",
+            "timestamp": "2026-08-22T10:24:38.473Z",
+            "deleted": false,
+            "conversationId": "admin_customer_7907963442"
+          }
+        ],
+        "chatHistory": [
+          {
+            "id": "msg_cust_1787393144671_qqthx",
+            "sender": "user",
+            "role": "user",
+            "senderName": "La Estuaire Team",
+            "text": "Thanks Admin! Everything looks great.",
+            "timestamp": "2026-08-22T10:05:44.671Z"
+          },
+          {
+            "id": "msg_1787394278473_iqllh6",
+            "sender": "admin",
+            "role": "admin",
+            "senderName": "Admin Team",
+            "text": "Hi from Admin Team! (Ref #1787394278470)",
+            "timestamp": "2026-08-22T10:24:38.473Z"
+          }
+        ],
+        "notifications": [
+          {
+            "id": "notif_1787394278476",
+            "title": "Message from ADDUS Team",
+            "message": "Hi from Admin Team! (Ref #1787394278470)",
+            "read": false,
+            "createdAt": "2026-08-22T10:24:38.473Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:24:38.153Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T10:24:38.151Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:11:17.890Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T10:11:17.889Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:10:24.191Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T10:10:24.191Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:08:34.407Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T10:08:34.407Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:05:44.672Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "chatMessages",
+        "chatHistory"
+      ],
+      "data": {
+        "chatMessages": [
+          {
+            "id": "msg_cust_1787393144671_qqthx",
+            "senderId": "customer_7907963442",
+            "senderRole": "CUSTOMER",
+            "senderName": "La Estuaire Team",
+            "recipientId": "admin",
+            "recipientRole": "ADMIN",
+            "content": "Thanks Admin! Everything looks great.",
+            "timestamp": "2026-08-22T10:05:44.671Z",
+            "conversationId": "admin_customer_7907963442"
+          }
+        ],
+        "chatHistory": [
+          {
+            "id": "msg_cust_1787393144671_qqthx",
+            "sender": "user",
+            "role": "user",
+            "senderName": "La Estuaire Team",
+            "text": "Thanks Admin! Everything looks great.",
+            "timestamp": "2026-08-22T10:05:44.671Z"
+          }
+        ]
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T10:05:44.646Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T10:05:44.645Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:25:07.051Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:25:07.042Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:25:04.603Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T09:25:04.602Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:24:21.024Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T09:24:21.023Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T09:19:26.121Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T09:19:26.120Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T06:59:04.569Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T06:59:04.549Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T06:59:02.177Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T06:59:02.172Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T04:26:55.294Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T04:26:55.294Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T04:24:53.868Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T04:24:53.868Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T04:14:29.276Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T04:14:29.245Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T04:14:26.852Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T04:14:26.852Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T04:05:03.262Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T04:05:03.262Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T04:01:13.289Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T04:01:13.289Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T03:57:35.972Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T03:57:35.972Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-22T02:48:17.966Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-22T02:48:17.965Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
     {
       "timestamp": "2026-08-20T14:15:24.711Z",
       "actor": "system",
@@ -444,271 +1348,57 @@
         "websiteUrl": "https://laestuaire.in/"
       },
       "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T07:38:59.555Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "businessName",
-        "industry",
-        "businessDescription",
-        "products",
-        "services",
-        "websiteUrl"
-      ],
-      "data": {
-        "businessName": "La Estuaire Cherai",
-        "industry": "Hospitality",
-        "businessDescription": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
-        "products": [],
-        "services": [
-          "Pool access",
-          "Backwater views",
-          "Kayaking",
-          "Kerala dining",
-          "Accommodation"
-        ],
-        "websiteUrl": "https://laestuaire.in/"
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T07:38:47.123Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "businessName",
-        "industry",
-        "businessDescription",
-        "products",
-        "services",
-        "websiteUrl"
-      ],
-      "data": {
-        "businessName": "La Estuaire Cherai",
-        "industry": "Hospitality",
-        "businessDescription": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
-        "products": [],
-        "services": [
-          "Pool access",
-          "Backwater views",
-          "Kayaking",
-          "Kerala dining",
-          "Accommodation"
-        ],
-        "websiteUrl": "https://laestuaire.in/"
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T07:38:47.116Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "businessName",
-        "industry",
-        "businessDescription",
-        "products",
-        "services",
-        "websiteUrl"
-      ],
-      "data": {
-        "businessName": "La Estuaire Cherai",
-        "industry": "Hospitality",
-        "businessDescription": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
-        "products": [],
-        "services": [
-          "Pool access",
-          "Backwater views",
-          "Kayaking",
-          "Kerala dining",
-          "Accommodation"
-        ],
-        "websiteUrl": "https://laestuaire.in/"
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T07:35:50.521Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "phoneNumber",
-        "authProvider",
-        "userId",
-        "lastLoginAt"
-      ],
-      "data": {
-        "phoneNumber": "7907963442",
-        "authProvider": "phone",
-        "userId": "customer_7907963442",
-        "lastLoginAt": "2026-08-20T07:35:50.520Z"
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T07:15:19.579Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "businessName",
-        "industry",
-        "businessDescription",
-        "products",
-        "services",
-        "websiteUrl"
-      ],
-      "data": {
-        "businessName": "La Estuaire Cherai",
-        "industry": "Hospitality",
-        "businessDescription": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
-        "products": [],
-        "services": [
-          "Pool access",
-          "Backwater views",
-          "Kayaking",
-          "Kerala dining",
-          "Accommodation"
-        ],
-        "websiteUrl": "https://laestuaire.in/"
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T07:15:18.955Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteUrl",
-        "websiteAnalyzedAt",
-        "websiteContentHash",
-        "websiteEvidenceItems",
-        "websiteRetrievalMeta",
-        "businessName",
-        "industry",
-        "businessDescription",
-        "location",
-        "services",
-        "products",
-        "targetAudience",
-        "businessStage",
-        "brandPersonality",
-        "contactInfo",
-        "socialLinks",
-        "aiConfidenceScore",
-        "confidenceStatus",
-        "confidenceReason",
-        "sourceType",
-        "summary",
-        "summaryProvenance",
-        "summaryConfidence",
-        "discoveredAssets",
-        "analysisStage",
-        "classification"
-      ],
-      "data": {
-        "websiteUrl": "https://laestuaire.in",
-        "websiteAnalyzedAt": "2026-08-20T07:15:18.955Z",
-        "websiteContentHash": "7c",
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "FAST_EV_1787210116461_title",
-            "observation": "Page title: \"Best Beach Resort in Cherai | Pool &amp; Backwater Resort Near Cherai Beach\"",
-            "evidence": "Best Beach Resort in Cherai | Pool &amp; Backwater Resort Near Cherai Beach",
-            "source": "https://laestuaire.in/",
-            "sourceType": "WEBSITE",
-            "confidence": "high",
-            "field": "identity",
-            "checkedAt": "2026-08-20T07:15:16.461Z",
-            "stage": "FAST_PATH"
-          },
-          {
-            "evidenceId": "FAST_EV_1787210116461_meta",
-            "observation": "Meta description found",
-            "evidence": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
-            "source": "https://laestuaire.in/",
-            "sourceType": "WEBSITE",
-            "confidence": "high",
-            "field": "business_description",
-            "checkedAt": "2026-08-20T07:15:16.461Z",
-            "stage": "FAST_PATH"
-          }
-        ],
-        "websiteRetrievalMeta": {
-          "finalUrl": "https://laestuaire.in/",
-          "httpStatus": 200,
-          "pagesInspected": [
-            "https://laestuaire.in/"
-          ]
-        },
-        "businessName": "La Estuaire Cherai",
-        "industry": "Hospitality",
-        "businessDescription": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
-        "services": [
-          "Pool access",
-          "Backwater views",
-          "Kayaking",
-          "Kerala dining",
-          "Accommodation"
-        ],
-        "products": [],
-        "contactInfo": {
-          "email": null,
-          "phone": null
-        },
-        "socialLinks": [],
-        "aiConfidenceScore": 92,
-        "confidenceStatus": "PARTIAL_EVIDENCE",
-        "confidenceReason": "AI enriched partial deterministic profile",
-        "sourceType": "VERIFIED_WEBSITE",
-        "summary": "La Estuaire Cherai is a hospitality property specializing in pool access, backwater views, kayaking, kerala dining and accommodation La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach..",
-        "summaryProvenance": "EVIDENCE_ANCHORED",
-        "summaryConfidence": 80,
-        "discoveredAssets": [],
-        "analysisStage": "FAST_PATH",
-        "classification": {
-          "class": "SIMPLE",
-          "reason": "STATIC_OR_MINIMAL"
-        }
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T07:14:44.913Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "phoneNumber",
-        "authProvider",
-        "userId",
-        "lastLoginAt"
-      ],
-      "data": {
-        "phoneNumber": "7907963442",
-        "authProvider": "phone",
-        "userId": "customer_7907963442",
-        "lastLoginAt": "2026-08-20T07:14:44.913Z"
-      },
-      "provenance": "AI_GENERATED"
     }
   ],
   "name": null,
   "phoneNumber": "7907963442",
   "email": null,
   "authProvider": "phone",
-  "onboardingStatus": null,
+  "onboardingStatus": "completed",
   "projects": [],
   "conversations": [],
-  "chatHistory": [],
+  "chatHistory": [
+    {
+      "id": "msg_cust_1787393144671_qqthx",
+      "sender": "user",
+      "role": "user",
+      "senderName": "La Estuaire Team",
+      "text": "Thanks Admin! Everything looks great.",
+      "timestamp": "2026-08-22T10:05:44.671Z"
+    },
+    {
+      "id": "msg_1787394278473_iqllh6",
+      "sender": "admin",
+      "role": "admin",
+      "senderName": "Admin Team",
+      "text": "Hi from Admin Team! (Ref #1787394278470)",
+      "timestamp": "2026-08-22T10:24:38.473Z"
+    },
+    {
+      "id": "msg_cust_1787394278519_icdoz",
+      "sender": "user",
+      "role": "user",
+      "senderName": "La Estuaire Cherai",
+      "text": "Hi Admin, received your message loud and clear! (Ref #1787394278470)",
+      "timestamp": "2026-08-22T10:24:38.519Z"
+    }
+  ],
   "uploadedFiles": [],
-  "notifications": [],
+  "notifications": [
+    {
+      "id": "notif_1787394278476",
+      "title": "Message from ADDUS Team",
+      "message": "Hi from Admin Team! (Ref #1787394278470)",
+      "read": false,
+      "createdAt": "2026-08-22T10:24:38.473Z"
+    }
+  ],
   "expertReviewStatus": null,
   "expertReviewSubmittedAt": null,
   "expertReviewCompletedAt": null,
   "expertNotes": null,
   "createdAt": "2026-08-20T07:14:44.909Z",
-  "lastLoginAt": "2026-08-20T13:36:40.906Z",
+  "lastLoginAt": "2026-08-22T10:57:33.396Z",
   "fieldProvenance": {
     "phoneNumber": {
       "provenance": "AI_GENERATED",
@@ -731,8 +1421,8 @@
     "lastLoginAt": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-08-20T13:36:40.907Z",
-      "valueSummary": "2026-08-20T13:36:40.906Z"
+      "lastVerifiedAt": "2026-08-22T10:57:33.397Z",
+      "valueSummary": "2026-08-22T10:57:33.396Z"
     },
     "websiteUrl": {
       "provenance": "AI_GENERATED",
@@ -755,13 +1445,13 @@
     "websiteEvidenceItems": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-08-20T13:37:20.086Z",
+      "lastVerifiedAt": "2026-08-22T10:48:32.069Z",
       "valueSummary": "2 items"
     },
     "websiteRetrievalMeta": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-08-20T13:37:20.086Z",
+      "lastVerifiedAt": "2026-08-22T10:48:32.069Z",
       "valueSummary": "{\"finalUrl\":\"https://laestuaire.in/\",\"httpStatus\":200,\"pagesInspected\":[\"https://laestuaire.in/\"]}"
     },
     "businessName": {
@@ -785,13 +1475,13 @@
     "services": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-08-20T14:15:24.711Z",
+      "lastVerifiedAt": "2026-08-22T10:48:32.069Z",
       "valueSummary": "5 items"
     },
     "products": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-08-20T14:15:24.711Z",
+      "lastVerifiedAt": "2026-08-22T10:48:32.069Z",
       "valueSummary": "0 items"
     },
     "contactInfo": {
@@ -853,6 +1543,42 @@
       "confidence": 0.4,
       "lastVerifiedAt": "2026-08-20T13:37:20.086Z",
       "valueSummary": "{\"class\":\"SIMPLE\",\"reason\":\"STATIC_OR_MINIMAL\"}"
+    },
+    "onboardingStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T02:48:17.966Z",
+      "valueSummary": "completed"
+    },
+    "lastVisitedScreen": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T02:48:17.966Z",
+      "valueSummary": "dashboard"
+    },
+    "projects": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:57:35.793Z",
+      "valueSummary": "0 items"
+    },
+    "chatMessages": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:24:38.520Z",
+      "valueSummary": "3 items"
+    },
+    "chatHistory": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:24:38.520Z",
+      "valueSummary": "3 items"
+    },
+    "notifications": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-22T10:24:38.478Z",
+      "valueSummary": "1 items"
     }
   },
   "customerPreferences": {
@@ -880,5 +1606,42 @@
   "classification": {
     "class": "SIMPLE",
     "reason": "STATIC_OR_MINIMAL"
-  }
+  },
+  "lastVisitedScreen": "dashboard",
+  "chatMessages": [
+    {
+      "id": "msg_cust_1787393144671_qqthx",
+      "senderId": "customer_7907963442",
+      "senderRole": "CUSTOMER",
+      "senderName": "La Estuaire Team",
+      "recipientId": "admin",
+      "recipientRole": "ADMIN",
+      "content": "Thanks Admin! Everything looks great.",
+      "timestamp": "2026-08-22T10:05:44.671Z",
+      "conversationId": "admin_customer_7907963442"
+    },
+    {
+      "id": "msg_1787394278473_iqllh6",
+      "senderId": "admin_admin@addus.in",
+      "senderRole": "ADMIN",
+      "senderName": "Admin Team",
+      "recipientId": "customer_7907963442",
+      "recipientRole": "CUSTOMER",
+      "content": "Hi from Admin Team! (Ref #1787394278470)",
+      "timestamp": "2026-08-22T10:24:38.473Z",
+      "deleted": false,
+      "conversationId": "admin_customer_7907963442"
+    },
+    {
+      "id": "msg_cust_1787394278519_icdoz",
+      "senderId": "customer_7907963442",
+      "senderRole": "CUSTOMER",
+      "senderName": "La Estuaire Cherai",
+      "recipientId": "admin",
+      "recipientRole": "ADMIN",
+      "content": "Hi Admin, received your message loud and clear! (Ref #1787394278470)",
+      "timestamp": "2026-08-22T10:24:38.519Z",
+      "conversationId": "admin_customer_7907963442"
+    }
+  ]
 }

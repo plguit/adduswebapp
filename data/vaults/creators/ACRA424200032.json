@@ -1,0 +1,56 @@
+{
+  "creatorId": "ACRA424200032",
+  "name": null,
+  "phone": "9142419712",
+  "email": "creator_424197@addus.test",
+  "profilePhoto": null,
+  "verificationStatus": "draft",
+  "rejectionReason": null,
+  "location": {
+    "country": "India",
+    "state": "",
+    "district": "",
+    "city": "",
+    "pincode": ""
+  },
+  "primaryProfession": null,
+  "categories": [],
+  "availabilityStatus": "available",
+  "documents": [],
+  "scoreCard": {
+    "overallScore": null,
+    "breakdown": {},
+    "message": "Score will appear after your first completed project."
+  },
+  "adminNotes": null,
+  "submittedAt": null,
+  "approvedAt": null,
+  "kycStatus": "not_started",
+  "financialStatus": "not_started",
+  "projects": [],
+  "equipment": [],
+  "notifications": [],
+  "chatHistory": [],
+  "portfolio": [],
+  "pricing": {},
+  "createdAt": "2026-08-22T10:10:24.201Z",
+  "updatedAt": "2026-08-22T10:10:27.622Z",
+  "authType": "mobile",
+  "auditLog": [
+    {
+      "requestId": "audit_1787393424201_jrgf",
+      "userId": "ACRA424200032",
+      "contextSources": [],
+      "evidenceRefs": [],
+      "researchRefs": [],
+      "actualInputTokens": null,
+      "actualOutputTokens": null,
+      "cacheHit": false,
+      "researchPerformed": false,
+      "status": "SUCCESS",
+      "error": null,
+      "confidence": "UNKNOWN",
+      "createdAt": "2026-08-22T10:10:24.201Z"
+    }
+  ]
+}

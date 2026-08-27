@@ -97,7 +97,7 @@ export const authService = {
       };
     }
 
-    if (existing) {
+    if (existing && (!backendRes || !backendRes.isNewUser)) {
       existing.phoneVerified = true;
       existing.updatedAt = new Date().toISOString();
       const hasBiz = Boolean(
@@ -138,17 +138,17 @@ export const authService = {
       phoneNumber: cleanPhone,
       phoneVerified: true,
       authProvider: 'phone',
-      currentStep: 'name',
-      lastVisitedScreen: 'name',
+      currentStep: 'business_input',
+      lastVisitedScreen: 'business_input',
       onboardingStatus: 'in_progress',
       userId: canonicalUserId,
       customerId: canonicalUserId
     });
 
     if (backendRes?.token) {
-      sessionManager.setSession(newProfile.userId, 'name', backendRes.token);
+      sessionManager.setSession(newProfile.userId, 'business_input', backendRes.token);
     } else {
-      sessionManager.setSession(newProfile.userId, 'name');
+      sessionManager.setSession(newProfile.userId, 'business_input');
     }
 
     return {
@@ -246,7 +246,7 @@ export const authService = {
       };
     }
 
-    if (existing) {
+    if (existing && (!backendRes || !backendRes.isNewUser)) {
       existing.emailVerified = true;
       existing.updatedAt = new Date().toISOString();
       const hasBiz = Boolean(existing.businessName || existing.businessBrain?.businessName);
@@ -278,17 +278,17 @@ export const authService = {
       email: cleanEmail,
       emailVerified: true,
       authProvider: 'email',
-      currentStep: 'name',
-      lastVisitedScreen: 'name',
+      currentStep: 'business_input',
+      lastVisitedScreen: 'business_input',
       onboardingStatus: 'in_progress',
       userId: canonicalUserId,
       customerId: canonicalUserId
     });
 
     if (backendRes?.token) {
-      sessionManager.setSession(newProfile.userId, 'name', backendRes.token);
+      sessionManager.setSession(newProfile.userId, 'business_input', backendRes.token);
     } else {
-      sessionManager.setSession(newProfile.userId, 'name');
+      sessionManager.setSession(newProfile.userId, 'business_input');
     }
 
     return {
@@ -337,5 +337,13 @@ export const authService = {
    */
   logout() {
     sessionManager.logout();
+    storage.remove('ONBOARDING_STATE');
+    try {
+      Object.keys(localStorage).forEach(k => {
+        if (k.startsWith('ONBOARDING_STATE') || k === 'ACTIVE_AUTH_SESSION') {
+          localStorage.removeItem(k);
+        }
+      });
+    } catch {}
   }
 };

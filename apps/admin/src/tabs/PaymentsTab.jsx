@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { DollarSign, CreditCard, ArrowUpRight, ArrowDownLeft, Search, Download, CheckCircle2, Clock, AlertCircle, FileText } from 'lucide-react';
 import { paymentService } from '../../../../src/services/paymentService.js';
 

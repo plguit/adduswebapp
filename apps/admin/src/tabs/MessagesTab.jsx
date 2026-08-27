@@ -5,10 +5,12 @@ import { getAllProjectsAcrossUsers, updateProjectInStore } from '../../../../sha
 import { NotificationEngine } from '../../../../src/services/brain/UniversalNotificationEngine.js';
 import { adminApiService } from '../services/adminApiService.js';
 
+import { syncService } from '../../../../src/services/syncService.js';
+
 /**
  * MessagesTab — Real Customer Communication Center
  * Reads from actual persisted customer chatHistory + project.chat[]
- * Admin replies persist to project.chat and notify the correct customer.
+ * Admin replies persist to profile.chatHistory, project.chat, backend vault, and notify the correct customer.
  */
 export function MessagesTab({ dataSource = 'localStorage', adminReady = false }) {
   const [activeGroup, setActiveGroup] = useState('all');
@@ -20,21 +22,44 @@ export function MessagesTab({ dataSource = 'localStorage', adminReady = false })
     let profiles = [];
     let allProjects = [];
     try {
+      const localProfiles = profileService.getAllProfiles() || [];
+      const localProjects = getAllProjectsAcrossUsers() || [];
+
       if (dataSource === 'backend' && adminReady) {
         const [usersRes, projectsRes] = await Promise.all([
-          adminApiService.getUsers(),
-          adminApiService.getProjects()
+          adminApiService.getUsers().catch(() => ({ users: [] })),
+          adminApiService.getProjects().catch(() => ({ projects: [] }))
         ]);
-        profiles = usersRes.users || [];
-        allProjects = projectsRes.projects || [];
+        const beUsers = usersRes.users || [];
+        const beProjects = projectsRes.projects || [];
+
+        // Merge backend + local so no profiles/chats are missed
+        const mergedProfMap = new Map();
+        [...localProfiles, ...beUsers].forEach(p => {
+          const key = p.userId || p.customerId || (p.phoneNumber ? p.phoneNumber.slice(-10) : null);
+          if (key) {
+            const existing = mergedProfMap.get(key) || {};
+            const chatA = existing.chatHistory || [];
+            const chatB = p.chatHistory || [];
+            const mergedChat = [...chatA];
+            chatB.forEach(cb => {
+              if (!mergedChat.some(ca => ca.id === cb.id || (ca.text === cb.text && Math.abs(new Date(ca.timestamp) - new Date(cb.timestamp)) < 5000))) {
+                mergedChat.push(cb);
+              }
+            });
+            mergedProfMap.set(key, { ...existing, ...p, chatHistory: mergedChat });
+          }
+        });
+        profiles = Array.from(mergedProfMap.values());
+        allProjects = [...beProjects, ...localProjects];
       } else {
-        profiles = profileService.getAllProfiles();
-        allProjects = getAllProjectsAcrossUsers();
+        profiles = localProfiles;
+        allProjects = localProjects;
       }
     } catch (e) {
-      console.warn('[MessagesTab] backend load failed, falling back to localStorage:', e.message);
-      profiles = profileService.getAllProfiles();
-      allProjects = getAllProjectsAcrossUsers();
+      console.warn('[MessagesTab] load fallback to localStorage:', e.message);
+      profiles = profileService.getAllProfiles() || [];
+      allProjects = getAllProjectsAcrossUsers() || [];
     }
 
     const built = [];
@@ -43,16 +68,19 @@ export function MessagesTab({ dataSource = 'localStorage', adminReady = false })
       const brain = profile.businessBrain || {};
       const displayName = brain.businessName || profile.name || profile.phoneNumber || `Customer ${profile.customerId}`;
 
-      const addiMessages = (profile.chatHistory || []).map(m => ({
-        messageId: m.id || `m_${Math.random()}`,
-        sender: m.sender === 'user' ? (profile.name || 'Customer') : 'ADDI',
-        senderType: m.sender === 'user' ? 'customer' : 'ai',
-        text: m.text || m.message || '',
-        timestamp: m.timestamp || m.createdAt || new Date().toISOString(),
-        projectId: null
-      }));
+      const addiMessages = (profile.chatHistory || []).map(m => {
+        const isAdmin = m.sender === 'admin' || m.role === 'admin' || (m.senderName && m.senderName.toLowerCase().includes('admin'));
+        return {
+          messageId: m.id || `m_${Math.random()}`,
+          sender: isAdmin ? (m.senderName || 'ADDUS Ops Team') : (m.sender === 'user' ? (profile.name || 'Customer') : 'ADDI'),
+          senderType: isAdmin ? 'admin' : (m.sender === 'user' ? 'customer' : 'ai'),
+          text: m.text || m.content || m.message || '',
+          timestamp: m.timestamp || m.createdAt || new Date().toISOString(),
+          projectId: null
+        };
+      });
 
-      const customerProjects = allProjects.filter(p => p.userId === profile.userId);
+      const customerProjects = allProjects.filter(p => p.userId === profile.userId || p.userId === profile.customerId);
       const projectMessages = customerProjects.flatMap(proj =>
         (proj.chat || []).map(c => ({
           messageId: c.id,
@@ -102,6 +130,15 @@ export function MessagesTab({ dataSource = 'localStorage', adminReady = false })
 
   useEffect(() => {
     buildThreads();
+    const interval = setInterval(buildThreads, 3000);
+    window.addEventListener('addus_chat_updated', buildThreads);
+    window.addEventListener('addus_profile_updated', buildThreads);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('addus_chat_updated', buildThreads);
+      window.removeEventListener('addus_profile_updated', buildThreads);
+    };
   }, [buildThreads]);
 
   const activeThread = threads.find(t => t.id === activeThreadId) || threads[0] || null;
@@ -112,10 +149,11 @@ export function MessagesTab({ dataSource = 'localStorage', adminReady = false })
     }
   }, [threads, activeThreadId]);
 
-  const handleSendReply = (e) => {
+  const handleSendReply = async (e) => {
     e.preventDefault();
     if (!replyText.trim() || !activeThread) return;
 
+    const content = replyText.trim();
     const msgId = `msg_${Date.now()}`;
     const newMsg = {
       id: msgId,
@@ -123,13 +161,52 @@ export function MessagesTab({ dataSource = 'localStorage', adminReady = false })
       senderName: 'ADDUS Ops Team',
       senderRole: 'Admin',
       senderType: 'admin',
-      text: replyText.trim(),
+      text: content,
       timestamp: new Date().toISOString(),
       isInternal: false,
       read: false
     };
 
-    // Persist to project.chat if a project exists
+    // 1. Save directly into customer's profile chatHistory
+    try {
+      const allLocal = profileService.getAllProfiles() || [];
+      const userProf = profileService.getProfileById(activeThread.customerId) ||
+        allLocal.find(p => 
+          p.userId === activeThread.customerId || 
+          p.customerId === activeThread.customerId ||
+          (activeThread.profile?.phoneNumber && p.phoneNumber && p.phoneNumber.slice(-10) === activeThread.profile.phoneNumber.slice(-10))
+        );
+
+      if (userProf) {
+        const chat = userProf.chatHistory || [];
+        const updatedChat = [...chat, {
+          id: msgId,
+          sender: 'admin',
+          role: 'admin',
+          senderName: 'Admin Team',
+          text: content,
+          timestamp: newMsg.timestamp
+        }];
+        const notifs = userProf.notifications || [];
+        notifs.unshift({
+          id: `notif_${Date.now()}`,
+          title: 'Message from ADDUS Team',
+          message: content.length > 80 ? content.slice(0, 77) + '...' : content,
+          read: false,
+          createdAt: newMsg.timestamp
+        });
+        const updated = profileService.saveProfile({
+          ...userProf,
+          chatHistory: updatedChat,
+          notifications: notifs
+        });
+        syncService.syncProfile(userProf.userId || activeThread.customerId, updated);
+      }
+    } catch (profErr) {
+      console.warn('Profile save error:', profErr);
+    }
+
+    // 2. Persist to project.chat if a project exists
     if (activeThread.projectId) {
       const allProjects = getAllProjectsAcrossUsers();
       const proj = allProjects.find(p => p.id === activeThread.projectId);
@@ -140,17 +217,33 @@ export function MessagesTab({ dataSource = 'localStorage', adminReady = false })
       }
     }
 
-    // Notify the customer
+    // 3. Send to backend chat API
+    try {
+      await adminApiService.sendChatMessage({
+        recipientId: activeThread.customerId,
+        senderId: 'admin',
+        senderName: 'Admin Team',
+        content: content,
+        conversationId: `admin_${activeThread.customerId}`
+      });
+    } catch (err) {
+      console.warn('Backend send notice:', err);
+    }
+
+    // 4. Notify customer and dispatch events for instant tab-to-tab sync
     NotificationEngine.notify({
       userId: activeThread.customerId,
       role: 'Customer',
       type: 'admin_message',
       title: 'New Message from ADDUS',
-      message: replyText.trim().slice(0, 100),
+      message: content.slice(0, 100),
       priority: 'high'
     });
 
-    // Optimistic UI update
+    window.dispatchEvent(new CustomEvent('addus_chat_updated'));
+    window.dispatchEvent(new CustomEvent('addus_profile_updated'));
+
+    // 5. Optimistic UI update
     setThreads(prev => prev.map(t => {
       if (t.id !== activeThread.id) return t;
       return {
@@ -161,7 +254,7 @@ export function MessagesTab({ dataSource = 'localStorage', adminReady = false })
             messageId: msgId,
             sender: 'ADDUS Ops Team',
             senderType: 'admin',
-            text: replyText.trim(),
+            text: content,
             timestamp: new Date().toISOString(),
             projectId: activeThread.projectId
           }

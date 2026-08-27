@@ -49,8 +49,6 @@ export function validateEmail(email) {
 }
 
 // 3. OTP Verification
-const ALLOWED_TEST_OTPS = ['1234', '5678'];
-
 export function validateOTP(otp, attempts = 0) {
   if (!otp || !otp.trim()) {
     return { isValid: false, message: 'Please enter the 4-digit verification code.' };
@@ -59,11 +57,8 @@ export function validateOTP(otp, attempts = 0) {
   if (!/^\d{4}$/.test(cleanOtp)) {
     return { isValid: false, message: 'Verification code must be exactly 4 digits.' };
   }
-  if (attempts >= 3) {
+  if (attempts >= 5) {
     return { isValid: false, message: 'Maximum verification attempts exceeded. Please request a new code.', blocked: true };
-  }
-  if (!ALLOWED_TEST_OTPS.includes(cleanOtp)) {
-    return { isValid: false, message: `Invalid verification code. (Attempt ${attempts + 1}/3). Use test code 1234.` };
   }
   return { isValid: true };
 }

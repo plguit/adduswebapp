@@ -1,0 +1,66 @@
+{
+  "creatorId": "ACRA477900547",
+  "name": null,
+  "phone": "9147789912",
+  "email": "creator_477899@addus.test",
+  "profilePhoto": null,
+  "verificationStatus": "draft",
+  "rejectionReason": null,
+  "location": {
+    "country": "India",
+    "state": "",
+    "district": "",
+    "city": "",
+    "pincode": ""
+  },
+  "primaryProfession": null,
+  "categories": [],
+  "availabilityStatus": "available",
+  "documents": [],
+  "scoreCard": {
+    "overallScore": null,
+    "breakdown": {},
+    "message": "Score will appear after your first completed project."
+  },
+  "adminNotes": null,
+  "submittedAt": null,
+  "approvedAt": null,
+  "kycStatus": "not_started",
+  "financialStatus": "not_started",
+  "projects": [],
+  "equipment": [
+    {
+      "category": "camera",
+      "name": "Sony FX3 Cinema Camera",
+      "brand": "",
+      "model": "",
+      "ownership": "owned",
+      "condition": "good",
+      "notes": ""
+    }
+  ],
+  "notifications": [],
+  "chatHistory": [],
+  "portfolio": [],
+  "pricing": {},
+  "createdAt": "2026-08-22T10:11:17.901Z",
+  "updatedAt": "2026-08-22T10:11:18.113Z",
+  "authType": "mobile",
+  "auditLog": [
+    {
+      "requestId": "audit_1787393477901_s3ax",
+      "userId": "ACRA477900547",
+      "contextSources": [],
+      "evidenceRefs": [],
+      "researchRefs": [],
+      "actualInputTokens": null,
+      "actualOutputTokens": null,
+      "cacheHit": false,
+      "researchPerformed": false,
+      "status": "SUCCESS",
+      "error": null,
+      "confidence": "UNKNOWN",
+      "createdAt": "2026-08-22T10:11:17.901Z"
+    }
+  ]
+}

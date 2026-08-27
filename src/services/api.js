@@ -201,6 +201,21 @@ export const apiService = {
   },
 
   async fetchChatMessages(filters = {}) {
+    const userId = filters.userId;
+    if (userId && userId !== 'admin') {
+      try {
+        const custRes = await fetch(`${API_BASE}/customer/chat/messages/${encodeURIComponent(userId)}`, { headers: getAuthHeaders() });
+        if (custRes.ok) {
+          const custData = await custRes.json();
+          if (custData.success && Array.isArray(custData.messages)) {
+            return custData.messages;
+          }
+        }
+      } catch (err) {
+        // fallback to admin endpoint
+      }
+    }
+
     const params = new URLSearchParams();
     if (filters.userId) params.append('userId', filters.userId);
     if (filters.conversationId) params.append('conversationId', filters.conversationId);
@@ -210,10 +225,21 @@ export const apiService = {
     return data.messages || [];
   },
 
-  async sendChatMessage({ recipientId, content, conversationId }) {
+  async sendChatMessage({ recipientId, content, conversationId, senderId, senderName }) {
+    if (senderId && senderId !== 'admin') {
+      try {
+        const res = await this.request(`${API_BASE}/customer/chat/send/${encodeURIComponent(senderId)}`, {
+          method: 'POST',
+          body: JSON.stringify({ content, senderName, recipientId: recipientId || 'admin' })
+        });
+        if (res && res.success) return res;
+      } catch (err) {
+        // fallback
+      }
+    }
     return this.request(`${API_BASE}/admin/chat/send`, {
       method: 'POST',
-      body: JSON.stringify({ recipientId, content, conversationId })
+      body: JSON.stringify({ recipientId, content, conversationId, senderId, senderName })
     });
   },
 

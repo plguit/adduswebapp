@@ -32,7 +32,7 @@
   "missingAssets": [],
   "aiConfidenceScore": 35,
   "conversationStatus": "discovering",
-  "lastUpdated": "2026-08-20T08:22:38.692Z",
+  "lastUpdated": "2026-08-27T06:58:17.689Z",
   "websiteUrl": "https://indiatoday.in",
   "websiteAnalyzedAt": "2026-08-20T08:17:29.351Z",
   "websiteContentHash": "5250fefa",
@@ -102,6 +102,98 @@
   "diagnosisGeneratedAt": null,
   "strategicIntelligence": [],
   "auditLog": [
+    {
+      "timestamp": "2026-08-27T06:58:17.689Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-27T06:58:17.678Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-27T06:58:17.630Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907790679",
+        "authProvider": "phone",
+        "userId": "customer_7907790679",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-27T06:58:17.630Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-27T06:51:17.448Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-27T06:51:17.443Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "projects"
+      ],
+      "data": {
+        "projects": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-08-27T06:51:17.405Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907790679",
+        "authProvider": "phone",
+        "userId": "customer_7907790679",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-08-27T06:51:17.404Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
     {
       "timestamp": "2026-08-20T08:22:38.692Z",
       "actor": "system",
@@ -392,7 +484,7 @@
   "phoneNumber": "7907790679",
   "email": null,
   "authProvider": "phone",
-  "onboardingStatus": null,
+  "onboardingStatus": "completed",
   "projects": [],
   "conversations": [],
   "chatHistory": [],
@@ -403,7 +495,7 @@
   "expertReviewCompletedAt": null,
   "expertNotes": null,
   "createdAt": "2026-08-20T08:17:08.590Z",
-  "lastLoginAt": "2026-08-20T08:17:08.596Z",
+  "lastLoginAt": "2026-08-27T06:58:17.630Z",
   "fieldProvenance": {
     "phoneNumber": {
       "provenance": "AI_GENERATED",
@@ -426,8 +518,8 @@
     "lastLoginAt": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-08-20T08:17:08.596Z",
-      "valueSummary": "2026-08-20T08:17:08.596Z"
+      "lastVerifiedAt": "2026-08-27T06:58:17.630Z",
+      "valueSummary": "2026-08-27T06:58:17.630Z"
     },
     "websiteUrl": {
       "provenance": "AI_GENERATED",
@@ -542,6 +634,24 @@
       "confidence": 0.4,
       "lastVerifiedAt": "2026-08-20T08:17:29.351Z",
       "valueSummary": "{\"class\":\"DYNAMIC\",\"reason\":\"HEAVY_JS_OR_FRAMEWORK\"}"
+    },
+    "onboardingStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-27T06:51:17.405Z",
+      "valueSummary": "completed"
+    },
+    "lastVisitedScreen": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-27T06:51:17.405Z",
+      "valueSummary": "dashboard"
+    },
+    "projects": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-08-27T06:58:17.689Z",
+      "valueSummary": "0 items"
     }
   },
   "customerPreferences": {
@@ -574,5 +684,6 @@
   "classification": {
     "class": "DYNAMIC",
     "reason": "HEAVY_JS_OR_FRAMEWORK"
-  }
+  },
+  "lastVisitedScreen": "dashboard"
 }

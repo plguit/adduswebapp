@@ -1,0 +1,50 @@
+[
+  {
+    "logId": "AUD1787394278486413",
+    "timestamp": "2026-08-22T10:24:38.486Z",
+    "user": "admin_admin@addus.in",
+    "component": "AdminChatTab",
+    "action": "SEND_CHAT_MESSAGE",
+    "entity": "ChatMessage",
+    "entityId": null,
+    "details": "{\"messageId\":\"msg_1787394278473_iqllh6\",\"recipientId\":\"customer_7907963442\",\"entity\":\"chat\"}",
+    "status": "success",
+    "error": "null"
+  },
+  {
+    "logId": "AUD1787393477913553",
+    "timestamp": "2026-08-22T10:11:17.913Z",
+    "user": "admin_admin@addus.in",
+    "component": "AdminChatTab",
+    "action": "SEND_CHAT_MESSAGE",
+    "entity": "ChatMessage",
+    "entityId": null,
+    "details": "{\"messageId\":\"msg_1787393477909_prkpuz\",\"recipientId\":\"customer_9876543210\",\"entity\":\"chat\"}",
+    "status": "success",
+    "error": "null"
+  },
+  {
+    "logId": "AUD1787393424212522",
+    "timestamp": "2026-08-22T10:10:24.213Z",
+    "user": "admin_admin@addus.in",
+    "component": "AdminChatTab",
+    "action": "SEND_CHAT_MESSAGE",
+    "entity": "ChatMessage",
+    "entityId": null,
+    "details": "{\"messageId\":\"msg_1787393424209_3snrvt\",\"recipientId\":\"customer_9876543210\",\"entity\":\"chat\"}",
+    "status": "success",
+    "error": "null"
+  },
+  {
+    "logId": "AUD1787393314437203",
+    "timestamp": "2026-08-22T10:08:34.437Z",
+    "user": "admin_admin@addus.in",
+    "component": "AdminChatTab",
+    "action": "SEND_CHAT_MESSAGE",
+    "entity": "ChatMessage",
+    "entityId": null,
+    "details": "{\"messageId\":\"msg_1787393314432_38oirp\",\"recipientId\":\"customer_9876543210\",\"entity\":\"chat\"}",
+    "status": "success",
+    "error": "null"
+  }
+]
