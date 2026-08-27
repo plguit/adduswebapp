@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Brain, AlertCircle, CheckCircle, HelpCircle, Lightbulb, FileText, Globe, TrendingUp, ShieldCheck, Clock } from 'lucide-react';
-import { apiService } from '../services/apiService.js';
+import { apiService } from '../../services/apiService.js';
 
 const CLASSIFICATION_COLORS = {
   FACT: '#34d399',

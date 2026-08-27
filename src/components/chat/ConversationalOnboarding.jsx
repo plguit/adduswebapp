@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 import {
   Sparkles, Smartphone, Mail, ArrowRight, Clock, AlertCircle, Edit2,
@@ -41,11 +41,31 @@ import { DuolingoSpeechBubble } from './DuolingoSpeechBubble';
 
 import celebrationLottieData from '../../../lottiefile/mascot_celebration.json';
 
-/* ─────────────────────────────────────────────────────────────────────────────
-   ADDI — Continuous Vertical Conversation Onboarding
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   ADDI â€” Continuous Vertical Conversation Onboarding
    - Splash Screen -> Login Step -> Login Celebration Popup (mascot (2).json) -> Onboarding Stream
    - Recovered Video Showcase Section
-   ─────────────────────────────────────────────────────────────────────────── */
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+// Inline SVG India flag (saffron/white/green tricolor + Ashoka Chakra)
+function IndiaFlag() {
+  const spokes = Array.from({ length: 24 }, (_, i) => {
+    const angle = (i * 15 * Math.PI) / 180;
+    return { x2: 450 + 80 * Math.sin(angle), y2: 300 - 80 * Math.cos(angle) };
+  });
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" className="india-flag-svg" aria-label="India flag">
+      <rect width="900" height="600" fill="#138808" />
+      <rect width="900" height="400" fill="#FFFFFF" />
+      <rect width="900" height="200" fill="#FF9933" />
+      <circle cx="450" cy="300" r="90" fill="none" stroke="#000088" strokeWidth="8" />
+      <circle cx="450" cy="300" r="10" fill="#000088" />
+      {spokes.map((s, i) => (
+        <line key={i} x1="450" y1="300" x2={s.x2} y2={s.y2} stroke="#000088" strokeWidth="4" />
+      ))}
+    </svg>
+  );
+}
 
 function MascotLottiePlayer({ stepKey, path = '/bg/chat.json', loop = true, width, height, className = '' }) {
   const containerRef = useRef(null);
@@ -141,9 +161,9 @@ function CelebrationLottiePlayer({ width = 260, height = 260 }) {
   return <div ref={containerRef} style={{ width: `${width}px`, height: `${height}px`, margin: '0 auto' }} />;
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    STACKED BRANCH CARDS (INTERACTIVE 3-CARD STACK)
-   ─────────────────────────────────────────────────────────────────────────── */
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function StackedBranchCards({ onSelectBranch, selectedOption, onSelectOption }) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [dragOffset, setDragOffset] = useState(0);
@@ -154,18 +174,18 @@ function StackedBranchCards({ onSelectBranch, selectedOption, onSelectOption }) 
   const cards = [
     {
       id: 'know_need',
-      title: '🚀 I already know what I need',
+      title: 'ðŸš€ I already know what I need',
       desc: 'I already have something in mind. Help me plan it and get it done.',
       icon: '/images/target_3d.svg',
-      chatText: '🚀 I already know what I need',
+      chatText: 'ðŸš€ I already know what I need',
       staggerClass: 'chat-stagger-1'
     },
     {
       id: 'figuring_out',
-      title: '💡 Help me figure out what I need',
+      title: 'ðŸ’¡ Help me figure out what I need',
       desc: "I know I need to build my professional presence, but I'm not sure where to start. Help me figure it out.",
       icon: '/images/compass_3d.svg',
-      chatText: '💡 Help me figure out what I need',
+      chatText: 'ðŸ’¡ Help me figure out what I need',
       staggerClass: 'chat-stagger-2'
     },
     {
@@ -379,9 +399,9 @@ function StackedBranchCards({ onSelectBranch, selectedOption, onSelectOption }) 
   );
 }
 
-/* ─────────────────────────────────────────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    SWIPE TO CONFIRM BUTTON (MINIMALIST, ICON-FREE)
-   ─────────────────────────────────────────────────────────────────────────── */
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 function SwipeToConfirmButton({ onConfirm, text = "Confirm" }) {
   const trackRef = useRef(null);
   const [dragX, setDragX] = useState(0);
@@ -501,7 +521,7 @@ function PosterVideoCard({ item, onPlayVideo }) {
       </div>
       <div className="poster-card-meta">
         <span className="poster-title">{item.title}</span>
-        <span className="poster-rating">{item.rating || '5.0'} ★</span>
+        <span className="poster-rating">{item.rating || '5.0'} â˜…</span>
       </div>
     </div>
   );
@@ -544,7 +564,7 @@ function VideoShowcaseSection({ onSelectVideoType }) {
     {
       id: 'cozy_office',
       title: 'Cozy Office Decor',
-      subtitle: '4K Commercial Shoot • Spatial & Studio Lighting',
+      subtitle: '4K Commercial Shoot â€¢ Spatial & Studio Lighting',
       videoUrl: '/videos/cozy_office_decor.mp4',
       thumbnail: '/products/frame_18.png',
       badge: 'New Commercial',
@@ -562,7 +582,7 @@ function VideoShowcaseSection({ onSelectVideoType }) {
     {
       id: 'product_commercial',
       title: 'Studio Product Promo',
-      subtitle: '360° Studio Showcase & Lens Macro Shots',
+      subtitle: '360Â° Studio Showcase & Lens Macro Shots',
       videoUrl: '/videos/cozy_office_decor.mp4',
       thumbnail: '/products/73689.jpg',
       badge: 'Top Pick',
@@ -608,7 +628,7 @@ function VideoShowcaseSection({ onSelectVideoType }) {
           <div className="cinematic-gallery-modal" onClick={e => e.stopPropagation()}>
             <div className="cinematic-gallery-header">
               <h3 className="cinematic-gallery-title">
-                <Play size={20} style={{ color: '#00A3FF' }} /> 🎬 {activeGalleryTitle} Gallery
+                <Play size={20} style={{ color: '#00A3FF' }} /> ðŸŽ¬ {activeGalleryTitle} Gallery
               </h3>
               <button
                 type="button"
@@ -643,7 +663,7 @@ function VideoShowcaseSection({ onSelectVideoType }) {
                   if (onSelectVideoType) onSelectVideoType(activeGalleryTitle);
                 }}
               >
-                Choose {activeGalleryTitle} →
+                Choose {activeGalleryTitle} â†’
               </button>
             </div>
           </div>
@@ -670,7 +690,7 @@ function VideoShowcaseSection({ onSelectVideoType }) {
                   <h4 className="lightbox-title">{activeVideoItem.title}</h4>
                   <p className="lightbox-subtitle">{activeVideoItem.subtitle}</p>
                 </div>
-                <span className="poster-rating" style={{ fontSize: '14px' }}>{activeVideoItem.rating} ★</span>
+                <span className="poster-rating" style={{ fontSize: '14px' }}>{activeVideoItem.rating} â˜…</span>
               </div>
               <div style={{ display: 'flex', gap: '10px', marginTop: '6px', justifyContent: 'flex-end' }}>
                 <button
@@ -689,7 +709,7 @@ function VideoShowcaseSection({ onSelectVideoType }) {
                     if (onSelectVideoType) onSelectVideoType(activeVideoItem.title);
                   }}
                 >
-                  Select Package →
+                  Select Package â†’
                 </button>
               </div>
             </div>
@@ -709,7 +729,7 @@ const DELIVERABLE_QUESTIONS = {
   'Product Video': [
     { key: 'goal', question: 'What is the primary goal for this video?', options: ['Sales & Conversions', 'Brand Awareness', 'Product Launch', 'Investor Presentation'] },
     { key: 'platform', question: 'Where will this video be displayed?', options: ['Instagram / Reels', 'Website Header', 'YouTube Ads', 'Internal Presentations'] },
-    { key: 'branding', question: 'Do you have brand guidelines ready?', options: ['Yes — fully ready', 'Partially ready', 'Need help creating guidelines'] }
+    { key: 'branding', question: 'Do you have brand guidelines ready?', options: ['Yes â€” fully ready', 'Partially ready', 'Need help creating guidelines'] }
   ],
   'Brand Film': [
     { key: 'tone', question: 'What tone should the film convey?', options: ['Inspirational & Emotional', 'Bold & Energetic', 'Calm & Luxury', 'Corporate & Authoritative'] },
@@ -726,7 +746,7 @@ const DELIVERABLE_QUESTIONS = {
   'default': [
     { key: 'goal', question: 'What is your main goal for this project?', options: ['Sales & Conversions', 'Brand Awareness', 'Product Launch', 'Build Trust'] },
     { key: 'audience', question: 'Who is your target audience?', options: ['General Consumers', 'Businesses (B2B)', 'Niche Community', 'Mixed Audience'] },
-    { key: 'timeline', question: 'What is your priority timeline?', options: ['Standard (7–14 days)', 'Fast (3–7 days)', 'Urgent (1–3 days)'] }
+    { key: 'timeline', question: 'What is your priority timeline?', options: ['Standard (7â€“14 days)', 'Fast (3â€“7 days)', 'Urgent (1â€“3 days)'] }
   ]
 };
 
@@ -735,7 +755,7 @@ function getDefaultFailureMessage(sourceStatus, failureReason) {
     if (failureReason === 'TIMEOUT') return 'The website took too long to respond. It may be slow or temporarily unavailable.';
     if (failureReason === 'DNS_FAILED') return 'We couldn\'t resolve the website address. The domain may be incorrect or the site may not exist.';
     if (failureReason === 'CONNECTION_FAILED') return 'We couldn\'t establish a connection to the website. It may be offline or blocking access.';
-    if (failureReason === 'CONNECTION_RESET') return 'The connection was interrupted. This may be temporary — please try again.';
+    if (failureReason === 'CONNECTION_RESET') return 'The connection was interrupted. This may be temporary â€” please try again.';
     if (failureReason === 'RATE_LIMITED') return 'The website is temporarily limiting automated requests. Please try again later.';
     if (failureReason === 'SERVER_ERROR') return 'The website\'s server returned an error. The site may be experiencing issues.';
     if (failureReason === 'TLS_HANDSHAKE_FAILED') return 'The website has an invalid or incompatible security certificate.';
@@ -758,7 +778,31 @@ export function ConversationalOnboarding({ onProjectCreated }) {
   const { createDraftProject } = useProjectStore();
   const { changeLanguage, t } = useLanguage();
 
-  const [stepIndex, setStepIndex] = useState(1); // Step 1 = Recovered Login
+  const [stepIndex, setStepIndex] = useState(() => {
+    try {
+      const isAuth = sessionManager.isAuthenticated();
+      const session = sessionManager.getSession();
+      if (isAuth && session && session.userId) {
+        if (state.currentStep === 'business_input' || session.lastVisitedScreen === 'business_input') {
+          return 3;
+        }
+        if (state.currentStep === 'name' || session.lastVisitedScreen === 'name') {
+          return 3;
+        }
+        return 3;
+      }
+    } catch {
+      // fallback
+    }
+    return 1;
+  });
+
+  useEffect(() => {
+    if (!sessionManager.isAuthenticated()) {
+      setStepIndex(1);
+    }
+  }, []);
+
   const [step4Stage, setStep4Stage] = useState('mascot'); // 'mascot' -> 'card'
   const [history, setHistory] = useState([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -846,7 +890,7 @@ export function ConversationalOnboarding({ onProjectCreated }) {
   };
 
   const [shootDate, setShootDate] = useState(state.preferredShootDate || '');
-  const [timeSlot, setTimeSlot] = useState('11 AM – 1 PM');
+  const [timeSlot, setTimeSlot] = useState('11 AM â€“ 1 PM');
   const [scheduleRequests, setScheduleRequests] = useState(state.scheduleRequests || {});
   const [showCalendarModal, setShowCalendarModal] = useState(false);
   const [proposal, setProposal] = useState(null);
@@ -1005,9 +1049,13 @@ try {
     addHistoryItem("How else can ADDI help with your creative strategy?", null, text);
   };
 
+  const prevStepRef = useRef(stepIndex);
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [stepIndex, history.length, flowAQIdx, flowBQIdx, showCelebrationModal]);
+    if (prevStepRef.current !== stepIndex) {
+      prevStepRef.current = stepIndex;
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [stepIndex]);
 
   const addHistoryItem = (question, subtitle, userAnswerText, questionKey = null, subtitleKey = null, stepIndexToRevert = null) => {
     setHistory(prev => [
@@ -1029,7 +1077,7 @@ try {
     addHistoryItem(
       'Language Selected',
       null,
-      lang === 'ml' ? 'മലയാളം (Malayalam) ✓' : 'English ✓'
+      lang === 'ml' ? 'à´®à´²à´¯à´¾à´³à´‚ (Malayalam) âœ“' : 'English âœ“'
     );
     setStepIndex(2); // advance to Name Input step
   };
@@ -1047,7 +1095,7 @@ try {
     }, 280);
   };
 
-  // ── RECOVERED LOGIN FLOW ────────────────────────────────────────────────
+  // â”€â”€ RECOVERED LOGIN FLOW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const handleSendOTP = async (e) => {
     if (e) e.preventDefault();
     setLoginError('');
@@ -1095,7 +1143,7 @@ try {
     setOtpAttempts(0);
   };
 
-  const handleVerifyOTP = async (e) => {
+    const handleVerifyOTP = async (e) => {
     if (e) e.preventDefault();
     setLoginError('');
 
@@ -1114,10 +1162,14 @@ try {
     }
 
     let verifyRes = null;
-    if (authMethod === 'phone') {
-      verifyRes = await otpService.verifyOTP(phoneInput, otpInput, otpAttempts);
-    } else {
-      verifyRes = await emailAuthService.verifyEmailOTP(emailInput, otpInput);
+    try {
+      if (authMethod === 'phone') {
+        verifyRes = await otpService.verifyOTP(phoneInput, otpInput, otpAttempts);
+      } else {
+        verifyRes = await emailAuthService.verifyEmailOTP(emailInput, otpInput);
+      }
+    } catch (err) {
+      console.warn('OTP verify exception:', err);
     }
 
     if (!verifyRes || !verifyRes.success) {
@@ -1132,10 +1184,17 @@ try {
     const cleanPhone = phoneInput.replace(/\D/g, '');
     const cleanEmail = emailInput.trim().toLowerCase();
     
-    const existing = profiles.find(p => 
-      (authMethod === 'phone' && p.phoneNumber?.replace(/\D/g, '') === cleanPhone) ||
-      (authMethod === 'email' && p.email?.toLowerCase() === cleanEmail)
-    );
+    const existing = profiles.find(p => {
+      if (authMethod === 'phone') {
+        const pPhone = (p.phoneNumber || p.phone || '').replace(/\D/g, '');
+        return cleanPhone.length >= 10 && pPhone.length >= 10 && cleanPhone.slice(-10) === pPhone.slice(-10);
+      }
+      if (authMethod === 'email') {
+        const pEmail = (p.email || '').trim().toLowerCase();
+        return cleanEmail && pEmail && cleanEmail === pEmail;
+      }
+      return false;
+    });
 
     let finalUserId = `user_${Date.now()}`;
     if (existing) {
@@ -1152,95 +1211,43 @@ try {
         loginRes = await authService.loginWithEmail(emailInput);
       }
     } catch (err) {
-      updateState({ verified: false });
-      setLoginError(err.message || 'Verification failed. Please try again.');
-      return;
+      console.warn('Login exception fallback:', err);
     }
 
     const userProfile = loginRes?.profile || existing || {};
-    const hasEstablishedBusiness = Boolean(
-      userProfile.businessName ||
-      userProfile.businessBrain?.businessName ||
-      (Array.isArray(userProfile.services) && userProfile.services.length > 0) ||
-      (Array.isArray(userProfile.businessBrain?.services) && userProfile.businessBrain.services.length > 0) ||
-      userProfile.website ||
-      userProfile.businessBrain?.website
-    );
+    const canonicalUserId = userProfile.userId || userProfile.customerId || finalUserId;
 
-    const isExistingUser = Boolean(
-      loginRes?.isReturningUser ||
-      (loginRes && !loginRes.isNewUser) ||
-      hasEstablishedBusiness ||
-      userProfile.onboardingStatus === 'completed' ||
-      userProfile.lastVisitedScreen === 'dashboard' ||
-      existing
-    );
+    const newUserState = {
+      verified: true,
+      phone: phoneInput,
+      email: emailInput,
+      name: userProfile.name || '',
+      currentStep: 'business_input',
+      lastVisitedScreen: 'business_input',
+      onboardingStatus: 'in_progress',
+      businessProfile: userProfile.businessBrain || userProfile.businessProfile || {}
+    };
 
-    if (authFlowType === 'login' && !isExistingUser) {
-      setLoginError("No existing account found with this number/email. If you are new to ADDUS, please select 'Get Started as a New Business'.");
-      return;
+    if (typeof bindToUser === 'function') {
+      try {
+        bindToUser(canonicalUserId, newUserState);
+      } catch (bindErr) {
+        console.warn('bindToUser warning:', bindErr);
+      }
     }
+
+    try {
+      sessionManager.updateLastVisitedScreen('business_input');
+    } catch (e) {}
+
+    updateState(newUserState);
+
+    // Auth turn omitted from visual history
 
     localStorage.setItem('HAS_EXISTING_ADDUS_ACCOUNT', 'true');
 
-    setShowCelebrationModal(true);
-
-    setTimeout(() => {
-      try {
-        setShowCelebrationModal(false);
-        changeLanguage(localStorage.getItem('APP_LANGUAGE') || 'en');
-        
-        if (isExistingUser) {
-          const canonicalUserId = userProfile.userId || userProfile.customerId || finalUserId;
-          try {
-            if (typeof bindToUser === 'function') {
-              bindToUser(canonicalUserId, userProfile);
-            }
-          } catch (bindErr) {
-            console.warn('bindToUser warning:', bindErr);
-          }
-          sessionManager.createSession({
-            userId: canonicalUserId,
-            phone: phoneInput,
-            email: emailInput,
-            verified: true,
-            lastVisitedScreen: 'dashboard'
-          });
-          updateState({
-            ...userProfile,
-            userId: canonicalUserId,
-            currentStep: 'dashboard',
-            verified: true,
-            onboardingStatus: 'completed',
-            businessProfile: userProfile.businessBrain || userProfile.businessProfile || userProfile
-          });
-        } else {
-          const newUserState = {
-            verified: true,
-            phone: phoneInput,
-            email: emailInput,
-            name: '',
-            currentStep: 'name',
-            lastVisitedScreen: 'name',
-            onboardingStatus: 'in_progress'
-          };
-          if (typeof bindToUser === 'function') {
-            bindToUser(canonicalUserId, newUserState);
-          }
-          setHistory(prev => [...prev, {
-            id: `turn_auth_${Date.now()}`,
-            question: "Welcome to ADDUS! Let's get started with your authentication.",
-            userAnswerText: `Verified: ${authIdentifier}`,
-            stepIndex: 1
-          }]);
-          setStepIndex(3);
-        }
-      } catch (err) {
-        console.warn('Post-OTP transition error:', err);
-        setShowCelebrationModal(false);
-        setStepIndex(3);
-      }
-    }, 2200);
+    // IMMEDIATELY TRANSITION TO EXISTING ADDI BUSINESS INFORMATION SCREEN (Step 3)
+    setStepIndex(3);
   };
 
   const handleSaveName = (e) => {
@@ -1289,8 +1296,9 @@ try {
                               profileToCompare.businessDescription;
     
     if (!businessName || businessName.length < 2 || !hasAnalysisResult) {
-      addHistoryItem("Here's what I understood about your business.", "Review your business brain profile below.", "Profile Confirmed ✓", 'bizReviewWelcome', 'bizReviewSubtitle', 4);
-      setStepIndex(5);
+      addHistoryItem("Here's what I understood about your business.", "Review your business brain profile below.", "Profile Confirmed âœ“", 'bizReviewWelcome', 'bizReviewSubtitle', 4);
+    setBranchChoice('know_need');
+    setStepIndex(6);
       return;
     }
 
@@ -1375,8 +1383,9 @@ try {
       return;
     }
 
-    addHistoryItem("Here's what I understood about your business.", "Review your business brain profile below.", "Profile Confirmed ✓", 'bizReviewWelcome', 'bizReviewSubtitle', 4);
-    setStepIndex(5);
+    addHistoryItem("Here's what I understood about your business.", "Review your business brain profile below.", "Profile Confirmed âœ“", 'bizReviewWelcome', 'bizReviewSubtitle', 4);
+    setBranchChoice('know_need');
+    setStepIndex(6);
   };
 
   const handleSelectBranch = (choice) => {
@@ -1386,7 +1395,7 @@ try {
       completeOnboarding();
       return;
     }
-    const displayText = choice === 'figuring_out' ? "💡 Help me figure out what I need" : "🚀 I already know what I need";
+    const displayText = choice === 'figuring_out' ? "ðŸ’¡ Help me figure out what I need" : "ðŸš€ I already know what I need";
     addHistoryItem("What do you need help with?", null, displayText, 'branchWelcome', null, 5);
     setStepIndex(6);
   };
@@ -1734,7 +1743,7 @@ try {
         return;
       }
 
-      // Build rich context — include all known profile fields so backend
+      // Build rich context â€” include all known profile fields so backend
       // can pass them to the recommendation engine alongside website evidence
       const profile = profileService.getProfileById(userId) || {};
       const brain = profile.businessBrain || {};
@@ -1775,7 +1784,7 @@ try {
 
       updateState({ fullRecommendationData: mergedData });
 
-      // ── PERSIST to profile.businessBrain.addiRecommendations ──────────────────
+      // â”€â”€ PERSIST to profile.businessBrain.addiRecommendations â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
       // This is the single source of truth.
       // Admin reads from here. Customer reads from here. No separate regeneration.
       const updatedRecs = businessProfileService.updateBusinessProfile(userId, {
@@ -1784,7 +1793,7 @@ try {
       });
       syncService.syncProfile(userId, updatedRecs);
 
-      // Map serviceAssessments (new) → display format for customer UI
+      // Map serviceAssessments (new) â†’ display format for customer UI
       const assessments = mergedData.serviceAssessments || [];
       const mappedRecs = assessments
         .filter(a =>
@@ -2083,15 +2092,177 @@ try {
   };
 
   const prof = state.businessProfile || {};
+  const isLoginScreen = stepIndex === 1;
+
+  // When on Step 1 (Authentication), render directly in pure white full viewport
+  if (stepIndex === 1) {
+    return (
+      <div className="manrope-auth-viewport">
+        <div className="manrope-auth-container">
+          {/* Top minimal phone icon */}
+          <div className="manrope-icon-header">
+            <Smartphone size={34} strokeWidth={1.5} color="#000000" />
+          </div>
+
+          {!otpSent ? (
+            <>
+              {/* Heading: TWO LINES exactly */}
+              <h1 className="manrope-auth-heading-twolines">
+                Enter your<br />phone number
+              </h1>
+
+              {/* Phone Input Form */}
+              <form onSubmit={handleSendOTP} style={{ width: '100%' }}>
+                <div className="manrope-input-wrapper">
+                  <div className={`manrope-input-group ${loginError ? 'has-error' : ''}`}>
+                    <span className="manrope-flag-country">
+                      <IndiaFlag />
+                      <span className="india-code-text">+91</span>
+                    </span>
+                    <input
+                      type="tel"
+                      className="manrope-phone-input"
+                      value={phoneInput}
+                      onChange={e => {
+                        const val = e.target.value.replace(/\D/g, '').slice(0, 10);
+                        setPhoneInput(val);
+                        setLoginError('');
+                      }}
+                      maxLength={10}
+                      placeholder="Enter your mobile number"
+                      autoFocus
+                    />
+                    {phoneInput && (
+                      <button type="button" className="manrope-clear-btn" onClick={() => setPhoneInput('')}>
+                        <X size={13} />
+                      </button>
+                    )}
+                  </div>
+                </div>
+
+                {loginError && (
+                  <div className="manrope-error-msg">
+                    <AlertCircle size={14} /> <span>{loginError}</span>
+                  </div>
+                )}
+
+                {/* Right-aligned circular CTA button */}
+                <div className="manrope-cta-right-row">
+                  <button
+                    type="submit"
+                    className="manrope-circle-cta"
+                    disabled={phoneInput.length !== 10}
+                    title="Get OTP"
+                  >
+                    <ArrowRight size={22} color="#FFFFFF" strokeWidth={2.5} />
+                  </button>
+                </div>
+              </form>
+            </>
+          ) : (
+            <>
+              {/* OTP Heading */}
+              <h1 className="manrope-auth-heading-otp">Enter the OTP</h1>
+
+              {/* Phone number row with edit icon */}
+              <button
+                type="button"
+                className="manrope-phone-edit-row"
+                onClick={() => { setOtpSent(false); setLoginError(''); }}
+                title="Change phone number"
+              >
+                <span>+91 {phoneInput}</span>
+                <Edit2 size={14} />
+              </button>
+
+              {/* OTP Form */}
+              <form onSubmit={handleVerifyOTP} style={{ width: '100%' }}>
+                <div className="manrope-otp-boxes">
+                  {[0, 1, 2, 3].map((idx) => {
+                    const digit = otpInput[idx] || '';
+                    return (
+                      <input
+                        key={idx}
+                        type="text"
+                        inputMode="numeric"
+                        maxLength={1}
+                        className={`manrope-otp-box ${digit ? 'filled' : ''} ${loginError ? 'error' : ''}`}
+                        value={digit}
+                        onChange={e => {
+                          const val = e.target.value.replace(/\D/g, '').slice(-1);
+                          const nextOtp = otpInput.split('');
+                          nextOtp[idx] = val;
+                          const full = nextOtp.join('').slice(0, 4);
+                          setOtpInput(full);
+                          setLoginError('');
+                          if (val && e.target.nextElementSibling) {
+                            e.target.nextElementSibling.focus();
+                          }
+                        }}
+                        onKeyDown={e => {
+                          if (e.key === 'Backspace' && !digit && e.target.previousElementSibling) {
+                            e.target.previousElementSibling.focus();
+                          }
+                        }}
+                        autoFocus={idx === 0}
+                      />
+                    );
+                  })}
+                </div>
+
+                {loginError && (
+                  <div className="manrope-error-msg">
+                    <AlertCircle size={14} /> <span>{loginError}</span>
+                  </div>
+                )}
+
+                {/* Countdown / Resend text centered below OTP */}
+                <div className="manrope-timer-text">
+                  <span>00:59</span>
+                  <span style={{ margin: '0 4px', color: '#D1D5DB' }}>â€¢</span>
+                  <button
+                    type="button"
+                    className="manrope-resend-btn"
+                    onClick={() => handleSendOTP({ preventDefault: () => {} })}
+                  >
+                    Resend OTP
+                  </button>
+                </div>
+
+                {/* Right-aligned circular CTA button */}
+                <div className="manrope-cta-right-row">
+                  <button
+                    type="submit"
+                    className="manrope-circle-cta"
+                    disabled={otpInput.length < 4}
+                    title="Continue"
+                  >
+                    <ArrowRight size={22} color="#FFFFFF" strokeWidth={2.5} />
+                  </button>
+                </div>
+              </form>
+            </>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+
 
   return (
-    <div className="hotstar-layout-wrapper">
+    <div className="hotstar-layout-wrapper white-page-mode">
+      {isLoginScreen ? null : (
+        <>
       {/* Desktop Minimal Sidebar */}
       <nav className="hotstar-desktop-sidebar">
         <div className="hotstar-nav-group">
           <div className="hotstar-nav-item" title="Search"><Search size={22} /><span className="hotstar-nav-label">Search</span></div>
           <div className="hotstar-nav-item" title="Help"><HelpCircle size={22} /><span className="hotstar-nav-label">Help</span></div>
-          <div className="hotstar-nav-item" title="Logout"><LogOut size={22} /><span className="hotstar-nav-label">Logout</span></div>
+          <div className="hotstar-nav-item" title="Logout" style={{ cursor: 'pointer' }} onClick={() => { authService.logout(); window.location.reload(); }}>
+            <LogOut size={22} />
+            <span className="hotstar-nav-label">Logout</span>
+          </div>
         </div>
       </nav>
 
@@ -2111,32 +2282,38 @@ try {
             </div>
             <div className="hotstar-nav-item" title="Search"><Search size={22} /><span className="hotstar-nav-label-mobile">Search</span></div>
             <div className="hotstar-nav-item" title="Help"><HelpCircle size={22} /><span className="hotstar-nav-label-mobile">Help</span></div>
-            <div className="hotstar-nav-item" title="Logout"><LogOut size={22} /><span className="hotstar-nav-label-mobile">Logout</span></div>
+            <div className="hotstar-nav-item" title="Logout" style={{ cursor: 'pointer' }} onClick={() => { authService.logout(); window.location.reload(); }}>
+              <LogOut size={22} />
+              <span className="hotstar-nav-label-mobile">Logout</span>
+            </div>
           </nav>
         </div>
+      )}
+
+      </>
       )}
 
       {/* Main Content Area */}
       <div className="hotstar-main-content">
         <div className="duolingo-onboarding-viewport fade-in" style={{ paddingTop: '32px' }}>
           
-      {/* ── LOGIN SUCCESS CELEBRATION POPUP MODAL (mascot (2).json) ───────── */}
+      {/* â”€â”€ LOGIN SUCCESS CELEBRATION POPUP MODAL (mascot (2).json) â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {showCelebrationModal && (
         <div className="celebration-modal-backdrop fade-in">
           <div className="celebration-modal-card scale-in">
             <CelebrationLottiePlayer width={240} height={240} />
-            <h2 className="celebration-heading">Successfully! 🎉</h2>
+            <h2 className="celebration-heading">Successfully! ðŸŽ‰</h2>
           </div>
         </div>
       )}
 
-      {/* ── PROJECT CONFIRMED SUCCESS POPUP MODAL (MASCOT_CELEBRATION.JSON LOTTIE) ───────── */}
+      {/* â”€â”€ PROJECT CONFIRMED SUCCESS POPUP MODAL (MASCOT_CELEBRATION.JSON LOTTIE) â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {showProjectConfirmedModal && (
         <div className="celebration-modal-backdrop fade-in">
           <div className="celebration-modal-card project-confirmed-modal-card scale-in">
             <CelebrationLottiePlayer width={260} height={260} />
             <h2 className="celebration-heading" style={{ fontSize: '24px', marginTop: '12px' }}>
-              Project Confirmed Successfully! 🎉
+              Project Confirmed Successfully! ðŸŽ‰
             </h2>
             <p className="celebration-subtext" style={{ maxWidth: '380px', marginTop: '8px', lineHeight: '1.5' }}>
               Your project has been confirmed successfully. Our team will now begin the production process and keep you updated at every stage.
@@ -2145,7 +2322,7 @@ try {
         </div>
       )}
 
-      {/* ── DUPLICATE BUSINESS DETECTED MODAL ───────── */}
+      {/* â”€â”€ DUPLICATE BUSINESS DETECTED MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {showDuplicateModal && duplicateMatch && (
         <div className="celebration-modal-backdrop fade-in" style={{ zIndex: 10000 }}>
           <div className="celebration-modal-card scale-in" style={{ maxWidth: '480px', padding: '24px', textAlign: 'left', background: '#1A1A24', border: '1px solid #00D1FF', borderRadius: '16px' }}>
@@ -2196,7 +2373,7 @@ try {
             )}
 
             <p style={{ fontSize: '13px', color: '#B3B3B3', marginBottom: '20px', lineHeight: '1.5' }}>
-              If this is your business, please login to your existing account. If this is a different business, you can proceed with your new registration.
+              This business identity is already linked to an existing ADDUS account. You can log in to your existing account, or enter different details to register a new business.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
@@ -2229,18 +2406,27 @@ try {
                 style={{ width: '100%', minHeight: '44px', borderColor: 'rgba(255,255,255,0.15)', color: '#FFF' }}
                 onClick={() => {
                   setShowDuplicateModal(false);
-                  setDuplicateConfirmed(true);
-                  setStepIndex(5); // Continue with new registration
+                  setDuplicateMatch(null);
+                  setDuplicateConfirmed(false);
+                  // Clear conflicting inputs so user can enter new business details
+                  updateState({
+                    businessProfile: {
+                      ...(state.businessProfile || {}),
+                      website: '',
+                      businessName: ''
+                    }
+                  });
+                  setStepIndex(3); // Return to Business Input step to enter new website/details
                 }}
               >
-                <span>Continue as new business</span>
+                <span>Register with different details</span>
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* ── NO DELIVERABLES SELECTED MODAL ───────── */}
+      {/* â”€â”€ NO DELIVERABLES SELECTED MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {showNoDeliverablesModal && (
         <div className="celebration-modal-backdrop fade-in" style={{ zIndex: 10000 }}>
           <div className="celebration-modal-card scale-in" style={{ maxWidth: '480px', padding: '24px', textAlign: 'left', background: '#1A1A24', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px' }}>
@@ -2343,30 +2529,30 @@ try {
           </div>
         )}
         
-        {/* ── HISTORICAL CHAT MESSAGES (COMPLETED TURNS — NO MASCOT) ───────── */}
-        {history.map((turn, idx) => (
+        {/* â”€â”€ HISTORICAL CHAT MESSAGES (COMPLETED TURNS FOR STEPS > 4) â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        {stepIndex > 4 && history.filter(turn => turn.stepIndex !== 1 && !turn.id?.includes("turn_auth")).map((turn, idx) => (
           <div key={turn.id || idx} className="chat-turn-group fade-in">
-            {/* Previous AI Message (Speech Bubble Only) */}
-            <div className="duolingo-mascot-row past-mascot-row">
-              <DuolingoSpeechBubble className="past-speech-bubble">
-                <div className="conversational-sender-tag">
+            {/* Previous AI Message (Speech Bubble with small ADDI avatar) */}
+            <div className="completed-addi-row" style={{ display: "flex", justifyContent: "flex-start", width: "100%", marginBottom: "12px" }}>
+              <div className="whatsapp-addi-bubble">
+                <div className="addi-badge-name">
                   <span className="online-dot"></span> ADDI
                 </div>
                 <h1 className="duolingo-question-heading past-heading">
-                  {turn.questionKey ? t(turn.questionKey) : turn.question}
+                  {turn.question || (turn.questionKey ? t(turn.questionKey) : '')}
                 </h1>
                 {turn.subtitle && (
                   <p className="duolingo-subtitle-text past-subtitle">
-                    {turn.subtitleKey ? t(turn.subtitleKey) : turn.subtitle}
+                    {turn.subtitle}
                   </p>
                 )}
-              </DuolingoSpeechBubble>
+              </div>
             </div>
 
             {/* User Answer Bubble on the Right */}
             {turn.userAnswerText && (
               <div 
-                className="duolingo-user-bubble"
+                className="whatsapp-user-bubble"
                 onClick={() => {
                   if (turn.stepIndex) {
                     setStepIndex(turn.stepIndex);
@@ -2376,414 +2562,177 @@ try {
                 style={{ cursor: turn.stepIndex ? 'pointer' : 'default', transition: 'all 0.2s' }}
                 title={turn.stepIndex ? 'Click to edit your answer' : ''}
               >
-                <User size={16} className="user-bubble-icon" />
+                <User size={14} className="user-bubble-icon" />
                 <span>{turn.userAnswerText}</span>
-                {turn.stepIndex ? <Edit2 size={14} className="user-check-icon" style={{ opacity: 0.6 }} /> : <CheckCircle size={16} className="user-check-icon" />}
+                {turn.stepIndex ? <Edit2 size={12} className="user-check-icon" style={{ opacity: 0.7 }} /> : <CheckCircle size={14} className="user-check-icon" />}
               </div>
             )}
           </div>
         ))}
 
-        {/* ── CURRENT ACTIVE QUESTION STEP ─────────────────────────────────── */}
+        {/* â”€â”€ CURRENT ACTIVE QUESTION STEP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         
-        {/* STEP 1: RECOVERED LOGIN SCREEN */}
-        {/* STEP 1: DESKTOP TWO-COLUMN POPUP & MOBILE FULLSCREEN */}
-        {stepIndex === 1 && (
-          <div className="login-modal-overlay fade-in">
-            <div className="login-modal-content">
-              {/* Close Button */}
-              <button className="login-modal-close" onClick={() => { /* Close logic if any */ }}>
-                <X size={20} />
-              </button>
-
-              {/* Desktop Left Column */}
-              <div className="login-modal-left">
-                <div className="login-left-composition">
-                  <div className="login-mascot-container">
-                    <MascotLottiePlayer stepKey={currentStepKey} path="/lottiefile/mascot_on_chair.json" />
-                  </div>
-                  <div className="login-addus-text">I am Addi</div>
-                </div>
-              </div>
-
-              {/* Vertical Divider */}
-              <div className="login-modal-divider">
-                <span>OR</span>
-              </div>
-
-              {/* Right Column (Form) */}
-              <div className="login-modal-right">
-                <div className="premium-login-container">
-                  <h1 className="login-heading" style={{ fontSize: '24px' }}>Login or sign up to continue</h1>
-
-              <div className="auth-tab-flex margin-top-16">
-                <button
-                  type="button"
-                  className={`auth-tab-btn ${authMethod === 'phone' ? 'active-tab' : ''}`}
-                  onClick={() => { setAuthMethod('phone'); setLoginError(''); setOtpSent(false); }}
-                >
-                  <Smartphone size={16} /> Mobile Number
-                </button>
-                <button
-                  type="button"
-                  className={`auth-tab-btn ${authMethod === 'email' ? 'active-tab' : ''}`}
-                  onClick={() => { setAuthMethod('email'); setLoginError(''); setOtpSent(false); }}
-                >
-                  <Mail size={16} /> Email Address
-                </button>
-              </div>
-
-              {!otpSent ? (
-                <form onSubmit={handleSendOTP} className="margin-top-20" style={{ position: 'relative', zIndex: 2 }}>
-                  {authMethod === 'phone' ? (
-                    <div className="premium-input-group">
-                      <div className="premium-prefix">+91</div>
-                      <div className="premium-input-wrapper">
-                        <span className="premium-label">Mobile number</span>
-                        <input
-                          type="tel"
-                          className="premium-text-input"
-                          value={phoneInput}
-                          onChange={e => {
-                            const val = e.target.value.replace(/\D/g, '').slice(0, 10);
-                            setPhoneInput(val);
-                            setLoginError('');
-                          }}
-                          maxLength={10}
-                          autoFocus
-                        />
-                        {phoneInput && (
-                          <button type="button" className="clear-input-btn" onClick={() => setPhoneInput('')}>
-                            <X size={16} />
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="premium-input-group">
-                      <div className="premium-input-wrapper">
-                        <span className="premium-label">Email Address</span>
-                        <input
-                          type="email"
-                          className="premium-text-input"
-                          value={emailInput}
-                          onChange={e => { setEmailInput(e.target.value); setLoginError(''); }}
-                          autoFocus
-                        />
-                        {emailInput && (
-                          <button type="button" className="clear-input-btn" onClick={() => setEmailInput('')}>
-                            <X size={16} />
-                          </button>
-                        )}
-                      </div>
-                    </div>
-                  )}
-
-                  {loginError && (
-                    <p className="error-text-msg margin-top-10">
-                      <AlertCircle size={15} /> {loginError}
-                    </p>
-                  )}
-
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', margin: '20px 0', textAlign: 'left' }}>
-                    <input
-                      type="checkbox"
-                      id="legal-agree-checkbox"
-                      checked={legalAgreed}
-                      onChange={(e) => {
-                        setLegalAgreed(e.target.checked);
-                        setLoginError('');
-                      }}
-                      style={{ accentColor: '#7C5CFF', width: '20px', height: '20px', cursor: 'pointer', flexShrink: 0 }}
-                    />
-                    <label htmlFor="legal-agree-checkbox" style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', cursor: 'pointer', lineHeight: '1.5' }}>
-                      I agree to the{' '}
-                      <button type="button" onClick={() => setLegalViewType('terms')} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', padding: 0, cursor: 'pointer', textDecoration: 'underline', font: 'inherit' }}>
-                        Terms &amp; Conditions
-                      </button>{' '}
-                      and{' '}
-                      <button type="button" onClick={() => setLegalViewType('privacy')} style={{ background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)', padding: 0, cursor: 'pointer', textDecoration: 'underline', font: 'inherit' }}>
-                        Privacy Policy
-                      </button>.
-                    </label>
-                  </div>
-                  <div className="login-bottom-row">
-                    <div className="login-help-text">
-                      Having trouble logging in? <a href="#">Get Help</a>
-                    </div>
-                    
-                    <button
-                      type="submit"
-                      className="floating-continue-btn"
-                      disabled={authMethod === 'phone' ? phoneInput.length !== 10 : !emailInput.trim()}
-                    >
-                      <ArrowRight size={24} color="#fff" />
-                    </button>
-                  </div>
-
-                </form>
-              ) : (
-                <form onSubmit={handleVerifyOTP} className="margin-top-20" style={{ position: 'relative', zIndex: 2 }}>
-                  <p className="otp-sent-info" style={{ color: 'rgba(255,255,255,0.7)' }}>
-                    Verification code sent to <strong>{authMethod === 'phone' ? `+91 ${phoneInput}` : emailInput}</strong>
-                  </p>
-
-                  <div className="premium-input-group margin-top-16">
-                    <div className="premium-input-wrapper">
-                        <span className="premium-label">4-digit code</span>
-                      <input
-                        type="text"
-                        className="premium-text-input"
-                        style={{ letterSpacing: '8px' }}
-                        value={otpInput}
-                        onChange={e => {
-                           const val = e.target.value.replace(/\D/g, '').slice(0, 4);
-                          setOtpInput(val);
-                          setLoginError('');
-                        }}
-                         maxLength={4}
-                        autoFocus
-                      />
-                    </div>
-                  </div>
-
-                  {loginError && (
-                    <p className="error-text-msg margin-top-10">
-                      <AlertCircle size={15} /> {loginError}
-                    </p>
-                  )}
-
-                  <div className="login-bottom-row" style={{ marginTop: '32px' }}>
-                    <button
-                      type="button"
-                      className="duolingo-secondary-btn"
-                      style={{ minHeight: '40px', padding: '0 16px', fontSize: '13px' }}
-                      onClick={() => setOtpSent(false)}
-                    >
-                      {authMethod === 'phone' ? 'Change Phone' : 'Change Email'}
-                    </button>
-
-                    <button
-                      type="submit"
-                      className="floating-continue-btn"
-                      disabled={otpInput.length < 4}
-                    >
-                      <ArrowRight size={24} color="#fff" />
-                    </button>
-                  </div>
-                </form>
-              )}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-
-        {/* STEP 3: BUSINESS UPLOAD / ANALYSIS */}
+        {/* STEP 3: BUSINESS UPLOAD / INFORMATION (MINIMAL WHITE THEME) */}
         {stepIndex === 3 && (
-          <div className="duolingo-step-card active-step-card">
-            <div className="duolingo-mascot-row">
-              <MascotLottiePlayer stepKey={currentStepKey} />
-              <DuolingoSpeechBubble key={currentStepKey} className="chat-message-bubble">
-                <div className="conversational-sender-tag">
+          <div className="white-onboarding-container">
+            {/* ADDI Intro Section */}
+            <div className="addi-intro-section active-addi-section">
+              <div className="active-mascot-wrapper">
+                <MascotLottiePlayer stepKey={currentStepKey} width={160} height={160} />
+              </div>
+              
+              {/* WHATSAPP-STYLE ADDI SPEECH BOX WITH THIN PURPLE-PINK GRADIENT BORDER */}
+              <div className="whatsapp-addi-bubble active-addi-bubble">
+                <div className="addi-badge-name">
                   <span className="online-dot"></span> ADDI
                 </div>
-                <h1 className="duolingo-question-heading">{t('bizWelcome')}</h1>
-                <p className="duolingo-subtitle-text">{t('bizSubtitle')}</p>
-              </DuolingoSpeechBubble>
+                <div className="addi-title-text">
+                  Hi, I'm ADDI.
+                </div>
+                <p className="addi-desc-text">
+                  Tell me about your business and I'll help build your profile.
+                </p>
+              </div>
             </div>
 
-            <div style={{ width: '100%', marginTop: '8px' }} className="chat-stagger-1">
-              <BusinessUploadWidget 
-                onAnalysisComplete={handleBusinessAnalysisDone} 
-                activeTab={businessUploadTab}
-                onTabChange={setBusinessUploadTab}
-              />
-            </div>
+            {/* Section Heading */}
+            <h2 className="onboarding-subheading">
+              What would you like to share?
+            </h2>
+
+            {/* 2-Option Accordion Cards & Analysis Control */}
+            <BusinessUploadWidget 
+              onAnalysisComplete={handleBusinessAnalysisDone} 
+              activeTab={businessUploadTab}
+              onTabChange={setBusinessUploadTab}
+            />
           </div>
         )}
 
-        {/* STEP 4: BUSINESS PROFILE CONFIRMATION */}
+        {/* STEP 4: COMPLETED ADDI CONVERSATION & ANALYSIS (EXACT REFERENCE WHATSAPP STYLE) */}
         {stepIndex === 4 && (
-          <div className="duolingo-step-card active-step-card compact-review-card-wrapper">
-            <div className="duolingo-mascot-row" style={{ width: '100%' }}>
-              <MascotLottiePlayer stepKey={currentStepKey} path="/lottiefile/intro-ilkokul.json" />
-              
-              <DuolingoSpeechBubble key={currentStepKey} className="chat-message-bubble business-review-summary-card">
-                 {/* ADDI Header & Title */}
-                 <div className="conversational-sender-tag">
-                   <span className="online-dot"></span> ADDI
-                 </div>
-                <h2 className="review-card-title">
-                  {t('bizReviewWelcome')}
-                </h2>
+          <div className="white-onboarding-container">
+            {/* 1. FIRST ADDI MESSAGE (NO MASCOT) */}
+            <div className="completed-addi-row" style={{ display: 'flex', justifyContent: 'flex-start', width: '100%', marginBottom: '14px' }}>
+              <div className="whatsapp-addi-bubble" style={{ maxWidth: '440px' }}>
+                <div className="addi-badge-name">
+                  <span className="online-dot"></span> ADDI
+                </div>
+                <div style={{ fontFamily: 'Manrope, sans-serif', fontSize: '15px', fontWeight: 800, color: '#111111', lineHeight: '1.4', marginBottom: '4px' }}>
+                  Hi, I'm ADDI.
+                </div>
+                <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: '13px', fontWeight: 500, color: '#4B5563', lineHeight: '1.45', margin: 0 }}>
+                  Tell me about your business and I'll help build your profile.
+                </p>
+              </div>
+            </div>
 
-                 {/* Structured failure message from backend */}
-                 {prof.sourceStatus && prof.sourceStatus !== 'LIKELY_BUSINESS_WEBSITE' && (
-                   <div className="margin-top-12" style={{ textAlign: 'left' }}>
-                     <div style={{ 
-                       background: 'rgba(255, 107, 107, 0.08)', 
-                       border: '1px solid rgba(255, 107, 107, 0.25)', 
-                       borderRadius: '8px', 
-                       padding: '10px 12px',
-                       marginBottom: '8px'
-                     }}>
-                       <div style={{ fontSize: '13px', color: '#FF6B6B', marginBottom: '4px', fontWeight: 600 }}>
-                         {prof.sourceStatus === 'ACCESS_BLOCKED' && 'Website access restricted'}
-                         {prof.sourceStatus === 'RETRIEVAL_FAILED' && 'Website access failed'}
-                         {prof.sourceStatus === 'INSUFFICIENT_EVIDENCE' && 'Limited website information'}
-                         {(prof.sourceStatus === 'REJECTED_SOURCE' || prof.failureReason === 'INVALID_URL') && 'Invalid website address'}
-                         {!['ACCESS_BLOCKED', 'RETRIEVAL_FAILED', 'INSUFFICIENT_EVIDENCE', 'REJECTED_SOURCE'].includes(prof.sourceStatus) && 'Website analysis incomplete'}
-                       </div>
-                       <div style={{ fontSize: '12px', color: '#B3B3B3', lineHeight: '1.5' }}>
-                         {prof.userMessage || getDefaultFailureMessage(prof.sourceStatus, prof.failureReason)}
-                       </div>
-                     </div>
-                     
-                     {/* Recovery actions - always available when analysis did not produce a reliable business profile */}
-                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '12px' }}>
-                       <button 
-                         type="button" 
-                         className="duolingo-option-card" 
-                         style={{ padding: '12px 16px', fontSize: '13px', textAlign: 'left' }}
-                         onClick={() => { setBusinessUploadTab('text'); setStepIndex(3); }}
-                       >
-                         <div style={{ fontWeight: 600, marginBottom: '2px' }}>✍️ Type my business info</div>
-                         <div style={{ fontSize: '11px', opacity: 0.8 }}>Add your business details manually.</div>
-                       </button>
-                       <button 
-                         type="button" 
-                         className="duolingo-option-card" 
-                         style={{ padding: '12px 16px', fontSize: '13px', textAlign: 'left' }}
-                         onClick={() => { setBusinessUploadTab('file'); setStepIndex(3); }}
-                       >
-                         <div style={{ fontWeight: 600, marginBottom: '2px' }}>📄 Upload File</div>
-                         <div style={{ fontSize: '11px', opacity: 0.8 }}>Upload a document containing your business information.</div>
-                       </button>
-                     </div>
-                   </div>
-                 )}
+            {/* 2. USER RESPONSE MESSAGE (ON THE RIGHT - NO MASCOT) */}
+            <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%', marginBottom: '14px' }}>
+              <div 
+                className="whatsapp-user-bubble"
+                onClick={() => setStepIndex(3)}
+                style={{ cursor: 'pointer', margin: 0 }}
+                title="Click to edit"
+              >
+                <User size={14} className="user-bubble-icon" />
+                <span>Business details uploaded</span>
+                <Edit2 size={12} className="user-check-icon" style={{ opacity: 0.7 }} />
+              </div>
+            </div>
 
-                 {/* BUSINESS UNDERSTANDING SUMMARY */}
-                 <div className="compact-summary-2col-grid margin-top-12" style={{ gridTemplateColumns: '1fr 1fr' }}>
-                    <div className="summary-grid-cell">
-                      <span className="summary-label">{t('businessLabel')}</span>
-                      <strong className="summary-val">{prof.businessName || 'Not yet identified'}</strong>
-                    </div>
+            {/* 3. SECOND ADDI MESSAGE / RESULT (NO MASCOT) */}
+            <div className="completed-addi-row" style={{ display: 'flex', justifyContent: 'flex-start', width: '100%', marginBottom: '16px' }}>
+              <div className="whatsapp-addi-bubble" style={{ maxWidth: '460px', width: '100%' }}>
+                <div className="addi-badge-name">
+                  <span className="online-dot"></span> ADDI
+                </div>
+                <div style={{ fontFamily: 'Manrope, sans-serif', fontSize: '15px', fontWeight: 800, color: '#111111', margin: '0 0 4px 0', lineHeight: 1.4 }}>
+                  Here's what I understood about your business:
+                </div>
+                <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: '12.5px', color: '#6B7280', margin: '0 0 12px 0', fontWeight: 500 }}>
+                  Review your business brain profile below.
+                </p>
 
-                    <div className="summary-grid-cell">
-                      <span className="summary-label">{t('industryLabel')}</span>
-                      <strong className="summary-val">{prof.industry || 'Not yet identified'}</strong>
-                    </div>
-
-                    {prof.location && (
-                      <div className="summary-grid-cell">
-                        <span className="summary-label">Location</span>
-                        <strong className="summary-val">{prof.location}</strong>
-                      </div>
-                    )}
-
-                    {prof.businessStage && (
-                      <div className="summary-grid-cell">
-                        <span className="summary-label">{t('stageLabel')}</span>
-                        <strong className="summary-val">{prof.businessStage}</strong>
-                      </div>
-                    )}
+                {/* Business Details (Clean Key-Value Rows) */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '12px 14px', background: '#F9FAFB', border: '1px solid #E5E7EB', borderRadius: '12px', marginBottom: '10px', fontSize: '13px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ color: '#6B7280', fontWeight: 600 }}>Business Name</span>
+                    <strong style={{ color: '#111111', fontWeight: 700 }}>{prof.businessName || state.businessName || 'Business'}</strong>
                   </div>
-
+                  {(prof.website || prof.url || state.website) && (
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ color: '#6B7280', fontWeight: 600 }}>Website</span>
+                      <strong style={{ color: '#111111', fontWeight: 700 }}>{prof.website || prof.url || state.website}</strong>
+                    </div>
+                  )}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ color: '#6B7280', fontWeight: 600 }}>Industry</span>
+                    <strong style={{ color: '#111111', fontWeight: 700 }}>{prof.industry || 'Technology'}</strong>
+                  </div>
+                  {prof.segment && (
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <span style={{ color: '#6B7280', fontWeight: 600 }}>Segment</span>
+                      <strong style={{ color: '#111111', fontWeight: 700 }}>{prof.segment}</strong>
+                    </div>
+                  )}
                   {(prof.businessDescription || prof.summary) && (
-                    <div className="margin-top-12" style={{ textAlign: 'left' }}>
-                      <span className="summary-label" style={{ display: 'block', marginBottom: '4px' }}>About</span>
-                      <p style={{ fontSize: '13px', color: '#E0E0E0', margin: 0, lineHeight: '1.5' }}>
+                    <div style={{ borderTop: '1px solid #E5E7EB', paddingTop: '8px', marginTop: '2px' }}>
+                      <span style={{ color: '#6B7280', fontWeight: 600, display: 'block', marginBottom: '2px', fontSize: '11px' }}>Summary</span>
+                      <p style={{ color: '#111111', margin: 0, lineHeight: 1.45, fontSize: '12.5px', fontWeight: 500 }}>
                         {prof.businessDescription || prof.summary}
                       </p>
                     </div>
                   )}
+                </div>
 
-                  {prof.summary && prof.summary !== prof.businessDescription && (
-                    <div className="margin-top-12" style={{ textAlign: 'left' }}>
-                      <span className="summary-label" style={{ display: 'block', marginBottom: '4px' }}>Summary</span>
-                      <p style={{ fontSize: '13px', color: '#E0E0E0', margin: 0, lineHeight: '1.5' }}>
-                        {prof.summary}
-                      </p>
-                    </div>
-                  )}
+                {/* Small subtle Edit link */}
+                <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                  <button
+                    type="button"
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: '#6B7280',
+                      fontSize: '12px',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      padding: '2px 0',
+                      textDecoration: 'underline'
+                    }}
+                    onClick={() => setStepIndex(3)}
+                  >
+                    <Edit2 size={12} /> Edit
+                  </button>
+                </div>
+              </div>
+            </div>
 
-                  {(Array.isArray(prof.services) && prof.services.length > 0) && (
-                    <div className="margin-top-12" style={{ textAlign: 'left' }}>
-                      <span className="summary-label" style={{ display: 'block', marginBottom: '6px' }}>What you offer</span>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                        {prof.services.map((srv, idx) => (
-                          <span key={idx} style={{ background: '#2B2B36', padding: '3px 8px', borderRadius: '4px', fontSize: '11px', color: '#FFF' }}>{srv}</span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {(Array.isArray(prof.products) && prof.products.length > 0) && (
-                    <div className="margin-top-12" style={{ textAlign: 'left' }}>
-                      <span className="summary-label" style={{ display: 'block', marginBottom: '6px' }}>Products</span>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                        {prof.products.map((prod, idx) => (
-                          <span key={idx} style={{ background: '#2B2B36', padding: '3px 8px', borderRadius: '4px', fontSize: '11px', color: '#FFF' }}>{prod}</span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {(Array.isArray(prof.assets) && prof.assets.length > 0) && (
-                    <div className="margin-top-12" style={{ textAlign: 'left' }}>
-                      <span className="summary-label" style={{ display: 'block', marginBottom: '6px' }}>Professional presence</span>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                        {prof.assets.map((ast, idx) => (
-                          <span key={idx} style={{ background: '#1a3a2a', padding: '3px 8px', borderRadius: '4px', fontSize: '11px', color: '#58CC02', border: '1px solid rgba(88,204,2,0.2)' }}>
-                            {ast.type}: {ast.status}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {(prof.contactInfo?.email || prof.contactInfo?.phone || (Array.isArray(prof.socialLinks) && prof.socialLinks.length > 0)) && (
-                    <div className="margin-top-12" style={{ textAlign: 'left' }}>
-                      <span className="summary-label" style={{ display: 'block', marginBottom: '6px' }}>Contact & Social</span>
-                      <div style={{ fontSize: '12px', color: '#B3B3B3', lineHeight: '1.6' }}>
-                        {prof.contactInfo?.email && <div>Email: {prof.contactInfo.email}</div>}
-                        {prof.contactInfo?.phone && <div>Phone: {prof.contactInfo.phone}</div>}
-                        {Array.isArray(prof.socialLinks) && prof.socialLinks.length > 0 && <div>Social: {prof.socialLinks.join(', ')}</div>}
-                      </div>
-                    </div>
-                  )}
-
-                  {(!prof.businessName && !prof.industry && !prof.businessStage && (!Array.isArray(prof.services) || prof.services.length === 0) && !prof.sourceStatus) && (
-                    <div className="margin-top-12" style={{ textAlign: 'left', color: '#FF6B6B', fontSize: '13px' }}>
-                      We couldn't retrieve any business information. Please enter your business details manually or upload a document.
-                    </div>
-                  )}
-
-                 {/* BOTTOM ACTIONS: SUBTLE EDIT & PRIMARY CONTINUE */}
-                 <div className="review-card-bottom-actions margin-top-14">
-                   <button
-                     type="button"
-                     className="btn-edit-subtle"
-                     onClick={() => setStepIndex(3)}
-                   >
-                     <Edit2 size={13} /> {t('edit')}
-                   </button>
-
-                    {(prof.sourceStatus === 'LIKELY_BUSINESS_WEBSITE') && (prof.businessName || prof.industry || (Array.isArray(prof.services) && prof.services.length > 0) || prof.businessDescription) && (
-                     <button
-                       type="button"
-                       className="duolingo-option-card btn-looks-good-gradient btn-looks-good-compact"
-                       onClick={() => handleSelectOption('confirm_profile', 'Profile Confirmed', handleConfirmProfile)}
-                     >
-                       <span>{t('looksGoodContinue')}</span>
-                     </button>
-                   )}
-                 </div>
-              </DuolingoSpeechBubble>
+            {/* 4. BOTTOM ANALYSIS ACTION (Left text: Analysis, Right button: Round Go button) */}
+            <div className="analysis-action-bar" style={{ marginTop: '16px' }}>
+              <span className="analysis-action-text">Analysis</span>
+              <button
+                type="button"
+                className="analysis-go-circle-btn"
+                onClick={() => {
+                  if (!prof.businessName) {
+                    updateState({
+                      businessProfile: {
+                        ...prof,
+                        businessName: prof.businessName || state.businessName || 'My Business',
+                        industry: prof.industry || 'Commercial & Creative Services'
+                      }
+                    });
+                  }
+                  handleSelectOption('confirm_profile', 'Profile Confirmed', handleConfirmProfile);
+                }}
+                title="Continue"
+              >
+                Go
+              </button>
             </div>
           </div>
         )}
@@ -2792,14 +2741,14 @@ try {
         {stepIndex === 5 && (
           <div className="duolingo-step-card active-step-card">
             <div className="duolingo-mascot-row">
-              <MascotLottiePlayer stepKey={currentStepKey} />
+              <MascotLottiePlayer stepKey={currentStepKey} width={160} height={160} />
               <DuolingoSpeechBubble key={currentStepKey} className="chat-message-bubble">
                 <div className="conversational-sender-tag">
                   <span className="online-dot"></span> ADDI
                 </div>
                 <h1 className="duolingo-question-heading">What do you need help with?</h1>
                 <p style={{ fontSize: '14px', color: '#9CA3AF', marginTop: '8px', textAlign: 'center' }}>
-                  Tell ADDI what you need — even if you're not sure yet.
+                  Tell ADDI what you need â€” even if you're not sure yet.
                 </p>
               </DuolingoSpeechBubble>
             </div>
@@ -2816,7 +2765,7 @@ try {
         {stepIndex === 6 && branchChoice === 'figuring_out' && flowBQIdx === 0 && (
           <div className="duolingo-step-card active-step-card">
             <div className="duolingo-mascot-row">
-              <MascotLottiePlayer stepKey={currentStepKey} />
+              <MascotLottiePlayer stepKey={currentStepKey} width={160} height={160} />
               <DuolingoSpeechBubble key={currentStepKey} className="chat-message-bubble">
                 <div className="conversational-sender-tag">
                   <span className="online-dot"></span> ADDI
@@ -2876,7 +2825,7 @@ try {
         {stepIndex === 6 && branchChoice === 'figuring_out' && flowBQIdx === 1 && (
           <div className="duolingo-step-card active-step-card">
             <div className="duolingo-mascot-row">
-              <MascotLottiePlayer stepKey={currentStepKey} />
+              <MascotLottiePlayer stepKey={currentStepKey} width={160} height={160} />
               <DuolingoSpeechBubble key={currentStepKey} className="chat-message-bubble">
                 <div className="conversational-sender-tag">
                   <span className="online-dot"></span> ADDI
@@ -2942,51 +2891,88 @@ try {
           </div>
         )}
 
-        {/* STEP 6: FLOW A (I Know What I Need) WITH MULTI-SELECT & SIMPLE EXPLANATIONS */}
+        {/* STEP 6: FLOW A (I Know What I Need) WITH 6 PREMIUM IMAGE SERVICE CARDS & CIRCULAR GO ACTION */}
         {stepIndex === 6 && branchChoice === 'know_need' && flowAQIdx === 0 && (
-          <div className="duolingo-step-card active-step-card">
-            <div className="duolingo-mascot-row">
-              <MascotLottiePlayer stepKey={currentStepKey} />
-              <DuolingoSpeechBubble key={currentStepKey} className="chat-message-bubble">
-                <div className="conversational-sender-tag">
+          <div className="white-onboarding-container" style={{ maxWidth: '680px' }}>
+            {/* 1. ADDI INTRODUCTION MESSAGE (WhatsApp Bubble with small mascot) */}
+            <div className="addi-intro-section" style={{ alignItems: 'flex-start', marginBottom: '14px' }}>
+              <div className="addi-mascot-wrapper" style={{ marginTop: '2px' }}>
+                <MascotLottiePlayer stepKey={currentStepKey} width={160} height={160} />
+              </div>
+              
+              <div className="whatsapp-addi-bubble" style={{ flex: 1, maxWidth: '100%' }}>
+                <div className="addi-badge-name">
                   <span className="online-dot"></span> ADDI
                 </div>
-                <h1 className="duolingo-question-heading">What deliverables do you need?</h1>
-                <p className="duolingo-subtitle-text">Select all the services you need for this project.</p>
-              </DuolingoSpeechBubble>
+                <h1 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '16px', fontWeight: 800, color: '#111111', margin: '0 0 4px 0', lineHeight: 1.35 }}>
+                  What deliverables do you need?
+                </h1>
+                <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: '13px', fontWeight: 500, color: '#4B5563', lineHeight: '1.4', margin: 0 }}>
+                  Select all the services you need for this project.
+                </p>
+              </div>
             </div>
 
-            <div className="netflix-media-grid margin-top-20 chat-stagger-1" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '12px' }}>
+            {/* 2. BUSINESS DETAILS UPLOADED STATUS PILL (ALIGNED TO RIGHT) */}
+            <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%', marginBottom: '14px' }}>
+              <div 
+                className="whatsapp-user-bubble"
+                onClick={() => setStepIndex(3)}
+                style={{ cursor: 'pointer', margin: 0 }}
+                title="Click to edit business details"
+              >
+                <User size={14} className="user-bubble-icon" />
+                <span>Business details uploaded</span>
+                <Edit2 size={12} className="user-check-icon" style={{ opacity: 0.7 }} />
+              </div>
+            </div>
+
+            {/* 3. 6 SERVICE CARDS (RESPONSIVE 2-COLUMN GRID) */}
+            <div className="services-2col-grid">
               {[
-                { title: '🎥 Video Shoot', explanation: 'Commercials, social media reels, and corporate films.' },
-                { title: '📸 Photo Shoot', explanation: 'Product photography, brand visuals, and team portraits.' },
-                { title: '🎨 Branding & Logo', explanation: 'Logos, color themes, visual identity, and brand guidelines.' },
-                { title: '📱 Social Media Management', explanation: 'Content calendars, daily posts, and profile growth.' },
-                { title: '📢 Paid Advertisements', explanation: 'Meta ads, Google ads, and billboard designs.' },
-                { title: '📈 Marketing Strategy', explanation: 'Business growth planning, SEO, and email campaigns.' },
-                { title: '✂️ Video & Photo Editing', explanation: 'Turning raw footage into polished reels, videos, and retouched photos.' },
-                { title: '📦 Product & Packaging Design', explanation: 'Designing website UI/UX layouts and physical product packages.' },
-                { title: '🚀 Product Launch Campaign', explanation: 'Big promotional rollouts and seasonal sales activations.' },
-                { title: '✍️ Content & Copywriting', explanation: 'Website text, blogs, video scripts, and social media captions.' },
-                { title: '🪄 Influencer & Talent Sourcing', explanation: 'Connecting your brand with matching creators, models, and influencers.' }
+                {
+                  id: 'video_production',
+                  title: 'Video Production',
+                  explanation: 'Commercials, social media reels, and corporate videos.',
+                  image: '/images/services/video_production.jpg'
+                },
+                {
+                  id: 'photography',
+                  title: 'Photography',
+                  explanation: 'Product photography, brand visuals, and team portraits.',
+                  image: '/images/services/photography.jpg'
+                },
+                {
+                  id: 'branding_logo',
+                  title: 'Branding & Logo',
+                  explanation: 'Logos, visual identity, and brand guidelines.',
+                  image: '/images/services/branding_logo.jpg'
+                },
+                {
+                  id: 'social_media_management',
+                  title: 'Social Media Management',
+                  explanation: 'Content planning, social posts, and profile growth.',
+                  image: '/images/services/social_media.jpg'
+                },
+                {
+                  id: 'marketing_strategy',
+                  title: 'Marketing Strategy',
+                  explanation: 'Business growth planning, SEO, and campaigns.',
+                  image: '/images/services/marketing_strategy.jpg'
+                },
+                {
+                  id: 'video_photo_editing',
+                  title: 'Video & Photo Editing',
+                  explanation: 'Reels, videos, and professional photo editing.',
+                  image: '/images/services/video_photo_editing.jpg'
+                }
               ].map(opt => {
                 const srv = opt.title;
                 const isSelected = localSelectedServices.includes(srv);
                 return (
-                  <button
-                    key={srv}
-                    type="button"
-                    className={`duolingo-option-card glass-service-card ${isSelected ? 'option-selected' : ''}`}
-                    style={{
-                      minHeight: '80px',
-                      padding: '14px',
-                      textAlign: 'left',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                      alignItems: 'flex-start',
-                      position: 'relative'
-                    }}
+                  <div
+                    key={opt.id}
+                    className={`service-selection-card ${isSelected ? 'is-selected' : ''}`}
                     onClick={() => {
                       if (isSelected) {
                         setLocalSelectedServices(prev => prev.filter(s => s !== srv));
@@ -2995,37 +2981,46 @@ try {
                       }
                     }}
                   >
-                    <span style={{ fontSize: '14px', fontWeight: '700', color: '#FFF', paddingRight: '20px' }}>{opt.title}</span>
-                    <span style={{ fontSize: '12px', color: 'rgba(255,255,255,0.65)', marginTop: '4px', lineHeight: '1.3' }}>
-                      {opt.explanation}
-                    </span>
-                    {isSelected && <CheckCircle size={16} style={{ position: 'absolute', top: '12px', right: '12px', color: '#00D1FF' }} />}
-                  </button>
+                    {/* Thumbnail Image */}
+                    <div className="service-card-thumbnail-wrapper">
+                      <img 
+                        src={opt.image} 
+                        alt={opt.title} 
+                        className="service-card-thumbnail-img" 
+                        loading="lazy"
+                      />
+                    </div>
+
+                    {/* Content info */}
+                    <div className="service-card-content">
+                      <h3 className="service-card-title">{opt.title}</h3>
+                      <p className="service-card-desc">{opt.explanation}</p>
+                    </div>
+
+                    {/* Checkbox (Top-Right) */}
+                    <div className={`service-card-checkbox ${isSelected ? 'checked' : ''}`}>
+                      {isSelected && (
+                        <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 5L4.5 8.5L11 1.5" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      )}
+                    </div>
+                  </div>
                 );
               })}
             </div>
 
-            {localSelectedServices.includes('Other') && (
-              <div className="margin-top-12 chat-stagger-2 fade-in">
-                 <input 
-                   type="text" 
-                   className="duolingo-text-input" 
-                   placeholder="Please describe what else you need..." 
-                   value={otherServiceInput}
-                   onChange={e => setOtherServiceInput(e.target.value)}
-                 />
-              </div>
-            )}
-
-            <div className="chat-stagger-3 margin-top-20">
+            {/* 4. BOTTOM ANALYSIS ACTION (Left text: Analysis, Right button: Circular Go button) */}
+            <div className="analysis-action-bar" style={{ marginTop: '20px' }}>
+              <span className="analysis-action-text">Analysis</span>
               <button 
                 type="button"
-                className="floating-continue-btn" 
-                disabled={localSelectedServices.length === 0 || (localSelectedServices.includes('Other') && !otherServiceInput.trim())}
+                className="analysis-go-circle-btn" 
+                disabled={localSelectedServices.length === 0}
                 onClick={handleMultiSelectFlowA}
-                title="Continue"
+                title="Continue to Analysis"
               >
-                <ArrowRight size={24} color="#fff" />
+                Go
               </button>
             </div>
           </div>
@@ -3035,7 +3030,7 @@ try {
         {stepIndex === 7 && (
           <div className="duolingo-step-card active-step-card" style={{ paddingBottom: '80px' }}>
             <div className="duolingo-mascot-row">
-              <MascotLottiePlayer stepKey={currentStepKey} />
+              <MascotLottiePlayer stepKey={currentStepKey} width={160} height={160} />
               <DuolingoSpeechBubble key={currentStepKey} className="chat-message-bubble">
                 <div className="conversational-sender-tag">
                   <span className="online-dot"></span> ADDI
@@ -3332,7 +3327,7 @@ try {
                                       setShowStylePreview(true);
                                     }}
                                   >
-                                    View details →
+                                    View details â†’
                                   </button>
                                 </div>
                               </div>
@@ -3343,7 +3338,7 @@ try {
                     </div>
                   )}
 
-                  {/* YOU REQUESTED — SECONDARY */}
+                  {/* YOU REQUESTED â€” SECONDARY */}
                   {state.selectedServices && state.selectedServices.length > 0 && (
                     <div style={{ padding: '10px 12px', background: 'rgba(0, 209, 255, 0.05)', borderRadius: '8px', border: '1px solid rgba(0, 209, 255, 0.12)' }}>
                       <span style={{ fontSize: '11px', fontWeight: '700', color: '#00D1FF', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
@@ -3352,7 +3347,7 @@ try {
                       <div className="margin-top-6" style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
                         {state.selectedServices.map((req, idx) => (
                           <span key={idx} style={{ background: '#1A1A24', color: '#B3B3B3', padding: '3px 10px', borderRadius: '16px', fontSize: '12px', fontWeight: '600', border: '1px solid rgba(255,255,255,0.08)' }}>
-                            ✓ {req}
+                            âœ“ {req}
                           </span>
                         ))}
                       </div>
@@ -3393,7 +3388,7 @@ try {
                   <div className="margin-top-16" style={{ padding: '12px 14px', background: '#1A1A24', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid rgba(0,209,255,0.2)' }}>
                     <span style={{ fontSize: '13px', color: '#B3B3B3' }}>Estimated Budget</span>
                     <span style={{ fontWeight: '700', color: '#00D1FF', fontSize: '14px' }}>
-                      Estimated range — final quote after expert review
+                      Estimated range â€” final quote after expert review
                     </span>
                   </div>
                 </div>
@@ -3409,7 +3404,7 @@ try {
                     <div className="margin-bottom-12" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                       {customRequests.map((note, nIdx) => (
                         <div key={nIdx} style={{ background: '#2B2B36', padding: '10px 14px', borderRadius: '8px', fontSize: '13px', color: '#00D1FF', display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid rgba(0,209,255,0.2)' }}>
-                          <span>💬 Custom Request: "<strong>{note}</strong>"</span>
+                          <span>ðŸ’¬ Custom Request: "<strong>{note}</strong>"</span>
                           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                             <span style={{ fontSize: '11px', color: '#58CC02', fontWeight: '700', background: 'rgba(88,204,2,0.15)', padding: '2px 8px', borderRadius: '4px' }}>ADDED TO SCOPE</span>
                             <button
@@ -3417,7 +3412,7 @@ try {
                               style={{ background: 'none', border: 'none', color: '#FF4B4B', cursor: 'pointer', fontSize: '12px', fontWeight: '600', padding: 0 }}
                               onClick={() => handleRemoveCustomRequest(note)}
                             >
-                              ✕ Remove
+                              âœ• Remove
                             </button>
                           </div>
                         </div>
@@ -3492,7 +3487,7 @@ try {
                     }}
                   >
                     <div className="option-content-col">
-                      <span className="option-title-text">★★★★★ {item.title}</span>
+                      <span className="option-title-text">â˜…â˜…â˜…â˜…â˜… {item.title}</span>
                       <span className="option-sub-text">{item.reasoning}</span>
                     </div>
                   </button>
@@ -3502,11 +3497,11 @@ try {
           </div>
         )}
 
-        {/* STEP 8: SCHEDULING (INDEPENDENT PER-SERVICE DATE REQUESTS — NO TIME PICKER) */}
+        {/* STEP 8: SCHEDULING (INDEPENDENT PER-SERVICE DATE REQUESTS â€” NO TIME PICKER) */}
         {stepIndex === 8 && (
           <div className="duolingo-step-card active-step-card">
             <div className="duolingo-mascot-row">
-              <MascotLottiePlayer stepKey={currentStepKey} />
+              <MascotLottiePlayer stepKey={currentStepKey} width={160} height={160} />
               <DuolingoSpeechBubble key={currentStepKey} className="chat-message-bubble">
                 <div className="conversational-sender-tag">
                   <span className="online-dot"></span> ADDI
@@ -3553,7 +3548,7 @@ try {
               })}
 
               <div style={{ padding: '12px 14px', background: 'rgba(0,209,255,0.08)', borderRadius: '8px', border: '1px solid rgba(0,209,255,0.2)', fontSize: '13px', color: '#E0E0E0' }}>
-                ℹ️ <em>These are your preferred dates. ADDUS will review your request and confirm the final schedule after your project is accepted.</em>
+                â„¹ï¸ <em>These are your preferred dates. ADDUS will review your request and confirm the final schedule after your project is accepted.</em>
               </div>
 
               <div className="margin-top-12">
@@ -3574,7 +3569,7 @@ try {
         {stepIndex === 9 && (
           <div className="duolingo-step-card active-step-card" style={{ paddingBottom: '80px' }}>
             <div className="duolingo-mascot-row">
-              <MascotLottiePlayer stepKey={currentStepKey} />
+              <MascotLottiePlayer stepKey={currentStepKey} width={160} height={160} />
               <DuolingoSpeechBubble key={currentStepKey} className="chat-message-bubble">
                 <div className="conversational-sender-tag">
                   <span className="online-dot"></span> ADDI
@@ -3597,7 +3592,7 @@ try {
                 )}
               </div>
 
-              {/* ASSET CONFIRMATIONS & UPLOADS REMOVED FROM STEP 9 — ACCESSIBLE IN USER PROFILE SECTION */}
+              {/* ASSET CONFIRMATIONS & UPLOADS REMOVED FROM STEP 9 â€” ACCESSIBLE IN USER PROFILE SECTION */}
 
               <div className="duolingo-profile-card">
                 <h4 style={{ fontSize: '12px', color: '#B3B3B3', textTransform: 'uppercase', marginBottom: '8px' }}>Strategy &amp; Scope</h4>
@@ -3617,7 +3612,7 @@ try {
                 )}
                 <div className="profile-row"><span className="profile-label">Requested:</span><span className="profile-val">{state.selectedServices?.join(', ') || 'None'}</span></div>
                 <div className="profile-row"><span className="profile-label">Recommended:</span><span className="profile-val">{state.fullRecommendationData?.recommendations?.filter(r => r.status === 'recommended').map(r => r.serviceName).join(', ') || 'None'}</span></div>
-                <div className="profile-row"><span className="profile-label">Estimated Budget:</span><span className="profile-val" style={{ color: '#00D1FF' }}>Estimated range — final quote after expert review</span></div>
+                <div className="profile-row"><span className="profile-label">Estimated Budget:</span><span className="profile-val" style={{ color: '#00D1FF' }}>Estimated range â€” final quote after expert review</span></div>
               </div>
 
               {/* PER-SERVICE SCHEDULE REQUESTS */}
@@ -3655,7 +3650,7 @@ try {
         <div ref={messagesEndRef} style={{ float: 'left', clear: 'both' }} />
       </main>
       
-      {/* ── LEGAL PREVIEW MODAL OVERLAY ───────── */}
+      {/* â”€â”€ LEGAL PREVIEW MODAL OVERLAY â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {legalViewType && (
         <div className="celebration-modal-backdrop fade-in" style={{ zIndex: 10001, overflowY: 'auto', padding: '40px 10px' }} onClick={() => setLegalViewType(null)}>
           <div className="scale-in" style={{ maxWidth: '700px', width: '100%', background: '#111116', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px', padding: '24px', boxShadow: '0 10px 25px rgba(0,0,0,0.5)', overflow: 'hidden' }} onClick={e => e.stopPropagation()}>
@@ -3712,3 +3707,4 @@ try {
 }
 
 export default ConversationalOnboarding;
+

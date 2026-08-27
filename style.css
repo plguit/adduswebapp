@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
 /* ==========================================================================
    ADDUS — The AI Operating System for Business Creativity
    Design System & Styling (Refined Vibrant Gradient & Clean White Lighting)
@@ -1617,4 +1618,5123 @@ kbd {
 .drawer-menu-item.active {
   background: rgba(122, 40, 255, 0.1);
   color: var(--color-violet);
+}
+
+
+/* ==========================================================================
+   ARIKE-INSPIRED CLEAN WHITE LOGIN & OTP THEME (WEBAPP)
+   ========================================================================== */
+.arike-login-screen-wrapper {
+  min-height: 100vh;
+  width: 100%;
+  background: #FFFFFF !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 20px;
+  box-sizing: border-box;
+  color: #111111 !important;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  position: relative;
+  z-index: 100;
+}
+
+.arike-login-card {
+  width: 100%;
+  max-width: 400px;
+  background: #FFFFFF !important;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none !important;
+  text-align: left;
+  box-sizing: border-box;
+  animation: arikeFadeIn 0.3s ease-out;
+}
+
+@keyframes arikeFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.arike-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 32px;
+}
+
+.arike-logo-img {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+}
+
+.arike-title {
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: #111111 !important;
+  letter-spacing: -0.03em !important;
+  margin: 0 0 8px 0 !important;
+  line-height: 1.25 !important;
+}
+
+.arike-subtitle {
+  font-size: 14px !important;
+  color: #6B7280 !important;
+  margin: 0 0 28px 0 !important;
+  line-height: 1.5 !important;
+  font-weight: 400 !important;
+}
+
+.arike-subtitle strong {
+  color: #111111 !important;
+  font-weight: 600 !important;
+}
+
+.arike-tabs-segmented {
+  display: flex;
+  background: #F3F4F6;
+  padding: 4px;
+  border-radius: 100px;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+.arike-tab-btn {
+  flex: 1;
+  height: 38px;
+  border-radius: 100px;
+  border: none;
+  background: transparent;
+  color: #6B7280;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.arike-tab-btn.active {
+  background: #FFFFFF;
+  color: #111111;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.arike-input-box {
+  display: flex;
+  align-items: center;
+  background: #F9FAFB;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 100px;
+  padding: 0 18px;
+  height: 52px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.arike-input-box:focus-within {
+  background: #FFFFFF;
+  border-color: #111111;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.04);
+}
+
+.arike-input-box.has-error {
+  border-color: #EF4444;
+  background: #FEF2F2;
+}
+
+.arike-prefix {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111111;
+  padding-right: 12px;
+  margin-right: 12px;
+  border-right: 1.5px solid #E5E7EB;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.arike-input-field {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111111;
+  outline: none;
+  letter-spacing: 0.5px;
+  padding: 0;
+}
+
+.arike-input-field::placeholder {
+  color: #9CA3AF;
+  font-weight: 400;
+}
+
+.arike-clear-btn {
+  background: #E5E7EB;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7280;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  transition: all 0.15s ease;
+}
+
+.arike-clear-btn:hover {
+  background: #D1D5DB;
+  color: #111111;
+}
+
+.arike-otp-grid {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin: 24px 0 20px 0;
+}
+
+.arike-otp-cell {
+  width: 58px;
+  height: 62px;
+  border-radius: 16px;
+  border: 1.5px solid #E5E7EB;
+  background: #F9FAFB;
+  font-size: 24px;
+  font-weight: 700;
+  color: #111111;
+  text-align: center;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.arike-otp-cell:focus {
+  border-color: #111111;
+  background: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.arike-otp-cell.filled {
+  border-color: #111111;
+  background: #FFFFFF;
+}
+
+.arike-otp-cell.error {
+  border-color: #EF4444;
+  background: #FEF2F2;
+}
+
+.arike-pill-btn {
+  width: 100%;
+  height: 52px;
+  border-radius: 100px;
+  background: #111111;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.arike-pill-btn:hover:not(:disabled) {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+}
+
+.arike-pill-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.arike-pill-btn:disabled {
+  background: #E5E7EB;
+  color: #9CA3AF;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.arike-secondary-pill {
+  height: 40px;
+  border-radius: 100px;
+  background: #F3F4F6;
+  color: #4B5563;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 16px;
+  transition: all 0.2s ease;
+}
+
+.arike-secondary-pill:hover:not(:disabled) {
+  background: #E5E7EB;
+  color: #111111;
+}
+
+.arike-secondary-pill:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.arike-text-link-btn {
+  background: none;
+  border: none;
+  color: #111111;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: underline;
+}
+
+.arike-error-banner {
+  background: #FEF2F2;
+  border: 1px solid #FEE2E2;
+  color: #DC2626;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.arike-success-banner {
+  background: #ECFDF5;
+  border: 1px solid #D1FAE5;
+  color: #059669;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.arike-terms-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.arike-checkbox {
+  accent-color: #111111;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.arike-terms-text {
+  font-size: 12px;
+  color: #6B7280;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.arike-terms-text button {
+  background: none;
+  border: none;
+  color: #111111;
+  font-weight: 600;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  font: inherit;
+}
+
+.arike-bottom-help {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #6B7280;
+}
+
+
+
+
+/* ==========================================================================
+   MINIMAL WHITE AUTHENTICATION UI (MANROPE FONT)
+   ========================================================================== */
+.manrope-auth-viewport {
+  min-height: 100vh;
+  width: 100%;
+  background: #FFFFFF !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif !important;
+  color: #000000 !important;
+  position: relative;
+  z-index: 100;
+}
+
+.manrope-auth-container {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  background: #FFFFFF !important;
+}
+
+.manrope-icon-header {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000000;
+}
+
+.manrope-auth-heading {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 24px 0 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.25 !important;
+}
+
+.manrope-auth-heading-otp {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 26px !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 8px 0 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.manrope-phone-edit-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6B7280;
+  margin-bottom: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.manrope-phone-edit-row:hover {
+  color: #000000;
+}
+
+.manrope-input-group {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 52px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  background: #FFFFFF;
+  padding: 0 16px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.manrope-input-group:focus-within {
+  border-color: #7C5CFF;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.12);
+}
+
+.manrope-input-group.has-error {
+  border-color: #EF4444;
+}
+
+.manrope-country-code {
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 600;
+  font-size: 15px;
+  color: #000000;
+  padding-right: 12px;
+  margin-right: 12px;
+  border-right: 1px solid #E5E7EB;
+  flex-shrink: 0;
+}
+
+.manrope-phone-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000000;
+  outline: none;
+  letter-spacing: 0.5px;
+}
+
+.manrope-phone-input::placeholder {
+  color: #9CA3AF;
+  font-weight: 400;
+}
+
+.manrope-otp-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.manrope-otp-box {
+  width: 56px;
+  height: 58px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  background: #FFFFFF;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 22px;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  outline: none;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.manrope-otp-box:focus {
+  border-color: #7C5CFF;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.12);
+}
+
+.manrope-otp-box.filled {
+  border-color: #000000;
+}
+
+.manrope-otp-box.error {
+  border-color: #EF4444;
+}
+
+.manrope-cta-btn {
+  width: 100%;
+  height: 50px;
+  border-radius: 9999px;
+  background: #7C5CFF;
+  color: #FFFFFF;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.manrope-cta-btn:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.manrope-cta-btn:disabled {
+  background: #E5E7EB;
+  color: #9CA3AF;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.manrope-timer-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px;
+  color: #6B7280;
+  font-weight: 500;
+  margin: 12px 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.manrope-resend-btn {
+  background: none;
+  border: none;
+  color: #7C5CFF;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.manrope-resend-btn:disabled {
+  color: #9CA3AF;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.manrope-error-msg {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px;
+  font-weight: 500;
+  color: #EF4444;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+
+/* ==========================================================================
+   MINIMAL WHITE AUTHENTICATION UI (FULL VIEWPORT — ZERO DARK BACKGROUND)
+   ========================================================================== */
+.manrope-auth-viewport {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  min-height: 100vh !important;
+  height: 100% !important;
+  background: #FFFFFF !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px !important;
+  box-sizing: border-box !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #000000 !important;
+  z-index: 999999 !important;
+  overflow-y: auto !important;
+}
+
+.manrope-auth-container {
+  width: 100% !important;
+  max-width: 440px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+  background: #FFFFFF !important;
+  padding: 0 !important;
+  margin: auto !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.manrope-icon-header {
+  margin-bottom: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #000000 !important;
+}
+
+.manrope-auth-heading {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(24px, 5vw, 28px) !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 24px 0 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+}
+
+.manrope-auth-heading-otp {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(24px, 5vw, 28px) !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 8px 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: center !important;
+}
+
+.manrope-phone-edit-row {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #6B7280 !important;
+  margin-bottom: 28px !important;
+  cursor: pointer !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.manrope-phone-edit-row:hover {
+  color: #000000 !important;
+}
+
+.manrope-input-group {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 52px !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 12px !important;
+  background: #FFFFFF !important;
+  padding: 0 16px !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s ease !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.manrope-input-group:focus-within {
+  border-color: #7C5CFF !important;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.12) !important;
+}
+
+.manrope-input-group.has-error {
+  border-color: #EF4444 !important;
+}
+
+.manrope-country-code {
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  color: #000000 !important;
+  padding-right: 12px !important;
+  margin-right: 12px !important;
+  border-right: 1px solid #E5E7EB !important;
+  flex-shrink: 0 !important;
+}
+
+.manrope-phone-input {
+  width: 100% !important;
+  border: none !important;
+  background: transparent !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #000000 !important;
+  outline: none !important;
+  letter-spacing: 0.5px !important;
+  padding: 0 !important;
+}
+
+.manrope-phone-input::placeholder {
+  color: #9CA3AF !important;
+  font-weight: 400 !important;
+}
+
+.manrope-otp-boxes {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.manrope-otp-box {
+  width: 56px !important;
+  height: 58px !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 12px !important;
+  background: #FFFFFF !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  text-align: center !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.manrope-otp-box:focus {
+  border-color: #7C5CFF !important;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.12) !important;
+}
+
+.manrope-otp-box.filled {
+  border-color: #000000 !important;
+}
+
+.manrope-otp-box.error {
+  border-color: #EF4444 !important;
+}
+
+.manrope-cta-btn {
+  width: 100% !important;
+  height: 50px !important;
+  border-radius: 9999px !important;
+  background: #7C5CFF !important;
+  color: #FFFFFF !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  margin-top: 20px !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.manrope-cta-btn:hover:not(:disabled) {
+  opacity: 0.92 !important;
+  transform: translateY(-1px) !important;
+}
+
+.manrope-cta-btn:disabled {
+  background: #E5E7EB !important;
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.manrope-timer-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  color: #6B7280 !important;
+  font-weight: 500 !important;
+  margin: 14px 0 0 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+}
+
+.manrope-resend-btn {
+  background: none !important;
+  border: none !important;
+  color: #7C5CFF !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  text-decoration: underline !important;
+}
+
+.manrope-resend-btn:disabled {
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+  text-decoration: none !important;
+}
+
+.manrope-error-msg {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #EF4444 !important;
+  margin-top: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+}
+
+
+/* ==========================================================================
+   MINIMAL WHITE AUTHENTICATION UI (MANROPE + PURPLE-TO-PINK GRADIENT CTA)
+   ========================================================================== */
+.manrope-auth-viewport {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  min-height: 100vh !important;
+  height: 100% !important;
+  background: #FFFFFF !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px 20px !important;
+  box-sizing: border-box !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #000000 !important;
+  z-index: 999999 !important;
+  overflow-y: auto !important;
+}
+
+.manrope-auth-container {
+  width: 100% !important;
+  max-width: 420px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+  background: #FFFFFF !important;
+  padding: 0 !important;
+  margin: auto !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.manrope-icon-header {
+  margin-bottom: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #000000 !important;
+}
+
+.manrope-auth-heading {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(24px, 5vw, 28px) !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 20px 0 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.25 !important;
+  text-align: center !important;
+}
+
+.manrope-auth-heading-otp {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(24px, 5vw, 28px) !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 8px 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: center !important;
+}
+
+.manrope-tabs-segmented {
+  display: flex !important;
+  background: #F3F4F6 !important;
+  padding: 4px !important;
+  border-radius: 100px !important;
+  gap: 4px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+  box-sizing: border-box !important;
+}
+
+.manrope-tab-btn {
+  flex: 1 !important;
+  height: 38px !important;
+  border-radius: 100px !important;
+  border: none !important;
+  background: transparent !important;
+  color: #6B7280 !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.manrope-tab-btn.active {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08) !important;
+}
+
+.manrope-phone-edit-row {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #6B7280 !important;
+  margin-bottom: 24px !important;
+  cursor: pointer !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.manrope-phone-edit-row:hover {
+  color: #000000 !important;
+}
+
+.manrope-input-group {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 54px !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  padding: 0 16px !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s ease !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.manrope-input-group:focus-within {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15) !important;
+}
+
+.manrope-input-group.has-error {
+  border-color: #EF4444 !important;
+}
+
+.manrope-country-code {
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  color: #000000 !important;
+  padding-right: 12px !important;
+  margin-right: 12px !important;
+  border-right: 1px solid #E5E7EB !important;
+  flex-shrink: 0 !important;
+}
+
+.manrope-phone-input {
+  width: 100% !important;
+  border: none !important;
+  background: transparent !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #000000 !important;
+  outline: none !important;
+  letter-spacing: 0.5px !important;
+  padding: 0 !important;
+}
+
+.manrope-phone-input::placeholder {
+  color: #9CA3AF !important;
+  font-weight: 400 !important;
+}
+
+.manrope-clear-btn {
+  background: #F3F4F6 !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 22px !important;
+  height: 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #6B7280 !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+  padding: 0 !important;
+  transition: all 0.15s ease !important;
+}
+
+.manrope-clear-btn:hover {
+  background: #E5E7EB !important;
+  color: #000000 !important;
+}
+
+.manrope-terms-row {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  margin-top: 18px !important;
+  text-align: left !important;
+  width: 100% !important;
+}
+
+.manrope-checkbox {
+  accent-color: #8B5CF6 !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin-top: 2px !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+}
+
+.manrope-terms-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 12px !important;
+  color: #6B7280 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+.manrope-terms-text button {
+  background: none !important;
+  border: none !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  text-decoration: underline !important;
+  font: inherit !important;
+}
+
+.manrope-otp-boxes {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.manrope-otp-box {
+  width: 58px !important;
+  height: 60px !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  text-align: center !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.manrope-otp-box:focus {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15) !important;
+}
+
+.manrope-otp-box.filled {
+  border-color: #000000 !important;
+}
+
+.manrope-otp-box.error {
+  border-color: #EF4444 !important;
+}
+
+.manrope-cta-btn {
+  width: 100% !important;
+  height: 52px !important;
+  border-radius: 9999px !important;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  color: #FFFFFF !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  margin-top: 20px !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3) !important;
+}
+
+.manrope-cta-btn:hover:not(:disabled) {
+  opacity: 0.94 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4) !important;
+}
+
+.manrope-cta-btn:disabled {
+  background: #E5E7EB !important;
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.manrope-timer-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  color: #6B7280 !important;
+  font-weight: 500 !important;
+  margin: 14px 0 0 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+}
+
+.manrope-resend-btn {
+  background: none !important;
+  border: none !important;
+  color: #8B5CF6 !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  text-decoration: underline !important;
+}
+
+.manrope-resend-btn:disabled {
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+  text-decoration: none !important;
+}
+
+.manrope-error-msg {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #EF4444 !important;
+  margin-top: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+}
+
+
+/* ==========================================================================
+   MINIMAL WHITE AUTHENTICATION UI (PIXEL-PERFECT SPECIFICATION)
+   ========================================================================== */
+.manrope-auth-viewport {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  min-height: 100vh !important;
+  height: 100% !important;
+  background: #FFFFFF !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px 20px !important;
+  box-sizing: border-box !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #000000 !important;
+  z-index: 999999 !important;
+  overflow-y: auto !important;
+}
+
+.manrope-auth-container {
+  width: 100% !important;
+  max-width: 420px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+  background: #FFFFFF !important;
+  padding: 0 !important;
+  margin: auto !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.manrope-icon-header {
+  margin-bottom: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #000000 !important;
+}
+
+.manrope-auth-heading {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(26px, 5vw, 32px) !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 20px 0 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+}
+
+.manrope-auth-heading-otp {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(26px, 5vw, 32px) !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 8px 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: center !important;
+}
+
+.manrope-segmented-control {
+  display: flex !important;
+  background: #F3F4F6 !important;
+  padding: 4px !important;
+  border-radius: 100px !important;
+  gap: 4px !important;
+  width: 100% !important;
+  margin-bottom: 22px !important;
+  box-sizing: border-box !important;
+  border: 1px solid #E5E7EB !important;
+}
+
+.manrope-seg-btn {
+  flex: 1 !important;
+  height: 40px !important;
+  border-radius: 100px !important;
+  border: none !important;
+  background: transparent !important;
+  color: #6B7280 !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.manrope-seg-btn.active {
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+}
+
+.manrope-phone-edit-row {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #6B7280 !important;
+  margin-bottom: 24px !important;
+  cursor: pointer !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.manrope-phone-edit-row:hover {
+  color: #000000 !important;
+}
+
+.manrope-input-group {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 54px !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  padding: 0 16px !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s ease !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.manrope-input-group:focus-within {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15) !important;
+}
+
+.manrope-input-group.has-error {
+  border-color: #EF4444 !important;
+}
+
+.manrope-country-code {
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  color: #000000 !important;
+  padding-right: 12px !important;
+  margin-right: 12px !important;
+  border-right: 1px solid #E5E7EB !important;
+  flex-shrink: 0 !important;
+}
+
+.manrope-phone-input {
+  width: 100% !important;
+  border: none !important;
+  background: transparent !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #000000 !important;
+  outline: none !important;
+  letter-spacing: 0.5px !important;
+  padding: 0 !important;
+}
+
+.manrope-phone-input::placeholder {
+  color: #9CA3AF !important;
+  font-weight: 400 !important;
+}
+
+.manrope-clear-btn {
+  background: #F3F4F6 !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 22px !important;
+  height: 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #6B7280 !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+  padding: 0 !important;
+  transition: all 0.15s ease !important;
+}
+
+.manrope-clear-btn:hover {
+  background: #E5E7EB !important;
+  color: #000000 !important;
+}
+
+.manrope-terms-row {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 10px !important;
+  margin-top: 18px !important;
+  text-align: left !important;
+  width: 100% !important;
+}
+
+.manrope-checkbox {
+  accent-color: #8B5CF6 !important;
+  width: 18px !important;
+  height: 18px !important;
+  margin-top: 2px !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+}
+
+.manrope-terms-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 12.5px !important;
+  color: #6B7280 !important;
+  line-height: 1.5 !important;
+  margin: 0 !important;
+}
+
+.manrope-terms-text button {
+  background: none !important;
+  border: none !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  text-decoration: underline !important;
+  font: inherit !important;
+}
+
+.manrope-otp-boxes {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.manrope-otp-box {
+  width: 58px !important;
+  height: 60px !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  text-align: center !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.manrope-otp-box:focus {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15) !important;
+}
+
+.manrope-otp-box.filled {
+  border-color: #000000 !important;
+}
+
+.manrope-otp-box.error {
+  border-color: #EF4444 !important;
+}
+
+.manrope-cta-btn {
+  width: 100% !important;
+  height: 52px !important;
+  border-radius: 9999px !important;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  color: #FFFFFF !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  margin-top: 20px !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3) !important;
+}
+
+.manrope-cta-btn:hover:not(:disabled) {
+  opacity: 0.94 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4) !important;
+}
+
+.manrope-cta-btn:disabled {
+  background: #E5E7EB !important;
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.manrope-timer-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  color: #6B7280 !important;
+  font-weight: 500 !important;
+  margin: 14px 0 0 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+}
+
+.manrope-resend-btn {
+  background: none !important;
+  border: none !important;
+  color: #8B5CF6 !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  text-decoration: underline !important;
+}
+
+.manrope-resend-btn:disabled {
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+  text-decoration: none !important;
+}
+
+.manrope-error-msg {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #EF4444 !important;
+  margin-top: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+}
+
+
+/* ==========================================================================
+   MINIMAL WHITE AUTHENTICATION UI (MOBILE-APP REFERENCE STYLE)
+   ========================================================================== */
+.manrope-auth-viewport {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  min-height: 100vh !important;
+  height: 100% !important;
+  background: #FFFFFF !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px 20px !important;
+  box-sizing: border-box !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #000000 !important;
+  z-index: 999999 !important;
+  overflow-y: auto !important;
+}
+
+.manrope-auth-container {
+  width: 100% !important;
+  max-width: 380px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+  background: #FFFFFF !important;
+  padding: 0 !important;
+  margin: auto !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+.manrope-icon-header {
+  margin-bottom: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #000000 !important;
+}
+
+.manrope-auth-heading-twolines {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(26px, 6vw, 32px) !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 28px 0 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 1.18 !important;
+  text-align: center !important;
+  white-space: pre-line !important;
+}
+
+.manrope-auth-heading-otp {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: clamp(24px, 5.5vw, 30px) !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 10px 0 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+}
+
+.manrope-phone-edit-row {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  color: #6B7280 !important;
+  margin-bottom: 28px !important;
+  cursor: pointer !important;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  transition: color 0.15s ease !important;
+}
+
+.manrope-phone-edit-row:hover {
+  color: #000000 !important;
+}
+
+.manrope-input-wrapper {
+  width: 100% !important;
+  text-align: left !important;
+  margin-bottom: 4px !important;
+}
+
+.manrope-input-label {
+  display: block !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #374151 !important;
+  margin-bottom: 8px !important;
+  margin-left: 2px !important;
+}
+
+.manrope-input-group {
+  display: flex !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 56px !important;
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  padding: 0 16px !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s ease !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.manrope-input-group:focus-within {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15) !important;
+}
+
+.manrope-input-group.has-error {
+  border-color: #EF4444 !important;
+}
+
+.manrope-flag-country {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  color: #000000 !important;
+  padding-right: 12px !important;
+  margin-right: 12px !important;
+  border-right: 1.5px solid #E5E7EB !important;
+  flex-shrink: 0 !important;
+}
+
+.manrope-phone-input {
+  width: 100% !important;
+  border: none !important;
+  background: transparent !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #000000 !important;
+  outline: none !important;
+  letter-spacing: 0.5px !important;
+  padding: 0 !important;
+}
+
+.manrope-phone-input::placeholder {
+  color: #9CA3AF !important;
+  font-weight: 400 !important;
+}
+
+.manrope-clear-btn {
+  background: #F3F4F6 !important;
+  border: none !important;
+  border-radius: 50% !important;
+  width: 22px !important;
+  height: 22px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #6B7280 !important;
+  cursor: pointer !important;
+  flex-shrink: 0 !important;
+  padding: 0 !important;
+  transition: all 0.15s ease !important;
+}
+
+.manrope-clear-btn:hover {
+  background: #E5E7EB !important;
+  color: #000000 !important;
+}
+
+.manrope-otp-boxes {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.manrope-otp-box {
+  width: 58px !important;
+  height: 60px !important;
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  text-align: center !important;
+  outline: none !important;
+  transition: all 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.manrope-otp-box:focus {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15) !important;
+}
+
+.manrope-otp-box.filled {
+  border-color: #000000 !important;
+}
+
+.manrope-otp-box.error {
+  border-color: #EF4444 !important;
+}
+
+.manrope-cta-right-row {
+  display: flex !important;
+  justify-content: flex-end !important;
+  width: 100% !important;
+  margin-top: 24px !important;
+}
+
+.manrope-circle-cta {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.35) !important;
+  flex-shrink: 0 !important;
+}
+
+.manrope-circle-cta:hover:not(:disabled) {
+  opacity: 0.94 !important;
+  transform: translateY(-2px) scale(1.04) !important;
+  box-shadow: 0 6px 18px rgba(139, 92, 246, 0.45) !important;
+}
+
+.manrope-circle-cta:active:not(:disabled) {
+  transform: translateY(0) scale(0.98) !important;
+}
+
+.manrope-circle-cta:disabled {
+  background: #E5E7EB !important;
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.manrope-circle-cta:disabled svg {
+  stroke: #9CA3AF !important;
+}
+
+.manrope-timer-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  color: #6B7280 !important;
+  font-weight: 600 !important;
+  margin: 12px 0 0 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  text-align: center !important;
+}
+
+.manrope-resend-btn {
+  background: none !important;
+  border: none !important;
+  color: #8B5CF6 !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  text-decoration: underline !important;
+}
+
+.manrope-resend-btn:disabled {
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+  text-decoration: none !important;
+}
+
+.manrope-error-msg {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: #EF4444 !important;
+  margin-top: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+}
+
+
+/* ==========================================================================
+   MINIMAL WHITE ONBOARDING UI (ADDI BUSINESS INFORMATION)
+   ========================================================================== */
+.white-onboarding-container {
+  width: 100% !important;
+  max-width: 520px !important;
+  margin: 0 auto !important;
+  padding: 24px 16px 60px 16px !important;
+  box-sizing: border-box !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #000000 !important;
+}
+
+/* ── ADDI Intro Row ── */
+.addi-intro-section {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  margin-bottom: 28px !important;
+  width: 100% !important;
+}
+
+.addi-mascot-wrapper {
+  width: 68px !important;
+  height: 68px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ── PURE WHITE SPEECH BOX WITH THIN PURPLE-TO-PINK GRADIENT BORDER ONLY ── */
+.addi-gradient-border-bubble {
+  flex: 1 !important;
+  position: relative !important;
+  border-radius: 16px !important;
+  padding: 16px 18px !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+  text-align: left !important;
+}
+
+.addi-badge-name {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #7C5CFF !important;
+  margin-bottom: 6px !important;
+}
+
+.addi-intro-message {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.45 !important;
+  color: #000000 !important;
+  margin: 0 !important;
+}
+
+/* ── Section Title ── */
+.onboarding-subheading {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 19px !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 16px 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: left !important;
+}
+
+/* ── Accordion Options List ── */
+.accordion-cards-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.accordion-card {
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  text-align: left !important;
+}
+
+.accordion-card.is-active {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.08) !important;
+}
+
+.accordion-header-btn {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 18px !important;
+  background: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+.accordion-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.accordion-header-icon {
+  color: #000000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.accordion-header-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  margin: 0 !important;
+}
+
+.accordion-header-chevron {
+  color: #6B7280 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s ease !important;
+}
+
+.accordion-body {
+  padding: 0 18px 18px 18px !important;
+  background: #FFFFFF !important;
+  border-top: 1px solid #F3F4F6 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+/* ── Form Inputs ── */
+.clean-white-input {
+  width: 100% !important;
+  height: 48px !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  padding: 0 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #000000 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.clean-white-input:focus {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12) !important;
+}
+
+.clean-white-input::placeholder {
+  color: #9CA3AF !important;
+  font-weight: 400 !important;
+}
+
+.clean-white-textarea {
+  width: 100% !important;
+  min-height: 100px !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  padding: 12px 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #000000 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  resize: vertical !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.clean-white-textarea:focus {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12) !important;
+}
+
+.clean-white-textarea::placeholder {
+  color: #9CA3AF !important;
+  font-weight: 400 !important;
+}
+
+/* ── Analysis Action Row ── */
+.analysis-action-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 4px 0 4px !important;
+  margin-top: 8px !important;
+  border-top: 1px solid #F3F4F6 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.analysis-action-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+}
+
+.analysis-round-btn {
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
+  flex-shrink: 0 !important;
+}
+
+.analysis-round-btn:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4) !important;
+}
+
+.analysis-round-btn:disabled {
+  background: #E5E7EB !important;
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.analysis-round-btn:disabled svg {
+  stroke: #9CA3AF !important;
+}
+
+
+/* ==========================================================================
+   PURE WHITE ONBOARDING THEME (ENTIRE PAGE BACKGROUND #FFFFFF)
+   ========================================================================== */
+.hotstar-layout-wrapper.white-page-mode,
+.white-page-mode .hotstar-main-content,
+.white-page-mode .duolingo-onboarding-viewport,
+.white-page-mode .duolingo-main-container,
+.white-page-mode .conversation-stream-container {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+.white-page-mode .hotstar-desktop-sidebar {
+  background: #FFFFFF !important;
+  border-right: 1px solid #F3F4F6 !important;
+}
+
+.white-page-mode .hotstar-nav-item {
+  color: #6B7280 !important;
+}
+
+.white-page-mode .hotstar-nav-item:hover {
+  color: #000000 !important;
+  background: #F3F4F6 !important;
+}
+
+.white-page-mode .hotstar-mobile-header {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #F3F4F6 !important;
+}
+
+.white-page-mode .hotstar-hamburger-btn {
+  color: #000000 !important;
+}
+
+.white-onboarding-container {
+  width: 100% !important;
+  max-width: 520px !important;
+  margin: 0 auto !important;
+  padding: 16px 16px 60px 16px !important;
+  box-sizing: border-box !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #000000 !important;
+}
+
+/* ── ADDI Intro Row ── */
+.addi-intro-section {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  margin-bottom: 28px !important;
+  width: 100% !important;
+}
+
+.addi-mascot-wrapper {
+  width: 68px !important;
+  height: 68px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ── PURE WHITE SPEECH BOX WITH THIN PURPLE-TO-PINK GRADIENT BORDER ONLY ── */
+.addi-gradient-border-bubble {
+  flex: 1 !important;
+  position: relative !important;
+  border-radius: 16px !important;
+  padding: 16px 18px !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+  text-align: left !important;
+}
+
+.addi-badge-name {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #7C5CFF !important;
+  margin-bottom: 6px !important;
+}
+
+.addi-intro-message {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.45 !important;
+  color: #000000 !important;
+  margin: 0 !important;
+}
+
+/* ── Section Title ── */
+.onboarding-subheading {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 16px 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: left !important;
+}
+
+/* ── Accordion Options List ── */
+.accordion-cards-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.accordion-card {
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  text-align: left !important;
+}
+
+.accordion-card.is-active {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.08) !important;
+}
+
+.accordion-header-btn {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 18px !important;
+  background: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+.accordion-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.accordion-header-icon {
+  color: #000000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.accordion-header-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  margin: 0 !important;
+}
+
+.accordion-header-chevron {
+  color: #6B7280 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s ease !important;
+}
+
+.accordion-body {
+  padding: 0 18px 18px 18px !important;
+  background: #FFFFFF !important;
+  border-top: 1px solid #F3F4F6 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+/* ── Form Inputs ── */
+.clean-white-input {
+  width: 100% !important;
+  height: 48px !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  padding: 0 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #000000 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.clean-white-input:focus {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12) !important;
+}
+
+.clean-white-input::placeholder {
+  color: #9CA3AF !important;
+  font-weight: 400 !important;
+}
+
+.clean-white-textarea {
+  width: 100% !important;
+  min-height: 100px !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  padding: 12px 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #000000 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  resize: vertical !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.clean-white-textarea:focus {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12) !important;
+}
+
+.clean-white-textarea::placeholder {
+  color: #9CA3AF !important;
+  font-weight: 400 !important;
+}
+
+/* ── Analysis Action Row ── */
+.analysis-action-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 4px 0 4px !important;
+  margin-top: 8px !important;
+  border-top: 1px solid #F3F4F6 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.analysis-action-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+}
+
+.analysis-round-btn {
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
+  flex-shrink: 0 !important;
+}
+
+.analysis-round-btn:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4) !important;
+}
+
+.analysis-round-btn:disabled {
+  background: #E5E7EB !important;
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.analysis-round-btn:disabled svg {
+  stroke: #9CA3AF !important;
+}
+
+
+/* ==========================================================================
+   MINIMAL WHITE ONBOARDING VIEWPORT (#FFFFFF)
+   ========================================================================== */
+.manrope-white-onboarding-viewport {
+  width: 100vw !important;
+  min-height: 100vh !important;
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  color: #000000 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  padding: 32px 20px !important;
+  box-sizing: border-box !important;
+  overflow-y: auto !important;
+}
+
+.manrope-white-onboarding-container {
+  width: 100% !important;
+  max-width: 520px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  background: #FFFFFF !important;
+}
+
+/* ── ADDI Intro Row ── */
+.addi-intro-section {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 16px !important;
+  margin-bottom: 28px !important;
+  width: 100% !important;
+}
+
+.addi-mascot-wrapper {
+  width: 68px !important;
+  height: 68px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* ── PURE WHITE SPEECH BOX WITH THIN PURPLE-TO-PINK GRADIENT BORDER ONLY ── */
+.addi-gradient-border-bubble {
+  flex: 1 !important;
+  position: relative !important;
+  border-radius: 16px !important;
+  padding: 16px 18px !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03) !important;
+  text-align: left !important;
+}
+
+.addi-badge-name {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #7C5CFF !important;
+  margin-bottom: 6px !important;
+}
+
+.addi-intro-message {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.45 !important;
+  color: #000000 !important;
+  margin: 0 !important;
+}
+
+/* ── Section Title ── */
+.onboarding-subheading {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 18px 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: left !important;
+}
+
+/* ── Accordion Options List ── */
+.accordion-cards-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.accordion-card {
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  text-align: left !important;
+}
+
+.accordion-card.is-active {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.08) !important;
+}
+
+.accordion-header-btn {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 18px !important;
+  background: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+.accordion-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.accordion-header-icon {
+  color: #000000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.accordion-header-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  margin: 0 !important;
+}
+
+.accordion-header-chevron {
+  color: #6B7280 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s ease !important;
+}
+
+.accordion-body {
+  padding: 0 18px 18px 18px !important;
+  background: #FFFFFF !important;
+  border-top: 1px solid #F3F4F6 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+/* ── Analysis Action Row ── */
+.analysis-action-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 4px 0 4px !important;
+  margin-top: 8px !important;
+  border-top: 1px solid #F3F4F6 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.analysis-action-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+}
+
+.analysis-round-btn {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
+  flex-shrink: 0 !important;
+}
+
+.analysis-round-btn:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4) !important;
+}
+
+.analysis-round-btn:disabled {
+  background: #F3F4F6 !important;
+  color: #D1D5DB !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.analysis-round-btn:disabled svg {
+  stroke: #D1D5DB !important;
+}
+
+
+/* ==========================================================================
+   CLEAN WHITE ONBOARDING UI WITH HIGH CONTRAST & COMPACT ADDI
+   ========================================================================== */
+
+/* ── Page Layout & Background ── */
+.hotstar-layout-wrapper.white-page-mode,
+.white-page-mode.hotstar-layout-wrapper,
+.white-page-mode .hotstar-main-content,
+.white-page-mode .duolingo-onboarding-viewport,
+.white-page-mode .duolingo-main-container,
+.white-page-mode .conversation-stream-container {
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  color: #111111 !important;
+}
+
+/* ── Left Sidebar: Dark/Black text & icons ── */
+.hotstar-desktop-sidebar,
+.white-page-mode .hotstar-desktop-sidebar,
+.hotstar-mobile-drawer,
+.white-page-mode .hotstar-mobile-drawer {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  border-right: 1px solid #E5E7EB !important;
+}
+
+.hotstar-nav-item,
+.white-page-mode .hotstar-nav-item {
+  color: #111111 !important;
+  transition: all 0.2s ease !important;
+}
+
+.hotstar-nav-item svg,
+.white-page-mode .hotstar-nav-item svg {
+  color: #111111 !important;
+  stroke: #111111 !important;
+}
+
+.hotstar-nav-label,
+.white-page-mode .hotstar-nav-label,
+.hotstar-nav-label-mobile,
+.white-page-mode .hotstar-nav-label-mobile {
+  color: #111111 !important;
+  font-weight: 700 !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.hotstar-nav-item:hover,
+.white-page-mode .hotstar-nav-item:hover {
+  background: #F3F4F6 !important;
+  border-radius: 8px !important;
+}
+
+.hotstar-mobile-header,
+.white-page-mode .hotstar-mobile-header {
+  background: #FFFFFF !important;
+  border-bottom: 1px solid #E5E7EB !important;
+}
+
+.hotstar-hamburger-btn,
+.white-page-mode .hotstar-hamburger-btn {
+  color: #111111 !important;
+}
+
+.hotstar-hamburger-btn svg,
+.white-page-mode .hotstar-hamburger-btn svg {
+  color: #111111 !important;
+  stroke: #111111 !important;
+}
+
+/* ── Centered Onboarding Container ── */
+.white-onboarding-container {
+  width: 100% !important;
+  max-width: 500px !important;
+  margin: 0 auto !important;
+  padding: 16px 16px 48px 16px !important;
+  box-sizing: border-box !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #111111 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+
+/* ── COMPACT ADDI INTRO SECTION ── */
+.addi-intro-section {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 22px !important;
+  width: 100% !important;
+}
+
+.addi-mascot-wrapper {
+  width: 54px !important;
+  height: 54px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Compact White Speech Box with Thin Gradient Border */
+.addi-gradient-border-bubble {
+  display: inline-block !important;
+  flex: 1 !important;
+  max-width: 380px !important;
+  border-radius: 14px !important;
+  padding: 10px 14px !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  text-align: left !important;
+}
+
+.addi-badge-name {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-size: 10.5px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #7C5CFF !important;
+  margin-bottom: 3px !important;
+}
+
+.addi-intro-message {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 700 !important;
+  line-height: 1.38 !important;
+  color: #111111 !important;
+  margin: 0 !important;
+}
+
+/* ── Section Title: What would you like to share? ── */
+.onboarding-subheading {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 19px !important;
+  font-weight: 800 !important;
+  color: #111111 !important;
+  margin: 0 0 16px 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: left !important;
+}
+
+/* ── Option Accordion Cards ── */
+.accordion-cards-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 18px !important;
+}
+
+.accordion-card {
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  text-align: left !important;
+}
+
+.accordion-card.is-active {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.08) !important;
+}
+
+.accordion-header-btn {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 14px 16px !important;
+  background: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+.accordion-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.accordion-header-icon {
+  color: #111111 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.accordion-header-icon svg {
+  stroke: #111111 !important;
+}
+
+.accordion-header-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin: 0 !important;
+}
+
+.accordion-header-chevron {
+  color: #111111 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s ease !important;
+}
+
+.accordion-header-chevron svg {
+  stroke: #111111 !important;
+}
+
+.accordion-body {
+  padding: 0 16px 16px 16px !important;
+  background: #FFFFFF !important;
+  border-top: 1px solid #F3F4F6 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+/* ── FORM INPUTS: HIGH VISIBILITY DARK/BLACK TEXT ── */
+.clean-white-input,
+.buw-text-input,
+.buw-url-input,
+input.clean-white-input {
+  width: 100% !important;
+  height: 46px !important;
+  border: 1.5px solid #D1D5DB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  padding: 0 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.clean-white-textarea,
+.buw-textarea,
+textarea.clean-white-textarea {
+  width: 100% !important;
+  min-height: 90px !important;
+  border: 1.5px solid #D1D5DB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  padding: 10px 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  resize: vertical !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.clean-white-input::placeholder,
+.clean-white-textarea::placeholder,
+.buw-text-input::placeholder,
+.buw-url-input::placeholder {
+  color: #6B7280 !important;
+  -webkit-text-fill-color: #6B7280 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+.clean-white-input:focus,
+.clean-white-textarea:focus {
+  border-color: #7C5CFF !important;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.12) !important;
+}
+
+/* ── Analysis Control ── */
+.analysis-action-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 14px 2px 0 2px !important;
+  margin-top: 6px !important;
+  border-top: 1px solid #F3F4F6 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.analysis-action-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+}
+
+.analysis-round-btn {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
+  flex-shrink: 0 !important;
+}
+
+.analysis-round-btn:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4) !important;
+}
+
+.analysis-round-btn:disabled {
+  background: #F3F4F6 !important;
+  color: #D1D5DB !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.analysis-round-btn:disabled svg {
+  stroke: #D1D5DB !important;
+}
+
+
+/* ==========================================================================
+   PERFECT SPACING & PROPORTIONS FOR WHITE ONBOARDING UI
+   ========================================================================== */
+
+/* ── Container ── */
+.white-onboarding-container {
+  width: 100% !important;
+  max-width: 520px !important;
+  margin: 0 auto !important;
+  padding: 24px 16px 60px 16px !important;
+  box-sizing: border-box !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #111111 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+
+/* ── Top ADDI Section: Horizontal Flex, strictly bounded ── */
+.addi-intro-section {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 16px !important;
+  margin-bottom: 42px !important; /* 42px clear vertical spacing between ADDI section and heading */
+  width: 100% !important;
+  position: relative !important;
+}
+
+.addi-mascot-wrapper {
+  width: 90px !important;
+  height: 90px !important;
+  min-width: 90px !important;
+  min-height: 90px !important;
+  max-width: 90px !important;
+  max-height: 90px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.addi-mascot-wrapper .mascot-lottie-wrapper {
+  width: 90px !important;
+  height: 90px !important;
+  max-width: 90px !important;
+  max-height: 90px !important;
+  margin: 0 !important;
+}
+
+.addi-mascot-wrapper svg {
+  width: 90px !important;
+  height: 90px !important;
+  max-width: 90px !important;
+  max-height: 90px !important;
+  object-fit: contain !important;
+}
+
+/* ── Compact White Speech Box with Purple->Pink Gradient Border ONLY ── */
+.addi-gradient-border-bubble {
+  flex: 1 !important;
+  max-width: 410px !important;
+  border-radius: 18px !important;
+  padding: 14px 18px !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+  text-align: left !important;
+  position: relative !important;
+}
+
+.addi-badge-name {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-size: 10.5px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #7C5CFF !important;
+  margin-bottom: 4px !important;
+}
+
+.addi-intro-message {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.42 !important;
+  color: #111111 !important;
+  margin: 0 !important;
+}
+
+/* ── "What would you like to share?" Heading: Clear Separation ── */
+.onboarding-subheading {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #111111 !important;
+  margin: 0 0 18px 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: left !important;
+  clear: both !important;
+  display: block !important;
+}
+
+/* ── Option Accordion Cards ── */
+.accordion-cards-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.accordion-card {
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  text-align: left !important;
+}
+
+.accordion-card.is-active {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.08) !important;
+}
+
+.accordion-header-btn {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 18px !important;
+  background: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+.accordion-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.accordion-header-icon {
+  color: #111111 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.accordion-header-icon svg {
+  stroke: #111111 !important;
+}
+
+.accordion-header-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin: 0 !important;
+}
+
+.accordion-header-chevron {
+  color: #111111 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s ease !important;
+}
+
+.accordion-header-chevron svg {
+  stroke: #111111 !important;
+}
+
+.accordion-body {
+  padding: 0 18px 18px 18px !important;
+  background: #FFFFFF !important;
+  border-top: 1px solid #F3F4F6 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+/* ── FORM INPUTS: HIGH VISIBILITY DARK/BLACK TEXT ── */
+.clean-white-input,
+.buw-text-input,
+.buw-url-input,
+input.clean-white-input {
+  width: 100% !important;
+  height: 48px !important;
+  border: 1.5px solid #D1D5DB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  padding: 0 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.clean-white-textarea,
+.buw-textarea,
+textarea.clean-white-textarea {
+  width: 100% !important;
+  min-height: 100px !important;
+  border: 1.5px solid #D1D5DB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  padding: 12px 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  resize: vertical !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.clean-white-input::placeholder,
+.clean-white-textarea::placeholder,
+.buw-text-input::placeholder,
+.buw-url-input::placeholder {
+  color: #6B7280 !important;
+  -webkit-text-fill-color: #6B7280 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+.clean-white-input:focus,
+.clean-white-textarea:focus {
+  border-color: #7C5CFF !important;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.12) !important;
+}
+
+/* ── Analysis Action Row: Light button with dark arrow ── */
+.analysis-action-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 2px 0 2px !important;
+  margin-top: 8px !important;
+  border-top: 1px solid #F3F4F6 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.analysis-action-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+}
+
+.analysis-round-btn {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: #F3F4F6 !important;
+  color: #111111 !important;
+  border: 1px solid #E5E7EB !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05) !important;
+  flex-shrink: 0 !important;
+}
+
+.analysis-round-btn svg {
+  color: #111111 !important;
+  stroke: #111111 !important;
+}
+
+.analysis-round-btn:hover:not(:disabled) {
+  background: #E5E7EB !important;
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08) !important;
+}
+
+.analysis-round-btn:disabled {
+  background: #F9FAFB !important;
+  color: #D1D5DB !important;
+  border-color: #F3F4F6 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.analysis-round-btn:disabled svg {
+  color: #D1D5DB !important;
+  stroke: #D1D5DB !important;
+}
+
+/* ── Mobile Reflow ── */
+@media (max-width: 600px) {
+  .addi-intro-section {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    margin-bottom: 32px !important;
+  }
+  .addi-mascot-wrapper {
+    width: 75px !important;
+    height: 75px !important;
+    min-width: 75px !important;
+    min-height: 75px !important;
+  }
+  .addi-gradient-border-bubble {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+
+/* ==========================================================================
+   WHATSAPP-STYLE ADDI ONBOARDING & CHAT BUBBLES
+   ========================================================================== */
+
+/* ── Full White Layout ── */
+.hotstar-layout-wrapper.white-page-mode,
+.white-page-mode.hotstar-layout-wrapper,
+.white-page-mode .hotstar-main-content,
+.white-page-mode .duolingo-onboarding-viewport,
+.white-page-mode .duolingo-main-container,
+.white-page-mode .conversation-stream-container {
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  color: #111111 !important;
+}
+
+/* ── Left Sidebar Dark Icons & Text ── */
+.hotstar-desktop-sidebar,
+.white-page-mode .hotstar-desktop-sidebar,
+.hotstar-mobile-drawer,
+.white-page-mode .hotstar-mobile-drawer {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  border-right: 1px solid #E5E7EB !important;
+}
+
+.hotstar-nav-item,
+.white-page-mode .hotstar-nav-item {
+  color: #111111 !important;
+  transition: all 0.2s ease !important;
+}
+
+.hotstar-nav-item svg,
+.white-page-mode .hotstar-nav-item svg {
+  color: #111111 !important;
+  stroke: #111111 !important;
+}
+
+.hotstar-nav-label,
+.white-page-mode .hotstar-nav-label,
+.hotstar-nav-label-mobile,
+.white-page-mode .hotstar-nav-label-mobile {
+  color: #111111 !important;
+  font-weight: 700 !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.hotstar-nav-item:hover,
+.white-page-mode .hotstar-nav-item:hover {
+  background: #F3F4F6 !important;
+  border-radius: 8px !important;
+}
+
+/* ── Centered Onboarding Container ── */
+.white-onboarding-container {
+  width: 100% !important;
+  max-width: 520px !important;
+  margin: 0 auto !important;
+  padding: 24px 16px 60px 16px !important;
+  box-sizing: border-box !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #111111 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+
+/* ── Top ADDI Row: Horizontal Flex ── */
+.addi-intro-section {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 16px !important;
+  margin-bottom: 40px !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+.addi-mascot-wrapper {
+  width: 80px !important;
+  height: 80px !important;
+  min-width: 80px !important;
+  min-height: 80px !important;
+  max-width: 80px !important;
+  max-height: 80px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.addi-mascot-wrapper .mascot-lottie-wrapper,
+.addi-mascot-wrapper svg {
+  width: 80px !important;
+  height: 80px !important;
+  max-width: 80px !important;
+  max-height: 80px !important;
+  object-fit: contain !important;
+}
+
+/* ── WHATSAPP-STYLE ADDI BUBBLE: PURPLE -> BLUE -> PINK GRADIENT BORDER ONLY ── */
+.whatsapp-addi-bubble,
+.addi-gradient-border-bubble {
+  position: relative !important;
+  flex: 1 !important;
+  max-width: 420px !important;
+  border-radius: 16px !important;
+  border-top-left-radius: 4px !important; /* WhatsApp-style chat tail top-left corner */
+  padding: 14px 18px !important;
+  background: #FFFFFF !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #3B82F6 50%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  text-align: left !important;
+}
+
+.whatsapp-addi-bubble::before,
+.addi-gradient-border-bubble::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 12px !important;
+  left: -7px !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 6px solid transparent !important;
+  border-bottom: 6px solid transparent !important;
+  border-right: 7px solid #6366F1 !important;
+}
+
+.whatsapp-addi-bubble::after,
+.addi-gradient-border-bubble::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 13px !important;
+  left: -5px !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 5px solid transparent !important;
+  border-bottom: 5px solid transparent !important;
+  border-right: 6px solid #FFFFFF !important;
+}
+
+.addi-badge-name {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-size: 10.5px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #6366F1 !important;
+  margin-bottom: 4px !important;
+}
+
+.addi-intro-message {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.42 !important;
+  color: #111111 !important;
+  margin: 0 !important;
+}
+
+/* ── "What would you like to share?" Heading ── */
+.onboarding-subheading {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #111111 !important;
+  margin: 0 0 18px 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: left !important;
+  clear: both !important;
+  display: block !important;
+}
+
+/* ── Option Accordion Cards ── */
+.accordion-cards-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.accordion-card {
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  text-align: left !important;
+}
+
+.accordion-card.is-active {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.08) !important;
+}
+
+.accordion-header-btn {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 18px !important;
+  background: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+.accordion-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.accordion-header-icon {
+  color: #111111 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.accordion-header-icon svg {
+  stroke: #111111 !important;
+}
+
+.accordion-header-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin: 0 !important;
+}
+
+.accordion-header-chevron {
+  color: #111111 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s ease !important;
+}
+
+.accordion-header-chevron svg {
+  stroke: #111111 !important;
+}
+
+.accordion-body {
+  padding: 0 18px 18px 18px !important;
+  background: #FFFFFF !important;
+  border-top: 1px solid #F3F4F6 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+/* ── Form Inputs ── */
+.clean-white-input,
+.buw-text-input,
+.buw-url-input,
+input.clean-white-input {
+  width: 100% !important;
+  height: 48px !important;
+  border: 1.5px solid #D1D5DB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  padding: 0 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.clean-white-textarea,
+.buw-textarea,
+textarea.clean-white-textarea {
+  width: 100% !important;
+  min-height: 100px !important;
+  border: 1.5px solid #D1D5DB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  padding: 12px 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  resize: vertical !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.clean-white-input::placeholder,
+.clean-white-textarea::placeholder,
+.buw-text-input::placeholder,
+.buw-url-input::placeholder {
+  color: #6B7280 !important;
+  -webkit-text-fill-color: #6B7280 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+/* ── Analysis Action Row with Gradient Round Button ── */
+.analysis-action-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 2px 0 2px !important;
+  margin-top: 8px !important;
+  border-top: 1px solid #F3F4F6 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.analysis-action-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+}
+
+.analysis-round-btn {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
+  flex-shrink: 0 !important;
+}
+
+.analysis-round-btn svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+.analysis-round-btn:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4) !important;
+}
+
+.analysis-round-btn:disabled {
+  background: #F3F4F6 !important;
+  color: #D1D5DB !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.analysis-round-btn:disabled svg {
+  color: #D1D5DB !important;
+  stroke: #D1D5DB !important;
+}
+
+
+/* ==========================================================================
+   UNIVERSAL WHATSAPP-STYLE WHITE ONBOARDING & CHAT BUBBLES
+   ========================================================================== */
+
+/* ── Page Layout & Viewports ── */
+body,
+#root,
+.hotstar-layout-wrapper,
+.hotstar-layout-wrapper.white-page-mode,
+.white-page-mode.hotstar-layout-wrapper,
+.hotstar-main-content,
+.duolingo-onboarding-viewport,
+.duolingo-main-container,
+.conversation-stream-container {
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  color: #111111 !important;
+}
+
+/* ── Sidebar (Dark text & icons on White) ── */
+.hotstar-desktop-sidebar,
+.hotstar-mobile-drawer {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  border-right: 1px solid #E5E7EB !important;
+}
+
+.hotstar-nav-item {
+  color: #111111 !important;
+}
+
+.hotstar-nav-item svg {
+  color: #111111 !important;
+  stroke: #111111 !important;
+}
+
+.hotstar-nav-label,
+.hotstar-nav-label-mobile {
+  color: #111111 !important;
+  font-weight: 700 !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.hotstar-nav-item:hover {
+  background: #F3F4F6 !important;
+  border-radius: 8px !important;
+}
+
+/* ── Clean Step Cards & Mascot Rows ── */
+.duolingo-step-card,
+.active-step-card,
+.chat-turn-group,
+.compact-review-card-wrapper {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 520px !important;
+  margin: 0 auto 16px auto !important;
+}
+
+.duolingo-mascot-row {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 14px !important;
+  width: 100% !important;
+  margin-bottom: 20px !important;
+}
+
+.past-mascot-row {
+  margin-bottom: 12px !important;
+}
+
+/* ── Mascot Container Constraints ── */
+.addi-mascot-wrapper,
+.mascot-lottie-wrapper {
+  width: 75px !important;
+  height: 75px !important;
+  min-width: 75px !important;
+  min-height: 75px !important;
+  max-width: 75px !important;
+  max-height: 75px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.addi-mascot-wrapper svg,
+.mascot-lottie-wrapper svg {
+  width: 75px !important;
+  height: 75px !important;
+  max-width: 75px !important;
+  max-height: 75px !important;
+  object-fit: contain !important;
+}
+
+/* ── EVERY ADDI CHAT MESSAGE: WHITE + PURPLE-BLUE-PINK GRADIENT BORDER ── */
+.duolingo-speech-bubble,
+.past-speech-bubble,
+.chat-message-bubble,
+.business-review-summary-card,
+.whatsapp-addi-bubble,
+.addi-gradient-border-bubble {
+  position: relative !important;
+  flex: 1 !important;
+  max-width: 440px !important;
+  border-radius: 16px !important;
+  border-top-left-radius: 4px !important; /* WhatsApp-style left chat tail corner */
+  padding: 14px 18px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #3B82F6 50%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  color: #111111 !important;
+  text-align: left !important;
+  overflow: visible !important;
+}
+
+/* WhatsApp-style left chat tail triangle */
+.duolingo-speech-bubble::before,
+.past-speech-bubble::before,
+.whatsapp-addi-bubble::before,
+.addi-gradient-border-bubble::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 12px !important;
+  left: -7px !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 6px solid transparent !important;
+  border-bottom: 6px solid transparent !important;
+  border-right: 7px solid #6366F1 !important;
+}
+
+.duolingo-speech-bubble::after,
+.past-speech-bubble::after,
+.whatsapp-addi-bubble::after,
+.addi-gradient-border-bubble::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 13px !important;
+  left: -5px !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 5px solid transparent !important;
+  border-bottom: 5px solid transparent !important;
+  border-right: 6px solid #FFFFFF !important;
+}
+
+/* ── ADDI Badge & Typography inside bubbles ── */
+.conversational-sender-tag,
+.addi-badge-name {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #6366F1 !important;
+  margin-bottom: 4px !important;
+}
+
+.online-dot {
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background-color: #10B981 !important;
+  display: inline-block !important;
+}
+
+.duolingo-question-heading,
+.past-heading,
+.review-card-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  line-height: 1.4 !important;
+  color: #111111 !important;
+  margin: 0 0 4px 0 !important;
+}
+
+.duolingo-subtitle-text,
+.past-subtitle {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.45 !important;
+  color: #4B5563 !important;
+  margin: 0 !important;
+}
+
+/* ── USER RESPONSE CHAT BUBBLE (LIGHT BACKGROUND WITH SUBTLE BORDER) ── */
+.duolingo-user-bubble {
+  align-self: flex-end !important;
+  margin-left: auto !important;
+  max-width: 380px !important;
+  background: #F3F4F6 !important;
+  background-color: #F3F4F6 !important;
+  color: #111111 !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  padding: 10px 16px !important;
+  border-radius: 16px !important;
+  border-bottom-right-radius: 4px !important;
+  border: 1px solid #E5E7EB !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 8px !important;
+  margin-bottom: 16px !important;
+}
+
+.duolingo-user-bubble svg,
+.user-bubble-icon,
+.user-check-icon {
+  color: #111111 !important;
+  stroke: #111111 !important;
+}
+
+/* ── Summary & Business Details Grid ── */
+.compact-summary-2col-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 10px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.summary-grid-cell {
+  background: #F9FAFB !important;
+  border: 1px solid #E5E7EB !important;
+  border-radius: 8px !important;
+  padding: 8px 10px !important;
+}
+
+.summary-label {
+  font-size: 11px !important;
+  color: #6B7280 !important;
+  font-weight: 600 !important;
+  display: block !important;
+  margin-bottom: 2px !important;
+}
+
+.summary-val {
+  font-size: 13px !important;
+  color: #111111 !important;
+  font-weight: 700 !important;
+}
+
+/* ── What would you like to share? ── */
+.onboarding-subheading {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #111111 !important;
+  margin: 0 0 16px 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: left !important;
+}
+
+/* ── Option Accordion Cards ── */
+.accordion-cards-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 18px !important;
+}
+
+.accordion-card {
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  text-align: left !important;
+}
+
+.accordion-card.is-active {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.08) !important;
+}
+
+.accordion-header-btn {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 18px !important;
+  background: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+.accordion-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.accordion-header-icon {
+  color: #111111 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.accordion-header-icon svg {
+  stroke: #111111 !important;
+}
+
+.accordion-header-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin: 0 !important;
+}
+
+.accordion-header-chevron {
+  color: #111111 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.2s ease !important;
+}
+
+.accordion-header-chevron svg {
+  stroke: #111111 !important;
+}
+
+.accordion-body {
+  padding: 0 18px 18px 18px !important;
+  background: #FFFFFF !important;
+  border-top: 1px solid #F3F4F6 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+/* ── Form Inputs (Black/Dark text) ── */
+.clean-white-input,
+.buw-text-input,
+.buw-url-input,
+input.clean-white-input {
+  width: 100% !important;
+  height: 48px !important;
+  border: 1.5px solid #D1D5DB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  padding: 0 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.clean-white-textarea,
+.buw-textarea,
+textarea.clean-white-textarea {
+  width: 100% !important;
+  min-height: 96px !important;
+  border: 1.5px solid #D1D5DB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  padding: 12px 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  resize: vertical !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.clean-white-input::placeholder,
+.clean-white-textarea::placeholder,
+.buw-text-input::placeholder,
+.buw-url-input::placeholder {
+  color: #6B7280 !important;
+  -webkit-text-fill-color: #6B7280 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+.clean-white-input:focus,
+.clean-white-textarea:focus {
+  border-color: #7C5CFF !important;
+  box-shadow: 0 0 0 3px rgba(124, 92, 255, 0.12) !important;
+}
+
+/* ── Analysis Action Control ── */
+.analysis-action-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 16px 2px 0 2px !important;
+  margin-top: 8px !important;
+  border-top: 1px solid #F3F4F6 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.analysis-action-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+}
+
+.analysis-round-btn {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #6366F1 0%, #3B82F6 50%, #EC4899 100%) !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3) !important;
+  flex-shrink: 0 !important;
+}
+
+.analysis-round-btn svg {
+  color: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+}
+
+.analysis-round-btn:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.4) !important;
+}
+
+.analysis-round-btn:disabled {
+  background: #F3F4F6 !important;
+  color: #D1D5DB !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.analysis-round-btn:disabled svg {
+  color: #D1D5DB !important;
+  stroke: #D1D5DB !important;
+}
+
+
+/* ==========================================================================
+   COMPLETED ADDI CHAT & WHATSAPP-STYLE CONVERSATION UI
+   ========================================================================== */
+
+/* ── Universal White Background ── */
+body,
+#root,
+.hotstar-layout-wrapper,
+.hotstar-main-content,
+.duolingo-onboarding-viewport,
+.duolingo-main-container,
+.conversation-stream-container {
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  color: #111111 !important;
+}
+
+/* ── Left Sidebar Dark Icons & Text on White ── */
+.hotstar-desktop-sidebar,
+.hotstar-mobile-drawer {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  border-right: 1px solid #E5E7EB !important;
+}
+
+.hotstar-nav-item {
+  color: #111111 !important;
+}
+
+.hotstar-nav-item svg {
+  color: #111111 !important;
+  stroke: #111111 !important;
+}
+
+.hotstar-nav-label,
+.hotstar-nav-label-mobile {
+  color: #111111 !important;
+  font-weight: 700 !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+.hotstar-nav-item:hover {
+  background: #F3F4F6 !important;
+  border-radius: 8px !important;
+}
+
+/* ── Container ── */
+.white-onboarding-container {
+  width: 100% !important;
+  max-width: 520px !important;
+  margin: 0 auto !important;
+  padding: 20px 16px 60px 16px !important;
+  box-sizing: border-box !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #111111 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+
+/* ── Top ADDI Intro / Message Row ── */
+.addi-intro-section,
+.duolingo-mascot-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+  margin-bottom: 24px !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+/* ── SMALL ADDI MASCOT AVATAR (48px - 54px) ── */
+.addi-mascot-wrapper,
+.mascot-lottie-wrapper {
+  width: 50px !important;
+  height: 50px !important;
+  min-width: 50px !important;
+  min-height: 50px !important;
+  max-width: 50px !important;
+  max-height: 50px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.addi-mascot-wrapper svg,
+.mascot-lottie-wrapper svg {
+  width: 50px !important;
+  height: 50px !important;
+  max-width: 50px !important;
+  max-height: 50px !important;
+  object-fit: contain !important;
+}
+
+/* ── ADDI WHATSAPP-STYLE CHAT BUBBLE: WHITE + PURPLE-PINK GRADIENT BORDER ── */
+.whatsapp-addi-bubble,
+.duolingo-speech-bubble,
+.past-speech-bubble,
+.chat-message-bubble,
+.addi-gradient-border-bubble {
+  position: relative !important;
+  flex: 1 !important;
+  max-width: 440px !important;
+  border-radius: 16px !important;
+  border-top-left-radius: 4px !important;
+  padding: 12px 16px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+  color: #111111 !important;
+  text-align: left !important;
+  overflow: visible !important;
+}
+
+/* Chat tail on left */
+.whatsapp-addi-bubble::before,
+.duolingo-speech-bubble::before,
+.past-speech-bubble::before,
+.addi-gradient-border-bubble::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 12px !important;
+  left: -7px !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 6px solid transparent !important;
+  border-bottom: 6px solid transparent !important;
+  border-right: 7px solid #6366F1 !important;
+}
+
+.whatsapp-addi-bubble::after,
+.duolingo-speech-bubble::after,
+.past-speech-bubble::after,
+.addi-gradient-border-bubble::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 13px !important;
+  left: -5px !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 5px solid transparent !important;
+  border-bottom: 5px solid transparent !important;
+  border-right: 6px solid #FFFFFF !important;
+}
+
+.addi-badge-name,
+.conversational-sender-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #6366F1 !important;
+  margin-bottom: 4px !important;
+}
+
+.online-dot {
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background-color: #10B981 !important;
+  display: inline-block !important;
+}
+
+.addi-intro-message {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  line-height: 1.42 !important;
+  color: #111111 !important;
+  margin: 0 !important;
+}
+
+/* ── USER RESPONSE BUBBLE ON THE RIGHT ── */
+.whatsapp-user-bubble,
+.duolingo-user-bubble {
+  align-self: flex-end !important;
+  margin-left: auto !important;
+  max-width: 380px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  color: #111111 !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 8px 14px !important;
+  border-radius: 14px !important;
+  border-bottom-right-radius: 4px !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 6px !important;
+  margin-bottom: 20px !important;
+}
+
+.whatsapp-user-bubble svg,
+.duolingo-user-bubble svg {
+  color: #6366F1 !important;
+  stroke: #6366F1 !important;
+}
+
+/* ── "What would you like to share?" Heading ── */
+.onboarding-subheading {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 19px !important;
+  font-weight: 800 !important;
+  color: #111111 !important;
+  margin: 0 0 16px 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: left !important;
+}
+
+/* ── Option Cards ── */
+.accordion-cards-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 18px !important;
+}
+
+.accordion-card {
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  text-align: left !important;
+}
+
+.accordion-card.is-active {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.08) !important;
+}
+
+.accordion-header-btn {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 14px 16px !important;
+  background: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+.accordion-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.accordion-header-icon {
+  color: #111111 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.accordion-header-icon svg {
+  stroke: #111111 !important;
+}
+
+.accordion-header-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin: 0 !important;
+}
+
+.accordion-header-chevron {
+  color: #111111 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.accordion-header-chevron svg {
+  stroke: #111111 !important;
+}
+
+.accordion-body {
+  padding: 0 16px 16px 16px !important;
+  background: #FFFFFF !important;
+  border-top: 1px solid #F3F4F6 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+/* ── Form Inputs ── */
+.clean-white-input,
+.buw-text-input,
+.buw-url-input,
+input.clean-white-input {
+  width: 100% !important;
+  height: 46px !important;
+  border: 1.5px solid #D1D5DB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  padding: 0 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+}
+
+.clean-white-textarea,
+.buw-textarea,
+textarea.clean-white-textarea {
+  width: 100% !important;
+  min-height: 90px !important;
+  border: 1.5px solid #D1D5DB !important;
+  border-radius: 10px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  padding: 10px 14px !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #111111 !important;
+  -webkit-text-fill-color: #111111 !important;
+  box-sizing: border-box !important;
+  outline: none !important;
+  resize: vertical !important;
+}
+
+.clean-white-input::placeholder,
+.clean-white-textarea::placeholder,
+.buw-text-input::placeholder,
+.buw-url-input::placeholder {
+  color: #6B7280 !important;
+  -webkit-text-fill-color: #6B7280 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+/* ── Analysis Action Control ── */
+.analysis-action-bar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 14px 2px 0 2px !important;
+  margin-top: 8px !important;
+  border-top: 1px solid #F3F4F6 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.analysis-action-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+}
+
+/* ── CIRCULAR GO BUTTON (WHITE WITH PURPLE-PINK GRADIENT BORDER & 'Go' TEXT) ── */
+.analysis-go-circle-btn {
+  width: 48px !important;
+  height: 48px !important;
+  min-width: 48px !important;
+  min-height: 48px !important;
+  border-radius: 50% !important;
+  background: #FFFFFF !important;
+  border: 2px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  color: #7C5CFF !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 3px 10px rgba(139, 92, 246, 0.2) !important;
+  flex-shrink: 0 !important;
+  padding: 0 !important;
+}
+
+.analysis-go-circle-btn:hover:not(:disabled) {
+  transform: translateY(-1px) scale(1.06) !important;
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.35) !important;
+  background-image: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%), linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  color: #FFFFFF !important;
+}
+
+.analysis-go-circle-btn:disabled {
+  background: #F3F4F6 !important;
+  background-image: none !important;
+  border-color: #E5E7EB !important;
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+
+/* ==========================================================================
+   DELIVERABLES / SERVICE SELECTION UI (6 REAL THUMBNAIL CARDS)
+   ========================================================================== */
+
+.services-2col-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 14px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin-top: 10px !important;
+  margin-bottom: 20px !important;
+}
+
+@media (max-width: 640px) {
+  .services-2col-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+}
+
+.service-selection-card {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 12px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  border-radius: 14px !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+  cursor: pointer !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  user-select: none !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
+}
+
+.service-selection-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 16px rgba(139, 92, 246, 0.12) !important;
+}
+
+.service-selection-card.is-selected {
+  background-image: linear-gradient(rgba(139, 92, 246, 0.05), rgba(139, 92, 246, 0.05)), linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.18) !important;
+}
+
+.service-card-thumbnail-wrapper {
+  width: 72px !important;
+  height: 72px !important;
+  min-width: 72px !important;
+  min-height: 72px !important;
+  max-width: 72px !important;
+  max-height: 72px !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+  background: #F3F4F6 !important;
+}
+
+.service-card-thumbnail-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+.service-card-content {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  min-width: 0 !important;
+  padding-right: 20px !important;
+}
+
+.service-card-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 800 !important;
+  color: #111111 !important;
+  margin: 0 0 3px 0 !important;
+  line-height: 1.3 !important;
+}
+
+.service-card-desc {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 11.5px !important;
+  font-weight: 500 !important;
+  color: #4B5563 !important;
+  margin: 0 !important;
+  line-height: 1.35 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.service-card-checkbox {
+  position: absolute !important;
+  top: 12px !important;
+  right: 12px !important;
+  width: 18px !important;
+  height: 18px !important;
+  border-radius: 4px !important;
+  border: 1.5px solid #9CA3AF !important;
+  background: #FFFFFF !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s ease !important;
+}
+
+.service-card-checkbox.checked {
+  background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  border-color: transparent !important;
+}
+
+
+/* ==========================================================================
+   ADDI REFINED ONBOARDING LAYOUT (ACTIVE MASCOT & COMPLETED CHAT STYLING)
+   ========================================================================== */
+
+/* Main Onboarding Container */
+.white-onboarding-container {
+  width: 100% !important;
+  max-width: 600px !important;
+  margin: 0 auto !important;
+  padding: 24px 20px 60px 20px !important;
+  box-sizing: border-box !important;
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  color: #111111 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+}
+
+/* --- ACTIVE ADDI MESSAGE (WITH LARGE MASCOT) --- */
+.active-addi-section {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 20px !important;
+  margin-bottom: 32px !important;
+  width: 100% !important;
+  position: relative !important;
+}
+
+/* 140px - 180px Desktop Mascot */
+.active-mascot-wrapper,
+.addi-mascot-large {
+  width: 160px !important;
+  height: 160px !important;
+  min-width: 160px !important;
+  min-height: 160px !important;
+  max-width: 160px !important;
+  max-height: 160px !important;
+  flex-shrink: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+}
+
+.active-mascot-wrapper .mascot-lottie-wrapper,
+.active-mascot-wrapper svg,
+.addi-mascot-large svg {
+  width: 160px !important;
+  height: 160px !important;
+  max-width: 160px !important;
+  max-height: 160px !important;
+  object-fit: contain !important;
+}
+
+/* Active ADDI WhatsApp-Style Bubble */
+.active-addi-bubble {
+  position: relative !important;
+  flex: 1 !important;
+  border-radius: 16px !important;
+  border-top-left-radius: 4px !important;
+  padding: 16px 20px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.08) !important;
+  color: #111111 !important;
+  text-align: left !important;
+  overflow: visible !important;
+}
+
+.active-addi-bubble::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 24px !important;
+  left: -8px !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 7px solid transparent !important;
+  border-bottom: 7px solid transparent !important;
+  border-right: 8px solid #6366F1 !important;
+}
+
+.active-addi-bubble::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 25px !important;
+  left: -6px !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 6px solid transparent !important;
+  border-bottom: 6px solid transparent !important;
+  border-right: 7px solid #FFFFFF !important;
+}
+
+.addi-title-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  color: #111111 !important;
+  line-height: 1.4 !important;
+  margin-bottom: 4px !important;
+}
+
+.addi-desc-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 500 !important;
+  color: #4B5563 !important;
+  line-height: 1.45 !important;
+  margin: 0 !important;
+}
+
+/* --- COMPLETED ADDI MESSAGES (NO MASCOT) --- */
+.completed-addi-row {
+  display: flex !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  margin-bottom: 14px !important;
+}
+
+.whatsapp-addi-bubble,
+.duolingo-speech-bubble,
+.past-speech-bubble,
+.chat-message-bubble,
+.addi-gradient-border-bubble {
+  position: relative !important;
+  max-width: 460px !important;
+  border-radius: 16px !important;
+  border-top-left-radius: 4px !important;
+  padding: 14px 18px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04) !important;
+  color: #111111 !important;
+  text-align: left !important;
+  overflow: visible !important;
+}
+
+.whatsapp-addi-bubble::before,
+.duolingo-speech-bubble::before,
+.past-speech-bubble::before,
+.addi-gradient-border-bubble::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 14px !important;
+  left: -8px !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 7px solid transparent !important;
+  border-bottom: 7px solid transparent !important;
+  border-right: 8px solid #6366F1 !important;
+}
+
+.whatsapp-addi-bubble::after,
+.duolingo-speech-bubble::after,
+.past-speech-bubble::after,
+.addi-gradient-border-bubble::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 15px !important;
+  left: -6px !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-top: 6px solid transparent !important;
+  border-bottom: 6px solid transparent !important;
+  border-right: 7px solid #FFFFFF !important;
+}
+
+.addi-badge-name,
+.conversational-sender-tag {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: #6366F1 !important;
+  margin-bottom: 4px !important;
+}
+
+.online-dot {
+  width: 7px !important;
+  height: 7px !important;
+  border-radius: 50% !important;
+  background-color: #10B981 !important;
+  display: inline-block !important;
+}
+
+/* User Right-Aligned WhatsApp Bubble */
+.whatsapp-user-bubble,
+.duolingo-user-bubble {
+  align-self: flex-end !important;
+  margin-left: auto !important;
+  max-width: 380px !important;
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  color: #111111 !important;
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  padding: 10px 16px !important;
+  border-radius: 14px !important;
+  border-bottom-right-radius: 4px !important;
+  border: 1.5px solid transparent !important;
+  background-image: linear-gradient(#FFFFFF, #FFFFFF), linear-gradient(135deg, #6366F1 0%, #EC4899 100%) !important;
+  background-origin: border-box !important;
+  background-clip: padding-box, border-box !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 4px !important;
+  margin-bottom: 16px !important;
+}
+
+.whatsapp-user-bubble svg,
+.duolingo-user-bubble svg {
+  color: #6366F1 !important;
+  stroke: #6366F1 !important;
+}
+
+/* Heading: "What would you like to share?" */
+.onboarding-subheading {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #000000 !important;
+  margin: 0 0 16px 0 !important;
+  letter-spacing: -0.02em !important;
+  text-align: left !important;
+  line-height: 1.3 !important;
+}
+
+/* Accordion Cards */
+.accordion-cards-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  margin-bottom: 18px !important;
+}
+
+.accordion-card {
+  border: 1.5px solid #E5E7EB !important;
+  border-radius: 14px !important;
+  background: #FFFFFF !important;
+  transition: all 0.2s ease !important;
+  overflow: hidden !important;
+  text-align: left !important;
+}
+
+.accordion-card.is-active {
+  border-color: #8B5CF6 !important;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.08) !important;
+}
+
+.accordion-header-btn {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 14px 18px !important;
+  background: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+  text-align: left !important;
+}
+
+.accordion-header-left {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.accordion-header-icon {
+  color: #000000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.accordion-header-icon svg {
+  stroke: #000000 !important;
+}
+
+.accordion-header-title {
+  font-family: 'Manrope', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #000000 !important;
+  margin: 0 !important;
+}
+
+.accordion-header-chevron {
+  color: #000000 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.accordion-header-chevron svg {
+  stroke: #000000 !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .white-onboarding-container {
+    padding: 16px 12px 40px 12px !important;
+  }
+  .active-mascot-wrapper,
+  .addi-mascot-large {
+    width: 100px !important;
+    height: 100px !important;
+    min-width: 100px !important;
+    min-height: 100px !important;
+    max-width: 100px !important;
+    max-height: 100px !important;
+  }
+  .active-mascot-wrapper .mascot-lottie-wrapper,
+  .active-mascot-wrapper svg {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  .active-addi-section {
+    gap: 12px !important;
+    margin-bottom: 20px !important;
+  }
+  .active-addi-bubble {
+    padding: 12px 14px !important;
+  }
+  .onboarding-subheading {
+    font-size: 18px !important;
+  }
+}
+
+
+/* ===================================================
+   INDIA FLAG + +91 COUNTRY CODE — Phone Input Prefix
+   =================================================== */
+
+/* Flag container: flag + +91 + divider */
+.manrope-flag-country {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 7px !important;
+  flex-shrink: 0 !important;
+  padding-right: 12px !important;
+  margin-right: 4px !important;
+  border-right: 1.5px solid #E5E7EB !important;
+  font-family: 'Manrope', sans-serif !important;
+}
+
+/* The SVG India flag */
+.india-flag-svg {
+  width: 24px !important;
+  height: 16px !important;
+  min-width: 24px !important;
+  border-radius: 2px !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+  overflow: hidden !important;
+  box-shadow: 0 0 0 0.5px rgba(0,0,0,0.12) !important;
+}
+
+/* The +91 text */
+.india-code-text {
+  font-family: 'Manrope', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  color: #111111 !important;
+  letter-spacing: 0.01em !important;
+  white-space: nowrap !important;
+  line-height: 1 !important;
 }
