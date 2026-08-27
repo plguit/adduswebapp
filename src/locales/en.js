@@ -55,10 +55,10 @@ export const en = {
   profileConfirmed: "Profile Confirmed ✓",
 
   // Branch Selection Step
-  branchWelcome: "What do you need help with?",
-  branchKnow: "🚀 I know what I need",
-  branchHelp: "💡 I'm not sure yet",
-  branchExplore: "✨ Just explore ADDUS",
+  branchWelcome: "Do you know what you need?",
+  branchKnow: "I know what I need",
+  branchHelp: "I don't know",
+  branchExplore: "Skip to Dashboard",
   branchKnowDesc: "I already know what I need. Help me plan it and get it done.",
   branchHelpDesc: "I know I need to build my professional presence, but I'm not sure where to start. Help me figure it out.",
   branchExploreDesc: "I want to understand what ADDUS can do for my business first.",

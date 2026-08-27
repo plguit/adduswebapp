@@ -1430,10 +1430,10 @@ html, body, #root {
     font-size: 18px;
   }
   .admin-card {
-    padding: 16px !important;
+    padding: 12px 16px !important;
   }
   .section-title {
-    font-size: 15px !important;
+    font-size: 14px !important;
   }
   .top-actions {
     gap: 6px !important;
@@ -4316,7 +4316,7 @@ html, body, #root {
 
 .sidebar-sparkle { color: #818CF8 !important; flex-shrink: 0 !important; }
 .sidebar-brand-name {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 800 !important;
   color: #FFFFFF !important;
   white-space: nowrap !important;
@@ -4474,7 +4474,7 @@ html, body, #root {
 }
 
 .admin-section-sub {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 400 !important;
   line-height: 1.5 !important;
   color: rgba(255, 255, 255, 0.65) !important;
@@ -4923,7 +4923,7 @@ html, body, #root {
 }
 
 .admin-brain-value {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 500 !important;
   color: #FFFFFF !important;
   line-height: 1.4 !important;
@@ -4933,7 +4933,7 @@ html, body, #root {
   background: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 14px !important;
-  padding: 16px !important;
+  padding: 12px 16px !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 10px !important;
@@ -5002,7 +5002,7 @@ html, body, #root {
   background: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 14px !important;
-  padding: 16px !important;
+  padding: 12px 16px !important;
   margin-bottom: 16px !important;
   display: flex !important;
   flex-direction: column !important;
@@ -5169,7 +5169,7 @@ html, body, #root {
   border-radius: 24px 24px 24px 8px !important;
   color: #FFFFFF !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   line-height: 1.65 !important;
 }
 
@@ -5184,7 +5184,7 @@ html, body, #root {
   border-radius: 24px 24px 8px 24px !important;
   color: #FFFFFF !important;
   box-shadow: 0 8px 24px rgba(59, 130, 246, 0.25) !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 500 !important;
   line-height: 1.65 !important;
 }
@@ -5232,14 +5232,14 @@ html, body, #root {
 .addi-strip-input,
 .phone-input {
   color: #FFFFFF !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
 }
 
 .chat-main-input::placeholder,
 .addi-strip-input::placeholder,
 .phone-input::placeholder {
   color: #94A3B8 !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
 }
 
 /* Text Colors & Font Sizes inside Cards */
@@ -5264,7 +5264,7 @@ html, body, #root {
 .info-val,
 .stat-value {
   color: #0F172A !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 600 !important;
 }
 
@@ -5579,7 +5579,7 @@ body, html {
   color: #FFFFFF !important;
   font-family: 'Inter', -apple-system, sans-serif !important;
   font-weight: 700 !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28) !important;
   display: flex !important;
   align-items: center !important;
@@ -5651,7 +5651,7 @@ body, html {
 }
 
 .duolingo-subtitle-text {
-  font-size: 15px !important;
+  font-size: 14px !important;
   color: rgba(255, 255, 255, 0.82) !important;
   text-align: left !important;
   margin-top: 8px !important;
@@ -6092,7 +6092,7 @@ body, html {
   }
 
   .duolingo-question-heading {
-    font-size: 16px !important;
+    font-size: 14px !important;
     font-weight: 800 !important;
     line-height: 1.35 !important;
     text-align: left !important;
@@ -6113,11 +6113,11 @@ body, html {
     min-height: 60px !important;
     padding: 12px 18px !important;
     border-radius: 16px !important;
-    font-size: 15px !important;
+    font-size: 14px !important;
   }
 
   .option-title-text {
-    font-size: 15px !important;
+    font-size: 14px !important;
   }
 
   .option-sub-text {
@@ -6127,16 +6127,16 @@ body, html {
   /* Forms & Buttons for Mobile */
   .duolingo-text-input {
     height: 48px !important;
-    font-size: 15px !important;
+    font-size: 14px !important;
   }
 
   .input-prefix {
-    font-size: 15px !important;
+    font-size: 14px !important;
   }
 
   .duolingo-submit-btn {
     height: 52px !important;
-    font-size: 16px !important;
+    font-size: 14px !important;
     border-radius: 16px !important;
   }
 
@@ -6158,7 +6158,7 @@ body, html {
 
 @media (max-width: 480px) {
   .duolingo-question-heading {
-    font-size: 15px !important;
+    font-size: 14px !important;
   }
 
   .duolingo-option-card {
@@ -6218,7 +6218,7 @@ body, html {
 }
 
 .celebration-subtext {
-  font-size: 15px !important;
+  font-size: 14px !important;
   color: rgba(255, 255, 255, 0.75) !important;
   line-height: 1.4 !important;
   margin-bottom: 20px !important;
@@ -6359,7 +6359,7 @@ body, html {
     height: 44px !important;
   }
   .netflix-card-title {
-    font-size: 15px !important;
+    font-size: 14px !important;
   }
 }
 
@@ -6954,7 +6954,7 @@ body, html {
 
 .country-prefix {
   padding: 0 14px !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #818CF8 !important;
   border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
@@ -7018,7 +7018,7 @@ body, html {
   flex: 1 !important;
   width: auto !important;
   border-radius: 16px !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   white-space: nowrap !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -7282,7 +7282,7 @@ body, html {
   background: rgba(24, 24, 34, 0.8) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 16px !important;
-  padding: 16px !important;
+  padding: 12px 16px !important;
 }
 
 .creator-card-header {
@@ -7347,7 +7347,7 @@ body, html {
   background: rgba(255, 255, 255, 0.04) !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-radius: 14px !important;
-  padding: 16px !important;
+  padding: 12px 16px !important;
   text-align: center !important;
 }
 
@@ -7389,7 +7389,7 @@ body, html {
   background: rgba(24, 24, 34, 0.8) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 16px !important;
-  padding: 16px !important;
+  padding: 12px 16px !important;
   display: flex !important;
   align-items: center !important;
   gap: 16px !important;
@@ -7542,7 +7542,7 @@ body, html {
 }
 
 .direct-detail-val {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #FFFFFF !important;
   line-height: 1.35 !important;
@@ -7689,7 +7689,7 @@ body, html {
 }
 
 .branch-card-title {
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #FFFFFF !important;
   margin: 0 0 6px 0 !important;
@@ -7719,7 +7719,7 @@ body, html {
   position: relative !important;
   width: 100% !important;
   max-width: 320px !important;
-  height: 330px !important;
+  height: 440px !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
@@ -8027,7 +8027,7 @@ body, html {
   border: none !important;
   outline: none !important;
   color: #FFFFFF !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-family: inherit !important;
 }
 
@@ -8153,7 +8153,7 @@ body, html {
 }
 
 .approval-proj-title {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #FFFFFF !important;
   margin: 0 0 4px 0 !important;
@@ -8380,7 +8380,7 @@ body, html {
 }
 
 .chat-header-title {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #FFFFFF !important;
   margin: 0 !important;
@@ -8838,7 +8838,7 @@ body, html {
 }
 
 .time-slots-title {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #FFFFFF !important;
   text-align: center !important;
@@ -8885,7 +8885,7 @@ body, html {
   background: rgba(255, 255, 255, 0.02) !important;
   border: 1px solid rgba(255, 255, 255, 0.06) !important;
   border-radius: 18px !important;
-  padding: 16px !important;
+  padding: 12px 16px !important;
 }
 
 .sc-header {
@@ -8896,7 +8896,7 @@ body, html {
 }
 
 .sc-month-label {
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #FFFFFF !important;
 }
@@ -9026,7 +9026,7 @@ body, html {
   border: 1px solid rgba(129, 140, 248, 0.4) !important;
   border-radius: 16px !important;
   color: #FFFFFF !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   padding: 14px 24px !important;
   width: 100% !important;
@@ -9097,7 +9097,7 @@ body, html {
 }
 
 .calendar-modal-header h3 {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #FFFFFF !important;
   margin: 0 !important;
@@ -9919,7 +9919,7 @@ html, body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 16px !important;
+  padding: 12px 16px !important;
   animation: fadeIn 0.25s ease-out !important;
 }
 
@@ -10084,7 +10084,7 @@ html, body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 16px !important;
+  padding: 12px 16px !important;
   animation: fadeIn 0.2s ease-out !important;
 }
 
@@ -10182,7 +10182,7 @@ html, body {
 .swipe-confirm-text {
   position: relative !important;
   z-index: 2 !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #FFFFFF !important;
   letter-spacing: 0.02em !important;
@@ -10781,7 +10781,7 @@ html, body {
     box-shadow: 12px 0 40px rgba(0, 0, 0, 0.8) !important;
   }
   .dashboard-main-area {
-    padding: 16px !important;
+    padding: 12px 16px !important;
     width: 100% !important;
   }
 }
@@ -11044,14 +11044,14 @@ html, body {
   border: none !important;
   outline: none !important;
   color: #FFFFFF !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-family: inherit !important;
   padding: 8px 4px !important;
 }
 
 .chatgpt-text-input::placeholder {
   color: rgba(255, 255, 255, 0.5) !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
 }
 
 .chatgpt-send-btn {
@@ -11226,7 +11226,7 @@ input[type="number"], select, textarea, .btn, .duolingo-submit-btn,
   .creator-main-wrapper {
     margin-left: 0 !important;
     width: 100% !important;
-    padding: 16px !important;
+    padding: 12px 16px !important;
   }
 
   .admin-header,
@@ -11381,7 +11381,7 @@ input[type="number"], select, textarea, .btn, .duolingo-submit-btn,
   }
 
   .duolingo-question-heading {
-    font-size: 16px !important;
+    font-size: 14px !important;
   }
 
   .duolingo-speech-bubble {
@@ -11458,7 +11458,7 @@ input[type="number"], select, textarea, .btn, .duolingo-submit-btn,
 }
 
 .time-slots-title {
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #FFFFFF !important;
   text-align: center !important;
@@ -11513,7 +11513,7 @@ input[type="number"], select, textarea, .btn, .duolingo-submit-btn,
   background: rgba(255, 255, 255, 0.02) !important;
   border: 1px solid rgba(255, 255, 255, 0.06) !important;
   border-radius: 18px !important;
-  padding: 16px !important;
+  padding: 12px 16px !important;
   margin: 0 auto !important;
   overflow: hidden !important;
 }
@@ -11527,7 +11527,7 @@ input[type="number"], select, textarea, .btn, .duolingo-submit-btn,
 }
 
 .sc-month-label {
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #FFFFFF !important;
   text-align: center !important;
@@ -11889,7 +11889,7 @@ input[type="number"], select, textarea, .btn, .duolingo-submit-btn,
   .active-project-card-wrapper {
     width: 100% !important;
     min-width: 0 !important;
-    padding: 16px !important;
+    padding: 12px 16px !important;
     box-sizing: border-box !important;
   }
   
@@ -11959,7 +11959,7 @@ input[type="number"], select, textarea, .btn, .duolingo-submit-btn,
   
   /* Customer App & Onboarding Scaling */
   .onboarding-viewport {
-    padding: 16px !important;
+    padding: 12px 16px !important;
   }
   
   .onboarding-card-wrapper,
@@ -11968,7 +11968,7 @@ input[type="number"], select, textarea, .btn, .duolingo-submit-btn,
   .card-dark-glass,
   .admin-review-card,
   .admin-table-wrap {
-    padding: 16px !important;
+    padding: 12px 16px !important;
     border-radius: var(--radius-lg) !important;
   }
   
@@ -12073,7 +12073,7 @@ input[type="number"], select, textarea, .btn, .duolingo-submit-btn,
   .admin-content,
   .dashboard-main-wrapper {
     margin: 0 !important;
-    padding: 16px !important;
+    padding: 12px 16px !important;
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
@@ -14980,7 +14980,7 @@ h1, h2, h3, h4 {
   border-radius: 12px !important;
   height: 48px !important;
   padding: 0 24px !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   cursor: pointer !important;
   display: flex !important;
@@ -16077,7 +16077,7 @@ h1, h2, h3, h4 {
 .manrope-country-code {
   font-family: 'Manrope', sans-serif !important;
   font-weight: 600 !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   color: #000000 !important;
   padding-right: 12px !important;
   margin-right: 12px !important;
@@ -16090,7 +16090,7 @@ h1, h2, h3, h4 {
   border: none !important;
   background: transparent !important;
   font-family: 'Manrope', sans-serif !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 600 !important;
   color: #000000 !important;
   outline: none !important;
@@ -16147,7 +16147,7 @@ h1, h2, h3, h4 {
   background: #7C5CFF !important;
   color: #FFFFFF !important;
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   border: none !important;
   cursor: pointer !important;
@@ -16366,7 +16366,7 @@ h1, h2, h3, h4 {
 .manrope-country-code {
   font-family: 'Manrope', sans-serif !important;
   font-weight: 700 !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   color: #000000 !important;
   padding-right: 12px !important;
   margin-right: 12px !important;
@@ -16379,7 +16379,7 @@ h1, h2, h3, h4 {
   border: none !important;
   background: transparent !important;
   font-family: 'Manrope', sans-serif !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 600 !important;
   color: #000000 !important;
   outline: none !important;
@@ -16494,7 +16494,7 @@ h1, h2, h3, h4 {
   background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
   color: #FFFFFF !important;
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   border: none !important;
   cursor: pointer !important;
@@ -16717,7 +16717,7 @@ h1, h2, h3, h4 {
 .manrope-country-code {
   font-family: 'Manrope', sans-serif !important;
   font-weight: 700 !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   color: #000000 !important;
   padding-right: 12px !important;
   margin-right: 12px !important;
@@ -16730,7 +16730,7 @@ h1, h2, h3, h4 {
   border: none !important;
   background: transparent !important;
   font-family: 'Manrope', sans-serif !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 600 !important;
   color: #000000 !important;
   outline: none !important;
@@ -16845,7 +16845,7 @@ h1, h2, h3, h4 {
   background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #EC4899 100%) !important;
   color: #FFFFFF !important;
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   border: none !important;
   cursor: pointer !important;
@@ -16994,7 +16994,7 @@ h1, h2, h3, h4 {
   justify-content: center !important;
   gap: 8px !important;
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 500 !important;
   color: #6B7280 !important;
   margin-bottom: 28px !important;
@@ -17054,7 +17054,7 @@ h1, h2, h3, h4 {
   gap: 6px !important;
   font-family: 'Manrope', sans-serif !important;
   font-weight: 700 !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   color: #000000 !important;
   padding-right: 12px !important;
   margin-right: 12px !important;
@@ -17067,7 +17067,7 @@ h1, h2, h3, h4 {
   border: none !important;
   background: transparent !important;
   font-family: 'Manrope', sans-serif !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   font-weight: 600 !important;
   color: #000000 !important;
   outline: none !important;
@@ -17288,7 +17288,7 @@ h1, h2, h3, h4 {
 
 .addi-intro-message {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   line-height: 1.45 !important;
   color: #000000 !important;
@@ -17358,7 +17358,7 @@ h1, h2, h3, h4 {
 
 .accordion-header-title {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #000000 !important;
   margin: 0 !important;
@@ -17449,7 +17449,7 @@ h1, h2, h3, h4 {
 
 .analysis-action-text {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #000000 !important;
 }
@@ -17581,7 +17581,7 @@ h1, h2, h3, h4 {
 
 .addi-intro-message {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   line-height: 1.45 !important;
   color: #000000 !important;
@@ -17651,7 +17651,7 @@ h1, h2, h3, h4 {
 
 .accordion-header-title {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #000000 !important;
   margin: 0 !important;
@@ -17742,7 +17742,7 @@ h1, h2, h3, h4 {
 
 .analysis-action-text {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #000000 !important;
 }
@@ -17857,7 +17857,7 @@ h1, h2, h3, h4 {
 
 .addi-intro-message {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   line-height: 1.45 !important;
   color: #000000 !important;
@@ -17927,7 +17927,7 @@ h1, h2, h3, h4 {
 
 .accordion-header-title {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #000000 !important;
   margin: 0 !important;
@@ -18209,7 +18209,7 @@ h1, h2, h3, h4 {
 
 .accordion-header-title {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #111111 !important;
   margin: 0 !important;
@@ -18516,7 +18516,7 @@ textarea.clean-white-textarea {
 
 .accordion-header-title {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #111111 !important;
   margin: 0 !important;
@@ -18922,7 +18922,7 @@ textarea.clean-white-textarea {
 
 .accordion-header-title {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #111111 !important;
   margin: 0 !important;
@@ -19245,7 +19245,7 @@ body,
 .past-heading,
 .review-card-title {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 800 !important;
   line-height: 1.4 !important;
   color: #111111 !important;
@@ -19389,7 +19389,7 @@ body,
 
 .accordion-header-title {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #111111 !important;
   margin: 0 !important;
@@ -19819,7 +19819,7 @@ body,
 
 .accordion-header-title {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #111111 !important;
   margin: 0 !important;
@@ -19929,7 +19929,7 @@ textarea.clean-white-textarea {
   background-clip: padding-box, border-box !important;
   color: #7C5CFF !important;
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 800 !important;
   cursor: pointer !important;
   display: flex !important;
@@ -20187,7 +20187,7 @@ textarea.clean-white-textarea {
 
 .addi-title-text {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 800 !important;
   color: #111111 !important;
   line-height: 1.4 !important;
@@ -20385,7 +20385,7 @@ textarea.clean-white-textarea {
 
 .accordion-header-title {
   font-family: 'Manrope', sans-serif !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   font-weight: 700 !important;
   color: #000000 !important;
   margin: 0 !important;
@@ -20466,7 +20466,7 @@ textarea.clean-white-textarea {
 .india-code-text {
   font-family: 'Manrope', sans-serif !important;
   font-weight: 700 !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   color: #111111 !important;
   letter-spacing: 0.01em !important;
   white-space: nowrap !important;
@@ -20524,7 +20524,7 @@ textarea.clean-white-textarea {
 
 .splash-caption-text {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-  font-size: 16px !important;
+  font-size: 14px !important;
   color: #475569 !important;
   font-weight: 500 !important;
   max-width: 420px !important;
@@ -20589,4 +20589,116 @@ textarea.clean-white-textarea {
 @keyframes splashDotPulse {
   0%, 80%, 100% { transform: scale(0.7); opacity: 0.4; background: #CBD5E1; }
   40% { transform: scale(1.3); opacity: 1; background: #6366F1; }
+}
+
+
+/* --- New Card Colors --- */
+.card-bg-know_need {
+  background: linear-gradient(160deg, #32106B 0%, #1A0837 100%) !important;
+  border-color: rgba(138, 43, 226, 0.4) !important;
+}
+.card-bg-figuring_out {
+  background: linear-gradient(160deg, #0F4C81 0%, #082946 100%) !important;
+  border-color: rgba(15, 76, 129, 0.4) !important;
+}
+.card-bg-explore {
+  background: linear-gradient(160deg, #006B5E 0%, #003630 100%) !important;
+  border-color: rgba(0, 107, 94, 0.4) !important;
+}
+
+
+
+/* --- Goal Options Grid --- */
+.goal-options-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 16px !important;
+  width: 100% !important;
+  margin-top: 24px !important;
+}
+
+@media (max-width: 768px) {
+  .goal-options-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+}
+
+.goal-option-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(0, 0, 0, 0.8) !important;
+  border-radius: 12px !important;
+  padding: 12px 16px !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #000000 !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 48px !important;
+  width: 100% !important;
+}
+
+.goal-option-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+.goal-option-card.option-selected {
+  background: #F8F9FA !important;
+  border: 2px solid #000000 !important;
+  box-shadow: 0 0 0 1px #000000 !important;
+}
+
+.other-goal-textarea {
+  flex: 1 !important;
+  background: #FFFFFF !important;
+  border: 1px solid rgba(0, 0, 0, 0.8) !important;
+  border-radius: 12px !important;
+  padding: 10px 14px !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  color: #000000 !important;
+  resize: none !important;
+  overflow: hidden !important;
+  min-height: 44px !important;
+  outline: none !important;
+  margin-top: 0 !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.other-goal-send-btn {
+  height: 44px !important;
+  padding: 0 16px !important;
+  border-radius: 12px !important;
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.other-goal-send-btn:disabled {
+  background: #E5E7EB !important;
+  color: #9CA3AF !important;
+  cursor: not-allowed !important;
+}
+
+.other-goal-textarea:focus {
+  border-width: 2px !important;
+}
+
+.other-goal-textarea::placeholder {
+  color: #6B7280 !important;
 }

@@ -7,6 +7,7 @@ import { authService } from '../../../../shared/services/authService.js';
 import { syncService } from '../../../../src/services/syncService.js';
 import { getAuthoritativeState, resolveFlow } from '../../../../src/services/flowController.js';
 import { SplashScreen } from '../../../../src/components/onboarding/SplashScreen.jsx';
+import { AuthScreen } from '../../../../src/components/onboarding/AuthScreen.jsx';
 import { ConversationalOnboarding } from '../../../../src/components/chat/ConversationalOnboarding.jsx';
 import { DashboardPage } from './DashboardPage.jsx';
 import { ToastNotification } from '../../../../src/components/dashboard/ToastNotification.jsx';
@@ -74,6 +75,7 @@ export function Onboarding() {
       return true;
     }
   });
+  const [hasCompletedAuth, setHasCompletedAuth] = useState(() => sessionManager.isAuthenticated());
   const [toastMessage, setToastMessage] = useState('');
   const [forceDashboard, setForceDashboard] = useState(false);
 
@@ -177,17 +179,32 @@ export function Onboarding() {
     window.location.reload();
   };
 
-  // Splash screen (always first)
+  // 1. Splash screen (always first)
   if (showSplash) {
     return <SplashScreen onComplete={() => setShowSplash(false)} />;
   }
 
-  // Account Rejected / Restricted
+  // 2. Account Rejected / Restricted
   if (isRejected) {
     return <AccountRestrictedScreen profile={currentProfile} onReapply={handleReapply} onLogout={handleLogout} />;
   }
 
-  // Dashboard
+  // 3. Unauthenticated users -> Render CURRENT existing AuthScreen (Login/Sign-up)
+  // Guard uses ONLY hasCompletedAuth so that state.verified flipping inside AuthScreen's
+  // 1600ms setTimeout does NOT prematurely unmount the mascot celebration popup.
+  if (!hasCompletedAuth) {
+    return (
+      <AuthScreen 
+        onAuthSuccess={() => {
+          // Extra 500ms buffer (on top of AuthScreen's own 1600ms) so the
+          // mascot celebration popup completes its animation before unmount.
+          setTimeout(() => setHasCompletedAuth(true), 500);
+        }} 
+      />
+    );
+  }
+
+  // 4. Dashboard (for returning users who completed onboarding)
   if (isDashboardStep) {
     return (
       <>
@@ -197,7 +214,7 @@ export function Onboarding() {
     );
   }
 
-  // Onboarding flow (ConversationalOnboarding handles auth internally)
+  // 5. Onboarding flow for authenticated users
   return (
     <>
       <ConversationalOnboarding onProjectCreated={handleProjectCreated} />

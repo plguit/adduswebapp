@@ -174,26 +174,26 @@ function StackedBranchCards({ onSelectBranch, selectedOption, onSelectOption }) 
   const cards = [
     {
       id: 'know_need',
-      title: 'ðŸš€ I already know what I need',
+      title: 'I know what I need',
       desc: 'I already have something in mind. Help me plan it and get it done.',
       icon: '/images/target_3d.svg',
-      chatText: 'ðŸš€ I already know what I need',
+      chatText: 'I know what I need',
       staggerClass: 'chat-stagger-1'
     },
     {
       id: 'figuring_out',
-      title: 'ðŸ’¡ Help me figure out what I need',
+      title: "I don't know",
       desc: "I know I need to build my professional presence, but I'm not sure where to start. Help me figure it out.",
       icon: '/images/compass_3d.svg',
-      chatText: 'ðŸ’¡ Help me figure out what I need',
+      chatText: "I don't know",
       staggerClass: 'chat-stagger-2'
     },
     {
       id: 'explore',
-      title: 'Just explore ADDUS',
-      desc: 'I want to understand what ADDUS can do for my business first.',
+      title: 'Skip to Dashboard',
+      desc: 'Skip onboarding for now and explore the ADDUS workspace directly.',
       icon: '/images/home_3d.svg',
-      chatText: 'Just explore ADDUS',
+      chatText: 'Skip to Dashboard',
       staggerClass: 'chat-stagger-3'
     }
   ];
@@ -321,7 +321,7 @@ function StackedBranchCards({ onSelectBranch, selectedOption, onSelectOption }) 
           return (
               <div
               key={card.id}
-              className={`stacked-card-wrapper ${isFront ? 'stacked-card-front' : 'stacked-card-back'} ${isSelected ? 'branch-card-selected' : ''} editorial-card-bg card-depth-${position} ${!isFront ? 'stacked-back-tint' : ''}`}
+              className={`stacked-card-wrapper ${isFront ? 'stacked-card-front' : 'stacked-card-back'} ${isSelected ? 'branch-card-selected' : ''} editorial-card-bg card-bg-${card.id} ${!isFront ? 'stacked-back-tint' : ''}`}
               style={{
                 transform: transformStyle,
                 zIndex,
@@ -335,8 +335,7 @@ function StackedBranchCards({ onSelectBranch, selectedOption, onSelectOption }) 
             >
               <div className="stacked-branch-card-inner editorial-layout">
                 {isFront && (
-                  <>
-                    <div className="editorial-layout-content" style={{ position: 'relative', zIndex: 2, width: '100%', display: 'flex', flexDirection: 'column', height: '100%', alignItems: 'center', textAlign: 'center' }}>
+                  <div className="editorial-layout-content" style={{ position: 'relative', zIndex: 2, width: '100%', display: 'flex', flexDirection: 'column', height: '100%', alignItems: 'center', textAlign: 'center' }}>
                       
                       {/* Top Row: Small Label (Dots) & Arrow */}
                       <div className="stacked-card-header-row" style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
@@ -352,16 +351,7 @@ function StackedBranchCards({ onSelectBranch, selectedOption, onSelectOption }) 
                             />
                           ))}
                         </div>
-                        <button
-                          type="button"
-                          className="stacked-card-arrow-btn"
-                          onClick={handleNext}
-                          title="Next option"
-                          aria-label="Next option"
-                          style={{ zIndex: 10 }}
-                        >
-                          <ChevronRight size={18} />
-                        </button>
+                        
                       </div>
 
                       {/* Heading & Caption */}
@@ -388,7 +378,6 @@ function StackedBranchCards({ onSelectBranch, selectedOption, onSelectOption }) 
                         <span className="stacked-action-cta">Click or swipe card</span>
                       </div>
                     </div>
-                  </>
                 )}
               </div>
             </div>
@@ -778,30 +767,22 @@ export function ConversationalOnboarding({ onProjectCreated }) {
   const { createDraftProject } = useProjectStore();
   const { changeLanguage, t } = useLanguage();
 
-  const [stepIndex, setStepIndex] = useState(() => {
+    const [stepIndex, setStepIndex] = useState(() => {
     try {
-      const isAuth = sessionManager.isAuthenticated();
       const session = sessionManager.getSession();
-      if (isAuth && session && session.userId) {
+      if (session && session.userId) {
         if (state.currentStep === 'business_input' || session.lastVisitedScreen === 'business_input') {
           return 3;
         }
         if (state.currentStep === 'name' || session.lastVisitedScreen === 'name') {
           return 3;
         }
-        return 3;
       }
-    } catch {
-      // fallback
-    }
-    return 1;
+    } catch {}
+    return 3;
   });
 
-  useEffect(() => {
-    if (!sessionManager.isAuthenticated()) {
-      setStepIndex(1);
-    }
-  }, []);
+  /* Auth handled centrally by AuthScreen */
 
   const [step4Stage, setStep4Stage] = useState('mascot'); // 'mascot' -> 'card'
   const [history, setHistory] = useState([]);
@@ -906,7 +887,13 @@ export function ConversationalOnboarding({ onProjectCreated }) {
   const [chatInputText, setChatInputText] = useState('');
   const [showTargetAudienceRationale, setShowTargetAudienceRationale] = useState(false);
   const [expandedRecommendations, setExpandedRecommendations] = useState({});
-  const selectTimeoutRef = useRef(null);
+    const selectTimeoutRef = useRef(null);
+
+  // Ensure selectedOption is reset whenever the user navigates between steps/questions
+  useEffect(() => {
+    setSelectedOption(null);
+  }, [stepIndex, branchChoice, flowAQIdx, flowBQIdx]);
+
 
   const completeOnboarding = async (profileData = {}) => {
     const session = sessionManager.getSession();
@@ -1041,7 +1028,7 @@ try {
       if (text.toLowerCase().includes('help') || text.toLowerCase().includes('figure')) {
         handleSelectBranch('figuring_out');
       } else {
-        handleSelectBranch('know_what_i_need');
+        handleSelectBranch('know_need');
       }
       return;
     }
@@ -1296,9 +1283,8 @@ try {
                               profileToCompare.businessDescription;
     
     if (!businessName || businessName.length < 2 || !hasAnalysisResult) {
-      addHistoryItem("Here's what I understood about your business.", "Review your business brain profile below.", "Profile Confirmed âœ“", 'bizReviewWelcome', 'bizReviewSubtitle', 4);
-    setBranchChoice('know_need');
-    setStepIndex(6);
+      addHistoryItem("Here's what I understood about your business.", "Review your business brain profile below.", "Profile Confirmed ✓", 'bizReviewWelcome', 'bizReviewSubtitle', 4);
+      setStepIndex(5);
       return;
     }
 
@@ -1383,9 +1369,8 @@ try {
       return;
     }
 
-    addHistoryItem("Here's what I understood about your business.", "Review your business brain profile below.", "Profile Confirmed âœ“", 'bizReviewWelcome', 'bizReviewSubtitle', 4);
-    setBranchChoice('know_need');
-    setStepIndex(6);
+    addHistoryItem("Here's what I understood about your business.", "Review your business brain profile below.", "Profile Confirmed ✓", 'bizReviewWelcome', 'bizReviewSubtitle', 4);
+    setStepIndex(5);
   };
 
   const handleSelectBranch = (choice) => {
@@ -1395,8 +1380,8 @@ try {
       completeOnboarding();
       return;
     }
-    const displayText = choice === 'figuring_out' ? "ðŸ’¡ Help me figure out what I need" : "ðŸš€ I already know what I need";
-    addHistoryItem("What do you need help with?", null, displayText, 'branchWelcome', null, 5);
+    const displayText = choice === 'figuring_out' ? "I don't know" : "I know what I need";
+    addHistoryItem("Do you know what you need?", null, displayText, 'branchWelcome', null, 5);
     setStepIndex(6);
   };
 
@@ -2094,159 +2079,7 @@ try {
   const prof = state.businessProfile || {};
   const isLoginScreen = stepIndex === 1;
 
-  // When on Step 1 (Authentication), render directly in pure white full viewport
-  if (stepIndex === 1) {
-    return (
-      <div className="manrope-auth-viewport">
-        <div className="manrope-auth-container">
-          {/* Top minimal phone icon */}
-          <div className="manrope-icon-header">
-            <Smartphone size={34} strokeWidth={1.5} color="#000000" />
-          </div>
-
-          {!otpSent ? (
-            <>
-              {/* Heading: TWO LINES exactly */}
-              <h1 className="manrope-auth-heading-twolines">
-                Enter your<br />phone number
-              </h1>
-
-              {/* Phone Input Form */}
-              <form onSubmit={handleSendOTP} style={{ width: '100%' }}>
-                <div className="manrope-input-wrapper">
-                  <div className={`manrope-input-group ${loginError ? 'has-error' : ''}`}>
-                    <span className="manrope-flag-country">
-                      <IndiaFlag />
-                      <span className="india-code-text">+91</span>
-                    </span>
-                    <input
-                      type="tel"
-                      className="manrope-phone-input"
-                      value={phoneInput}
-                      onChange={e => {
-                        const val = e.target.value.replace(/\D/g, '').slice(0, 10);
-                        setPhoneInput(val);
-                        setLoginError('');
-                      }}
-                      maxLength={10}
-                      placeholder="Enter your mobile number"
-                      autoFocus
-                    />
-                    {phoneInput && (
-                      <button type="button" className="manrope-clear-btn" onClick={() => setPhoneInput('')}>
-                        <X size={13} />
-                      </button>
-                    )}
-                  </div>
-                </div>
-
-                {loginError && (
-                  <div className="manrope-error-msg">
-                    <AlertCircle size={14} /> <span>{loginError}</span>
-                  </div>
-                )}
-
-                {/* Right-aligned circular CTA button */}
-                <div className="manrope-cta-right-row">
-                  <button
-                    type="submit"
-                    className="manrope-circle-cta"
-                    disabled={phoneInput.length !== 10}
-                    title="Get OTP"
-                  >
-                    <ArrowRight size={22} color="#FFFFFF" strokeWidth={2.5} />
-                  </button>
-                </div>
-              </form>
-            </>
-          ) : (
-            <>
-              {/* OTP Heading */}
-              <h1 className="manrope-auth-heading-otp">Enter the OTP</h1>
-
-              {/* Phone number row with edit icon */}
-              <button
-                type="button"
-                className="manrope-phone-edit-row"
-                onClick={() => { setOtpSent(false); setLoginError(''); }}
-                title="Change phone number"
-              >
-                <span>+91 {phoneInput}</span>
-                <Edit2 size={14} />
-              </button>
-
-              {/* OTP Form */}
-              <form onSubmit={handleVerifyOTP} style={{ width: '100%' }}>
-                <div className="manrope-otp-boxes">
-                  {[0, 1, 2, 3].map((idx) => {
-                    const digit = otpInput[idx] || '';
-                    return (
-                      <input
-                        key={idx}
-                        type="text"
-                        inputMode="numeric"
-                        maxLength={1}
-                        className={`manrope-otp-box ${digit ? 'filled' : ''} ${loginError ? 'error' : ''}`}
-                        value={digit}
-                        onChange={e => {
-                          const val = e.target.value.replace(/\D/g, '').slice(-1);
-                          const nextOtp = otpInput.split('');
-                          nextOtp[idx] = val;
-                          const full = nextOtp.join('').slice(0, 4);
-                          setOtpInput(full);
-                          setLoginError('');
-                          if (val && e.target.nextElementSibling) {
-                            e.target.nextElementSibling.focus();
-                          }
-                        }}
-                        onKeyDown={e => {
-                          if (e.key === 'Backspace' && !digit && e.target.previousElementSibling) {
-                            e.target.previousElementSibling.focus();
-                          }
-                        }}
-                        autoFocus={idx === 0}
-                      />
-                    );
-                  })}
-                </div>
-
-                {loginError && (
-                  <div className="manrope-error-msg">
-                    <AlertCircle size={14} /> <span>{loginError}</span>
-                  </div>
-                )}
-
-                {/* Countdown / Resend text centered below OTP */}
-                <div className="manrope-timer-text">
-                  <span>00:59</span>
-                  <span style={{ margin: '0 4px', color: '#D1D5DB' }}>â€¢</span>
-                  <button
-                    type="button"
-                    className="manrope-resend-btn"
-                    onClick={() => handleSendOTP({ preventDefault: () => {} })}
-                  >
-                    Resend OTP
-                  </button>
-                </div>
-
-                {/* Right-aligned circular CTA button */}
-                <div className="manrope-cta-right-row">
-                  <button
-                    type="submit"
-                    className="manrope-circle-cta"
-                    disabled={otpInput.length < 4}
-                    title="Continue"
-                  >
-                    <ArrowRight size={22} color="#FFFFFF" strokeWidth={2.5} />
-                  </button>
-                </div>
-              </form>
-            </>
-          )}
-        </div>
-      </div>
-    );
-  }
+  // Authentication handled centrally by AuthScreen
 
 
 
@@ -2746,7 +2579,7 @@ try {
                 <div className="conversational-sender-tag">
                   <span className="online-dot"></span> ADDI
                 </div>
-                <h1 className="duolingo-question-heading">What do you need help with?</h1>
+                <h1 className="duolingo-question-heading">Do you know what you need?</h1>
                 <p style={{ fontSize: '14px', color: '#9CA3AF', marginTop: '8px', textAlign: 'center' }}>
                   Tell ADDI what you need â€” even if you're not sure yet.
                 </p>
@@ -2770,55 +2603,67 @@ try {
                 <div className="conversational-sender-tag">
                   <span className="online-dot"></span> ADDI
                 </div>
-                <h1 className="duolingo-question-heading">What is your primary business goal right now?</h1>
+                <h1 className="duolingo-question-heading">What's your goal?</h1>
               </DuolingoSpeechBubble>
             </div>
 
-            <div className="duolingo-options-stack">
-              {['Launch business', 'Grow', 'Rebrand', 'Product launch', 'More customers', 'Other'].map((opt, idx) => (
-                <div key={opt} className={`chat-stagger-${Math.min(idx + 1, 3)}`}>
-                  <button
-                    type="button"
-                    className={`duolingo-option-card w-full ${selectedOption === opt ? 'option-selected' : ''}`}
-                     onClick={() => {
-                        if (opt !== 'Other') {
-                           handleSelectOption(opt, opt, () => handleFlowBAnswer('goal', opt));
-                        } else {
-                           if (selectTimeoutRef.current) {
-                             clearTimeout(selectTimeoutRef.current);
-                             selectTimeoutRef.current = null;
-                           }
-                           setSelectedOption('Other');
-                        }
-                     }}
-                  >
-                    <span>{opt}</span>
-                  </button>
-                   {selectedOption === 'Other' && opt === 'Other' && (
-                      <div className="margin-top-10 other-input-wrapper" style={{ display: 'flex', gap: '8px', position: 'relative', zIndex: 10 }}>
-                         <input
-                           type="text"
-                           className="duolingo-text-input other-text-input"
-                           placeholder="Tell ADDI what you're trying to achieve"
-                           value={otherGoalInput}
-                           onChange={e => setOtherGoalInput(e.target.value)}
-                           onKeyDown={e => { if (e.key === 'Enter' && otherGoalInput.trim()) handleFlowBAnswer('goal', otherGoalInput.trim()); }}
-                           autoFocus
-                         />
-                        <button
-                          type="button"
-                          className="duolingo-submit-btn"
-                          style={{ padding: '0 16px', minWidth: 'auto', height: '48px' }}
-                          disabled={!otherGoalInput.trim()}
-                          onClick={() => handleFlowBAnswer('goal', otherGoalInput.trim())}
-                        >
-                          <ArrowRight size={16} />
-                        </button>
-                      </div>
-                   )}
-                </div>
-              ))}
+            <div className="goal-options-grid">
+              {['Launch', 'Grow', 'Rebrand', 'Product Launch', 'More Customers', 'Other'].map((opt, idx) => {
+                const isSelected = selectedOption === opt;
+                return (
+                  <div key={opt} className={`chat-stagger-${Math.min(idx + 1, 3)}`}>
+                    <button
+                      type="button"
+                      className={`goal-option-card ${isSelected ? 'option-selected' : ''}`}
+                      onClick={() => {
+                          if (opt !== 'Other') {
+                            handleSelectOption(opt, opt, () => handleFlowBAnswer('goal', opt));
+                          } else {
+                            if (selectTimeoutRef.current) {
+                              clearTimeout(selectTimeoutRef.current);
+                              selectTimeoutRef.current = null;
+                            }
+                            setSelectedOption('Other');
+                          }
+                      }}
+                    >
+                      <span>{opt}</span>
+                    </button>
+                  </div>
+                );
+              })}
             </div>
+            
+            {selectedOption === 'Other' && (
+              <div className="chat-stagger-3" style={{ width: '100%', position: 'relative', zIndex: 10, display: 'flex', gap: '8px', marginTop: '16px', alignItems: 'flex-end' }}>
+                <textarea
+                  className="other-goal-textarea"
+                  placeholder="Type your goal..."
+                  value={otherGoalInput}
+                  onChange={e => {
+                    setOtherGoalInput(e.target.value);
+                    e.target.style.height = 'auto';
+                    e.target.style.height = e.target.scrollHeight + 'px';
+                  }}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter' && !e.shiftKey && otherGoalInput.trim()) {
+                      e.preventDefault();
+                      handleFlowBAnswer('goal', otherGoalInput.trim());
+                    }
+                  }}
+                  autoFocus
+                  rows={1}
+                />
+                <button
+                  type="button"
+                  className="other-goal-send-btn"
+                  disabled={!otherGoalInput.trim()}
+                  onClick={() => handleFlowBAnswer('goal', otherGoalInput.trim())}
+                >
+                  Send
+                </button>
+              </div>
+            )}
           </div>
         )}
 

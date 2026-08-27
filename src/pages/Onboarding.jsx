@@ -3,6 +3,7 @@ import { useOnboardingStore } from '../store/onboardingStore.js';
 import { sessionManager } from '../services/sessionManager.js';
 import { profileService } from '../services/profileService.js';
 import { SplashScreen } from '../components/onboarding/SplashScreen.jsx';
+import { AuthScreen } from '../components/onboarding/AuthScreen.jsx';
 import { ConversationalOnboarding } from '../components/chat/ConversationalOnboarding.jsx';
 import { DashboardPage } from './dashboard/DashboardPage.jsx';
 import { ToastNotification } from '../components/dashboard/ToastNotification.jsx';
@@ -17,6 +18,7 @@ export function Onboarding() {
       return true;
     }
   });
+  const [hasCompletedAuth, setHasCompletedAuth] = useState(() => sessionManager.isAuthenticated());
   const [toastMessage, setToastMessage] = useState('');
 
   // Auto-Login & Session Restore on Startup
@@ -36,7 +38,23 @@ export function Onboarding() {
   }, []);
 
   const isAuthenticated = sessionManager.isAuthenticated();
-  const isDashboardStep = isAuthenticated;
+  const isCompleted = state.onboardingStatus === 'completed' || state.currentStep === 'dashboard';
+  const isDashboardStep = isAuthenticated && isCompleted;
+
+  if (showSplash) {
+    return <SplashScreen onComplete={() => setShowSplash(false)} />;
+  }
+
+  // Unauthenticated users -> Render CURRENT existing AuthScreen (Login/Sign-up)
+  if (!hasCompletedAuth && !state.verified) {
+    return (
+      <AuthScreen 
+        onAuthSuccess={() => {
+          setHasCompletedAuth(true);
+        }} 
+      />
+    );
+  }
 
   // Auto-redirect to dashboard for returning authenticated users who completed onboarding
   if (isDashboardStep) {
@@ -48,12 +66,7 @@ export function Onboarding() {
     );
   }
 
-  if (showSplash) {
-    return <SplashScreen onComplete={() => setShowSplash(false)} />;
-  }
-
   const handleProjectCreated = (project) => {
-    // Save project to user profile
     const session = sessionManager.getSession();
     if (session?.userId) {
       const profile = profileService.getProfileById(session.userId);
