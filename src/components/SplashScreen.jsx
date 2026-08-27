@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+﻿import React, { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 import mascotBirdLottieData from '../../lottiefile/mascot_with_bird.json';
 
@@ -55,24 +55,41 @@ export function SplashScreen({ autoNavigateDelay = 3400, onComplete = null }) {
         animRef.current.destroy();
       }
     };
-  }, [autoNavigateDelay]);
+  }, [autoNavigateDelay, onComplete]);
 
   return (
-    <div className="splash-screen-viewport cinematic-splash-viewport fade-in" style={{ background: '#0F1226', backgroundColor: '#0F1226' }}>
+    <div 
+      className="splash-screen-viewport cinematic-splash-viewport fade-in" 
+      style={{ 
+        position: 'fixed',
+        inset: 0,
+        width: '100vw',
+        height: '100vh',
+        background: '#FFFFFF', 
+        backgroundColor: '#FFFFFF',
+        color: '#0F172A',
+        zIndex: 99999,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '50px 24px 40px',
+        boxSizing: 'border-box'
+      }}
+    >
       <div className="splash-branding-container">
         <h1 className="splash-main-title">ADDUS</h1>
         <h2 className="splash-caption-text">Build a professional presence people trust.</h2>
-        <p className="splash-powered-tag">Powered by ADDI</p>
       </div>
 
       <div className="splash-mascot-grounded-wrap">
         <div ref={mascotRef} className="splash-mascot-lottie" />
+      </div>
 
-        <div className="splash-three-dots-loader">
-          <span className="splash-dot dot-1" />
-          <span className="splash-dot dot-2" />
-          <span className="splash-dot dot-3" />
-        </div>
+      <div className="splash-three-dots-loader">
+        <span className="splash-dot dot-1" />
+        <span className="splash-dot dot-2" />
+        <span className="splash-dot dot-3" />
       </div>
     </div>
   );
