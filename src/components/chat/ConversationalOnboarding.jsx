@@ -2487,9 +2487,17 @@ try {
               </div>
             </div>
 
-            {/* 3. SECOND ADDI MESSAGE / RESULT (NO MASCOT) */}
-            <div className="completed-addi-row" style={{ display: 'flex', justifyContent: 'flex-start', width: '100%', marginBottom: '16px' }}>
-              <div className="whatsapp-addi-bubble" style={{ maxWidth: '460px', width: '100%' }}>
+            {/* 3. SECOND ADDI MESSAGE / RESULT (WITH MASCOT RESTORED) */}
+            <div className="duolingo-mascot-row" style={{ marginBottom: '16px' }}>
+              <style>{`
+                @keyframes slideInRightOneShot {
+                  0% { transform: translateX(30px); opacity: 0; }
+                  100% { transform: translateX(0); opacity: 1; }
+                }
+              `}</style>
+              <MascotLottiePlayer stepKey="business-summary-mascot" width={160} height={160} path="/lottiefile/intro-ilkokul (1).json" stopAfterSeconds={8} />
+              
+              <div className="whatsapp-addi-bubble fade-in" style={{ maxWidth: '460px', width: '100%', animation: 'slideInRightOneShot 0.5s ease-out 2s both', margin: 0 }}>
                 <div className="addi-badge-name">
                   <span className="online-dot"></span> ADDI
                 </div>
@@ -2522,14 +2530,12 @@ try {
                       <strong style={{ color: '#111111', fontWeight: 700 }}>{prof.segment}</strong>
                     </div>
                   )}
-                  {(prof.businessDescription || prof.summary) && (
-                    <div style={{ borderTop: '1px solid #E5E7EB', paddingTop: '8px', marginTop: '2px' }}>
-                      <span style={{ color: '#6B7280', fontWeight: 600, display: 'block', marginBottom: '2px', fontSize: '11px' }}>Summary</span>
-                      <p style={{ color: '#111111', margin: 0, lineHeight: 1.45, fontSize: '12.5px', fontWeight: 500 }}>
-                        {prof.businessDescription || prof.summary}
-                      </p>
-                    </div>
-                  )}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#6B7280', fontWeight: 600, flexShrink: 0 }}>Summary</span>
+                    <strong style={{ color: '#111111', fontWeight: 700, textAlign: 'right', paddingLeft: '16px' }}>
+                      {prof.businessDescription || prof.summary || ''}
+                    </strong>
+                  </div>
                 </div>
 
                 {/* Small subtle Edit link */}
@@ -2888,8 +2894,14 @@ try {
         {stepIndex === 7 && (
           <div className="duolingo-step-card active-step-card" style={{ paddingBottom: '80px' }}>
             <div className="duolingo-mascot-row">
+              <style>{`
+                @keyframes slideInRightOneShotStep7 {
+                  0% { transform: translateX(30px); opacity: 0; }
+                  100% { transform: translateX(0); opacity: 1; }
+                }
+              `}</style>
               <MascotLottiePlayer stepKey={currentStepKey} width={160} height={160} path="/lottiefile/intro-ilkokul (1).json" stopAfterSeconds={8} />
-              <DuolingoSpeechBubble key={currentStepKey} className="chat-message-bubble">
+              <DuolingoSpeechBubble key={currentStepKey} className="chat-message-bubble" style={{ animation: 'slideInRightOneShotStep7 0.5s ease-out 1s both' }}>
                 <div className="conversational-sender-tag">
                   <span className="online-dot"></span> ADDI
                 </div>
@@ -2938,23 +2950,42 @@ try {
                     .services-horizontal-carousel::-webkit-scrollbar {
                       display: none;
                     }
+                    @keyframes badgeSparkle {
+                      0% { transform: translateX(-150%) skewX(-15deg); opacity: 0; }
+                      20% { opacity: 0.6; }
+                      80% { opacity: 0.6; }
+                      100% { transform: translateX(250%) skewX(-15deg); opacity: 0; }
+                    }
+                    .recommended-badge {
+                      position: absolute;
+                      top: 16px;
+                      right: 16px;
+                      background: linear-gradient(135deg, #9b51e0, #ff007f);
+                      color: #FFF;
+                      padding: 6px 12px;
+                      border-radius: 20px;
+                      font-size: 10px;
+                      font-weight: 700;
+                      letter-spacing: 0.5px;
+                      z-index: 1;
+                      box-shadow: 0 2px 10px rgba(255, 0, 127, 0.4);
+                      overflow: hidden;
+                    }
+                    .recommended-badge::after {
+                      content: '';
+                      position: absolute;
+                      top: 0; left: 0; width: 40%; height: 100%;
+                      background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+                      animation: badgeSparkle 3s infinite ease-in-out;
+                      pointer-events: none;
+                    }
                   `}</style>
 
                   {/* Header & View All */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', padding: '0 16px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                      <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#F0F0F5', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
-                        <MascotLottiePlayer stepKey={currentStepKey} width={64} height={64} path="/lottiefile/intro-ilkokul (1).json" />
-                      </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                        <div className="conversational-sender-tag" style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', fontWeight: '800', color: '#111', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
-                          <span className="online-dot" style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#58CC02' }}></span> ADDI
-                        </div>
-                        <h4 style={{ margin: 0, fontWeight: '800', fontSize: '15px', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                          Recommendations
-                        </h4>
-                      </div>
-                    </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', padding: '0 16px', width: '100%', boxSizing: 'border-box' }}>
+                    <h4 style={{ margin: 0, fontWeight: '800', fontSize: '15px', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                      ADDI RECOMMENDS
+                    </h4>
                     <button 
                       type="button"
                       onClick={() => setShowViewAll(true)}
@@ -2965,9 +2996,11 @@ try {
                         fontWeight: '700', 
                         color: '#00D1FF', 
                         cursor: 'pointer',
-                        padding: '6px 10px',
+                        padding: '6px 12px',
                         background: 'rgba(0, 209, 255, 0.1)',
-                        borderRadius: '20px'
+                        borderRadius: '20px',
+                        flexShrink: 0,
+                        whiteSpace: 'nowrap'
                       }}
                     >
                       View All
@@ -2979,16 +3012,15 @@ try {
                     style={{
                       display: 'flex',
                       flexWrap: 'nowrap',
-                      gap: '16px',
+                      gap: '12px',
                       overflowX: 'auto',
                       scrollSnapType: 'x mandatory',
-                      paddingBottom: '20px',
+                      padding: '0 9vw 20px 9vw',
                       scrollbarWidth: 'none', 
                       msOverflowStyle: 'none', 
                       WebkitOverflowScrolling: 'touch',
-                      paddingLeft: '16px',
-                      paddingRight: '16px',
-                      width: '100%'
+                      width: '100%',
+                      boxSizing: 'border-box'
                   }}>
                     {(() => {
                       const userSelected = state.selectedServices || finalScope || [];
@@ -3015,14 +3047,13 @@ try {
                             style={{ 
                               flex: '0 0 auto',
                               width: '82vw', 
-                              maxWidth: '340px', 
+                              maxWidth: '320px', 
                               scrollSnapAlign: 'center',
                               position: 'relative',
                               borderRadius: '24px',
                               overflow: 'hidden',
                               backgroundColor: '#F8F9FA',
-                              boxShadow: '0 10px 40px rgba(0,0,0,0.06)',
-                              touchAction: 'pan-x pan-y'
+                              boxShadow: '0 10px 40px rgba(0,0,0,0.06)'
                             }}
                           >
                             <div style={{ width: '100%', paddingTop: '140%', position: 'relative' }}>
@@ -3046,20 +3077,7 @@ try {
                               />
                               
                               {/* Recommended Badge */}
-                              <div style={{
-                                position: 'absolute',
-                                top: '16px',
-                                right: '16px',
-                                background: 'linear-gradient(135deg, #9b51e0, #ff007f)',
-                                color: '#FFF',
-                                padding: '6px 12px',
-                                borderRadius: '20px',
-                                fontSize: '10px',
-                                fontWeight: '700',
-                                letterSpacing: '0.5px',
-                                zIndex: 1,
-                                boxShadow: '0 2px 10px rgba(255, 0, 127, 0.4)'
-                              }}>
+                              <div className="recommended-badge">
                                 RECOMMENDED
                               </div>
 
