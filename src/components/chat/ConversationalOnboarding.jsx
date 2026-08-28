@@ -835,6 +835,8 @@ export function ConversationalOnboarding({ onProjectCreated }) {
   const [scopeChatInput, setScopeChatInput] = useState('');
   const [customRequests, setCustomRequests] = useState(state.customScopeNotes || []);
   const [isExpertReviewRequested, setIsExpertReviewRequested] = useState(false);
+  const [fullscreenVideo, setFullscreenVideo] = useState(null);
+  const [showViewAll, setShowViewAll] = useState(false);
 
   useEffect(() => {
     if (state.customScopeNotes && Array.isArray(state.customScopeNotes)) {
@@ -2930,97 +2932,216 @@ try {
             {!isGeneratingRecommendation && (
               <div className="chat-stagger-1 fade-in margin-top-20" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 
-                {/* C. OPPORTUNITIES, RECOMMENDATIONS & REFERENCES */}
-                <div style={{ background: 'transparent', padding: '20px 0' }}>
-                  <h4 className="margin-bottom-14" style={{ fontWeight: '800', fontSize: '16px', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                    C. Opportunities &amp; Recommendations
-                  </h4>
-                  
-                  {(() => {
-                    const OFFICIAL_11 = [
-                      'Video Shoot', 'Photo Shoot', 'Branding & Logo', 'Social Media Management',
-                      'Paid Advertisements', 'Marketing Strategy', 'Video & Photo Editing',
-                      'Product & Packaging Design', 'Product Launch Campaign', 'Content & Copywriting',
-                      'Influencer & Talent Sourcing'
-                    ];
-                    let recs = state.fullRecommendationData?.recommendations || state.aiRecommendations || [];
-
-                    if (branchChoice === 'know_need') {
-                      const userSelected = state.selectedServices || finalScope || [];
-                      if (userSelected.length > 0) {
-                        return userSelected.map(srv => ({
-                          serviceName: srv,
-                          title: srv,
-                          status: 'recommended',
-                          reason: 'Directly selected for your project scope.'
-                        }));
-                      }
-                    } else if (branchChoice === 'figuring_out') {
-                      const filtered = recs.filter(r => {
-                        const t = (r.serviceName || r.title || '').toLowerCase();
-                        return OFFICIAL_11.some(cat => t.includes(cat.toLowerCase()) || cat.toLowerCase().includes(t));
-                      });
-                      if (filtered.length > 0) return filtered;
+                {/* C. SELECTED SERVICES RESULTS PRESENTATION */}
+                <div style={{ background: '#FFFFFF', padding: '0', margin: '20px 0', width: '100%' }}>
+                  <style>{`
+                    .services-horizontal-carousel::-webkit-scrollbar {
+                      display: none;
                     }
-                    return recs;
-                  })().length > 0 && (
-                    <div style={{ marginBottom: state.selectedServices && state.selectedServices.length > 0 ? '16px' : '0' }}>
-                      <div style={{ 
-                        display: 'grid', 
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
-                        gap: '24px', 
-                        alignItems: 'start'
-                      }}>
-                        {(() => {
-                          const OFFICIAL_11 = [
-                            'Video Shoot', 'Photo Shoot', 'Branding & Logo', 'Social Media Management',
-                            'Paid Advertisements', 'Marketing Strategy', 'Video & Photo Editing',
-                            'Product & Packaging Design', 'Product Launch Campaign', 'Content & Copywriting',
-                            'Influencer & Talent Sourcing'
-                          ];
-                          let recs = state.fullRecommendationData?.recommendations || state.aiRecommendations || [];
+                  `}</style>
 
-                          if (branchChoice === 'know_need') {
-                            const userSelected = state.selectedServices || finalScope || [];
-                            if (userSelected.length > 0) {
-                              return userSelected.map(srv => ({
-                                serviceName: srv,
-                                title: srv,
-                                status: 'recommended',
-                                reason: 'Directly selected for your project scope.'
-                              }));
-                            }
-                          } else if (branchChoice === 'figuring_out') {
-                            const filtered = recs.filter(r => {
-                              const t = (r.serviceName || r.title || '').toLowerCase();
-                              return OFFICIAL_11.some(cat => t.includes(cat.toLowerCase()) || cat.toLowerCase().includes(t));
-                            });
-                            if (filtered.length > 0) return filtered;
-                          }
-                          return recs;
-                        })().map((rec, idx) => {
-                          const title = rec.serviceName || rec.title || 'Recommended Service';
-                          const isCustomImage = (title === 'Video Production' || title === 'Photography' || title === 'Photoshoot');
-                          const uploadedImage = isCustomImage ? (title === 'Video Production' ? '/images/cards/1.png' : '/images/cards/2.png') : null;
-
-                          return (
-                            <div key={idx} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '32px' }}>
-                               <h2 style={{ fontSize: '24px', fontWeight: '800', margin: '0 0 16px 0', color: '#111', textAlign: 'center', fontFamily: 'Manrope, sans-serif' }}>
-                                 {title}
-                               </h2>
-                               {isCustomImage ? (
-                                 <img src={uploadedImage} alt={title} style={{ width: '100%', maxWidth: '500px', borderRadius: '16px', objectFit: 'contain', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }} />
-                               ) : (
-                                 <div style={{ width: '100%', maxWidth: '500px', padding: '40px 20px', background: '#F9FAFB', border: '2px dashed #E5E7EB', borderRadius: '16px', textAlign: 'center', color: '#6B7280', fontSize: '14px', fontWeight: '600' }}>
-                                   Visual for {title}
-                                 </div>
-                               )}
-                            </div>
-                          );
-                        })}
+                  {/* Header & View All */}
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', padding: '0 16px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <div style={{ width: '48px', height: '48px', borderRadius: '50%', background: '#F0F0F5', display: 'flex', justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }}>
+                        <MascotLottiePlayer stepKey={currentStepKey} width={64} height={64} path="/lottiefile/intro-ilkokul (1).json" />
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                        <div className="conversational-sender-tag" style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', fontWeight: '800', color: '#111', letterSpacing: '0.5px', textTransform: 'uppercase' }}>
+                          <span className="online-dot" style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#58CC02' }}></span> ADDI
+                        </div>
+                        <h4 style={{ margin: 0, fontWeight: '800', fontSize: '15px', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                          Recommendations
+                        </h4>
                       </div>
                     </div>
-                  )}
+                    <button 
+                      type="button"
+                      onClick={() => setShowViewAll(true)}
+                      style={{ 
+                        background: 'transparent', 
+                        border: 'none', 
+                        fontSize: '13px', 
+                        fontWeight: '700', 
+                        color: '#00D1FF', 
+                        cursor: 'pointer',
+                        padding: '6px 10px',
+                        background: 'rgba(0, 209, 255, 0.1)',
+                        borderRadius: '20px'
+                      }}
+                    >
+                      View All
+                    </button>
+                  </div>
+
+                  <div 
+                    className="services-horizontal-carousel"
+                    style={{
+                      display: 'flex',
+                      flexWrap: 'nowrap',
+                      gap: '16px',
+                      overflowX: 'auto',
+                      scrollSnapType: 'x mandatory',
+                      paddingBottom: '20px',
+                      scrollbarWidth: 'none', 
+                      msOverflowStyle: 'none', 
+                      WebkitOverflowScrolling: 'touch',
+                      paddingLeft: '16px',
+                      paddingRight: '16px',
+                      width: '100%'
+                  }}>
+                    {(() => {
+                      const userSelected = state.selectedServices || finalScope || [];
+                      const displayItems = userSelected.length > 0 ? userSelected : (state.fullRecommendationData?.recommendations || state.aiRecommendations || []).map(r => r.serviceName || r.title);
+                      const validItems = displayItems.filter(Boolean);
+
+                      if (validItems.length === 0) return null;
+
+                      const carouselItems = validItems.flatMap(title => {
+                        if (title === 'Video Production' || title === 'Photography' || title === 'Video & Photo Editing') {
+                          return [
+                            { title, video: '/videos/video1.mp4', amount: '₹15,000', includes: ['Influencer / Model', 'Camera', 'Script Writer', 'Video Editor'] },
+                            { title, video: '/videos/video2.mp4', amount: '₹25,000', includes: ['Pro Camera Gear', 'Studio Lighting', 'Creative Director', 'Advanced Editing'] },
+                            { title, video: '/videos/video3.mp4', amount: '₹10,000', includes: ['Basic Setup', 'Standard Lighting', 'Raw Footage', 'Minimal Edit'] }
+                          ];
+                        }
+                        return [{ title, video: '/videos/video1.mp4', amount: '₹15,000', includes: ['Standard Delivery', 'Expert Review', 'Quality Check'] }];
+                      });
+
+                      return carouselItems.map((item, idx) => {
+                        return (
+                          <div 
+                            key={idx} 
+                            style={{ 
+                              flex: '0 0 auto',
+                              width: '82vw', 
+                              maxWidth: '340px', 
+                              scrollSnapAlign: 'center',
+                              position: 'relative',
+                              borderRadius: '24px',
+                              overflow: 'hidden',
+                              backgroundColor: '#F8F9FA',
+                              boxShadow: '0 10px 40px rgba(0,0,0,0.06)',
+                              touchAction: 'pan-x pan-y'
+                            }}
+                          >
+                            <div style={{ width: '100%', paddingTop: '140%', position: 'relative' }}>
+                              <video 
+                                src={item.video}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                onClick={() => setFullscreenVideo(item.video)}
+                                style={{
+                                  position: 'absolute',
+                                  top: 0,
+                                  left: 0,
+                                  width: '100%',
+                                  height: '100%',
+                                  objectFit: 'cover',
+                                  zIndex: 0,
+                                  cursor: 'pointer'
+                                }}
+                              />
+                              
+                              {/* Recommended Badge */}
+                              <div style={{
+                                position: 'absolute',
+                                top: '16px',
+                                right: '16px',
+                                background: 'linear-gradient(135deg, #9b51e0, #ff007f)',
+                                color: '#FFF',
+                                padding: '6px 12px',
+                                borderRadius: '20px',
+                                fontSize: '10px',
+                                fontWeight: '700',
+                                letterSpacing: '0.5px',
+                                zIndex: 1,
+                                boxShadow: '0 2px 10px rgba(255, 0, 127, 0.4)'
+                              }}>
+                                RECOMMENDED
+                              </div>
+
+                              {/* Play Button */}
+                              <button
+                                type="button"
+                                onClick={() => setFullscreenVideo(item.video)}
+                                style={{
+                                  position: 'absolute',
+                                  top: '40%',
+                                  left: '50%',
+                                  transform: 'translate(-50%, -50%)',
+                                  width: '44px',
+                                  height: '44px',
+                                  borderRadius: '50%',
+                                  background: 'rgba(255, 255, 255, 0.9)',
+                                  border: 'none',
+                                  display: 'flex',
+                                  justifyContent: 'center',
+                                  alignItems: 'center',
+                                  cursor: 'pointer',
+                                  boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
+                                  zIndex: 1,
+                                  paddingLeft: '3px'
+                                }}
+                              >
+                                <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M1.5 1.5L12.5 8L1.5 14.5V1.5Z" fill="#111111" stroke="#111111" strokeWidth="2" strokeLinejoin="round"/>
+                                </svg>
+                              </button>
+                            </div>
+                            
+                            {/* Overlay Info Card at the bottom */}
+                            <div style={{
+                              position: 'absolute',
+                              bottom: 0,
+                              left: 0,
+                              width: '100%',
+                              background: '#FFFFFF',
+                              borderBottomLeftRadius: '24px',
+                              borderBottomRightRadius: '24px',
+                              padding: '24px 24px',
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              alignItems: 'flex-start',
+                              boxShadow: '0 -4px 20px rgba(0,0,0,0.05)'
+                            }}>
+                              {/* Left side: Includes */}
+                              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxWidth: '60%' }}>
+                                <span style={{ fontSize: '12px', fontWeight: '800', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Includes</span>
+                                <ul style={{ margin: 0, paddingLeft: '16px', fontSize: '13px', color: '#666', lineHeight: '1.4', listStyleType: 'disc' }}>
+                                  {item.includes.map((inc, i) => <li key={i} style={{ paddingBottom: '2px' }}>{inc}</li>)}
+                                </ul>
+                              </div>
+                              
+                              {/* Right side: Title & Price */}
+                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px', maxWidth: '40%' }}>
+                                <h3 style={{ 
+                                  margin: 0, 
+                                  fontSize: '16px', 
+                                  fontWeight: '800', 
+                                  color: '#111111',
+                                  fontFamily: 'Manrope, sans-serif',
+                                  textAlign: 'right',
+                                  lineHeight: '1.2'
+                                }}>
+                                  {item.title}
+                                </h3>
+                                <span style={{ 
+                                  fontSize: '16px', 
+                                  fontWeight: '800', 
+                                  color: '#00D1FF'
+                                }}>
+                                  {item.amount}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      });
+                    })()}
+                  </div>
                 </div>
 
                 {/* G. FINALIZE SCOPE & ESTIMATED BUDGET */}
@@ -3368,6 +3489,74 @@ try {
           onClose={() => setShowStylePreview(false)}
         />
       )}
+      
+      {/* Fullscreen Video Player */}
+      {fullscreenVideo && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
+          backgroundColor: '#000', zIndex: 99999, display: 'flex', justifyContent: 'center', alignItems: 'center'
+        }}>
+          <button 
+            onClick={() => setFullscreenVideo(null)}
+            style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.2)', color: '#FFF', border: 'none', borderRadius: '50%', width: '40px', height: '40px', cursor: 'pointer', zIndex: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+          >
+            <X size={20} />
+          </button>
+          <video 
+            src={fullscreenVideo}
+            controls
+            autoPlay
+            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+          />
+        </div>
+      )}
+
+      {/* View All Recommendations Route/Page Overlay */}
+      {showViewAll && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
+          backgroundColor: '#F8F9FA', zIndex: 99998, overflowY: 'auto', padding: '24px 16px'
+        }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+            <button 
+              onClick={() => setShowViewAll(false)}
+              style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'none', border: 'none', fontSize: '16px', fontWeight: '700', cursor: 'pointer', marginBottom: '24px', color: '#111' }}
+            >
+              <ChevronLeft size={20} /> Back to Onboarding
+            </button>
+            <h1 style={{ fontSize: '28px', fontWeight: '800', marginBottom: '32px', color: '#111' }}>All Recommended Services</h1>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '24px', paddingBottom: '60px' }}>
+              {[
+                { title: 'Video Production', video: '/videos/video1.mp4', amount: '₹15,000', includes: ['Influencer / Model', 'Camera', 'Script Writer', 'Video Editor'] },
+                { title: 'Photography', video: '/videos/video2.mp4', amount: '₹25,000', includes: ['Pro Camera Gear', 'Studio Lighting', 'Creative Director', 'Advanced Editing'] },
+                { title: 'Video & Photo Editing', video: '/videos/video3.mp4', amount: '₹10,000', includes: ['Basic Setup', 'Standard Lighting', 'Raw Footage', 'Minimal Edit'] },
+                { title: 'Social Media Management', video: '/videos/video1.mp4', amount: '₹15,000', includes: ['Content Calendar', 'Daily Posting', 'Community Management'] }
+              ].map((item, idx) => (
+                <div key={idx} style={{ position: 'relative', borderRadius: '24px', overflow: 'hidden', backgroundColor: '#FFF', boxShadow: '0 10px 40px rgba(0,0,0,0.06)' }}>
+                  <div style={{ width: '100%', paddingTop: '140%', position: 'relative' }}>
+                    <video src={item.video} autoPlay loop muted playsInline style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                    <button type="button" onClick={() => setFullscreenVideo(item.video)} style={{ position: 'absolute', top: '40%', left: '50%', transform: 'translate(-50%, -50%)', width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.9)', border: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', boxShadow: '0 4px 16px rgba(0,0,0,0.2)', paddingLeft: '3px' }}>
+                      <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5L12.5 8L1.5 14.5V1.5Z" fill="#111111" stroke="#111111" strokeWidth="2" strokeLinejoin="round"/></svg>
+                    </button>
+                  </div>
+                  <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', background: '#FFFFFF', padding: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxWidth: '60%' }}>
+                      <span style={{ fontSize: '12px', fontWeight: '800', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Includes</span>
+                      <ul style={{ margin: 0, paddingLeft: '16px', fontSize: '13px', color: '#666', lineHeight: '1.4', listStyleType: 'disc' }}>{item.includes.map((inc, i) => <li key={i} style={{ paddingBottom: '2px' }}>{inc}</li>)}</ul>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px', maxWidth: '40%' }}>
+                      <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '800', color: '#111111', textAlign: 'right', lineHeight: '1.2' }}>{item.title}</h3>
+                      <span style={{ fontSize: '16px', fontWeight: '800', color: '#00D1FF' }}>{item.amount}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
       </div>
     </div>
