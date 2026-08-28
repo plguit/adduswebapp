@@ -19610,12 +19610,12 @@ body,
 /* ── SMALL ADDI MASCOT AVATAR (48px - 54px) ── */
 .addi-mascot-wrapper,
 .mascot-lottie-wrapper {
-  width: 50px !important;
-  height: 50px !important;
-  min-width: 50px !important;
-  min-height: 50px !important;
-  max-width: 50px !important;
-  max-height: 50px !important;
+  width: 70px !important;
+  height: 70px !important;
+  min-width: 70px !important;
+  min-height: 70px !important;
+  max-width: 70px !important;
+  max-height: 70px !important;
   flex-shrink: 0 !important;
   display: flex !important;
   align-items: center !important;
@@ -19627,10 +19627,10 @@ body,
 
 .addi-mascot-wrapper svg,
 .mascot-lottie-wrapper svg {
-  width: 50px !important;
-  height: 50px !important;
-  max-width: 50px !important;
-  max-height: 50px !important;
+  width: 70px !important;
+  height: 70px !important;
+  max-width: 70px !important;
+  max-height: 70px !important;
   object-fit: contain !important;
 }
 
@@ -20702,3 +20702,8 @@ textarea.clean-white-textarea {
 .other-goal-textarea::placeholder {
   color: #6B7280 !important;
 }
+
+
+/* Fix Mascot clipping */
+.duolingo-mascot-row, .addi-intro-section { max-width: 100% !important; box-sizing: border-box !important; flex-wrap: nowrap !important; }
+.duolingo-mascot-row .chat-message-bubble, .duolingo-mascot-row .whatsapp-addi-bubble, .addi-intro-section .chat-message-bubble, .addi-intro-section .whatsapp-addi-bubble { flex: 1 !important; min-width: 0 !important; overflow-wrap: break-word !important; }

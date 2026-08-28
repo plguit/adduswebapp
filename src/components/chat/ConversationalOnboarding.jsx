@@ -835,6 +835,15 @@ export function ConversationalOnboarding({ onProjectCreated }) {
   const [legalViewType, setLegalViewType] = useState(null);
   const [isGeneratingRecommendation, setIsGeneratingRecommendation] = useState(false);
   const [finalScope, setFinalScope] = useState([]);
+  const [confirmServiceSelection, setConfirmServiceSelection] = useState(null);
+  const [readMoreItem, setReadMoreItem] = useState(null);
+  const [confirmedCarouselSelections, setConfirmedCarouselSelections] = useState([]);
+  const [showThankYouPopup, setShowThankYouPopup] = useState(false);
+  const [submitCountdown, setSubmitCountdown] = useState(5);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [projectDate, setProjectDate] = useState('');
+  const [projectTime, setProjectTime] = useState('');
+  const [projectRequirements, setProjectRequirements] = useState('');
   const [deliveryDate, setDeliveryDate] = useState('');
   const [scopeChatInput, setScopeChatInput] = useState('');
   const [customRequests, setCustomRequests] = useState(state.customScopeNotes || []);
@@ -1883,6 +1892,8 @@ try {
   useEffect(() => {
     if (stepIndex === 7 && state.fullRecommendationData) {
       const recs = state.fullRecommendationData.recommendations || [];
+      /* 
+      // User explicitly requested to NOT auto-select recommendations, so they start unselected.
       const requested = state.selectedServices || [];
       const suggested = recs
         .filter(r => r.status === 'recommended' || r.status === 'consider')
@@ -1895,6 +1906,7 @@ try {
       if (isScopeChanged) {
         setFinalScope(combined);
       }
+      */
 
       // Fix 3: Internal notification for expert review
       const needsExpert = state.fullRecommendationData.targetAudience?.requiresExpertReview === true ||
@@ -2072,25 +2084,38 @@ try {
       return;
     }
 
-    session = sessionManager.getSession();
-    if (!session || !session.userId) {
-      session = sessionManager.createSession({
-        userId: state.userId || `user_${Date.now()}`,
-        phone: state.phone || state.phoneNumber || null,
-        email: state.email || null,
-        verified: true,
-        lastVisitedScreen: 'dashboard'
-      });
-    } else {
-      sessionManager.updateLastVisitedScreen('dashboard');
-    }
+    setIsSubmitted(true);
+    setShowThankYouPopup(true);
+    setSubmitCountdown(5);
 
-    updateState({ currentStep: 'dashboard', verified: true, onboardingStatus: 'completed' });
-    completeOnboarding({ onboardingStatus: 'completed' });
+    let left = 5;
+    const interval = setInterval(() => {
+      left -= 1;
+      setSubmitCountdown(left);
+      if (left <= 0) {
+        clearInterval(interval);
+        
+        session = sessionManager.getSession();
+        if (!session || !session.userId) {
+          session = sessionManager.createSession({
+            userId: state.userId || `user_${Date.now()}`,
+            phone: state.phone || state.phoneNumber || null,
+            email: state.email || null,
+            verified: true,
+            lastVisitedScreen: 'dashboard'
+          });
+        } else {
+          sessionManager.updateLastVisitedScreen('dashboard');
+        }
 
-    if (typeof onProjectCreated === 'function') {
-      onProjectCreated(proj);
-    }
+        updateState({ currentStep: 'dashboard', verified: true, onboardingStatus: 'completed' });
+        completeOnboarding({ onboardingStatus: 'completed' });
+
+        if (typeof onProjectCreated === 'function') {
+          onProjectCreated(proj);
+        }
+      }
+    }, 1000);
   };
 
   const prof = state.businessProfile || {};
@@ -3077,22 +3102,6 @@ try {
                                   pointerEvents: 'none' /* Prevents video from intercepting swipe */
                                 }}
                               />
-                              {/* Click overlay to handle fullscreen video while letting swipes pass through */}
-                              <div 
-                                onClick={() => setFullscreenVideo(item.video)}
-                                style={{
-                                  position: 'absolute',
-                                  top: 0,
-                                  left: 0,
-                                  width: '100%',
-                                  height: '100%',
-                                  zIndex: 1,
-                                  cursor: 'pointer',
-                                  touchAction: 'pan-x pan-y'
-                                }}
-                              />
-                              
-                              {/* Recommended Badge */}
                               <div className="recommended-badge">
                                 RECOMMENDED
                               </div>
@@ -3116,7 +3125,7 @@ try {
                                   alignItems: 'center',
                                   cursor: 'pointer',
                                   boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
-                                  zIndex: 1,
+                                  zIndex: 2,
                                   paddingLeft: '3px'
                                 }}
                               >
@@ -3134,42 +3143,65 @@ try {
                               background: '#FFFFFF',
                               borderBottomLeftRadius: '24px',
                               borderBottomRightRadius: '24px',
-                              padding: '16px 16px',
+                              padding: '16px',
                               display: 'flex',
-                              justifyContent: 'space-between',
-                              alignItems: 'center',
-                              boxShadow: '0 -4px 20px rgba(0,0,0,0.05)'
+                              flexDirection: 'column',
+                              gap: '14px',
+                              boxShadow: '0 -4px 20px rgba(0,0,0,0.05)',
+                              boxSizing: 'border-box'
                             }}>
-                              {/* Left side: Includes */}
-                              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxWidth: '55%' }}>
-                                <span style={{ fontSize: '11px', fontWeight: '800', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Includes</span>
-                                <ul style={{ margin: 0, paddingLeft: '14px', fontSize: '11px', color: '#666', lineHeight: '1.4', listStyleType: 'disc' }}>
-                                  {item.includes.map((inc, i) => <li key={i} style={{ paddingBottom: '2px' }}>{inc}</li>)}
-                                </ul>
+                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', width: '100%' }}>
+                                {/* Left side: Includes */}
+                                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxWidth: '55%' }}>
+                                  <span style={{ fontSize: '11px', fontWeight: '800', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Includes</span>
+                                  <ul style={{ margin: 0, paddingLeft: '14px', fontSize: '11px', color: '#666', lineHeight: '1.4', listStyleType: 'disc' }}>
+                                    {item.includes.slice(0, 2).map((inc, i) => <li key={i} style={{ paddingBottom: '2px' }}>{inc}</li>)}
+                                    {item.includes.length > 2 && <li style={{ paddingBottom: '2px', color: '#888' }}>+{item.includes.length - 2} more</li>}
+                                  </ul>
+                                </div>
+                                
+                                {/* Right side: Title & Price */}
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'center', gap: '4px', maxWidth: '45%' }}>
+                                  <h3 style={{ 
+                                    margin: 0, 
+                                    fontSize: '14px', 
+                                    fontWeight: '800', 
+                                    color: '#111111',
+                                    fontFamily: 'Manrope, sans-serif',
+                                    textAlign: 'right',
+                                    lineHeight: '1.2'
+                                  }}>
+                                    {item.title}
+                                  </h3>
+                                  <span style={{ 
+                                    fontSize: '15px', 
+                                    fontWeight: '800', 
+                                    color: '#00D1FF'
+                                  }}>
+                                    {item.amount}
+                                  </span>
+                                </div>
                               </div>
-                              
-                              {/* Right side: Title & Price */}
-                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'center', gap: '4px', maxWidth: '45%' }}>
-                                <h3 style={{ 
-                                  margin: 0, 
-                                  fontSize: '14px', 
-                                  fontWeight: '800', 
-                                  color: '#111111',
-                                  fontFamily: 'Manrope, sans-serif',
-                                  textAlign: 'right',
-                                  lineHeight: '1.2'
-                                }}>
-                                  {item.title}
-                                </h3>
-                                <span style={{ 
-                                  fontSize: '15px', 
-                                  fontWeight: '800', 
-                                  color: '#00D1FF'
-                                }}>
-                                  {item.amount}
-                                </span>
+
+                              {/* Buttons Row */}
+                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginTop: '4px' }}>
+                                <button 
+                                  type="button" 
+                                  onClick={() => setReadMoreItem(item)} 
+                                  style={{ background: 'none', border: 'none', color: '#666', fontSize: '12px', fontWeight: '700', textDecoration: 'underline', cursor: 'pointer', padding: 0 }}
+                                >
+                                  Read More
+                                </button>
+                                <button 
+                                  type="button" 
+                                  onClick={() => setConfirmServiceSelection(item)} 
+                                  style={{ padding: '8px 16px', borderRadius: '8px', border: 'none', background: 'linear-gradient(90deg, #00D1FF 0%, #B84BFF 100%)', color: '#FFF', fontSize: '12px', fontWeight: '700', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,209,255,0.2)' }}
+                                >
+                                  Select This
+                                </button>
                               </div>
                             </div>
+
                           </div>
                         );
                       });
@@ -3178,122 +3210,196 @@ try {
                 </div>
 
                 {/* G. FINALIZE SCOPE & ESTIMATED BUDGET */}
-                <div className="duolingo-profile-card">
-                  <h4 className="margin-bottom-12" style={{ fontWeight: '700', fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                    G. Finalize Project Scope
-                  </h4>
-                  <p style={{ fontSize: '13px', color: '#B3B3B3', marginBottom: '12px' }}>Select/deselect deliverables to customize your scope of work:</p>
-                  
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    {Array.from(new Set([
-                      ...(state.selectedServices || []), 
-                      ...(state.fullRecommendationData?.recommendations || []).map(r => r.serviceName)
-                    ])).map((srv, idx) => {
-                      const isSelected = finalScope.includes(srv);
-                      return (
-                        <label key={idx} style={{ display: 'flex', alignItems: 'center', gap: '10px', background: '#2B2B36', padding: '10px 12px', borderRadius: '8px', cursor: 'pointer' }}>
-                          <input 
-                            type="checkbox" 
-                            checked={isSelected}
-                            onChange={(e) => {
-                              if (e.target.checked) setFinalScope(prev => [...prev, srv]);
-                              else setFinalScope(prev => prev.filter(s => s !== srv));
-                            }}
-                            style={{ accentColor: '#00D1FF', width: '16px', height: '16px' }}
-                          />
-                          <span style={{ fontSize: '14px', fontWeight: '600', color: isSelected ? '#FFF' : '#B3B3B3' }}>{srv}</span>
-                        </label>
-                      );
-                    })}
-                  </div>
-                  
-                  <div className="margin-top-16" style={{ padding: '12px 14px', background: '#1A1A24', borderRadius: '8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: '1px solid rgba(0,209,255,0.2)' }}>
-                    <span style={{ fontSize: '13px', color: '#B3B3B3' }}>Estimated Budget</span>
-                    <span style={{ fontWeight: '700', color: '#00D1FF', fontSize: '14px' }}>
-                      Estimated range â€” final quote after expert review
-                    </span>
-                  </div>
-                </div>
+                {confirmedCarouselSelections.length > 0 && (
+                  <div style={{ 
+                    background: 'linear-gradient(135deg, rgba(0,209,255,0.6) 0%, rgba(184,75,255,0.6) 50%, rgba(255,75,140,0.6) 100%)', 
+                    borderRadius: '20px', 
+                    padding: '2px',
+                    width: '100%',
+                    boxSizing: 'border-box'
+                  }}>
+                    <div style={{ 
+                      background: '#FFFFFF', 
+                      borderRadius: '18px', 
+                      padding: '28px 24px', 
+                      boxShadow: '0 12px 40px rgba(0,0,0,0.06)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '24px',
+                      width: '100%',
+                      boxSizing: 'border-box'
+                    }}>
+                      {/* Header */}
+                      <div>
+                        <h4 style={{ margin: '0 0 6px 0', fontWeight: '800', fontSize: '18px', color: '#111111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                          G. Finalize Project Scope
+                        </h4>
+                        <p style={{ margin: 0, fontSize: '14px', color: '#666666' }}>
+                          Review your selected service and customize your project requirements.
+                        </p>
+                      </div>
 
-                {/* H. CUSTOM SCOPE CHANGE / CHAT */}
-                <div className="duolingo-profile-card" style={{ background: '#1A1A24', border: '1px solid #3A3A46' }}>
-                  <p style={{ fontSize: '14px', fontWeight: '700', marginBottom: '10px', color: '#FFF' }}>
-                    Need something else or have a custom request?
-                  </p>
-                  
-                  {/* DISPLAY SAVED CUSTOM REQUESTS */}
-                  {customRequests.length > 0 && (
-                    <div className="margin-bottom-12" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                      {customRequests.map((note, nIdx) => (
-                        <div key={nIdx} style={{ background: '#2B2B36', padding: '10px 14px', borderRadius: '8px', fontSize: '13px', color: '#00D1FF', display: 'flex', alignItems: 'center', justifyContent: 'space-between', border: '1px solid rgba(0,209,255,0.2)' }}>
-                          <span>ðŸ’¬ Custom Request: "<strong>{note}</strong>"</span>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                            <span style={{ fontSize: '11px', color: '#58CC02', fontWeight: '700', background: 'rgba(88,204,2,0.15)', padding: '2px 8px', borderRadius: '4px' }}>ADDED TO SCOPE</span>
-                            <button
-                              type="button"
-                              style={{ background: 'none', border: 'none', color: '#FF4B4B', cursor: 'pointer', fontSize: '12px', fontWeight: '600', padding: 0 }}
-                              onClick={() => handleRemoveCustomRequest(note)}
-                            >
-                              âœ• Remove
-                            </button>
-                          </div>
-                        </div>
-                      ))}
+                      {/* 1. Selected Services */}
+                      <div>
+                        <h5 style={{ margin: '0 0 12px 0', fontSize: '14px', fontWeight: '700', color: '#111' }}>Selected Services</h5>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                          {confirmedCarouselSelections.map((item, idx) => {
+                            
+                            return (
+                              <div key={idx} style={{ 
+                                display: 'flex', 
+                                alignItems: 'center', 
+                                justifyContent: 'space-between',
+                                background: 'rgba(0,209,255,0.05)', 
+                                border: '1px solid #00D1FF',
+                                padding: '14px 16px', 
+                                borderRadius: '12px', 
+                              }}>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                                  <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '18px', height: '18px', background: '#00D1FF', borderRadius: '4px' }}>
+                                    <svg width="10" height="8" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M1 5L4.5 8.5L11 1.5" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                    </svg>
+                                  </div>
+                                  <span style={{ fontSize: '15px', fontWeight: '700', color: '#111' }}>{item.title}</span>
+                                </div>
+                                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                                  <span style={{ fontSize: '15px', fontWeight: '800', color: '#00D1FF' }}>{item.amount}</span>
+                                  <button 
+                                    type="button"
+                                    onClick={() => {
+                                      setConfirmedCarouselSelections(prev => prev.filter(s => s.title !== item.title));
+                                      setFinalScope(prev => prev.filter(s => s !== item.title));
+                                    }}
+                                    style={{ background: 'none', border: 'none', fontSize: '12px', fontWeight: '600', color: '#FF4B4B', cursor: 'pointer', padding: 0 }}
+                                  >
+                                    Remove
+                                  </button>
+                                </div>
+                              </div>
+                            );
+                          })}
+                      </div>
                     </div>
-                  )}
 
-                  <form onSubmit={handleAddCustomRequest} style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                    <input 
-                      type="text" 
-                      className="duolingo-text-input" 
-                      style={{ flex: 1, padding: '10px 14px', minHeight: 'auto', background: '#2B2B36', fontSize: '13px', color: '#FFF', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }}
-                      placeholder="Tell ADDI what else you need (e.g. 4K Drone Footage)..."
-                      value={scopeChatInput}
-                      onChange={e => setScopeChatInput(e.target.value)}
-                    />
-                    <button 
-                      type="submit"
-                      className="duolingo-submit-btn" 
-                      style={{ padding: '0 16px', minHeight: 'auto', height: '42px', minWidth: '120px', cursor: 'pointer' }}
-                      onClick={handleAddCustomRequest}
-                    >
-                      <span>Add Request</span>
-                    </button>
-                  </form>
-                </div>
+                    {/* 2 & 3. Project Date & Optional Time */}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+                      <div style={{ flex: '1 1 200px' }}>
+                        <label style={{ display: 'block', fontSize: '13px', fontWeight: '700', color: '#111', marginBottom: '8px' }}>
+                          Preferred Project Date <span style={{ color: '#FF4B4B' }}>*</span>
+                        </label>
+                        <input 
+                          type="date"
+                          value={projectDate}
+                          onChange={(e) => setProjectDate(e.target.value)}
+                          style={{
+                            width: '100%',
+                            padding: '12px 16px',
+                            background: '#F8F9FA',
+                            border: '1px solid #EBEBEB',
+                            borderRadius: '10px',
+                            fontSize: '14px',
+                            color: '#111',
+                            boxSizing: 'border-box'
+                          }}
+                        />
+                      </div>
+                      <div style={{ flex: '1 1 140px' }}>
+                        <label style={{ display: 'block', fontSize: '13px', fontWeight: '700', color: '#111', marginBottom: '8px' }}>
+                          Preferred Time <span style={{ color: '#888', fontWeight: '500', fontSize: '11px' }}>(Optional)</span>
+                        </label>
+                        <input 
+                          type="time"
+                          value={projectTime}
+                          onChange={(e) => setProjectTime(e.target.value)}
+                          style={{
+                            width: '100%',
+                            padding: '12px 16px',
+                            background: '#F8F9FA',
+                            border: '1px solid #EBEBEB',
+                            borderRadius: '10px',
+                            fontSize: '14px',
+                            color: '#111',
+                            boxSizing: 'border-box'
+                          }}
+                        />
+                      </div>
+                    </div>
 
-                {/* I. EXPERT REVIEW NOTIFICATION */}
-                <div className="duolingo-profile-card" style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', background: '#2B2B36', borderLeft: '3px solid #58CC02' }}>
-                  <ShieldCheck size={20} color="#58CC02" style={{ flexShrink: 0, marginTop: '2px' }} />
-                  <div>
-                    <h5 style={{ fontSize: '14px', fontWeight: '600', margin: '0 0 4px 0', color: '#FFF' }}>ADDI Expert Review</h5>
-                    <p style={{ fontSize: '12px', color: '#B3B3B3', margin: 0, lineHeight: '1.4' }}>
-                      Your business details and recommendations have been shared with our relevant experts for review. They will review ADDI's recommendations and provide their suggestions within approximately 3 hours.
-                    </p>
+                    {/* 4. Project Requirements */}
+                    <div>
+                      <label style={{ display: 'block', fontSize: '13px', fontWeight: '700', color: '#111', marginBottom: '8px' }}>
+                        Project Requirements <span style={{ color: '#888', fontWeight: '500', fontSize: '11px' }}>(Optional)</span>
+                      </label>
+                      <input 
+                        type="text"
+                        placeholder="Tell us anything important about this project..."
+                        value={projectRequirements}
+                        onChange={(e) => setProjectRequirements(e.target.value)}
+                        style={{
+                          width: '100%',
+                          padding: '14px 16px',
+                          background: '#F8F9FA',
+                          border: '1px solid #EBEBEB',
+                          borderRadius: '10px',
+                          fontSize: '14px',
+                          color: '#111',
+                          boxSizing: 'border-box'
+                        }}
+                      />
+                    </div>
+
+                    {/* 5. Estimated Budget */}
+                    <div style={{ 
+                      padding: '16px 20px', 
+                      background: '#F4FBFF', 
+                      borderRadius: '12px', 
+                      display: 'flex', 
+                      justifyContent: 'space-between', 
+                      alignItems: 'center', 
+                      border: '1px solid rgba(0,209,255,0.2)' 
+                    }}>
+                      <span style={{ fontSize: '14px', fontWeight: '700', color: '#111' }}>Estimated Budget</span>
+                      <span style={{ fontWeight: '800', color: '#00D1FF', fontSize: '18px' }}>
+                        {(() => {
+                          const total = confirmedCarouselSelections.reduce((acc, item) => {
+                            const numStr = (item.amount || '₹0').replace(/[^0-9]/g, '');
+                            return acc + (parseInt(numStr, 10) || 0);
+                          }, 0);
+                          return total > 0 ? `₹${total.toLocaleString()}` : '₹0';
+                        })()}
+                      </span>
+                    </div>
+                    {/* 6. Continue Button */}
+                    <div style={{ marginTop: '24px' }}>
+                      <button
+                        type="button"
+                        onClick={handleConfirmFinalProject}
+                        disabled={confirmedCarouselSelections.length === 0 || !projectDate}
+                        style={{
+                          width: '100%',
+                          padding: '16px',
+                          background: (confirmedCarouselSelections.length > 0 && projectDate) ? 'linear-gradient(90deg, #00D1FF 0%, #B84BFF 100%)' : '#EBEBEB',
+                          color: (confirmedCarouselSelections.length > 0 && projectDate) ? '#FFFFFF' : '#A0A0A0',
+                          border: 'none',
+                          borderRadius: '12px',
+                          fontSize: '16px',
+                          fontWeight: '800',
+                          cursor: (confirmedCarouselSelections.length > 0 && projectDate) ? 'pointer' : 'not-allowed',
+                          boxShadow: (confirmedCarouselSelections.length > 0 && projectDate) ? '0 8px 24px rgba(0,209,255,0.3)' : 'none',
+                          transition: 'all 0.3s ease'
+                        }}
+                      >
+                        Continue to Scheduling →
+                      </button>
+                    </div>
+
                   </div>
                 </div>
-
-                <div className="margin-top-14">
-                  <button 
-                    type="button"
-                    className="duolingo-submit-btn w-full" 
-                    style={{ boxShadow: '0 4px 20px rgba(0, 209, 255, 0.25)' }}
-                    onClick={() => {
-                      if (finalScope.length === 0) {
-                        setShowNoDeliverablesModal(true);
-                        return;
-                      }
-                      updateState({ selectedServices: finalScope });
-                      setStepIndex(8);
-                    }}
-                  >
-                    <span>Proceed to Scheduling</span>
-                    <ArrowRight size={18} />
-                  </button>
-                </div>
+              )}
+            
               </div>
             )}
-            
             {/* Fallback for when API fails */}
             {!isGeneratingRecommendation && !state.fullRecommendationData && (
               <div className="duolingo-options-stack margin-top-20">
@@ -3584,7 +3690,7 @@ try {
                 <div key={idx} style={{ position: 'relative', borderRadius: '24px', overflow: 'hidden', backgroundColor: '#FFF', boxShadow: '0 10px 40px rgba(0,0,0,0.06)' }}>
                   <div style={{ width: '100%', paddingTop: '140%', position: 'relative' }}>
                     <video src={item.video} autoPlay loop muted playsInline style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-                    <button type="button" onClick={() => setFullscreenVideo(item.video)} style={{ position: 'absolute', top: '40%', left: '50%', transform: 'translate(-50%, -50%)', width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.9)', border: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', boxShadow: '0 4px 16px rgba(0,0,0,0.2)', paddingLeft: '3px' }}>
+                    <button type="button" onClick={() => setFullscreenVideo(item.video)} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.9)', border: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', boxShadow: '0 4px 16px rgba(0,0,0,0.2)', paddingLeft: '3px', zIndex: 2 }}>
                       <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5L12.5 8L1.5 14.5V1.5Z" fill="#111111" stroke="#111111" strokeWidth="2" strokeLinejoin="round"/></svg>
                     </button>
                   </div>
@@ -3605,8 +3711,114 @@ try {
         </div>
       )}
 
+      {/* Confirmation Popup */}
+      {confirmServiceSelection && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
+          backgroundColor: 'rgba(0,0,0,0.5)', zIndex: 99999, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '16px', boxSizing: 'border-box'
+        }}>
+          <div className="fade-in" style={{ background: '#FFF', padding: '32px 24px', borderRadius: '20px', width: '100%', maxWidth: '360px', textAlign: 'center', boxShadow: '0 20px 60px rgba(0,0,0,0.2)' }}>
+            <h3 style={{ margin: '0 0 12px 0', fontSize: '20px', fontWeight: '800', color: '#111' }}>Are you sure?</h3>
+            <p style={{ margin: '0 0 28px 0', fontSize: '15px', color: '#666', lineHeight: '1.5' }}>
+              Do you want to select <strong style={{ color: '#111' }}>{confirmServiceSelection.title}</strong> ({confirmServiceSelection.amount}) for your project?
+            </p>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <button 
+                type="button"
+                onClick={() => setConfirmServiceSelection(null)}
+                style={{ flex: 1, padding: '14px', background: '#F8F9FA', border: '1px solid #EBEBEB', borderRadius: '12px', fontSize: '14px', fontWeight: '700', color: '#111', cursor: 'pointer' }}
+              >
+                Cancel
+              </button>
+              <button 
+                type="button"
+                onClick={() => {
+                  setConfirmedCarouselSelections(prev => {
+                    // Replace existing service if they picked a different recommendation tier of the same service
+                    return [...prev.filter(r => r.title !== confirmServiceSelection.title), confirmServiceSelection];
+                  });
+                  setFinalScope(prev => Array.from(new Set([...prev, confirmServiceSelection.title])));
+                  setConfirmServiceSelection(null);
+                }}
+                style={{ flex: 1, padding: '14px', background: 'linear-gradient(90deg, #00D1FF 0%, #B84BFF 100%)', border: 'none', borderRadius: '12px', fontSize: '14px', fontWeight: '700', color: '#FFF', cursor: 'pointer', boxShadow: '0 8px 20px rgba(0,209,255,0.3)' }}
+              >
+                Select
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
       </div>
+
+      {/* Read More Modal */}
+      {readMoreItem && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
+          backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 99999, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '16px', boxSizing: 'border-box'
+        }} onClick={() => setReadMoreItem(null)}>
+          <div className="fade-in" style={{ background: '#FFF', padding: '32px 24px', borderRadius: '20px', width: '100%', maxWidth: '400px', boxShadow: '0 20px 60px rgba(0,0,0,0.2)', position: 'relative' }} onClick={e => e.stopPropagation()}>
+            <button onClick={() => setReadMoreItem(null)} style={{ position: 'absolute', top: '16px', right: '16px', background: 'none', border: 'none', fontSize: '28px', color: '#111', cursor: 'pointer', lineHeight: 1 }}>&times;</button>
+            <h3 style={{ margin: '0 0 8px 0', fontSize: '22px', fontWeight: '800', color: '#111', paddingRight: '24px' }}>{readMoreItem.title}</h3>
+            <div style={{ fontSize: '18px', fontWeight: '800', color: '#00D1FF', marginBottom: '24px' }}>{readMoreItem.amount}</div>
+            
+            <h4 style={{ margin: '0 0 12px 0', fontSize: '13px', fontWeight: '800', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>What's Included</h4>
+            <ul style={{ margin: '0 0 28px 0', paddingLeft: '18px', fontSize: '14px', color: '#444', lineHeight: '1.6', listStyleType: 'disc' }}>
+              {readMoreItem.includes.map((inc, i) => <li key={i} style={{ paddingBottom: '6px' }}>{inc}</li>)}
+            </ul>
+            
+            <button 
+              type="button"
+              onClick={() => {
+                setReadMoreItem(null);
+                setConfirmServiceSelection(readMoreItem);
+              }}
+              style={{ width: '100%', padding: '16px', background: 'linear-gradient(90deg, #00D1FF 0%, #B84BFF 100%)', border: 'none', borderRadius: '12px', fontSize: '15px', fontWeight: '800', color: '#FFF', cursor: 'pointer', boxShadow: '0 8px 24px rgba(0,209,255,0.3)' }}
+            >
+              Select This Video
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* ADDI Expert Review Popup */}
+      {showThankYouPopup && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
+          backgroundColor: 'rgba(0,0,0,0.7)', zIndex: 99999, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '16px', boxSizing: 'border-box'
+        }}>
+          <div className="fade-in" style={{ 
+            background: '#FFFFFF', 
+            padding: '40px 32px', 
+            borderRadius: '24px', 
+            width: '100%', 
+            maxWidth: '440px', 
+            textAlign: 'center', 
+            boxShadow: '0 24px 80px rgba(0,0,0,0.3)', 
+            border: '1px solid rgba(0, 209, 255, 0.3)',
+            position: 'relative'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px', marginBottom: '20px' }}>
+              <ShieldCheck size={32} color="#58CC02" />
+              <h2 style={{ margin: 0, fontSize: '26px', fontWeight: '800', color: '#111' }}>ADDI Expert Review</h2>
+            </div>
+            
+            <p style={{ margin: '0 0 32px 0', fontSize: '16px', color: '#444', lineHeight: '1.6', fontWeight: '500' }}>
+              Your business details and recommendations have been shared with our relevant experts for review. They will review ADDI's recommendations and provide their suggestions within approximately 3 hours.
+            </p>
+
+            <p style={{ margin: '0 0 12px 0', fontSize: '15px', color: '#888', fontWeight: '600' }}>
+              Returning to Dashboard in {submitCountdown} seconds...
+            </p>
+            
+            <div style={{ fontSize: '48px', fontWeight: '800', background: 'linear-gradient(90deg, #00D1FF 0%, #B84BFF 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              {submitCountdown}
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
