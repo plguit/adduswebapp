@@ -1,0 +1,331 @@
+﻿diff --git a/src/components/chat/ConversationalOnboarding.jsx b/src/components/chat/ConversationalOnboarding.jsx
+index 6a1c1ed..0a28ed7 100644
+--- a/src/components/chat/ConversationalOnboarding.jsx
++++ b/src/components/chat/ConversationalOnboarding.jsx
+@@ -1,4 +1,4 @@
+-∩╗┐import React, { useState, useEffect, useRef } from 'react';
++import React, { useState, useEffect, useRef } from 'react';
+ import lottie from 'lottie-web';
+ import {
+   Sparkles, Smartphone, Mail, ArrowRight, Clock, AlertCircle, Edit2,
+@@ -67,13 +67,15 @@ function IndiaFlag() {
+   );
+ }
+ 
+-function MascotLottiePlayer({ stepKey, path = '/bg/chat.json', loop = true, width, height, className = '' }) {
++function MascotLottiePlayer({ stepKey, path = '/bg/chat.json', loop = true, width, height, className = '', stopAfterSeconds = null }) {
+   const containerRef = useRef(null);
+   const animRef = useRef(null);
+ 
+   useEffect(() => {
+     if (!containerRef.current) return;
+ 
++    let timeoutId;
++
+     try {
+       if (animRef.current) {
+         animRef.current.destroy();
+@@ -85,16 +87,25 @@ function MascotLottiePlayer({ stepKey, path = '/bg/chat.json', loop = true, widt
+         autoplay: true,
+         path: path
+       });
++
++      if (stopAfterSeconds) {
++        timeoutId = setTimeout(() => {
++          if (animRef.current) {
++            animRef.current.pause();
++          }
++        }, stopAfterSeconds * 1000);
++      }
+     } catch (e) {
+       console.warn('Lottie player error:', e);
+     }
+ 
+     return () => {
++      if (timeoutId) clearTimeout(timeoutId);
+       if (animRef.current) {
+         animRef.current.destroy();
+       }
+     };
+-  }, [stepKey, path, loop]);
++  }, [stepKey, path, loop, stopAfterSeconds]);
+ 
+   useEffect(() => {
+     if (animRef.current) {
+@@ -2474,9 +2485,34 @@ try {
+               </div>
+             </div>
+ 
+-            {/* 3. SECOND ADDI MESSAGE / RESULT (NO MASCOT) */}
+-            <div className="completed-addi-row" style={{ display: 'flex', justifyContent: 'flex-start', width: '100%', marginBottom: '16px' }}>
+-              <div className="whatsapp-addi-bubble" style={{ maxWidth: '460px', width: '100%' }}>
++            {/* 3. SECOND ADDI MESSAGE / RESULT (WITH MASCOT) */}
++            <div className="addi-intro-section active-addi-section" style={{ marginBottom: '16px' }}>
++              <style>{`
++                @keyframes cardSlideInRight {
++                  0% { transform: translateX(50px); opacity: 0; }
++                  100% { transform: translateX(0); opacity: 1; }
++                }
++                .delayed-slide-in {
++                  opacity: 0;
++                  animation: cardSlideInRight 0.5s ease-out forwards;
++                  animation-delay: 2s;
++                }
++                .medium-responsive-mascot {
++                  width: 240px !important;
++                  height: 240px !important;
++                  flex-shrink: 0;
++                }
++                @media (max-width: 768px) {
++                  .medium-responsive-mascot {
++                    width: 180px !important;
++                    height: 180px !important;
++                  }
++                }
++              `}</style>
++              <div className="active-mascot-wrapper">
++                <MascotLottiePlayer className="medium-responsive-mascot" stepKey={currentStepKey} path="/lottiefile/intro-ilkokul (1).json" stopAfterSeconds={8} />
++              </div>
++              <div className="whatsapp-addi-bubble active-addi-bubble delayed-slide-in" style={{ maxWidth: '460px', width: '100%' }}>
+                 <div className="addi-badge-name">
+                   <span className="online-dot"></span> ADDI
+                 </div>
+@@ -2484,7 +2520,7 @@ try {
+                   Here's what I understood about your business:
+                 </div>
+                 <p style={{ fontFamily: 'Manrope, sans-serif', fontSize: '12.5px', color: '#6B7280', margin: '0 0 12px 0', fontWeight: 500 }}>
+-                  Review your business brain profile below.
++                  Review your URL analysis report below.
+                 </p>
+ 
+                 {/* Business Details (Clean Key-Value Rows) */}
+@@ -2509,14 +2545,22 @@ try {
+                       <strong style={{ color: '#111111', fontWeight: 700 }}>{prof.segment}</strong>
+                     </div>
+                   )}
+-                  {(prof.businessDescription || prof.summary) && (
+-                    <div style={{ borderTop: '1px solid #E5E7EB', paddingTop: '8px', marginTop: '2px' }}>
+-                      <span style={{ color: '#6B7280', fontWeight: 600, display: 'block', marginBottom: '2px', fontSize: '11px' }}>Summary</span>
+-                      <p style={{ color: '#111111', margin: 0, lineHeight: 1.45, fontSize: '12.5px', fontWeight: 500 }}>
+-                        {prof.businessDescription || prof.summary}
+-                      </p>
+-                    </div>
+-                  )}
++                  
++                  {/* Summary Section */}
++                  <div style={{ borderTop: '1px solid #E5E7EB', paddingTop: '8px', marginTop: '2px' }}>
++                    <span style={{ color: '#6B7280', fontWeight: 600, display: 'block', marginBottom: '2px', fontSize: '11px' }}>Summary</span>
++                    <p style={{ color: '#111111', margin: 0, lineHeight: 1.45, fontSize: '12.5px', fontWeight: 500 }}>
++                      {prof.summary || prof.businessDescription || 'Summary generated from URL analysis.'}
++                    </p>
++                  </div>
++                  
++                  {/* About Section */}
++                  <div style={{ borderTop: '1px solid #E5E7EB', paddingTop: '8px', marginTop: '2px' }}>
++                    <span style={{ color: '#6B7280', fontWeight: 600, display: 'block', marginBottom: '2px', fontSize: '11px' }}>About</span>
++                    <p style={{ color: '#111111', margin: 0, lineHeight: 1.45, fontSize: '12.5px', fontWeight: 500 }}>
++                      {prof.businessDescription || prof.summary || 'Details about the business extracted from the source.'}
++                    </p>
++                  </div>
+                 </div>
+ 
+                 {/* Small subtle Edit link */}
+@@ -2814,6 +2858,7 @@ try {
+               ].map(opt => {
+                 const srv = opt.title;
+                 const isSelected = localSelectedServices.includes(srv);
++                
+                 return (
+                   <div
+                     key={opt.id}
+@@ -2919,43 +2964,7 @@ try {
+             {!isGeneratingRecommendation && (
+               <div className="chat-stagger-1 fade-in margin-top-20" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                 
+-                {/* A. WHAT ADDI UNDERSTOOD */}
+-                <div className="duolingo-profile-card">
+-                  <h4 className="margin-bottom-12" style={{ fontWeight: '700', fontSize: '15px', color: '#00D1FF', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+-                    A. What ADDI Understood
+-                  </h4>
+-                  <div className="profile-row">
+-                    <span className="profile-label">Customer Name:</span>
+-                    <span className="profile-val">
+-                      {(() => {
+-                        const raw = state.name || state.businessProfile?.customerName || '';
+-                        if (!raw || (/^\d+$/.test(raw.replace(/\D/g, '')) && raw.length >= 7)) return 'Customer';
+-                        return raw;
+-                      })()}
+-                    </span>
+-                  </div>
+-                  <div className="profile-row">
+-                    <span className="profile-label">Business:</span>
+-                     <span className="profile-val">{state.businessProfile?.businessName || 'Not confidently identified'}</span>
+-                  </div>
+-                  <div className="profile-row">
+-                    <span className="profile-label">Industry:</span>
+-                    <span className="profile-val">{state.businessProfile?.industry || 'Not confidently identified'}</span>
+-                  </div>
+-                  {state.businessProfile?.segment && (
+-                    <div className="profile-row">
+-                      <span className="profile-label">Segment:</span>
+-                      <span className="profile-val">{state.businessProfile.segment}</span>
+-                    </div>
+-                  )}
+-                  <div className="profile-row" style={{ alignItems: 'flex-start' }}>
+-                    <span className="profile-label">Summary:</span>
+-                    <span className="profile-val" style={{ display: 'block', marginTop: '2px', lineHeight: '1.4' }}>
+-                      {state.businessProfile?.businessDescription || state.businessProfile?.summary || 'No business description provided yet.'}
+-                    </span>
+-                  </div>
+-                </div>
+-
++                {/* A. WHAT ADDI UNDERSTOOD REMOVED AS REQUESTED */}
+                 {/* B. INFERRED TARGET AUDIENCE */}
+                 {state.fullRecommendationData?.targetAudience && (
+                   <div className="duolingo-profile-card">
+@@ -3003,8 +3012,8 @@ try {
+                 )}
+ 
+                 {/* C. OPPORTUNITIES, RECOMMENDATIONS & REFERENCES (MERGED D + E) */}
+-                <div className="duolingo-profile-card">
+-                  <h4 className="margin-bottom-14" style={{ fontWeight: '700', fontSize: '15px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
++                <div style={{ background: 'transparent', padding: '20px 0' }}>
++                  <h4 className="margin-bottom-14" style={{ fontWeight: '800', fontSize: '16px', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                     C. Opportunities &amp; Recommendations
+                   </h4>
+                   
+@@ -3038,7 +3047,7 @@ try {
+                     return recs;
+                   })().length > 0 && (
+                     <div style={{ marginBottom: state.selectedServices && state.selectedServices.length > 0 ? '16px' : '0' }}>
+-                      <span style={{ fontSize: '12px', fontWeight: '700', color: '#00D1FF', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px', display: 'block' }}>
++                      <span style={{ fontSize: '12px', fontWeight: '800', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '16px', display: 'block' }}>
+                         ADDI Recommends
+                       </span>
+                       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+@@ -3071,111 +3080,21 @@ try {
+                           return recs;
+                         })().map((rec, idx) => {
+                           const title = rec.serviceName || rec.title || 'Recommended Service';
+-                          const statusText = rec.status ? rec.status.replace('_', ' ').toUpperCase() : 'RECOMMENDED';
+-                          const isExpanded = expandedRecommendations[idx];
+-                          const shortDesc = (rec.reason || rec.businessNeed || 'Based on your business positioning and goals.').split('.')[0] + '.';
++                          const isCustomImage = (title === 'Video Production' || title === 'Photography' || title === 'Photoshoot');
++                          const uploadedImage = isCustomImage ? (title === 'Video Production' ? '/images/cards/1.png' : '/images/cards/2.png') : null;
++
+                           return (
+-                            <div key={idx} style={{
+-                              padding: '14px',
+-                              background: '#2B2B36',
+-                              borderRadius: '8px',
+-                              borderLeft: rec.status === 'recommended' ? '3px solid #00D1FF' : '3px solid #3A3A46'
+-                            }}>
+-                              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+-                                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+-                                  <div style={{
+-                                    width: '28px',
+-                                    height: '28px',
+-                                    borderRadius: '6px',
+-                                    background: 'rgba(0,209,255,0.1)',
+-                                    color: '#00D1FF',
+-                                    display: 'flex',
+-                                    alignItems: 'center',
+-                                    justifyContent: 'center',
+-                                    flexShrink: 0
+-                                  }}>
+-                                    <Sparkles size={14} />
+-                                  </div>
+-                                  <span style={{ fontWeight: '700', fontSize: '14px', color: '#FFF' }}>{title}</span>
+-                                </div>
+-                                <span style={{ fontSize: '10px', fontWeight: '700', padding: '2px 8px', borderRadius: '4px', background: rec.status === 'recommended' ? 'rgba(0,209,255,0.15)' : '#1A1A24', color: rec.status === 'recommended' ? '#00D1FF' : '#B3B3B3', whiteSpace: 'nowrap' }}>
+-                                  {statusText}
+-                                </span>
+-                              </div>
+-                              <p style={{ fontSize: '12px', color: '#B3B3B3', margin: '0 0 8px 0', lineHeight: '1.4', paddingLeft: '36px' }}>
+-                                {shortDesc}
+-                              </p>
+-                              
+-                              <div style={{ paddingLeft: '36px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+-                                <button
+-                                  type="button"
+-                                  onClick={() => setExpandedRecommendations(prev => ({ ...prev, [idx]: !prev[idx] }))}
+-                                  style={{
+-                                    background: 'none',
+-                                    border: 'none',
+-                                    color: '#00D1FF',
+-                                    fontSize: '11px',
+-                                    fontWeight: '600',
+-                                    padding: 0,
+-                                    cursor: 'pointer',
+-                                    display: 'flex',
+-                                    alignItems: 'center',
+-                                    gap: '3px'
+-                                  }}
+-                                >
+-                                  {isExpanded ? 'Hide details' : 'Why this?'}
+-                                  {isExpanded ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+-                                </button>
+-                                
+-                                {isExpanded && (
+-                                  <div style={{
+-                                    padding: '10px 12px',
+-                                    background: '#1A1A24',
+-                                    borderRadius: '6px',
+-                                    fontSize: '12px',
+-                                    color: '#B3B3B3',
+-                                    lineHeight: '1.5',
+-                                    border: '1px solid rgba(255,255,255,0.05)'
+-                                  }}>
+-                                    <strong style={{ color: '#00D1FF' }}>Why ADDI recommends this:</strong>{' '}
+-                                    {rec.evidence && rec.evidence.length > 0
+-                                      ? rec.evidence[0].rationale
+-                                      : `High commercial impact for ${state.businessProfile?.industry || 'your business'} growth.`}
+-                                  </div>
+-                                )}
+-
+-                                {/* EMBEDDED REFERENCE & INSPIRATION BOX INSIDE THE SAME CARD */}
+-                                <div style={{
+-                                  marginTop: '6px',
+-                                  padding: '10px 12px',
+-                                  background: '#1A1A24',
+-                                  borderRadius: '6px',
+-                                  display: 'flex',
+-                                  alignItems: 'center',
+-                                  justifyContent: 'space-between',
+-                                  border: '1px solid rgba(0,209,255,0.15)'
+-                                }}>
+-                                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+-                                    <Sparkles size={13} color="#00D1FF" />
+-                                    <div>
+-                                      <span style={{ fontSize: '10px', textTransform: 'uppercase', color: '#00D1FF', fontWeight: '700', display: 'block' }}>Reference Sample</span>
+-                                      <span style={{ fontSize: '12px', color: '#FFF', fontWeight: '600' }}>{title}</span>
+-                                    </div>
+-                                  </div>
+-                                  <button
+-                                    type="button"
+-                                    className="duolingo-secondary-btn"
+-                                    style={{ fontSize: '11px', padding: '5px 10px', minHeight: 'auto', textTransform: 'none' }}
+-                                    onClick={() => {
+-                                      setSelectedDeliverable(title);
+-                                      setSelectedType(title);
+-                                      setShowStylePreview(true);
+-                                    }}
+-                                  >
+-                                    View details ├óΓÇáΓÇÖ
+-                                  </button>
+-                                </div>
+-                              </div>
++                            <div key={idx} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '32px' }}>
++                               <h2 style={{ fontSize: '24px', fontWeight: '800', margin: '0 0 16px 0', color: '#111', textAlign: 'center', fontFamily: 'Manrope, sans-serif' }}>
++                                 {title}
++                               </h2>
++                               {isCustomImage ? (
++                                 <img src={uploadedImage} alt={title} style={{ width: '100%', maxWidth: '500px', borderRadius: '16px', objectFit: 'contain', boxShadow: '0 8px 30px rgba(0,0,0,0.12)' }} />
++                               ) : (
++                                 <div style={{ width: '100%', maxWidth: '500px', padding: '40px 20px', background: '#F9FAFB', border: '2px dashed #E5E7EB', borderRadius: '16px', textAlign: 'center', color: '#6B7280', fontSize: '14px', fontWeight: '600' }}>
++                                   Visual for {title}
++                                 </div>
++                               )}
+                             </div>
+                           );
+                         })}
