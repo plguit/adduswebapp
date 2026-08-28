@@ -91,7 +91,11 @@ function MascotLottiePlayer({ stepKey, path = '/bg/chat.json', loop = true, widt
       if (stopAfterSeconds) {
         timeoutId = setTimeout(() => {
           if (animRef.current) {
-            animRef.current.pause();
+            try {
+              animRef.current.pause();
+            } catch (err) {
+              // Ignore lottie internal audio pause errors (this.audio.pause is not a function)
+            }
           }
         }, stopAfterSeconds * 1000);
       }
@@ -2942,10 +2946,10 @@ try {
             )}
 
             {!isGeneratingRecommendation && (
-              <div className="chat-stagger-1 fade-in margin-top-20" style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <div className="chat-stagger-1 fade-in margin-top-20" style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '100%' }}>
                 
                 {/* C. SELECTED SERVICES RESULTS PRESENTATION */}
-                <div style={{ background: '#FFFFFF', padding: '0', margin: '20px 0', width: '100%' }}>
+                <div style={{ background: '#FFFFFF', padding: '0', margin: '20px 0', width: '100%', maxWidth: '100%', overflow: 'hidden', boxSizing: 'border-box' }}>
                   <style>{`
                     .services-horizontal-carousel::-webkit-scrollbar {
                       display: none;
@@ -2991,13 +2995,12 @@ try {
                       onClick={() => setShowViewAll(true)}
                       style={{ 
                         background: 'transparent', 
-                        border: 'none', 
-                        fontSize: '13px', 
+                        border: '1px solid #CCCCCC', 
+                        fontSize: '12px', 
                         fontWeight: '700', 
-                        color: '#00D1FF', 
+                        color: '#111111', 
                         cursor: 'pointer',
-                        padding: '6px 12px',
-                        background: 'rgba(0, 209, 255, 0.1)',
+                        padding: '6px 14px',
                         borderRadius: '20px',
                         flexShrink: 0,
                         whiteSpace: 'nowrap'
@@ -3046,8 +3049,8 @@ try {
                             key={idx} 
                             style={{ 
                               flex: '0 0 auto',
-                              width: '82vw', 
-                              maxWidth: '320px', 
+                              width: '72vw', 
+                              maxWidth: '260px', 
                               scrollSnapAlign: 'center',
                               position: 'relative',
                               borderRadius: '24px',
@@ -3056,14 +3059,13 @@ try {
                               boxShadow: '0 10px 40px rgba(0,0,0,0.06)'
                             }}
                           >
-                            <div style={{ width: '100%', paddingTop: '140%', position: 'relative' }}>
+                            <div style={{ width: '100%', paddingTop: '110%', position: 'relative' }}>
                               <video 
                                 src={item.video}
                                 autoPlay
                                 loop
                                 muted
                                 playsInline
-                                onClick={() => setFullscreenVideo(item.video)}
                                 style={{
                                   position: 'absolute',
                                   top: 0,
@@ -3072,7 +3074,21 @@ try {
                                   height: '100%',
                                   objectFit: 'cover',
                                   zIndex: 0,
-                                  cursor: 'pointer'
+                                  pointerEvents: 'none' /* Prevents video from intercepting swipe */
+                                }}
+                              />
+                              {/* Click overlay to handle fullscreen video while letting swipes pass through */}
+                              <div 
+                                onClick={() => setFullscreenVideo(item.video)}
+                                style={{
+                                  position: 'absolute',
+                                  top: 0,
+                                  left: 0,
+                                  width: '100%',
+                                  height: '100%',
+                                  zIndex: 1,
+                                  cursor: 'pointer',
+                                  touchAction: 'pan-x pan-y'
                                 }}
                               />
                               
@@ -3087,7 +3103,7 @@ try {
                                 onClick={() => setFullscreenVideo(item.video)}
                                 style={{
                                   position: 'absolute',
-                                  top: '40%',
+                                  top: '50%',
                                   left: '50%',
                                   transform: 'translate(-50%, -50%)',
                                   width: '44px',
@@ -3110,7 +3126,6 @@ try {
                               </button>
                             </div>
                             
-                            {/* Overlay Info Card at the bottom */}
                             <div style={{
                               position: 'absolute',
                               bottom: 0,
@@ -3119,25 +3134,25 @@ try {
                               background: '#FFFFFF',
                               borderBottomLeftRadius: '24px',
                               borderBottomRightRadius: '24px',
-                              padding: '24px 24px',
+                              padding: '16px 16px',
                               display: 'flex',
                               justifyContent: 'space-between',
-                              alignItems: 'flex-start',
+                              alignItems: 'center',
                               boxShadow: '0 -4px 20px rgba(0,0,0,0.05)'
                             }}>
                               {/* Left side: Includes */}
-                              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxWidth: '60%' }}>
-                                <span style={{ fontSize: '12px', fontWeight: '800', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Includes</span>
-                                <ul style={{ margin: 0, paddingLeft: '16px', fontSize: '13px', color: '#666', lineHeight: '1.4', listStyleType: 'disc' }}>
+                              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', maxWidth: '55%' }}>
+                                <span style={{ fontSize: '11px', fontWeight: '800', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Includes</span>
+                                <ul style={{ margin: 0, paddingLeft: '14px', fontSize: '11px', color: '#666', lineHeight: '1.4', listStyleType: 'disc' }}>
                                   {item.includes.map((inc, i) => <li key={i} style={{ paddingBottom: '2px' }}>{inc}</li>)}
                                 </ul>
                               </div>
                               
                               {/* Right side: Title & Price */}
-                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px', maxWidth: '40%' }}>
+                              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', justifyContent: 'center', gap: '4px', maxWidth: '45%' }}>
                                 <h3 style={{ 
                                   margin: 0, 
-                                  fontSize: '16px', 
+                                  fontSize: '14px', 
                                   fontWeight: '800', 
                                   color: '#111111',
                                   fontFamily: 'Manrope, sans-serif',
@@ -3147,7 +3162,7 @@ try {
                                   {item.title}
                                 </h3>
                                 <span style={{ 
-                                  fontSize: '16px', 
+                                  fontSize: '15px', 
                                   fontWeight: '800', 
                                   color: '#00D1FF'
                                 }}>
@@ -3544,7 +3559,22 @@ try {
             </button>
             <h1 style={{ fontSize: '28px', fontWeight: '800', marginBottom: '32px', color: '#111' }}>All Recommended Services</h1>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '24px', paddingBottom: '60px' }}>
+            <style>{`
+              .view-all-grid {
+                display: grid;
+                grid-template-columns: 1fr; /* Mobile: 1 column */
+                gap: 24px;
+                padding-bottom: 60px;
+                max-width: 100%;
+              }
+              @media (min-width: 768px) {
+                .view-all-grid {
+                  grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns exactly */
+                }
+              }
+            `}</style>
+
+            <div className="view-all-grid">
               {[
                 { title: 'Video Production', video: '/videos/video1.mp4', amount: '₹15,000', includes: ['Influencer / Model', 'Camera', 'Script Writer', 'Video Editor'] },
                 { title: 'Photography', video: '/videos/video2.mp4', amount: '₹25,000', includes: ['Pro Camera Gear', 'Studio Lighting', 'Creative Director', 'Advanced Editing'] },
