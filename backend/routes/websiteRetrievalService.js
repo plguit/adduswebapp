@@ -52,7 +52,7 @@ const resolve6 = promisify(dns.resolve6);
 // Configuration
 // ─────────────────────────────────────────────────────────
 
-const FETCH_TIMEOUT_MS = 10000;       // 10 seconds total per page
+const FETCH_TIMEOUT_MS = 25000;       // 25 seconds total per page
 const MAX_REDIRECTS = 5;              // Maximum redirect hops
 const MAX_SUBPAGES = 10;              // Max additional pages to inspect
 const MAX_BODY_TEXT_CHARS = 4000;     // Characters of body text to extract per page

@@ -1,6 +1,7 @@
-﻿import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 import mascotBirdLottieData from '../../../lottiefile/mascot_with_bird.json';
+import addusLogo from '../../assets/addus_logo.png';
 
 export function SplashScreen({ autoNavigateDelay = 3400, onComplete = null }) {
   const mascotRef = useRef(null);
@@ -78,6 +79,9 @@ export function SplashScreen({ autoNavigateDelay = 3400, onComplete = null }) {
       }}
     >
       <div className="splash-branding-container">
+        <div className="splash-logo-wrap">
+          <img src={addusLogo} alt="ADDUS Logo" style={{ width: '80px', height: 'auto', marginBottom: '16px' }} />
+        </div>
         <h1 className="splash-main-title">ADDUS</h1>
         <h2 className="splash-caption-text">Build a professional presence people trust.</h2>
       </div>

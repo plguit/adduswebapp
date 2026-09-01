@@ -24,12 +24,13 @@
 import { fetchWithRedirectValidation, validateAndNormalizeUrl } from '../routes/websiteRetrievalService.js';
 import { analysisQueue, JOB_STATES } from './analysisQueue.js';
 import { validateHostnameForFetch } from '../utils/ssrfProtection.js';
+import { chromium } from 'playwright';
 
 // ─────────────────────────────────────────────────────────
 // Configuration
 // ─────────────────────────────────────────────────────────
 
-const FAST_PATH_TIMEOUT_MS = 8000;
+const FAST_PATH_TIMEOUT_MS = 25000;
 const FAST_PATH_MAX_BODY_CHARS = 3000;
 const DEEP_PATH_PRIORITY = 'NORMAL';
 const CACHE_TTL_MS = 30 * 60 * 1000; // 30 minutes
@@ -169,7 +170,36 @@ async function fastPathAnalysis(normalizedUrl) {
   const parsed = parseFastPathHtml(fetchResult.html || '', normalizedUrl);
   
   // Classify
-  const classification = classifyWebsite(fetchResult, parsed, normalizedUrl);
+  let classification = classifyWebsite(fetchResult, parsed, normalizedUrl);
+
+  // Fallback to Headless Browser if DYNAMIC
+  if (classification.class === WEBSITE_CLASSES.DYNAMIC) {
+    try {
+      console.log(`[URLIntelligence] DYNAMIC site detected for ${normalizedUrl}, launching Playwright fallback...`);
+      const browser = await chromium.launch({ headless: true });
+      const context = await browser.newContext({
+        userAgent: 'Mozilla/5.0 (compatible; ADDUS-BusinessIntelligence/1.0; +https://addus.in/bot)',
+        viewport: { width: 1280, height: 720 },
+      });
+      const page = await context.newPage();
+      
+      // Navigate and wait for network idle to allow JS frameworks to render
+      await page.goto(normalizedUrl, { waitUntil: 'networkidle', timeout: 15000 });
+      
+      const fullyRenderedHtml = await page.content();
+      await browser.close();
+
+      if (fullyRenderedHtml && fullyRenderedHtml.length > fetchResult.html.length) {
+        console.log(`[URLIntelligence] Playwright fallback successful for ${normalizedUrl}. Original: ${fetchResult.html.length} chars, New: ${fullyRenderedHtml.length} chars.`);
+        fetchResult.html = fullyRenderedHtml;
+        parsed = parseFastPathHtml(fullyRenderedHtml, normalizedUrl);
+        classification = classifyWebsite(fetchResult, parsed, normalizedUrl);
+      }
+    } catch (pwErr) {
+      console.warn(`[URLIntelligence] Playwright fallback failed for ${normalizedUrl}:`, pwErr.message);
+      // Fail silently and continue with the original limited parsed result
+    }
+  }
   
   // Build basic evidence
   const evidenceItems = buildFastPathEvidence(parsed, normalizedUrl, fetchResult);

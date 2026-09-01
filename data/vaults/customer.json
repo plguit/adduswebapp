@@ -1,11 +1,17 @@
 {
-  "businessName": null,
-  "industry": null,
-  "businessStage": null,
-  "businessDescription": null,
+  "businessName": "Discover Your True Intelligence | URSel Learning Solutions",
+  "industry": "Education",
+  "businessStage": "Growth",
+  "businessDescription": "Research-based Multiple Intelligence Assessment for students (13+), professionals and career explorers.",
   "products": [],
-  "services": null,
-  "targetAudience": null,
+  "services": [
+    "Try one intelligence area, free",
+    "Watch how it works",
+    "What is Multiple Intelligence?",
+    "Why choose URSel Learning Solutions?",
+    "Research-based assessment"
+  ],
+  "targetAudience": "Students (13+), professionals, and career explorers",
   "geographicMarket": null,
   "idealCustomer": null,
   "customerAge": null,
@@ -27,20 +33,435 @@
   },
   "discoveredAssets": [],
   "missingAssets": [],
-  "aiConfidenceScore": null,
+  "aiConfidenceScore": 60,
   "conversationStatus": "discovering",
-  "lastUpdated": "2026-08-22T10:59:58.236Z",
-  "websiteUrl": null,
-  "websiteAnalyzedAt": null,
-  "websiteContentHash": null,
-  "websiteEvidenceItems": [],
-  "websiteRetrievalMeta": null,
+  "lastUpdated": "2026-09-01T04:16:09.063Z",
+  "websiteUrl": "ursel.in",
+  "websiteAnalyzedAt": "2026-09-01T04:16:09.062Z",
+  "websiteContentHash": "745b1aee",
+  "websiteEvidenceItems": [
+    {
+      "evidenceId": "FAST_EV_1788235900363_title",
+      "observation": "Page title: \"Discover Your True Intelligence | URSel Learning Solutions\"",
+      "evidence": "Discover Your True Intelligence | URSel Learning Solutions",
+      "source": "https://ursel.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "identity",
+      "checkedAt": "2026-09-01T04:11:40.363Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1788235900363_meta",
+      "observation": "Meta description found",
+      "evidence": "Research-based Multiple Intelligence Assessment for students (13+), professionals and career explorers.",
+      "source": "https://ursel.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "business_description",
+      "checkedAt": "2026-09-01T04:11:40.363Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1788235900363_headings",
+      "observation": "Page headings: 8 headings found",
+      "evidence": "Discover your true intelligence | Try one intelligence area, free | Watch how it works | What is Multiple Intelligence? | Why choose URSel Learning Solutions? | Research-based assessment | 108 careful",
+      "source": "https://ursel.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "services",
+      "checkedAt": "2026-09-01T04:11:40.363Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1788235900363_body",
+      "observation": "Main page body text retrieved",
+      "evidence": "Discover Your True Intelligence | URSel Learning Solutions URSel Learning Solutions About 9 Intelligences Blog Contact Start Assessment Discover your true intelligence A research-based Multiple Intell",
+      "source": "https://ursel.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "general",
+      "checkedAt": "2026-09-01T04:11:40.363Z",
+      "stage": "FAST_PATH"
+    }
+  ],
+  "websiteRetrievalMeta": {
+    "pagesInspected": []
+  },
   "addiRecommendations": null,
   "addiRecommendationsGeneratedAt": null,
   "diagnosis": null,
   "diagnosisGeneratedAt": null,
   "strategicIntelligence": [],
-  "auditLog": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-09-01T04:16:09.063Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "ursel.in",
+        "websiteAnalyzedAt": "2026-09-01T04:16:09.062Z",
+        "websiteContentHash": "745b1aee",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1788235900363_title",
+            "observation": "Page title: \"Discover Your True Intelligence | URSel Learning Solutions\"",
+            "evidence": "Discover Your True Intelligence | URSel Learning Solutions",
+            "source": "https://ursel.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-09-01T04:11:40.363Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788235900363_meta",
+            "observation": "Meta description found",
+            "evidence": "Research-based Multiple Intelligence Assessment for students (13+), professionals and career explorers.",
+            "source": "https://ursel.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-09-01T04:11:40.363Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788235900363_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "Discover your true intelligence | Try one intelligence area, free | Watch how it works | What is Multiple Intelligence? | Why choose URSel Learning Solutions? | Research-based assessment | 108 careful",
+            "source": "https://ursel.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-09-01T04:11:40.363Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788235900363_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Discover Your True Intelligence | URSel Learning Solutions URSel Learning Solutions About 9 Intelligences Blog Contact Start Assessment Discover your true intelligence A research-based Multiple Intell",
+            "source": "https://ursel.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-09-01T04:11:40.363Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "pagesInspected": []
+        },
+        "businessName": "Discover Your True Intelligence | URSel Learning Solutions",
+        "businessDescription": "Research-based Multiple Intelligence Assessment for students (13+), professionals and career explorers.",
+        "services": [
+          "Try one intelligence area, free",
+          "Watch how it works",
+          "What is Multiple Intelligence?",
+          "Why choose URSel Learning Solutions?",
+          "Research-based assessment"
+        ],
+        "products": [],
+        "targetAudience": "Students (13+), professionals, and career explorers",
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 78,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Discover Your True Intelligence is a business specializing in try one intelligence area, free, watch how it works, what is multiple intelligence?, why choose ursel learning solutions? and research-based assessment Research-based Multiple Intelligence Assessment for students (13+), professionals and career explorers..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 60,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-01T04:11:44.362Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "ursel.in",
+        "websiteAnalyzedAt": "2026-09-01T04:11:44.361Z",
+        "websiteContentHash": "1e0fc",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1788235900363_title",
+            "observation": "Page title: \"Discover Your True Intelligence | URSel Learning Solutions\"",
+            "evidence": "Discover Your True Intelligence | URSel Learning Solutions",
+            "source": "https://ursel.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-09-01T04:11:40.363Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788235900363_meta",
+            "observation": "Meta description found",
+            "evidence": "Research-based Multiple Intelligence Assessment for students (13+), professionals and career explorers.",
+            "source": "https://ursel.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-09-01T04:11:40.363Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788235900363_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "Discover your true intelligence | Try one intelligence area, free | Watch how it works | What is Multiple Intelligence? | Why choose URSel Learning Solutions? | Research-based assessment | 108 careful",
+            "source": "https://ursel.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-09-01T04:11:40.363Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788235900363_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Discover Your True Intelligence | URSel Learning Solutions URSel Learning Solutions About 9 Intelligences Blog Contact Start Assessment Discover your true intelligence A research-based Multiple Intell",
+            "source": "https://ursel.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-09-01T04:11:40.363Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://ursel.in/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://ursel.in/"
+          ]
+        },
+        "businessName": "Discover Your True Intelligence | URSel Learning Solutions",
+        "industry": "Education",
+        "businessDescription": "Research-based Multiple Intelligence Assessment for students (13+), professionals and career explorers.",
+        "services": [
+          "Why choose URSel Learning Solutions?"
+        ],
+        "products": [],
+        "targetAudience": "students (13+), professionals and career explorers",
+        "businessStage": "Growth",
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [],
+        "aiConfidenceScore": 92,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Discover Your True Intelligence is an education provider specializing in why choose ursel learning solutions? Research-based Multiple Intelligence Assessment for students (13+), professionals and career explorers..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 80,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "SIMPLE",
+          "reason": "STATIC_OR_MINIMAL"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-01T04:10:33.377Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "addus.co.in",
+        "websiteAnalyzedAt": "2026-09-01T04:10:33.375Z",
+        "websiteContentHash": "3a3f00",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1788235831185_title",
+            "observation": "Page title: \"ADDUS | Shape how your business is seen\"",
+            "evidence": "ADDUS | Shape how your business is seen",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-09-01T04:10:31.185Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788235831185_meta",
+            "observation": "Meta description found",
+            "evidence": "ADDUS coordinates everything needed to shape how your business is seen.",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-09-01T04:10:31.185Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788235831185_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "SHAPE HOW YOURBUSINESS IS SEEN. | Your professional presence is what customers see,\n                    experience, and remember. | Businesses We've Helped Build | Why ADDUS Exists | Why Now | What ha",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-09-01T04:10:31.185Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788235831185_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "ADDUS | Shape how your business is seen Home Get started sign in sign in SHAPE HOW YOUR BUSINESS IS SEEN. ADDUS helps businesses build a professional presence people trust. Tell us what you're buildin",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-09-01T04:10:31.185Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788235831185_social",
+            "observation": "Social media presence: 3 profiles",
+            "evidence": "https://www.instagram.com/addus__?igsh=NXQxNjg1MGtmaGhu, https://www.linkedin.com/company/addusdynamics/, https://x.com/",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "social_presence",
+            "checkedAt": "2026-09-01T04:10:31.185Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.addus.co.in/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.addus.co.in/"
+          ]
+        },
+        "businessName": "ADDUS | Shape how your business is seen",
+        "industry": "Agency",
+        "businessDescription": "ADDUS coordinates everything needed to shape how your business is seen.",
+        "services": [],
+        "products": [],
+        "businessStage": "Startup",
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [
+          "https://www.instagram.com/addus__?igsh=NXQxNjg1MGtmaGhu",
+          "https://www.linkedin.com/company/addusdynamics/",
+          "https://x.com/"
+        ],
+        "aiConfidenceScore": 85,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "ADDUS is a creative agency ADDUS coordinates everything needed to shape how your business is seen..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 60,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
   "name": null,
   "phoneNumber": null,
   "email": null,
@@ -57,7 +478,140 @@
   "expertNotes": null,
   "createdAt": "2026-08-22T10:59:58.236Z",
   "lastLoginAt": "2026-08-22T10:59:58.236Z",
-  "fieldProvenance": {},
+  "fieldProvenance": {
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:11:44.362Z",
+      "valueSummary": "ursel.in"
+    },
+    "websiteAnalyzedAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
+      "valueSummary": "2026-09-01T04:16:09.062Z"
+    },
+    "websiteContentHash": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
+      "valueSummary": "745b1aee"
+    },
+    "websiteEvidenceItems": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
+      "valueSummary": "4 items"
+    },
+    "websiteRetrievalMeta": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
+      "valueSummary": "{\"pagesInspected\":[]}"
+    },
+    "businessName": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:11:44.362Z",
+      "valueSummary": "Discover Your True Intelligence | URSel Learning Solutions"
+    },
+    "industry": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:11:44.362Z",
+      "valueSummary": "Education"
+    },
+    "businessDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:11:44.362Z",
+      "valueSummary": "Research-based Multiple Intelligence Assessment for students (13+), professionals and career explore"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
+      "valueSummary": "5 items"
+    },
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
+      "valueSummary": "0 items"
+    },
+    "businessStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:11:44.362Z",
+      "valueSummary": "Growth"
+    },
+    "contactInfo": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
+      "valueSummary": "{\"email\":null,\"phone\":null}"
+    },
+    "socialLinks": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
+      "valueSummary": "0 items"
+    },
+    "confidenceStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:10:33.376Z",
+      "valueSummary": "PARTIAL_EVIDENCE"
+    },
+    "confidenceReason": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:10:33.376Z",
+      "valueSummary": "AI enriched partial deterministic profile"
+    },
+    "sourceType": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:10:33.376Z",
+      "valueSummary": "VERIFIED_WEBSITE"
+    },
+    "summary": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
+      "valueSummary": "Discover Your True Intelligence is a business specializing in try one intelligence area, free, watch"
+    },
+    "summaryProvenance": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:10:33.376Z",
+      "valueSummary": "EVIDENCE_ANCHORED"
+    },
+    "discoveredAssets": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
+      "valueSummary": "0 items"
+    },
+    "analysisStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:10:33.376Z",
+      "valueSummary": "FAST_PATH"
+    },
+    "classification": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
+      "valueSummary": "{\"class\":\"SIMPLE\",\"reason\":\"STATIC_OR_MINIMAL\"}"
+    },
+    "targetAudience": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
+      "valueSummary": "Students (13+), professionals, and career explorers"
+    }
+  },
   "customerPreferences": {
     "communicationStyle": null,
     "visualPreference": null,
@@ -67,5 +621,20 @@
   "memory": {
     "durableFacts": [],
     "lastFactExtractedAt": null
+  },
+  "contactInfo": {
+    "email": null,
+    "phone": null
+  },
+  "socialLinks": [],
+  "confidenceStatus": "PARTIAL_EVIDENCE",
+  "confidenceReason": "AI enriched partial deterministic profile",
+  "sourceType": "VERIFIED_WEBSITE",
+  "summary": "Discover Your True Intelligence is a business specializing in try one intelligence area, free, watch how it works, what is multiple intelligence?, why choose ursel learning solutions? and research-based assessment Research-based Multiple Intelligence Assessment for students (13+), professionals and career explorers..",
+  "summaryProvenance": "EVIDENCE_ANCHORED",
+  "analysisStage": "FAST_PATH",
+  "classification": {
+    "class": "SIMPLE",
+    "reason": "STATIC_OR_MINIMAL"
   }
 }

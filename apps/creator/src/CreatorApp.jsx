@@ -61,7 +61,7 @@ function OTPLoginStep({ onVerified }) {
       <div className="creator-auth-card">
         <div className="creator-auth-logo">
           <div className="creator-auth-logo-icon">
-            <Camera size={28} />
+            <img src="/addus_logo.png" alt="ADDUS Logo" style={{ width: '40px', height: 'auto', borderRadius: '8px' }} />
           </div>
           <h1>ADDUS Creator Portal</h1>
           <p>Register or sign in as a creator</p>

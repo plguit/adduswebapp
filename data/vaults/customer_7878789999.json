@@ -1,0 +1,1116 @@
+{
+  "businessName": "ADDUS",
+  "industry": "Agency",
+  "businessStage": "Startup",
+  "businessDescription": "ADDUS coordinates everything needed to shape how your business is seen.",
+  "products": [],
+  "services": [
+    "Chat with Astrologer",
+    "Call Astrologer",
+    "Daily Horoscope",
+    "Get Free Kundli",
+    "Talk to India's Top Rated Astrologers",
+    "Find the right astrologer"
+  ],
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 45,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-09-01T11:29:12.794Z",
+  "websiteUrl": "addus.co.in",
+  "websiteAnalyzedAt": "2026-09-01T11:28:38.677Z",
+  "websiteContentHash": "3a3f00",
+  "websiteEvidenceItems": [
+    {
+      "evidenceId": "FAST_EV_1788262102502_title",
+      "observation": "Page title: \"ADDUS | Shape how your business is seen\"",
+      "evidence": "ADDUS | Shape how your business is seen",
+      "source": "https://addus.co.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "identity",
+      "checkedAt": "2026-09-01T11:28:22.502Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1788262102502_meta",
+      "observation": "Meta description found",
+      "evidence": "ADDUS coordinates everything needed to shape how your business is seen.",
+      "source": "https://addus.co.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "business_description",
+      "checkedAt": "2026-09-01T11:28:22.502Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1788262102502_headings",
+      "observation": "Page headings: 8 headings found",
+      "evidence": "SHAPE HOW YOURBUSINESS IS SEEN. | Your professional presence is what customers see,\n                    experience, and remember. | Businesses We've Helped Build | Why ADDUS Exists | Why Now | What ha",
+      "source": "https://addus.co.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "services",
+      "checkedAt": "2026-09-01T11:28:22.502Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1788262102502_body",
+      "observation": "Main page body text retrieved",
+      "evidence": "ADDUS | Shape how your business is seen Home Get started sign in sign in SHAPE HOW YOUR BUSINESS IS SEEN. ADDUS helps businesses build a professional presence people trust. Tell us what you're buildin",
+      "source": "https://addus.co.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "medium",
+      "field": "general",
+      "checkedAt": "2026-09-01T11:28:22.502Z",
+      "stage": "FAST_PATH"
+    },
+    {
+      "evidenceId": "FAST_EV_1788262102502_social",
+      "observation": "Social media presence: 3 profiles",
+      "evidence": "https://www.instagram.com/addus__?igsh=NXQxNjg1MGtmaGhu, https://www.linkedin.com/company/addusdynamics/, https://x.com/",
+      "source": "https://addus.co.in/",
+      "sourceType": "WEBSITE",
+      "confidence": "high",
+      "field": "social_presence",
+      "checkedAt": "2026-09-01T11:28:22.502Z",
+      "stage": "FAST_PATH"
+    }
+  ],
+  "websiteRetrievalMeta": {
+    "finalUrl": "https://www.addus.co.in/",
+    "httpStatus": 200,
+    "pagesInspected": [
+      "https://www.addus.co.in/"
+    ]
+  },
+  "addiRecommendations": {
+    "summary": "AI analysis failed. Manual expert review required.",
+    "observations": [],
+    "strengths": [],
+    "gaps": [],
+    "recommendations": [],
+    "predictions": [],
+    "confidence": "UNKNOWN",
+    "evidenceRefs": [],
+    "insufficientEvidence": true,
+    "humanReviewRequired": true,
+    "generatedAt": "2026-09-01T11:29:12.522Z",
+    "recommendationSummary": {
+      "total": 0,
+      "recommended": 0,
+      "alreadySufficient": 0,
+      "notSuggested": 0,
+      "needsMoreInfo": 0,
+      "highPriority": 0
+    },
+    "requiresExpertReview": true,
+    "humanReviewReasons": [
+      "Insufficient evidence for reliable analysis",
+      "Expert review recommended before acting on recommendations"
+    ],
+    "humanReviewFlaggedAt": "2026-09-01T11:29:12.522Z",
+    "userId": "customer_7878789999",
+    "websiteInspectionPerformed": true,
+    "budgetStatus": "requires_admin_pricing"
+  },
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-09-01T11:29:12.794Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "ADDUS",
+        "businessDescription": "ADDUS coordinates everything needed to shape how your business is seen.",
+        "products": [],
+        "services": [
+          "Chat with Astrologer",
+          "Call Astrologer",
+          "Daily Horoscope",
+          "Get Free Kundli",
+          "Talk to India's Top Rated Astrologers",
+          "Find the right astrologer"
+        ],
+        "websiteUrl": "addus.co.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-01T11:29:12.523Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "addiRecommendations",
+        "strategicIntelligence"
+      ],
+      "data": {
+        "addiRecommendations": {
+          "summary": "AI analysis failed. Manual expert review required.",
+          "observations": [],
+          "strengths": [],
+          "gaps": [],
+          "recommendations": [],
+          "predictions": [],
+          "confidence": "UNKNOWN",
+          "evidenceRefs": [],
+          "insufficientEvidence": true,
+          "humanReviewRequired": true,
+          "generatedAt": "2026-09-01T11:29:12.522Z",
+          "recommendationSummary": {
+            "total": 0,
+            "recommended": 0,
+            "alreadySufficient": 0,
+            "notSuggested": 0,
+            "needsMoreInfo": 0,
+            "highPriority": 0
+          },
+          "requiresExpertReview": true,
+          "humanReviewReasons": [
+            "Insufficient evidence for reliable analysis",
+            "Expert review recommended before acting on recommendations"
+          ],
+          "humanReviewFlaggedAt": "2026-09-01T11:29:12.522Z",
+          "userId": "customer_7878789999",
+          "websiteInspectionPerformed": true,
+          "budgetStatus": "requires_admin_pricing"
+        },
+        "strategicIntelligence": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-01T11:28:38.678Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "addus.co.in",
+        "websiteAnalyzedAt": "2026-09-01T11:28:38.677Z",
+        "websiteContentHash": "3a3f00",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1788262102502_title",
+            "observation": "Page title: \"ADDUS | Shape how your business is seen\"",
+            "evidence": "ADDUS | Shape how your business is seen",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-09-01T11:28:22.502Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788262102502_meta",
+            "observation": "Meta description found",
+            "evidence": "ADDUS coordinates everything needed to shape how your business is seen.",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-09-01T11:28:22.502Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788262102502_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "SHAPE HOW YOURBUSINESS IS SEEN. | Your professional presence is what customers see,\n                    experience, and remember. | Businesses We've Helped Build | Why ADDUS Exists | Why Now | What ha",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-09-01T11:28:22.502Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788262102502_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "ADDUS | Shape how your business is seen Home Get started sign in sign in SHAPE HOW YOUR BUSINESS IS SEEN. ADDUS helps businesses build a professional presence people trust. Tell us what you're buildin",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-09-01T11:28:22.502Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788262102502_social",
+            "observation": "Social media presence: 3 profiles",
+            "evidence": "https://www.instagram.com/addus__?igsh=NXQxNjg1MGtmaGhu, https://www.linkedin.com/company/addusdynamics/, https://x.com/",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "social_presence",
+            "checkedAt": "2026-09-01T11:28:22.502Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.addus.co.in/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.addus.co.in/"
+          ]
+        },
+        "businessName": "ADDUS",
+        "industry": "Agency",
+        "businessDescription": "ADDUS coordinates everything needed to shape how your business is seen.",
+        "services": [],
+        "products": [],
+        "businessStage": "Startup",
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [
+          "https://www.instagram.com/addus__?igsh=NXQxNjg1MGtmaGhu",
+          "https://www.linkedin.com/company/addusdynamics/",
+          "https://x.com/"
+        ],
+        "aiConfidenceScore": 78,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "ADDUS is a creative agency ADDUS coordinates everything needed to shape how your business is seen..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 60,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-01T11:28:37.923Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "ADDUS",
+        "businessDescription": "ADDUS coordinates everything needed to shape how your business is seen.",
+        "products": [],
+        "services": [
+          "Chat with Astrologer",
+          "Call Astrologer",
+          "Daily Horoscope",
+          "Get Free Kundli",
+          "Talk to India's Top Rated Astrologers",
+          "Find the right astrologer"
+        ],
+        "websiteUrl": "addus.co.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-01T11:28:37.747Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "addus.co.in",
+        "websiteAnalyzedAt": "2026-09-01T11:28:37.746Z",
+        "websiteContentHash": "26e91952",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1788262099475_title",
+            "observation": "Page title: \"ADDUS | Shape how your business is seen\"",
+            "evidence": "ADDUS | Shape how your business is seen",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-09-01T11:28:19.475Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788262099475_meta",
+            "observation": "Meta description found",
+            "evidence": "ADDUS coordinates everything needed to shape how your business is seen.",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-09-01T11:28:19.475Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788262099475_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "SHAPE HOW YOURBUSINESS IS SEEN. | Your professional presence is what customers see,\n                    experience, and remember. | Businesses We've Helped Build | Why ADDUS Exists | Why Now | What ha",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-09-01T11:28:19.475Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788262099475_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "ADDUS | Shape how your business is seen Home Get started sign in sign in SHAPE HOW YOUR BUSINESS IS SEEN. ADDUS helps businesses build a professional presence people trust. Tell us what you're buildin",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-09-01T11:28:19.475Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788262099475_social",
+            "observation": "Social media presence: 3 profiles",
+            "evidence": "https://www.instagram.com/addus__?igsh=NXQxNjg1MGtmaGhu, https://www.linkedin.com/company/addusdynamics/, https://x.com/",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "social_presence",
+            "checkedAt": "2026-09-01T11:28:19.475Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "pagesInspected": []
+        },
+        "businessName": "ADDUS",
+        "businessDescription": "ADDUS coordinates everything needed to shape how your business is seen.",
+        "services": [],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [
+          "https://www.instagram.com/addus__?igsh=NXQxNjg1MGtmaGhu",
+          "https://www.linkedin.com/company/addusdynamics/",
+          "https://x.com/"
+        ],
+        "aiConfidenceScore": 92,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "ADDUS is a business ADDUS coordinates everything needed to shape how your business is seen..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 40,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-01T11:28:36.770Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "addus.co.in",
+        "websiteAnalyzedAt": "2026-09-01T11:28:36.769Z",
+        "websiteContentHash": "3a3f00",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1788262099475_title",
+            "observation": "Page title: \"ADDUS | Shape how your business is seen\"",
+            "evidence": "ADDUS | Shape how your business is seen",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-09-01T11:28:19.475Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788262099475_meta",
+            "observation": "Meta description found",
+            "evidence": "ADDUS coordinates everything needed to shape how your business is seen.",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-09-01T11:28:19.475Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788262099475_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "SHAPE HOW YOURBUSINESS IS SEEN. | Your professional presence is what customers see,\n                    experience, and remember. | Businesses We've Helped Build | Why ADDUS Exists | Why Now | What ha",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-09-01T11:28:19.475Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788262099475_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "ADDUS | Shape how your business is seen Home Get started sign in sign in SHAPE HOW YOUR BUSINESS IS SEEN. ADDUS helps businesses build a professional presence people trust. Tell us what you're buildin",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-09-01T11:28:19.475Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788262099475_social",
+            "observation": "Social media presence: 3 profiles",
+            "evidence": "https://www.instagram.com/addus__?igsh=NXQxNjg1MGtmaGhu, https://www.linkedin.com/company/addusdynamics/, https://x.com/",
+            "source": "https://addus.co.in/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "social_presence",
+            "checkedAt": "2026-09-01T11:28:19.475Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://www.addus.co.in/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://www.addus.co.in/"
+          ]
+        },
+        "businessName": "ADDUS",
+        "industry": "Agency",
+        "businessDescription": "ADDUS coordinates everything needed to shape how your business is seen.",
+        "services": [],
+        "products": [],
+        "businessStage": "Startup",
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [
+          "https://www.instagram.com/addus__?igsh=NXQxNjg1MGtmaGhu",
+          "https://www.linkedin.com/company/addusdynamics/",
+          "https://x.com/"
+        ],
+        "aiConfidenceScore": 88,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "ADDUS is a creative agency ADDUS coordinates everything needed to shape how your business is seen..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 60,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-01T11:26:37.445Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "industry",
+        "businessDescription",
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "businessName": "Astrotalk",
+        "industry": "Astrology",
+        "businessDescription": "Get AI astrology predictions, free Kundli creation, and accurate Kundli matching on AstroTalk. Talk to India&#x27;s best astrologers for clear answers to all your worries.",
+        "products": [],
+        "services": [
+          "Chat with Astrologer",
+          "Call Astrologer",
+          "Daily Horoscope",
+          "Get Free Kundli",
+          "Talk to India's Top Rated Astrologers",
+          "Find the right astrologer"
+        ],
+        "websiteUrl": "https://astrotalk.com/"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-01T11:26:37.360Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "astrotalk.com",
+        "websiteAnalyzedAt": "2026-09-01T11:26:37.359Z",
+        "websiteContentHash": "3a3f00",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1788261993654_title",
+            "observation": "Page title: \"Astrotalk - Free Online Astrology Predictions by Best Astrologer\"",
+            "evidence": "Astrotalk - Free Online Astrology Predictions by Best Astrologer",
+            "source": "https://astrotalk.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-09-01T11:26:33.654Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788261993654_meta",
+            "observation": "Meta description found",
+            "evidence": "Get AI astrology predictions, free Kundli creation, and accurate Kundli matching on AstroTalk. Talk to India&#x27;s best astrologers for clear answers to all your worries.",
+            "source": "https://astrotalk.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-09-01T11:26:33.654Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788261993654_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "India&#x27;s most accurateastrology platform | Chat with Astrologer | Call Astrologer | Daily Horoscope | Get Free Kundli | Talk to India&#x27;s Top Rated Astrologers | Find the rightastrologer, for Y",
+            "source": "https://astrotalk.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-09-01T11:26:33.654Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788261993654_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Astrotalk - Free Online Astrology Predictions by Best Astrologer Astrotalk Consultations Chat with Astrologer Call with Astrologer Horoscope Daily Horoscope Tomorrow&#x27;s Horoscope Yesterday&#x27;s ",
+            "source": "https://astrotalk.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-09-01T11:26:33.654Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788261993654_social",
+            "observation": "Social media presence: 4 profiles",
+            "evidence": "https://www.facebook.com/astrotalk, https://www.instagram.com/astrotalk/, https://www.linkedin.com/company/astrotalk-online-astrology-predictions/, https://www.youtube.com/channel/UCaISlEuDzj9t31G_bhrbTEQ",
+            "source": "https://astrotalk.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "social_presence",
+            "checkedAt": "2026-09-01T11:26:33.654Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://astrotalk.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://astrotalk.com/"
+          ]
+        },
+        "businessName": "Astrotalk",
+        "industry": "Astrology",
+        "businessDescription": "Get AI astrology predictions, free Kundli creation, and accurate Kundli matching on AstroTalk. Talk to India&#x27;s best astrologers for clear answers to all your worries.",
+        "services": [
+          "Chat with Astrologer",
+          "Call Astrologer",
+          "Daily Horoscope",
+          "Get Free Kundli",
+          "Talk to India's Top Rated Astrologers",
+          "Find the right astrologer"
+        ],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [
+          "https://www.facebook.com/astrotalk",
+          "https://www.instagram.com/astrotalk/",
+          "https://www.linkedin.com/company/astrotalk-online-astrology-predictions/",
+          "https://www.youtube.com/channel/UCaISlEuDzj9t31G_bhrbTEQ"
+        ],
+        "aiConfidenceScore": 92,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Astrotalk is a astrology business specializing in chat with astrologer, call astrologer, daily horoscope, get free kundli and talk to india's top rated astrologers Get AI astrology predictions, free Kundli creation, and accurate Kundli matching on AstroTalk..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 80,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-01T11:26:33.707Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "websiteUrl",
+        "websiteAnalyzedAt",
+        "websiteContentHash",
+        "websiteEvidenceItems",
+        "websiteRetrievalMeta",
+        "businessName",
+        "industry",
+        "businessDescription",
+        "location",
+        "services",
+        "products",
+        "targetAudience",
+        "businessStage",
+        "brandPersonality",
+        "contactInfo",
+        "socialLinks",
+        "aiConfidenceScore",
+        "confidenceStatus",
+        "confidenceReason",
+        "sourceType",
+        "summary",
+        "summaryProvenance",
+        "summaryConfidence",
+        "discoveredAssets",
+        "analysisStage",
+        "classification"
+      ],
+      "data": {
+        "websiteUrl": "astrotalk.com",
+        "websiteAnalyzedAt": "2026-09-01T11:26:33.696Z",
+        "websiteContentHash": "3a3f00",
+        "websiteEvidenceItems": [
+          {
+            "evidenceId": "FAST_EV_1788261988562_title",
+            "observation": "Page title: \"Astrotalk - Free Online Astrology Predictions by Best Astrologer\"",
+            "evidence": "Astrotalk - Free Online Astrology Predictions by Best Astrologer",
+            "source": "https://astrotalk.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "identity",
+            "checkedAt": "2026-09-01T11:26:28.562Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788261988562_meta",
+            "observation": "Meta description found",
+            "evidence": "Get AI astrology predictions, free Kundli creation, and accurate Kundli matching on AstroTalk. Talk to India&#x27;s best astrologers for clear answers to all your worries.",
+            "source": "https://astrotalk.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "business_description",
+            "checkedAt": "2026-09-01T11:26:28.562Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788261988562_headings",
+            "observation": "Page headings: 8 headings found",
+            "evidence": "India&#x27;s most accurateastrology platform | Chat with Astrologer | Call Astrologer | Daily Horoscope | Get Free Kundli | Talk to India&#x27;s Top Rated Astrologers | Find the rightastrologer, for Y",
+            "source": "https://astrotalk.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "services",
+            "checkedAt": "2026-09-01T11:26:28.562Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788261988562_body",
+            "observation": "Main page body text retrieved",
+            "evidence": "Astrotalk - Free Online Astrology Predictions by Best Astrologer Astrotalk Consultations Chat with Astrologer Call with Astrologer Horoscope Daily Horoscope Tomorrow&#x27;s Horoscope Yesterday&#x27;s ",
+            "source": "https://astrotalk.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "medium",
+            "field": "general",
+            "checkedAt": "2026-09-01T11:26:28.562Z",
+            "stage": "FAST_PATH"
+          },
+          {
+            "evidenceId": "FAST_EV_1788261988562_social",
+            "observation": "Social media presence: 4 profiles",
+            "evidence": "https://www.facebook.com/astrotalk, https://www.instagram.com/astrotalk/, https://www.linkedin.com/company/astrotalk-online-astrology-predictions/, https://www.youtube.com/channel/UCaISlEuDzj9t31G_bhrbTEQ",
+            "source": "https://astrotalk.com/",
+            "sourceType": "WEBSITE",
+            "confidence": "high",
+            "field": "social_presence",
+            "checkedAt": "2026-09-01T11:26:28.562Z",
+            "stage": "FAST_PATH"
+          }
+        ],
+        "websiteRetrievalMeta": {
+          "finalUrl": "https://astrotalk.com/",
+          "httpStatus": 200,
+          "pagesInspected": [
+            "https://astrotalk.com/"
+          ]
+        },
+        "businessName": "Astrotalk",
+        "industry": "Astrology",
+        "businessDescription": "Get AI astrology predictions, free Kundli creation, and accurate Kundli matching on AstroTalk. Talk to India&#x27;s best astrologers for clear answers to all your worries.",
+        "services": [
+          "Chat with Astrologer",
+          "Call Astrologer",
+          "Daily Horoscope",
+          "Free Kundli",
+          "Talk to Top Rated Astrologers"
+        ],
+        "products": [],
+        "contactInfo": {
+          "email": null,
+          "phone": null
+        },
+        "socialLinks": [
+          "https://www.facebook.com/astrotalk",
+          "https://www.instagram.com/astrotalk/",
+          "https://www.linkedin.com/company/astrotalk-online-astrology-predictions/",
+          "https://www.youtube.com/channel/UCaISlEuDzj9t31G_bhrbTEQ"
+        ],
+        "aiConfidenceScore": 92,
+        "confidenceStatus": "PARTIAL_EVIDENCE",
+        "confidenceReason": "AI enriched partial deterministic profile",
+        "sourceType": "VERIFIED_WEBSITE",
+        "summary": "Astrotalk is a astrology business specializing in chat with astrologer, call astrologer, daily horoscope, free kundli and talk to top rated astrologers Get AI astrology predictions, free Kundli creation, and accurate Kundli matching on AstroTalk..",
+        "summaryProvenance": "EVIDENCE_ANCHORED",
+        "summaryConfidence": 80,
+        "discoveredAssets": [],
+        "analysisStage": "FAST_PATH",
+        "classification": {
+          "class": "DYNAMIC",
+          "reason": "HEAVY_JS_OR_FRAMEWORK"
+        }
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": null,
+  "email": null,
+  "authProvider": null,
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-09-01T11:25:25.050Z",
+  "lastLoginAt": "2026-09-01T11:25:25.050Z",
+  "fieldProvenance": {
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:36.770Z",
+      "valueSummary": "addus.co.in"
+    },
+    "websiteAnalyzedAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:38.678Z",
+      "valueSummary": "2026-09-01T11:28:38.677Z"
+    },
+    "websiteContentHash": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:38.678Z",
+      "valueSummary": "3a3f00"
+    },
+    "websiteEvidenceItems": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:38.678Z",
+      "valueSummary": "5 items"
+    },
+    "websiteRetrievalMeta": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:38.678Z",
+      "valueSummary": "{\"finalUrl\":\"https://www.addus.co.in/\",\"httpStatus\":200,\"pagesInspected\":[\"https://www.addus.co.in/\""
+    },
+    "businessName": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:36.770Z",
+      "valueSummary": "ADDUS"
+    },
+    "industry": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:36.770Z",
+      "valueSummary": "Agency"
+    },
+    "businessDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:36.770Z",
+      "valueSummary": "ADDUS coordinates everything needed to shape how your business is seen."
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:29:12.794Z",
+      "valueSummary": "6 items"
+    },
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:29:12.794Z",
+      "valueSummary": "0 items"
+    },
+    "contactInfo": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:38.678Z",
+      "valueSummary": "{\"email\":null,\"phone\":null}"
+    },
+    "socialLinks": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:38.678Z",
+      "valueSummary": "3 items"
+    },
+    "confidenceStatus": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:26:33.706Z",
+      "valueSummary": "PARTIAL_EVIDENCE"
+    },
+    "confidenceReason": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:26:33.706Z",
+      "valueSummary": "AI enriched partial deterministic profile"
+    },
+    "sourceType": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:26:33.706Z",
+      "valueSummary": "VERIFIED_WEBSITE"
+    },
+    "summary": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:38.678Z",
+      "valueSummary": "ADDUS is a creative agency ADDUS coordinates everything needed to shape how your business is seen.."
+    },
+    "summaryProvenance": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:26:33.706Z",
+      "valueSummary": "EVIDENCE_ANCHORED"
+    },
+    "discoveredAssets": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:38.678Z",
+      "valueSummary": "0 items"
+    },
+    "analysisStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:26:33.706Z",
+      "valueSummary": "FAST_PATH"
+    },
+    "classification": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:38.678Z",
+      "valueSummary": "{\"class\":\"DYNAMIC\",\"reason\":\"HEAVY_JS_OR_FRAMEWORK\"}"
+    },
+    "businessStage": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:28:36.770Z",
+      "valueSummary": "Startup"
+    },
+    "addiRecommendations": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:29:12.523Z",
+      "valueSummary": "{\"summary\":\"AI analysis failed. Manual expert review required.\",\"observations\":[],\"strengths\":[],\"ga"
+    },
+    "strategicIntelligence": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T11:29:12.523Z",
+      "valueSummary": "0 items"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "contactInfo": {
+    "email": null,
+    "phone": null
+  },
+  "socialLinks": [
+    "https://www.instagram.com/addus__?igsh=NXQxNjg1MGtmaGhu",
+    "https://www.linkedin.com/company/addusdynamics/",
+    "https://x.com/"
+  ],
+  "confidenceStatus": "PARTIAL_EVIDENCE",
+  "confidenceReason": "AI enriched partial deterministic profile",
+  "sourceType": "VERIFIED_WEBSITE",
+  "summary": "ADDUS is a creative agency ADDUS coordinates everything needed to shape how your business is seen..",
+  "summaryProvenance": "EVIDENCE_ANCHORED",
+  "analysisStage": "FAST_PATH",
+  "classification": {
+    "class": "DYNAMIC",
+    "reason": "HEAVY_JS_OR_FRAMEWORK"
+  }
+}

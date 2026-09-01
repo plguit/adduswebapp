@@ -196,7 +196,7 @@ export function PhoneVerificationStep() {
     <div className="arike-login-screen-wrapper">
       <div className="arike-login-card">
         <div className="arike-logo-row">
-          <img src="/ADDUS.png" alt="ADDUS" className="arike-logo-img" onError={(e) => { e.target.onerror = null; e.target.src = "/ADDUS_opt.png"; }} />
+          <img src="/addus_logo.png" alt="ADDUS" className="arike-logo-img" />
         </div>
       <div className="step-header">
         <div className="icon-badge">

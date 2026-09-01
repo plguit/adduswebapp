@@ -76,6 +76,11 @@ export function BusinessUploadWidget({ onAnalysisComplete, activeTab: externalTa
 
     try {
       const profile = await businessAnalysisService.analyzeUrlOrText(url.trim());
+      
+      if (profile?.requiresManualInput || profile?.failureReason) {
+        throw new Error(profile.userMessage || 'Unable to complete automated analysis. You can enter details manually.');
+      }
+      
       stopAnim();
       setIsAnalyzing(false);
       if (typeof onAnalysisComplete === 'function') {
@@ -293,8 +298,19 @@ export function BusinessUploadWidget({ onAnalysisComplete, activeTab: externalTa
       </div>
 
       {error && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '10px 14px', background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '10px', color: '#EF4444', fontSize: '13px', fontWeight: 600, marginBottom: '14px' }}>
-          <AlertCircle size={15} /> <span>{error}</span>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', padding: '10px 14px', background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '10px', color: '#EF4444', fontSize: '13px', fontWeight: 600, marginBottom: '14px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <AlertCircle size={15} /> <span>{error}</span>
+          </div>
+          {activeTab === 'url' && (
+            <button 
+              type="button" 
+              onClick={() => setActiveTab('text')}
+              style={{ alignSelf: 'flex-start', background: 'none', border: 'none', color: '#EF4444', textDecoration: 'underline', cursor: 'pointer', padding: 0, fontSize: '13px', fontWeight: 700 }}
+            >
+              Enter details manually instead
+            </button>
+          )}
         </div>
       )}
 

@@ -1,0 +1,123 @@
+{
+  "businessName": null,
+  "industry": null,
+  "businessStage": null,
+  "businessDescription": null,
+  "products": [],
+  "services": [],
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 0,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-09-01T04:37:54.150Z",
+  "websiteUrl": "bnkhub.in",
+  "websiteAnalyzedAt": null,
+  "websiteContentHash": null,
+  "websiteEvidenceItems": [],
+  "websiteRetrievalMeta": null,
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-09-01T04:37:54.150Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "bnkhub.in"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-01T04:35:17.589Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "products",
+        "services",
+        "websiteUrl"
+      ],
+      "data": {
+        "products": [],
+        "services": [],
+        "websiteUrl": "thehindu.in"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": null,
+  "email": null,
+  "authProvider": null,
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-09-01T04:33:53.466Z",
+  "lastLoginAt": "2026-09-01T04:33:53.466Z",
+  "fieldProvenance": {
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:37:54.150Z",
+      "valueSummary": "0 items"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:37:54.150Z",
+      "valueSummary": "0 items"
+    },
+    "websiteUrl": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-01T04:37:54.150Z",
+      "valueSummary": "bnkhub.in"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  }
+}

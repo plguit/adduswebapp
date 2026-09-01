@@ -31,6 +31,12 @@ export function ApprovalsTab({ dataSource = 'localStorage', adminReady = false }
     const built = [];
     const seenIds = new Set();
 
+    const formatDateWithTime = (ts) => {
+      if (!ts) return 'Recently';
+      const d = new Date(ts);
+      return d.toLocaleString('en-IN', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    };
+
     // 1. Ingest from all projects revisionRequests
     allProjects.forEach(proj => {
       const revisions = proj.revisionRequests || [];
@@ -48,7 +54,8 @@ export function ApprovalsTab({ dataSource = 'localStorage', adminReady = false }
           customerId: proj.userId || proj.customerId,
           type: rev.type || 'Scope Change Request',
           requestedBy: rev.requestedBy || 'Customer',
-          date: rev.requestedAt ? new Date(rev.requestedAt).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recently',
+          date: formatDateWithTime(rev.requestedAt),
+          rawDate: rev.requestedAt ? new Date(rev.requestedAt).getTime() : Date.now(),
           details: rev.details || rev.notes || rev.requestText || '',
           impact: rev.impact || { timeline: '+2-3 Days', budget: 'Standard' },
           status: rev.status || 'pending'
@@ -72,7 +79,8 @@ export function ApprovalsTab({ dataSource = 'localStorage', adminReady = false }
           customerId: prof.userId || prof.customerId,
           type: rev.type || 'Scope Change Request',
           requestedBy: rev.requestedBy || 'Customer',
-          date: rev.requestedAt ? new Date(rev.requestedAt).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recently',
+          date: formatDateWithTime(rev.requestedAt),
+          rawDate: rev.requestedAt ? new Date(rev.requestedAt).getTime() : Date.now(),
           details: rev.details || rev.notes || rev.requestText || '',
           impact: rev.impact || { timeline: '+2-3 Days', budget: 'Standard' },
           status: rev.status || 'pending'
@@ -95,7 +103,8 @@ export function ApprovalsTab({ dataSource = 'localStorage', adminReady = false }
           customerId: action.customerId || 'customer_7907963442',
           type: action.intent || 'Change Request',
           requestedBy: action.customerName || 'Customer',
-          date: action.timestamp ? new Date(action.timestamp).toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' }) : 'Recently',
+          date: formatDateWithTime(action.timestamp),
+          rawDate: action.timestamp ? new Date(action.timestamp).getTime() : Date.now(),
           details: action.requestText || action.details || '',
           impact: {
             timeline: (action.intent || '').includes('Date') ? 'Date Reschedule' : '+2-3 Days',
@@ -153,6 +162,7 @@ export function ApprovalsTab({ dataSource = 'localStorage', adminReady = false }
       return;
     }
 
+    built.sort((a, b) => (b.rawDate || 0) - (a.rawDate || 0));
     setRequests(built);
   }, []);
 

@@ -8,6 +8,7 @@ import { emailAuthService } from '../../services/emailAuthService.js';
 import { otpService } from '../../services/otpService.js';
 import { validation } from '../../utils/validation.js';
 import celebrationLottieData from '../../../lottiefile/mascot_celebration.json';
+import addusLogo from '../../assets/addus_logo.png';
 
 function CelebrationLottiePlayer({ width = 240, height = 240 }) {
   const containerRef = useRef(null);
@@ -272,7 +273,7 @@ function IndiaFlag() {
 
           {/* Phone icon header */}
           <div className="manrope-icon-header">
-            <Smartphone size={34} strokeWidth={1.5} color="#000000" />
+            <img src={addusLogo} alt="ADDUS Logo" style={{ width: '48px', height: 'auto', borderRadius: '8px' }} />
           </div>
 
           {phase === 'otp' ? (

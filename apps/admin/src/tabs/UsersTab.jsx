@@ -31,6 +31,7 @@ export function UsersTab() {
       accountStatus: p.onboardingStatus === 'completed' ? 'Active' : 'In Onboarding',
       projectCount: customerProjects.length,
       joinedDate: p.createdAt ? new Date(p.createdAt).toLocaleDateString('en-IN') : '—',
+      rawJoinedDate: p.createdAt ? new Date(p.createdAt).getTime() : 0,
       lastActive: p.lastLoginAt ? new Date(p.lastLoginAt).toLocaleString('en-IN', { dateStyle: 'short', timeStyle: 'short' }) : '—'
     };
   });
@@ -42,7 +43,7 @@ export function UsersTab() {
     c.businessName.toLowerCase().includes(q) ||
     c.mobile.includes(q) ||
     c.email.toLowerCase().includes(q)
-  ));
+  )).sort((a, b) => b.rawJoinedDate - a.rawJoinedDate);
 
   return (
     <div className="tab-pane-container fade-in">

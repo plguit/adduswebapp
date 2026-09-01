@@ -45,17 +45,17 @@ function NotificationCenter({ userId, isOpen, onClose }) {
 
   return (
     <div className="admin-modal-overlay" onClick={onClose}>
-      <div className="admin-modal-content" style={{ background: '#111116', border: '1px solid rgba(255,255,255,0.08)', maxWidth: '420px', width: '90%', maxHeight: '70vh', display: 'flex', flexDirection: 'column' }} onClick={e => e.stopPropagation()}>
+      <div className="admin-modal-content" style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', maxWidth: '420px', width: '90%', maxHeight: '70vh', display: 'flex', flexDirection: 'column' }} onClick={e => e.stopPropagation()}>
         <div className="modal-top-header flex-between">
           <h3 className="modal-title" style={{ fontSize: '16px', fontWeight: '700' }}>Notifications</h3>
           <button className="duolingo-secondary-btn micro-btn" onClick={onClose}>Close</button>
         </div>
         <div style={{ flex: 1, overflowY: 'auto', marginTop: '12px' }}>
-          {notifs.length === 0 && <div style={{ padding: '20px', textAlign: 'center', color: '#9CA3AF' }}>No notifications yet.</div>}
+          {notifs.length === 0 && <div style={{ padding: '20px', textAlign: 'center', color: '#6B6B6B' }}>No notifications yet.</div>}
           {notifs.map(n => (
-            <div key={n.id} style={{ padding: '12px', borderBottom: '1px solid rgba(255,255,255,0.06)', background: n.read ? 'transparent' : 'rgba(124,92,255,0.06)' }}>
-              <div style={{ fontSize: '13px', color: '#FFF', marginBottom: '4px' }}>{n.title}</div>
-              <div style={{ fontSize: '12px', color: '#B3B3B3', marginBottom: '6px' }}>{n.message}</div>
+            <div key={n.id} style={{ padding: '12px', borderBottom: '1px solid #E5E7EB', background: n.read ? 'transparent' : 'rgba(124,92,255,0.06)' }}>
+              <div style={{ fontSize: '13px', color: '#111111', marginBottom: '4px' }}>{n.title}</div>
+              <div style={{ fontSize: '12px', color: '#6B6B6B', marginBottom: '6px' }}>{n.message}</div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span style={{ fontSize: '11px', color: '#6B7280' }}>{new Date(n.createdAt).toLocaleString()}</span>
                 {!n.read && <button className="duolingo-secondary-btn micro-btn" style={{ fontSize: '11px', padding: '4px 10px' }} onClick={() => markRead(n.id)}>Mark as read</button>}
@@ -85,15 +85,15 @@ function NotificationsPanel({ userId }) {
   if (!notifs.length) return null;
 
   return (
-    <div className="notifications-panel" style={{ marginBottom: '16px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', padding: '16px' }}>
-      <div className="notifs-header" style={{ fontSize: '13px', fontWeight: '700', color: '#FFF', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+    <div className="notifications-panel" style={{ marginBottom: '16px', background: '#FFFFFF', border: '1px solid #E5E7EB', borderRadius: '12px', padding: '16px' }}>
+      <div className="notifs-header" style={{ fontSize: '13px', fontWeight: '700', color: '#111111', display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
         <Bell size={15} style={{ color: '#7C5CFF' }} /> Recent Notifications
       </div>
       {notifs.map(n => (
-        <div key={n.id} style={{ padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.04)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div key={n.id} style={{ padding: '8px 0', borderBottom: '1px solid #F9FAFB', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
-            <div style={{ fontSize: '12px', color: '#FFF' }}>{n.title || n.message}</div>
-            <div style={{ fontSize: '10px', color: '#9CA3AF' }}>{n.createdAt ? new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}</div>
+            <div style={{ fontSize: '12px', color: '#111111' }}>{n.title || n.message}</div>
+            <div style={{ fontSize: '10px', color: '#6B6B6B' }}>{n.createdAt ? new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}</div>
           </div>
           {!n.read && <button className="duolingo-secondary-btn micro-btn" style={{ fontSize: '10px', padding: '2px 8px' }} onClick={() => markRead(n.id)}>Read</button>}
         </div>
@@ -247,7 +247,7 @@ function BusinessBrainCard({ brain, onEdit, userId }) {
       </div>
 
       {/* Brand Identity & Assets Section */}
-      <div style={{ paddingTop: '14px', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+      <div style={{ paddingTop: '14px', borderTop: '1px solid rgba(0,0,0,0.08)' }}>
         <h5 style={{ fontSize: '12px', fontWeight: '700', color: '#00D1FF', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '12px' }}>
           🎨 Existing Brand Identity &amp; Assets
         </h5>
@@ -255,10 +255,10 @@ function BusinessBrainCard({ brain, onEdit, userId }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
           
           {/* Logo Card */}
-          <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', borderRadius: '8px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '12px', fontWeight: '600', color: '#FFF' }}>Logo Design</span>
-              <span style={{ fontSize: '10px', color: logoUrl ? '#34d399' : '#9CA3AF', background: logoUrl ? 'rgba(52,211,153,0.15)' : 'rgba(255,255,255,0.06)', padding: '2px 6px', borderRadius: '4px' }}>
+              <span style={{ fontSize: '12px', fontWeight: '600', color: '#111111' }}>Logo Design</span>
+              <span style={{ fontSize: '10px', color: logoUrl ? '#34d399' : '#9CA3AF', background: logoUrl ? 'rgba(52,211,153,0.15)' : '#E5E7EB', padding: '2px 6px', borderRadius: '4px' }}>
                 {logoUrl ? 'DETECTED / UPLOADED' : 'MISSING'}
               </span>
             </div>
@@ -274,16 +274,16 @@ function BusinessBrainCard({ brain, onEdit, userId }) {
           </div>
 
           {/* Brand Colors Card */}
-          <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', borderRadius: '8px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '12px', fontWeight: '600', color: '#FFF' }}>Brand Colors</span>
+              <span style={{ fontSize: '12px', fontWeight: '600', color: '#111111' }}>Brand Colors</span>
               <span style={{ fontSize: '10px', color: '#00D1FF', background: 'rgba(0,209,255,0.15)', padding: '2px 6px', borderRadius: '4px' }}>ACTIVE</span>
             </div>
             <div style={{ display: 'flex', gap: '6px', alignItems: 'center', minHeight: '32px' }}>
               {(Array.isArray(brandColors) ? brandColors : []).map((col, idx) => (
-                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '4px', background: '#1A1A24', padding: '3px 8px', borderRadius: '4px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <div key={idx} style={{ display: 'flex', alignItems: 'center', gap: '4px', background: '#FFFFFF', padding: '3px 8px', borderRadius: '4px', border: '1px solid rgba(0,0,0,0.1)' }}>
                   <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: col }} />
-                  <span style={{ fontSize: '11px', color: '#FFF' }}>{col}</span>
+                  <span style={{ fontSize: '11px', color: '#111111' }}>{col}</span>
                 </div>
               ))}
             </div>
@@ -300,12 +300,12 @@ function BusinessBrainCard({ brain, onEdit, userId }) {
           </div>
 
           {/* Brand Guidelines Card */}
-          <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', borderRadius: '8px', padding: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontSize: '12px', fontWeight: '600', color: '#FFF' }}>Brand Guidelines / Fonts</span>
-              <span style={{ fontSize: '10px', color: '#9CA3AF', background: 'rgba(255,255,255,0.06)', padding: '2px 6px', borderRadius: '4px' }}>DOCUMENT</span>
+              <span style={{ fontSize: '12px', fontWeight: '600', color: '#111111' }}>Brand Guidelines / Fonts</span>
+              <span style={{ fontSize: '10px', color: '#6B6B6B', background: '#E5E7EB', padding: '2px 6px', borderRadius: '4px' }}>DOCUMENT</span>
             </div>
-            <p style={{ fontSize: '11px', color: '#B3B3B3', margin: 0, lineHeight: '1.3' }}>Upload brand guideline PDF or fonts list for team alignment.</p>
+            <p style={{ fontSize: '11px', color: '#6B6B6B', margin: 0, lineHeight: '1.3' }}>Upload brand guideline PDF or fonts list for team alignment.</p>
             <input type="file" ref={docInputRef} accept=".pdf,.doc,.docx,.txt" style={{ display: 'none' }} onChange={() => alert('Brand Document Uploaded Successfully!')} />
             <button className="duolingo-secondary-btn micro-btn" style={{ fontSize: '11px', marginTop: 'auto' }} onClick={() => docInputRef.current?.click()}>
               <Upload size={12} /> Upload Document
@@ -670,12 +670,12 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
               <div style={{
                 background: isUser
                   ? 'linear-gradient(135deg,#7c5cff,#4f46e5)'
-                  : (isAdmin ? 'rgba(124,92,255,0.15)' : 'rgba(255,255,255,0.05)'),
+                  : (isAdmin ? 'rgba(124,92,255,0.15)' : '#F3F4F6'),
                 border: isUser
                   ? 'none'
-                  : (isAdmin ? '1px solid rgba(167,139,250,0.3)' : '1px solid rgba(255,255,255,0.08)'),
+                  : (isAdmin ? '1px solid rgba(167,139,250,0.3)' : '1px solid rgba(0,0,0,0.08)'),
                 borderRadius: isUser ? '12px 12px 2px 12px' : '2px 12px 12px 12px',
-                padding: '8px 12px', maxWidth: '85%', fontSize: '12px', color: '#e2e8f0', lineHeight: 1.5
+                padding: '8px 12px', maxWidth: '85%', fontSize: '12px', color: isUser ? '#FFFFFF' : '#111111', lineHeight: 1.5
               }}>
                 {m.text}
               </div>
@@ -865,7 +865,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {
         id: 'video_shoot',
         category: '🎥 Video Shoot',
-        exploreLabel: '🎥 Video Shoot',
+        exploreLabel: 'Video Shoot',
         icon: Video,
         color: '#7C5CFF',
         description: 'Commercials, social media reels, and corporate films.'
@@ -873,7 +873,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {
         id: 'photo_shoot',
         category: '📸 Photo Shoot',
-        exploreLabel: '📸 Photo Shoot',
+        exploreLabel: 'Photo Shoot',
         icon: Camera,
         color: '#00D1FF',
         description: 'Product photography, brand visuals, and team portraits.'
@@ -881,7 +881,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {
         id: 'branding_logo',
         category: '🎨 Branding & Logo',
-        exploreLabel: '🎨 Branding & Logo',
+        exploreLabel: 'Branding & Logo',
         icon: Palette,
         color: '#EC4899',
         description: 'Logos, color themes, visual identity, and brand guidelines.'
@@ -889,7 +889,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {
         id: 'social_media',
         category: '📱 Social Media Management',
-        exploreLabel: '📱 Social Media Management',
+        exploreLabel: 'Social Media Management',
         icon: Share2,
         color: '#F59E0B',
         description: 'Content calendars, daily posts, and profile growth.'
@@ -897,7 +897,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {
         id: 'paid_ads',
         category: '📢 Paid Advertisements',
-        exploreLabel: '📢 Paid Advertisements',
+        exploreLabel: 'Paid Advertisements',
         icon: Megaphone,
         color: '#EF4444',
         description: 'Meta ads, Google ads, and billboard designs.'
@@ -905,7 +905,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {
         id: 'marketing_strategy',
         category: '📈 Marketing Strategy',
-        exploreLabel: '📈 Marketing Strategy',
+        exploreLabel: 'Marketing Strategy',
         icon: TrendingUp,
         color: '#10B981',
         description: 'Business growth planning, SEO, and email campaigns.'
@@ -913,7 +913,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {
         id: 'editing',
         category: '✂️ Video & Photo Editing',
-        exploreLabel: '✂️ Video & Photo Editing',
+        exploreLabel: 'Video & Photo Editing',
         icon: Scissors,
         color: '#8B5CF6',
         description: 'Turning raw footage into polished reels, videos, and retouched photos.'
@@ -921,7 +921,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {
         id: 'packaging_design',
         category: '📦 Product & Packaging Design',
-        exploreLabel: '📦 Product & Packaging Design',
+        exploreLabel: 'Product & Packaging Design',
         icon: Package,
         color: '#6366F1',
         description: 'Designing website UI/UX layouts and physical product packages.'
@@ -929,7 +929,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {
         id: 'launch_campaign',
         category: '🚀 Product Launch Campaign',
-        exploreLabel: '🚀 Product Launch Campaign',
+        exploreLabel: 'Product Launch Campaign',
         icon: Rocket,
         color: '#F43F5E',
         description: 'Big promotional rollouts and seasonal sales activations.'
@@ -937,7 +937,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {
         id: 'copywriting',
         category: '✍️ Content & Copywriting',
-        exploreLabel: '✍️ Content & Copywriting',
+        exploreLabel: 'Content & Copywriting',
         icon: FileText,
         color: '#38BDF8',
         description: 'Website text, blogs, video scripts, and social media captions.'
@@ -945,7 +945,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {
         id: 'influencer_sourcing',
         category: '🪄 Influencer & Talent Sourcing',
-        exploreLabel: '🪄 Influencer & Talent Sourcing',
+        exploreLabel: 'Influencer & Talent Sourcing',
         icon: Sparkles,
         color: '#A855F7',
         description: 'Connecting your brand with matching creators, models, and influencers.'
@@ -1019,7 +1019,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       <div className="dashboard-viewport fade-in">
         <div style={{ padding: '24px', maxWidth: '800px', margin: '0 auto' }}>
           <div className="flex-between" style={{ marginBottom: '20px' }}>
-            <h2 style={{ fontSize: '20px', fontWeight: '800', color: '#FFF' }}>Products</h2>
+            <h2 style={{ fontSize: '20px', fontWeight: '800', color: '#111111' }}>Products</h2>
             <button className="duolingo-primary-btn micro-btn" onClick={() => {
               const name = prompt('Product name:');
               if (!name) return;
@@ -1032,20 +1032,20 @@ export function DashboardPage({ showToast, onToastDismiss }) {
             }}>+ Add Product</button>
           </div>
           {products.length === 0 && (
-            <div className="empty-state-card flex-center" style={{ padding: '40px 20px', background: 'rgba(255,255,255,0.02)', border: '1px dashed rgba(255,255,255,0.1)', borderRadius: '12px' }}>
+            <div className="empty-state-card flex-center" style={{ padding: '40px 20px', background: '#FFFFFF', border: '1px dashed rgba(0,0,0,0.1)', borderRadius: '12px' }}>
               <Package size={32} className="empty-icon" style={{ color: '#7C5CFF' }} />
               <p className="empty-state-text" style={{ fontSize: '15px', fontWeight: '600', marginTop: '8px' }}>No products yet.</p>
-              <p style={{ fontSize: '12px', color: '#9CA3AF', marginTop: '4px', textAlign: 'center' }}>Add products to create product-specific projects and ADDI conversations.</p>
+              <p style={{ fontSize: '12px', color: '#6B6B6B', marginTop: '4px', textAlign: 'center' }}>Add products to create product-specific projects and ADDI conversations.</p>
             </div>
           )}
           <div style={{ display: 'grid', gap: '12px' }}>
             {products.map(p => (
-              <div key={p.productId} className="admin-card" style={{ background: '#1A1A24', borderRadius: '12px', padding: '16px', border: '1px solid rgba(255,255,255,0.06)' }}>
+              <div key={p.productId} className="admin-card" style={{ background: '#FFFFFF', borderRadius: '12px', padding: '16px', border: '1px solid #E5E7EB' }}>
                 <div className="flex-between">
                   <div>
-                    <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#FFF', margin: '0 0 4px 0' }}>{p.name}</h3>
-                    {p.category && <span style={{ fontSize: '12px', color: '#9CA3AF' }}>{p.category}</span>}
-                    {p.description && <p style={{ fontSize: '13px', color: '#B3B3B3', margin: '8px 0 0 0' }}>{p.description}</p>}
+                    <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#111111', margin: '0 0 4px 0' }}>{p.name}</h3>
+                    {p.category && <span style={{ fontSize: '12px', color: '#6B6B6B' }}>{p.category}</span>}
+                    {p.description && <p style={{ fontSize: '13px', color: '#6B6B6B', margin: '8px 0 0 0' }}>{p.description}</p>}
                   </div>
                    <div style={{ display: 'flex', gap: '8px' }}>
                      <button className="duolingo-secondary-btn micro-btn" onClick={() => {
@@ -1065,7 +1065,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
                    </div>
                 </div>
                 <div style={{ marginTop: '10px', display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '11px', color: '#6B7280', background: 'rgba(255,255,255,0.04)', padding: '4px 10px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
+                  <span style={{ fontSize: '11px', color: '#6B7280', background: '#F9FAFB', padding: '4px 10px', borderRadius: '12px', border: '1px solid #E5E7EB' }}>
                     Projects: {projects.filter(pr => pr.productId === p.productId).length}
                   </span>
                 </div>
@@ -1096,24 +1096,24 @@ export function DashboardPage({ showToast, onToastDismiss }) {
     if (!isActivityOpen) return null;
     return (
       <div className="admin-modal-overlay" style={{ zIndex: 9999, background: 'rgba(0,0,0,0.5)' }} onClick={() => setIsActivityOpen(false)}>
-        <div className="hamburger-drawer-panel" style={{ right: 0, left: 'auto', width: '360px', maxWidth: '90vw', background: '#111116', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '0 0 0 16px', boxShadow: '-8px 0 24px rgba(0,0,0,0.4)' }} onClick={e => e.stopPropagation()}>
-          <div className="drawer-header flex-between" style={{ padding: '16px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-            <h3 style={{ margin: 0, fontSize: '15px', fontWeight: '700', color: '#FFF', display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div className="hamburger-drawer-panel" style={{ right: 0, left: 'auto', width: '360px', maxWidth: '90vw', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', borderRadius: '0 0 0 16px', boxShadow: '-8px 0 24px rgba(0,0,0,0.4)' }} onClick={e => e.stopPropagation()}>
+          <div className="drawer-header flex-between" style={{ padding: '16px', borderBottom: '1px solid #E5E7EB' }}>
+            <h3 style={{ margin: 0, fontSize: '15px', fontWeight: '700', color: '#111111', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Bell size={16} style={{ color: '#10B981' }} /> Activity Updates
             </h3>
             <button className="duolingo-secondary-btn micro-btn" onClick={() => setIsActivityOpen(false)}>Close</button>
           </div>
           <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', gap: '10px', overflowY: 'auto', maxHeight: '80vh' }}>
             {allUpdates.length === 0 ? (
-              <div style={{ fontSize: '12px', color: '#9CA3AF', padding: '10px 0', textAlign: 'center' }}>No recent updates published yet.</div>
+              <div style={{ fontSize: '12px', color: '#6B6B6B', padding: '10px 0', textAlign: 'center' }}>No recent updates published yet.</div>
             ) : (
               allUpdates.map(up => (
-                <div key={up.id} style={{ padding: '10px 12px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', borderLeft: '3px solid #10B981' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#9CA3AF', marginBottom: '2px' }}>
+                <div key={up.id} style={{ padding: '10px 12px', background: '#FFFFFF', borderRadius: '8px', borderLeft: '3px solid #10B981' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#6B6B6B', marginBottom: '2px' }}>
                     <strong>{up.projectId} · {up.projectService}</strong>
                     <span>{new Date(up.createdAt).toLocaleDateString()}</span>
                   </div>
-                  <div style={{ fontSize: '13px', color: '#FFF' }}>"{up.text}"</div>
+                  <div style={{ fontSize: '13px', color: '#111111' }}>"{up.text}"</div>
                 </div>
               ))
             )}
@@ -1158,19 +1158,18 @@ export function DashboardPage({ showToast, onToastDismiss }) {
 
   return (
     <div className="dashboard-viewport fade-in">
-      <div className="ambient-glow glow-top-left" />
-      <div className="ambient-glow glow-bottom-right" />
+      
+      
 
       <ToastNotification message={toast} onDismiss={() => { setToast(''); if (onToastDismiss) onToastDismiss(); }} />
 
-      <header className="dashboard-top-bar flex-between" style={{ padding: '12px 24px', background: '#111116', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <header className="dashboard-top-bar flex-between" style={{ padding: '12px 24px', background: '#FFFFFF', borderBottom: '1px solid #E5E7EB' }}>
         <div className="top-brand flex-center" style={{ gap: '8px' }}>
-          <button className="top-icon-btnHamburger" style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setIsDrawerOpen(true)}>
+          <button className="top-icon-btnHamburger" style={{ background: 'none', border: 'none', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setIsDrawerOpen(true)}>
             <Menu size={22} />
           </button>
           <div className="top-brand flex-center" style={{ margin: 0 }}>
-            <span className="brand-sparkle">✦</span>
-            <span className="brand-name">ADDUS</span>
+            <img src="/addus_logo.png" alt="ADDUS" style={{ height: '24px', width: 'auto' }} />
           </div>
         </div>
         <div className="top-actions flex-center" style={{ gap: '8px' }}>
@@ -1178,7 +1177,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
             <select
               value={selectedProductId || ''}
               onChange={(e) => setSelectedProductId(e.target.value || null)}
-              style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#FFF', borderRadius: '8px', padding: '6px 10px', fontSize: '13px', cursor: 'pointer' }}
+              style={{ background: '#E5E7EB', border: '1px solid rgba(0,0,0,0.12)', color: '#111111', borderRadius: '8px', padding: '6px 10px', fontSize: '13px', cursor: 'pointer' }}
             >
               <option value="">All Business</option>
               {products.map(p => (
@@ -1188,7 +1187,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
           )}
           <button className="top-icon-btn" title="Notifications" onClick={() => setIsNotificationCenterOpen(true)} style={{ position: 'relative' }}>
             <Bell size={20} />
-            {unreadNotifications > 0 && <span style={{ position: 'absolute', top: '-4px', right: '-4px', background: '#EF4444', color: '#FFF', fontSize: '10px', fontWeight: '700', borderRadius: '50%', width: '16px', height: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{unreadNotifications}</span>}
+            {unreadNotifications > 0 && <span style={{ position: 'absolute', top: '-4px', right: '-4px', background: '#EF4444', color: '#111111', fontSize: '10px', fontWeight: '700', borderRadius: '50%', width: '16px', height: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{unreadNotifications}</span>}
           </button>
           <button className="top-icon-btn" title="Logout" onClick={() => { authService.logout(); resetState(); window.location.reload(); }}>
             <LogOut size={20} />
@@ -1202,8 +1201,8 @@ export function DashboardPage({ showToast, onToastDismiss }) {
 
       <main className="dashboard-content-container" style={{ padding: '24px 24px 100px 24px' }}>
         <section className="greeting-section" style={{ marginBottom: '20px' }}>
-          <h1 className="greeting-headline" style={{ fontSize: '28px', fontWeight: '800', background: 'linear-gradient(to right, #fff, #A78BFA)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{greetingHeadline}</h1>
-          <p className="greeting-subtext" style={{ fontSize: '14px', color: '#9CA3AF', marginTop: '4px' }}>{getGreeting()} — Welcome to your ADDUS workspace</p>
+          <h1 className="greeting-headline" style={{ fontSize: '28px', fontWeight: '800', color: '#111111' }}>{greetingHeadline}</h1>
+          <p className="greeting-subtext" style={{ fontSize: '14px', color: '#6B6B6B', marginTop: '4px' }}>{getGreeting()} — Welcome to your ADDUS workspace</p>
         </section>
 
         {/* 1. TOP: ADDI & ADMIN SUPPORT CHAT STRIP */}
@@ -1222,7 +1221,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
             {getDynamicQuickActions().map(action => {
               const Icon = action.icon;
               return (
-                <button key={action.id} className="quick-action-card" style={{ cursor: 'pointer', border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.01)' }} onClick={() => handleQuickAction(action)}>
+                <button key={action.id} className="quick-action-card" style={{ cursor: 'pointer', border: '1px solid #F9FAFB', background: '#FFFFFF' }} onClick={() => handleQuickAction(action)}>
                   <div className="action-icon-wrap" style={{ background: `${action.color}18`, color: action.color }}>
                     <Icon size={22} />
                   </div>
@@ -1238,7 +1237,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
         {projects.length > 0 ? (
           <section style={{ marginBottom: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div className="flex-between" style={{ marginBottom: '4px' }}>
-              <h3 className="section-title" style={{ marginBottom: 0, fontSize: '16px', fontWeight: '700', color: '#FFF' }}>
+              <h3 className="section-title" style={{ marginBottom: 0, fontSize: '16px', fontWeight: '700', color: '#111111' }}>
                 Your Active Project
               </h3>
               <button className="create-new-link flex-center" style={{ fontSize: '13px' }} onClick={() => { setActiveTab('projects'); setProjectsFilter('All'); }}>
@@ -1246,11 +1245,11 @@ export function DashboardPage({ showToast, onToastDismiss }) {
               </button>
             </div>
             {projects.map((proj, pIdx) => (
-              <div key={proj.id || pIdx} className="admin-card" style={{ background: '#1A1A24', borderRadius: '12px', padding: '20px', border: '1px solid rgba(0,209,255,0.2)' }}>
+              <div key={proj.id || pIdx} className="admin-card" style={{ background: '#FFFFFF', borderRadius: '12px', padding: '20px', border: '1px solid rgba(0,209,255,0.2)' }}>
                 <div className="flex-between margin-bottom-12">
                   <div>
                     <span className="admin-badge admin-badge-indigo" style={{ marginBottom: '4px', display: 'inline-block' }}>{proj.service || proj.type}</span>
-                    <h4 style={{ fontSize: '16px', fontWeight: '700', color: '#FFF', margin: '4px 0 0 0' }}>{proj.title || `${proj.service || 'Project'} #${proj.id}`}</h4>
+                    <h4 style={{ fontSize: '16px', fontWeight: '700', color: '#111111', margin: '4px 0 0 0' }}>{proj.title || `${proj.service || 'Project'} #${proj.id}`}</h4>
                   </div>
                   <button 
                     type="button" 
@@ -1266,10 +1265,10 @@ export function DashboardPage({ showToast, onToastDismiss }) {
           </section>
         ) : (
           <section className="dashboard-widget-section" style={{ marginBottom: '24px' }}>
-            <div className="empty-state-card flex-center" style={{ padding: '36px 20px', background: 'rgba(255,255,255,0.02)', border: '1px dashed rgba(255,255,255,0.1)', borderRadius: '12px' }}>
+            <div className="empty-state-card flex-center" style={{ padding: '36px 20px', background: '#FFFFFF', border: '1px dashed rgba(0,0,0,0.1)', borderRadius: '12px' }}>
               <Rocket size={32} className="empty-icon" style={{ color: '#7C5CFF' }} />
               <p className="empty-state-text" style={{ fontSize: '15px', fontWeight: '600', marginTop: '8px' }}>No active projects yet.</p>
-              <p style={{ fontSize: '12px', color: '#9CA3AF', marginTop: '4px', textAlign: 'center' }}>
+              <p style={{ fontSize: '12px', color: '#6B6B6B', marginTop: '4px', textAlign: 'center' }}>
                 Select a service below to launch your project.
               </p>
             </div>
@@ -1278,16 +1277,16 @@ export function DashboardPage({ showToast, onToastDismiss }) {
 
         {/* 4. COMPACT STATUS BAR */}
         <section style={{ marginBottom: '20px', display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-          <span style={{ fontSize: '12px', color: '#9CA3AF', background: 'rgba(255,255,255,0.04)', padding: '6px 12px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.06)' }}>
+          <span style={{ fontSize: '12px', color: '#6B6B6B', background: '#F9FAFB', padding: '6px 12px', borderRadius: '20px', border: '1px solid #E5E7EB' }}>
             Projects: {projects.length}
           </span>
-          <span style={{ fontSize: '12px', color: '#9CA3AF', background: 'rgba(255,255,255,0.04)', padding: '6px 12px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.06)' }}>
+          <span style={{ fontSize: '12px', color: '#6B6B6B', background: '#F9FAFB', padding: '6px 12px', borderRadius: '20px', border: '1px solid #E5E7EB' }}>
             Pending Reviews: {pendingReviewsCount}
           </span>
-          <span style={{ fontSize: '12px', color: '#9CA3AF', background: 'rgba(255,255,255,0.04)', padding: '6px 12px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.06)' }}>
+          <span style={{ fontSize: '12px', color: '#6B6B6B', background: '#F9FAFB', padding: '6px 12px', borderRadius: '20px', border: '1px solid #E5E7EB' }}>
             Upcoming Deliveries: {upcomingDeliveriesCount}
           </span>
-          <span style={{ fontSize: '12px', color: '#9CA3AF', background: 'rgba(255,255,255,0.04)', padding: '6px 12px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.06)', cursor: 'pointer' }} onClick={() => setIsActivityOpen(true)}>
+          <span style={{ fontSize: '12px', color: '#6B6B6B', background: '#F9FAFB', padding: '6px 12px', borderRadius: '20px', border: '1px solid #E5E7EB', cursor: 'pointer' }} onClick={() => setIsActivityOpen(true)}>
             Recent Updates: {recentUpdatesCount}
           </span>
         </section>
@@ -1328,25 +1327,25 @@ export function DashboardPage({ showToast, onToastDismiss }) {
         />
 
         {/* 6. BOTTOM: RECENT UPDATES */}
-        <section className="admin-card margin-bottom-24" style={{ background: '#1A1A24', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
+        <section className="admin-card margin-bottom-24" style={{ background: '#FFFFFF', padding: '20px', borderRadius: '12px', border: '1px solid #E5E7EB' }}>
           <div className="flex-between margin-bottom-12">
-            <h3 className="section-title" style={{ marginBottom: 0, fontSize: '16px', fontWeight: '700', color: '#FFF', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <h3 className="section-title" style={{ marginBottom: 0, fontSize: '16px', fontWeight: '700', color: '#111111', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Bell size={18} style={{ color: '#10B981' }} /> Recent Activity
             </h3>
             <button className="duolingo-secondary-btn micro-btn" onClick={() => setIsActivityOpen(true)}>View All Updates</button>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {allUpdates.slice(0, 3).map(up => (
-              <div key={up.id} style={{ padding: '10px 12px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', borderLeft: '3px solid #10B981' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#9CA3AF', marginBottom: '2px' }}>
+              <div key={up.id} style={{ padding: '10px 12px', background: '#FFFFFF', borderRadius: '8px', borderLeft: '3px solid #10B981' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#6B6B6B', marginBottom: '2px' }}>
                   <strong>{up.projectId} · {up.projectService}</strong>
                   <span>{new Date(up.createdAt).toLocaleDateString()}</span>
                 </div>
-                <div style={{ fontSize: '13px', color: '#FFF' }}>"{up.text}"</div>
+                <div style={{ fontSize: '13px', color: '#111111' }}>"{up.text}"</div>
               </div>
             ))}
              {allUpdates.length === 0 && (
-               <div style={{ fontSize: '12px', color: '#9CA3AF', padding: '10px 0', textAlign: 'center' }}>No recent activity yet.</div>
+               <div style={{ fontSize: '12px', color: '#6B6B6B', padding: '10px 0', textAlign: 'center' }}>No recent activity yet.</div>
              )}
           </div>
         </section>
@@ -1357,7 +1356,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {/* Customer Full Project Workspace Modal */}
       {selectedDetailProject && (
         <div className="admin-modal-overlay" onClick={() => setSelectedDetailProject(null)}>
-          <div className="admin-modal-content large-ops-modal" style={{ background: '#111116', border: '1px solid rgba(255,255,255,0.08)' }} onClick={e => e.stopPropagation()}>
+          <div className="admin-modal-content large-ops-modal" style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)' }} onClick={e => e.stopPropagation()}>
             <div className="modal-top-header flex-between">
               <div>
                 <h3 className="modal-title" style={{ fontSize: '18px', fontWeight: '800' }}>🎬 Project Workspace: {selectedDetailProject.id}</h3>
@@ -1380,8 +1379,8 @@ export function DashboardPage({ showToast, onToastDismiss }) {
                 <h4 style={{ marginBottom: '12px', fontSize: '14px', fontWeight: '700' }}>Project Execution Progress</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {(selectedDetailProject.tasks || []).filter(t => t.assignedTo === 'creator').map(task => (
-                    <div key={task.id} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', padding: '8px', background: 'rgba(255,255,255,0.04)', borderRadius: '6px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                      <span style={{ color: task.status === 'completed' ? '#34D399' : '#fff', textDecoration: task.status === 'completed' ? 'line-through' : 'none' }}>{task.title}</span>
+                    <div key={task.id} style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', padding: '8px', background: '#F9FAFB', borderRadius: '6px', border: '1px solid #F3F4F6' }}>
+                      <span style={{ color: task.status === 'completed' ? '#34D399' : '#111111', textDecoration: task.status === 'completed' ? 'line-through' : 'none' }}>{task.title}</span>
                       <span style={{ color: task.status === 'completed' ? '#34D399' : '#9CA3AF', fontSize: '11px' }}>{task.status === 'completed' ? '✓ Done' : 'Pending'}</span>
                     </div>
                   ))}
@@ -1396,12 +1395,12 @@ export function DashboardPage({ showToast, onToastDismiss }) {
                 <div style={{ flex: 1, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px', paddingBottom: '12px' }}>
                   {(selectedDetailProject.chat || []).filter(m => !m.isInternal).map(msg => (
                     <div key={msg.id} style={{ alignSelf: msg.senderRole === 'Customer' ? 'flex-end' : 'flex-start', background: msg.senderRole === 'Customer' ? '#7c5cff' : '#374151', padding: '6px 10px', borderRadius: '8px', maxWidth: '85%' }}>
-                      <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.6)', marginBottom: '2px' }}>{msg.senderName} ({msg.senderRole})</div>
-                      <div style={{ fontSize: '12px', color: '#fff' }}>{msg.text}</div>
+                      <div style={{ fontSize: '10px', color: '#6B6B6B', marginBottom: '2px' }}>{msg.senderName} ({msg.senderRole})</div>
+                      <div style={{ fontSize: '12px', color: '#111111' }}>{msg.text}</div>
                     </div>
                   ))}
                 </div>
-                <div style={{ display: 'flex', gap: '6px', marginTop: 'auto', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '10px' }}>
+                <div style={{ display: 'flex', gap: '6px', marginTop: 'auto', borderTop: '1px solid rgba(0,0,0,0.1)', paddingTop: '10px' }}>
                   <input 
                     className="duolingo-input" 
                     style={{ flex: 1, padding: '6px' }}
@@ -1432,20 +1431,20 @@ export function DashboardPage({ showToast, onToastDismiss }) {
                 <h4 style={{ color: '#A78BFA', fontSize: '14px', fontWeight: '700', marginBottom: '8px' }}>💡 Suggested Add-on Services</h4>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                   {selectedDetailProject.suggestedServices.filter(s => s.status === 'suggested').map(sug => (
-                    <div key={sug.id} style={{ background: '#1A1A24', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div key={sug.id} style={{ background: '#FFFFFF', padding: '12px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.08)' }}>
                       <div className="flex-between">
-                        <strong style={{ color: '#fff', fontSize: '14px' }}>{sug.serviceName}</strong>
+                        <strong style={{ color: '#111111', fontSize: '14px' }}>{sug.serviceName}</strong>
                         <span style={{ color: '#34D399', fontWeight: '700', fontSize: '14px' }}>₹{sug.price.toLocaleString()}</span>
                       </div>
-                      {sug.description && <p style={{ fontSize: '12px', color: '#B3B3B3', margin: '4px 0' }}>{sug.description}</p>}
-                      {sug.reason && <p style={{ fontSize: '11px', color: '#9CA3AF', margin: '2px 0 8px 0', fontStyle: 'italic' }}>Reason: {sug.reason}</p>}
-                      {sug.note && <p style={{ fontSize: '11px', color: '#9CA3AF', margin: '0 0 8px 0' }}>Note: {sug.note}</p>}
+                      {sug.description && <p style={{ fontSize: '12px', color: '#6B6B6B', margin: '4px 0' }}>{sug.description}</p>}
+                      {sug.reason && <p style={{ fontSize: '11px', color: '#6B6B6B', margin: '2px 0 8px 0', fontStyle: 'italic' }}>Reason: {sug.reason}</p>}
+                      {sug.note && <p style={{ fontSize: '11px', color: '#6B6B6B', margin: '0 0 8px 0' }}>Note: {sug.note}</p>}
                       
                       <div style={{ display: 'flex', gap: '8px' }}>
                         <button
                           type="button"
                           className="duolingo-primary-btn micro-btn"
-                          style={{ background: '#10B981', minHeight: '32px', fontSize: '12px', padding: '0 12px', border: 'none', color: '#fff', borderRadius: '4px', cursor: 'pointer' }}
+                          style={{ background: '#10B981', minHeight: '32px', fontSize: '12px', padding: '0 12px', border: 'none', color: '#111111', borderRadius: '4px', cursor: 'pointer' }}
                           onClick={() => {
                             const updatedSuggestions = selectedDetailProject.suggestedServices.map(s => 
                               s.id === sug.id ? { ...s, status: 'accepted' } : s
@@ -1516,7 +1515,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
                         <button
                           type="button"
                           className="duolingo-secondary-btn micro-btn"
-                          style={{ minHeight: '32px', fontSize: '12px', padding: '0 12px', background: 'transparent', border: '1px solid rgba(255,255,255,0.2)', color: '#fff', borderRadius: '4px', cursor: 'pointer' }}
+                          style={{ minHeight: '32px', fontSize: '12px', padding: '0 12px', background: 'transparent', border: '1px solid rgba(0,0,0,0.2)', color: '#111111', borderRadius: '4px', cursor: 'pointer' }}
                           onClick={() => {
                             const queryText = `Tell me more about the suggested service: ${sug.serviceName}`;
                             const chatStripInput = document.querySelector('.addi-strip-input');
@@ -1563,17 +1562,17 @@ export function DashboardPage({ showToast, onToastDismiss }) {
               if (suggestions.length === 0) return null;
               
               return (
-                <div className="admin-card margin-top-16" style={{ border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', padding: '16px' }}>
+                <div className="admin-card margin-top-16" style={{ border: '1px solid #E5E7EB', background: '#FFFFFF', padding: '16px' }}>
                   <h4 style={{ color: '#00D1FF', fontSize: '14px', fontWeight: '700', marginBottom: '8px' }}>⚡ Smart Strategic Add-ons</h4>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     {suggestions.map((sug, sIdx) => (
-                      <div key={sIdx} style={{ background: '#1A1A24', padding: '12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)' }}>
+                      <div key={sIdx} style={{ background: '#FFFFFF', padding: '12px', borderRadius: '8px', border: '1px solid rgba(0,0,0,0.08)' }}>
                         <div className="flex-between">
-                          <strong style={{ color: '#fff', fontSize: '13px' }}>{sug.serviceName}</strong>
+                          <strong style={{ color: '#111111', fontSize: '13px' }}>{sug.serviceName}</strong>
                           <span style={{ color: '#00D1FF', fontWeight: '700', fontSize: '13px' }}>₹{sug.price.toLocaleString()}</span>
                         </div>
-                        <p style={{ fontSize: '11px', color: '#B3B3B3', margin: '4px 0' }}>{sug.description}</p>
-                        <p style={{ fontSize: '10px', color: '#9CA3AF', margin: '2px 0 8px 0', fontStyle: 'italic' }}>Reason: {sug.reason}</p>
+                        <p style={{ fontSize: '11px', color: '#6B6B6B', margin: '4px 0' }}>{sug.description}</p>
+                        <p style={{ fontSize: '10px', color: '#6B6B6B', margin: '2px 0 8px 0', fontStyle: 'italic' }}>Reason: {sug.reason}</p>
                         <button
                           type="button"
                           className="duolingo-primary-btn micro-btn"
@@ -1674,10 +1673,10 @@ export function DashboardPage({ showToast, onToastDismiss }) {
                 alert('Reference asset successfully submitted for review!');
               }} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
-                  <input name="assetTitle" className="duolingo-input" style={{ padding: '8px', background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', borderRadius: '4px' }} placeholder="Asset Title (e.g. Current Logo, Guidelines)..." required />
-                  <input name="assetLink" className="duolingo-input" style={{ padding: '8px', background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.1)', color: '#fff', borderRadius: '4px' }} placeholder="Asset URL / Drive link (Optional)..." />
+                  <input name="assetTitle" className="duolingo-input" style={{ padding: '8px', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)', color: '#111111', borderRadius: '4px' }} placeholder="Asset Title (e.g. Current Logo, Guidelines)..." required />
+                  <input name="assetLink" className="duolingo-input" style={{ padding: '8px', background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.1)', color: '#111111', borderRadius: '4px' }} placeholder="Asset URL / Drive link (Optional)..." />
                 </div>
-                <button type="submit" className="duolingo-primary-btn" style={{ alignSelf: 'flex-start', padding: '6px 16px', background: '#7c5cff', border: 'none', color: '#fff', borderRadius: '4px', cursor: 'pointer' }}>Submit Asset</button>
+                <button type="submit" className="duolingo-primary-btn" style={{ alignSelf: 'flex-start', padding: '6px 16px', background: '#7c5cff', border: 'none', color: '#111111', borderRadius: '4px', cursor: 'pointer' }}>Submit Asset</button>
               </form>
             </div>
 
@@ -1738,7 +1737,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
 
 function BottomNav({ activeTab, setActiveTab }) {
   return (
-    <nav className="bottom-nav-bar flex-between" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+    <nav className="bottom-nav-bar flex-between" style={{ borderTop: '1px solid #E5E7EB' }}>
       <button className={`nav-tab ${activeTab === 'home' ? 'tab-active' : ''}`} onClick={() => setActiveTab('home')}>
         <Home size={20} /><span>Home</span>
       </button>

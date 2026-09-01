@@ -39,8 +39,7 @@ export function HamburgerDrawer({
           {/* Header */}
           <div className="flex-between" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '16px', marginBottom: '20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span className="brand-sparkle" style={{ color: '#00D1FF' }}>✦</span>
-              <span className="brand-name" style={{ color: '#FFF', fontWeight: '800', fontSize: '18px', letterSpacing: '1px' }}>ADDUS</span>
+              <img src="/addus_logo.png" alt="ADDUS" style={{ height: '24px', width: 'auto' }} />
             </div>
             <button 
               className="duolingo-secondary-btn micro-btn" 

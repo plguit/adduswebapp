@@ -1,6 +1,7 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Smartphone, ArrowRight, AlertCircle, X } from 'lucide-react';
 import { otpService } from '../services/otpService.js';
+import addusLogo from '../assets/addus_logo.png';
 
 // Inline SVG India Flag — proper tricolor with Ashoka Chakra
 function IndiaFlag() {
@@ -91,7 +92,7 @@ export function PhoneVerification({ phone, onSendOTP, onUpdatePhone }) {
     <div className="manrope-auth-viewport">
       <div className="manrope-auth-container">
         <div className="manrope-icon-header">
-          <Smartphone size={34} strokeWidth={1.5} color="#000000" />
+          <img src={addusLogo} alt="ADDUS Logo" style={{ width: '48px', height: 'auto', borderRadius: '8px' }} />
         </div>
 
         <h1 className="manrope-auth-heading-twolines">

@@ -2431,6 +2431,11 @@ try {
                 onClick={() => {
                   if (turn.stepIndex) {
                     setStepIndex(turn.stepIndex);
+                    if (turn.stepIndex === 6) {
+                      if (turn.questionKey === 'goalQuestion') setFlowBQIdx(0);
+                      else if (turn.questionKey === 'categoryQuestion') setFlowBQIdx(1);
+                      else if (turn.questionKey === 'servicesQuestion') setFlowAQIdx(0);
+                    }
                     setHistory(prev => prev.slice(0, idx)); // Truncate history
                   }
                 }}
@@ -2727,7 +2732,7 @@ try {
               </DuolingoSpeechBubble>
             </div>
 
-            <div className="duolingo-options-stack">
+            <div className="category-options-grid">
               {[
                 'Hospitality & Tourism',
                 'Medical & Healthcare',
@@ -2741,7 +2746,7 @@ try {
                 <div key={opt} className={`chat-stagger-${Math.min(idx + 1, 3)}`}>
                   <button
                     type="button"
-                    className={`duolingo-option-card w-full ${selectedOption === opt ? 'option-selected' : ''}`}
+                    className={`category-option-card ${selectedOption === opt ? 'option-selected' : ''}`}
                      onClick={() => {
                         if (opt !== 'Other') {
                            handleSelectOption(opt, opt, () => handleFlowBAnswer('category', opt));
@@ -2836,22 +2841,10 @@ try {
                   image: '/images/services/photography.jpg'
                 },
                 {
-                  id: 'branding_logo',
-                  title: 'Branding & Logo',
-                  explanation: 'Logos, visual identity, and brand guidelines.',
-                  image: '/images/services/branding_logo.jpg'
-                },
-                {
                   id: 'social_media_management',
                   title: 'Social Media Management',
                   explanation: 'Content planning, social posts, and profile growth.',
                   image: '/images/services/social_media.jpg'
-                },
-                {
-                  id: 'marketing_strategy',
-                  title: 'Marketing Strategy',
-                  explanation: 'Business growth planning, SEO, and campaigns.',
-                  image: '/images/services/marketing_strategy.jpg'
                 },
                 {
                   id: 'video_photo_editing',
@@ -3370,6 +3363,18 @@ try {
                         })()}
                       </span>
                     </div>
+
+                    {/* EXPERT REVIEW NOTIFICATION */}
+                    <div className="duolingo-profile-card" style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', background: '#2B2B36', borderLeft: '3px solid #58CC02', marginTop: '24px', padding: '16px', borderRadius: '12px' }}>
+                      <ShieldCheck size={20} color="#58CC02" style={{ flexShrink: 0, marginTop: '2px' }} />
+                      <div>
+                        <h5 style={{ fontSize: '14px', fontWeight: '600', margin: '0 0 4px 0', color: '#FFF' }}>ADDI Expert Review</h5>
+                        <p style={{ fontSize: '12px', color: '#B3B3B3', margin: 0, lineHeight: '1.4' }}>
+                          Your business details and recommendations have been shared with our relevant experts for review. They will review ADDI's recommendations and provide their suggestions within approximately 3 hours.
+                        </p>
+                      </div>
+                    </div>
+
                     {/* 6. Continue Button */}
                     <div style={{ marginTop: '24px' }}>
                       <button

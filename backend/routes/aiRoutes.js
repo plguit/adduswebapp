@@ -595,6 +595,8 @@ router.get('/intelligence/:userId', requireAuth, requireActiveUser, requireOwner
 //
 // The LLM receives actual retrieved content, NOT the URL.
 // ─────────────────────────────────────────────────────────
+const globalUrlProfileCache = new Map();
+
 router.post('/analyze-website', requireAuth, requireActiveUser, async (req, res) => {
   const { url } = req.body;
   const userId = req.auth.userId;
@@ -617,6 +619,13 @@ router.post('/analyze-website', requireAuth, requireActiveUser, async (req, res)
   // Input validation
   if (!url || typeof url !== 'string' || url.trim().length === 0) {
     return safeRespond({ error: 'URL is required.' }, 400);
+  }
+
+  const normalizedUrl = url.trim().toLowerCase();
+  
+  if (globalUrlProfileCache.has(normalizedUrl)) {
+    console.log(`[aiRoutes] Global URL Cache hit for ${normalizedUrl}`);
+    return safeRespond(globalUrlProfileCache.get(normalizedUrl));
   }
 
   // ── URL ANALYSIS ACTIVITY LOG ───────────────────────────
@@ -721,14 +730,29 @@ router.post('/analyze-website', requireAuth, requireActiveUser, async (req, res)
     });
   }
 
+  function cleanBusinessName(rawName) {
+    if (!rawName) return null;
+    const parts = rawName.split(/\s*[|\\-]\s*/);
+    if (parts.length === 1) return rawName.trim();
+    let bestPart = parts[parts.length - 1];
+    for (const part of parts) {
+      if (part.length >= 3 && part.length < bestPart.length) {
+        bestPart = part;
+      }
+    }
+    return bestPart.trim();
+  }
+
   // ── Build deterministic profile from fast path evidence ──
   const primaryPage = fastResult.primaryPage || {};
   const evidenceItems = fastResult.evidenceItems || [];
 
+  const rawBizName = fastResult.profile?.businessName || primaryPage.title || null;
+
   const deterministicProfile = {
-    businessName: primaryPage.title || null,
+    businessName: cleanBusinessName(rawBizName),
     industry: fastResult.profile?.industry || null,
-    businessDescription: primaryPage.metaDescription || primaryPage.og?.description || null,
+    businessDescription: fastResult.profile?.businessDescription || primaryPage.metaDescription || primaryPage.og?.description || null,
     location: null,
     services: fastResult.profile?.services || [],
     products: [],
@@ -971,7 +995,7 @@ Extract ONLY the missing fields from the above verified evidence. Do not change 
     }
   }
 
-  safeRespond({
+  const finalResponse = {
     success: true,
     sourceStatus: fastResult.sourceStatus,
     profile: canonical,
@@ -989,7 +1013,11 @@ Extract ONLY the missing fields from the above verified evidence. Do not change 
     userMessage: fastResult.userMessage || null,
     retryable: fastResult.retryable || false,
     requiresManualInput: fastResult.requiresManualInput || false,
-  });
+  };
+
+  globalUrlProfileCache.set(normalizedUrl, finalResponse);
+
+  safeRespond(finalResponse);
   console.log('[ADDI:E2E:BACKEND_RESPONSE] profile fields:', Object.keys(canonical).join(', '));
 });
 
