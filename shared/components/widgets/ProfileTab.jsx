@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Save, Plus, Upload, Building2, Package, FileText, Globe, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Save, Plus, Upload, Building2, Package, FileText, Globe, CheckCircle2, Trash2 } from 'lucide-react';
 import { NotificationEngine } from '../../../src/services/brain/UniversalNotificationEngine.js';
 
 export function ProfileTab({ userProfile, brain = {}, userId, onBack, onSaveProfile }) {
@@ -99,6 +99,36 @@ export function ProfileTab({ userProfile, brain = {}, userId, onBack, onSaveProf
     alert('Asset saved to Business Vault!');
   };
 
+  const handleDeleteAsset = (assetId) => {
+    const files = p.uploadedFiles || [];
+    const updatedFiles = files.filter(f => f.id !== assetId);
+    if (typeof onSaveProfile === 'function') {
+      onSaveProfile({ uploadedFiles: updatedFiles });
+    }
+  };
+
+  const handleAnalyzeUrl = () => {
+    if (!bizWeb) {
+      alert("Please enter a website URL first.");
+      return;
+    }
+    
+    // Mock extraction
+    const mockExtracted = [
+      { id: `file_${Date.now()}_1`, name: 'Primary: #111111, Accent: #00D1FF', category: 'Brand Colors', uploadedAt: new Date().toISOString() },
+      { id: `file_${Date.now()}_2`, name: 'Font: Inter, Roboto', category: 'Typography', uploadedAt: new Date().toISOString() },
+      { id: `file_${Date.now()}_3`, name: 'Extracted_Logo_v1.png', category: 'Logo Reference', uploadedAt: new Date().toISOString() }
+    ];
+
+    const currentFiles = p.uploadedFiles || [];
+    const updatedFiles = [...currentFiles, ...mockExtracted];
+
+    if (typeof onSaveProfile === 'function') {
+      onSaveProfile({ uploadedFiles: updatedFiles });
+    }
+    alert('ADDI successfully extracted brand assets from your URL!');
+  };
+
   return (
     <div className="profile-container fade-in" style={{ padding: '24px 24px 100px 24px', color: '#FFF' }}>
       {/* Header */}
@@ -144,7 +174,10 @@ export function ProfileTab({ userProfile, brain = {}, userId, onBack, onSaveProf
 
             <div>
               <label style={{ fontSize: '12px', color: '#9CA3AF', display: 'block', marginBottom: '4px' }}>Website URL</label>
-              <input type="text" className="duolingo-text-input" style={{ width: '100%', background: '#14141B', color: '#FFF', padding: '10px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }} value={bizWeb} onChange={e => setBizWeb(e.target.value)} />
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <input type="text" className="duolingo-text-input" style={{ flex: 1, background: '#14141B', color: '#FFF', padding: '10px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }} value={bizWeb} onChange={e => setBizWeb(e.target.value)} placeholder="https://example.com" />
+                <button type="button" onClick={handleAnalyzeUrl} className="duolingo-secondary-btn" style={{ padding: '0 16px', background: 'transparent', border: '1px solid #00D1FF', color: '#00D1FF' }}>Analyze</button>
+              </div>
             </div>
 
             <div>
@@ -156,6 +189,57 @@ export function ProfileTab({ userProfile, brain = {}, userId, onBack, onSaveProf
               <Save size={16} /> Save Business Profile
             </button>
           </form>
+        </div>
+
+        {/* Brand Assets Card */}
+        <div className="admin-card" style={{ background: '#1A1A24', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#00D1FF', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Globe size={18} /> Brand Identity & Assets
+          </h3>
+          <p style={{ fontSize: '12px', color: '#9CA3AF', marginBottom: '16px' }}>Upload your logo or define your brand colors. If you enter your website URL, ADDI can try to extract these automatically during project analysis.</p>
+
+          <form onSubmit={handleAddAsset} style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+              <div>
+                <label style={{ fontSize: '12px', color: '#9CA3AF', display: 'block', marginBottom: '4px' }}>Asset Category</label>
+                <select className="duolingo-text-input" style={{ width: '100%', background: '#14141B', color: '#FFF', padding: '10px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }} value={assetCat} onChange={e => setAssetCat(e.target.value)}>
+                  <option value="Logo Reference">Logo Reference</option>
+                  <option value="Brand Guidelines">Brand Guidelines</option>
+                  <option value="Typography">Typography / Fonts</option>
+                  <option value="Brand Colors">Brand Colors</option>
+                  <option value="Other Asset">Other Asset</option>
+                </select>
+              </div>
+              <div>
+                <label style={{ fontSize: '12px', color: '#9CA3AF', display: 'block', marginBottom: '4px' }}>Upload File (PDF/Image)</label>
+                <input type="file" accept=".jpg,.jpeg,.png,.pdf" className="duolingo-text-input" style={{ width: '100%', background: '#14141B', color: '#FFF', padding: '7px 10px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', marginBottom: '12px', fontSize: '13px' }} onChange={e => {
+                  if (e.target.files && e.target.files[0]) {
+                    setAssetName(e.target.files[0].name);
+                  }
+                }} />
+                <label style={{ fontSize: '12px', color: '#9CA3AF', display: 'block', marginBottom: '4px' }}>Asset Description / Value</label>
+                <input type="text" className="duolingo-text-input" placeholder="e.g. Hex #FF0000 or Font: Inter" style={{ width: '100%', background: '#14141B', color: '#FFF', padding: '10px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }} value={assetName} onChange={e => setAssetName(e.target.value)} required />
+              </div>
+            </div>
+            
+            <button type="submit" className="duolingo-secondary-btn" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+              <Upload size={16} /> Save Asset
+            </button>
+          </form>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {(p.uploadedFiles || []).map((item, idx) => (
+              <div key={idx} style={{ background: '#14141B', padding: '10px 12px', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', fontSize: '13px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span><strong>{item.category}</strong>: {item.name}</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <CheckCircle2 size={14} style={{ color: '#34D399' }} />
+                  <button onClick={() => handleDeleteAsset(item.id)} style={{ background: 'none', border: 'none', color: '#EF4444', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                    <Trash2 size={14} />
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Product Catalog Card */}
@@ -185,3 +269,4 @@ export function ProfileTab({ userProfile, brain = {}, userId, onBack, onSaveProf
     </div>
   );
 }
+

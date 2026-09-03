@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Sparkles, Paperclip, Mic, Send, ArrowLeft, MoreVertical } from 'lucide-react';
 import { aiService } from '../../services/aiService.js';
 import { sessionManager } from '../../services/sessionManager.js';
+import { profileService } from '../../../shared/services/profileService.js';
+import { updateProjectInStore } from '../../../shared/hooks/useProjectStore.js';
 import { TypingIndicator } from './TypingIndicator.jsx';
 
 /**
  * ADDI Chat Screen Component
- * Full-featured conversational AI chat interface with streaming, history, timestamps, and input bar.
+ * Full-featured conversational AI chat interface with streaming, history, timestamps, counter-proposals, and input bar.
  */
 export function ADDIChatScreen({ onBack = null, context = {} }) {
   const { businessName, industry, productName, projectService, projectStatus } = context;
@@ -26,14 +28,203 @@ export function ADDIChatScreen({ onBack = null, context = {} }) {
   const messagesEndRef = useRef(null);
   const fileInputRef = useRef(null);
 
+  function formatTime(date) {
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  const loadChatFromProfile = () => {
+    try {
+      const session = sessionManager.getSession();
+      const uid = session?.userId || 'customer_7907963442';
+
+      const prof = profileService.getProfileById(uid) || 
+        (profileService.getAllProfiles() || []).find(p => p.userId === uid || p.customerId === uid);
+
+      const historyMsgs = [];
+      if (prof && prof.chatHistory && prof.chatHistory.length > 0) {
+        prof.chatHistory.forEach((c, idx) => {
+          historyMsgs.push({
+            id: c.id || `msg_${idx}`,
+            role: c.sender === 'user' || c.role === 'user' ? 'user' : 'assistant',
+            content: c.text || c.content || '',
+            timestamp: c.timestamp ? new Date(c.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : formatTime(new Date()),
+            counterProposal: c.counterProposal || null
+          });
+        });
+      }
+
+      // Check for global or project-specific proposal override in localStorage
+      try {
+        const rawProp = localStorage.getItem('ADDUS_LATEST_PROPOSAL_GLOBAL');
+        if (rawProp) {
+          const propMsg = JSON.parse(rawProp);
+          if (propMsg && propMsg.id && !historyMsgs.some(m => m.id === propMsg.id)) {
+            historyMsgs.push({
+              id: propMsg.id,
+              role: 'assistant',
+              content: propMsg.text || '📋 ADDUS Admin Counter-Proposal',
+              timestamp: formatTime(new Date()),
+              counterProposal: propMsg.counterProposal
+            });
+          }
+        }
+      } catch {}
+
+      if (historyMsgs.length > 0) {
+        setMessages(historyMsgs);
+      }
+
+      // Automatically mark incoming Admin messages as seen by customer
+      if (prof && prof.chatHistory && prof.chatHistory.some(c => (c.sender === 'admin' || c.role === 'admin') && !c.read)) {
+        const updatedHistory = prof.chatHistory.map(c => {
+          if ((c.sender === 'admin' || c.role === 'admin') && !c.read) {
+            return { ...c, read: true, readAt: new Date().toISOString() };
+          }
+          return c;
+        });
+        profileService.saveProfile({ ...prof, chatHistory: updatedHistory });
+        window.dispatchEvent(new CustomEvent('addus_approvals_updated'));
+      }
+    } catch (e) {
+      console.warn('[ADDIChatScreen] Load chat error:', e);
+    }
+  };
+
+  useEffect(() => {
+    loadChatFromProfile();
+    const handleChatUpdate = () => loadChatFromProfile();
+    window.addEventListener('addus_chat_updated', handleChatUpdate);
+    window.addEventListener('addus_profile_updated', handleChatUpdate);
+    return () => {
+      window.removeEventListener('addus_chat_updated', handleChatUpdate);
+      window.removeEventListener('addus_profile_updated', handleChatUpdate);
+    };
+  }, []);
+
   // Auto-scroll to bottom when messages update
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages, isGenerating]);
 
-  function formatTime(date) {
-    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-  }
+  const handleAcceptProposal = (proposal) => {
+    try {
+      const session = sessionManager.getSession();
+      const uid = session?.userId || 'customer_7907963442';
+
+      // 1. Update Project in projectStore
+      if (proposal.projectId) {
+        updateProjectInStore(proposal.projectId, {
+          shootDate: proposal.proposedShootDate,
+          budget: proposal.proposedBudget ? `₹${Number(proposal.proposedBudget).toLocaleString('en-IN')}` : '₹15,000',
+          status: 'Approved',
+          lifecycleStage: 'Approved'
+        }, { actor: 'Customer', role: 'Customer' });
+      }
+
+      // 2. Update Chat History & Proposal status in profile
+      const prof = profileService.getProfileById(uid) || {};
+      const updatedChat = (prof.chatHistory || []).map(c => {
+        if (c.counterProposal && c.counterProposal.reqId === proposal.reqId) {
+          return { ...c, counterProposal: { ...c.counterProposal, status: 'accepted' } };
+        }
+        return c;
+      });
+
+      updatedChat.push({
+        id: `msg_cust_${Date.now()}`,
+        sender: 'user',
+        role: 'user',
+        text: '✓ I accepted the proposed date and budget changes. Let us proceed!',
+        timestamp: new Date().toISOString()
+      });
+
+      updatedChat.push({
+        id: `msg_addi_${Date.now()}`,
+        sender: 'admin',
+        role: 'admin',
+        text: '🎉 Awesome! Proposal confirmed. Your project status is now LIVE in Strategy Preparation!',
+        timestamp: new Date().toISOString()
+      });
+
+      profileService.saveProfile({
+        ...prof,
+        chatHistory: updatedChat
+      });
+
+      // 3. Broadcast events
+      window.dispatchEvent(new CustomEvent('addus_chat_updated'));
+      window.dispatchEvent(new CustomEvent('addus_profile_updated'));
+      window.dispatchEvent(new CustomEvent('addus_approvals_updated'));
+      window.dispatchEvent(new CustomEvent('addus_projects_updated'));
+
+      alert('🎉 Proposal accepted! Your project is now active and live.');
+    } catch (e) {
+      console.warn('Accept proposal error:', e);
+    }
+  };
+
+  const handleRejectProposal = (proposal) => {
+    try {
+      const reasonInput = window.prompt(
+        'Please state your reason for declining this proposal so Admin can adjust the details:',
+        'Shoot date not convenient / Budget needs adjustment'
+      );
+
+      if (reasonInput === null) return; // User cancelled
+      const reason = reasonInput.trim() || 'Customer requested date/budget adjustments.';
+      const session = sessionManager.getSession();
+      const uid = session?.userId || 'customer_7907963442';
+
+      // 1. Update Project status
+      if (proposal.projectId) {
+        updateProjectInStore(proposal.projectId, {
+          status: 'Customer Rejected',
+          rejectionReason: reason,
+          customerNote: `Declined proposal. Reason: ${reason}`
+        }, { actor: 'Customer', role: 'Customer' });
+      }
+
+      // 2. Update Chat History & Proposal status in profile
+      const prof = profileService.getProfileById(uid) || {};
+      const updatedChat = (prof.chatHistory || []).map(c => {
+        if (c.counterProposal && c.counterProposal.reqId === proposal.reqId) {
+          return { ...c, counterProposal: { ...c.counterProposal, status: 'rejected', rejectionReason: reason } };
+        }
+        return c;
+      });
+
+      updatedChat.push({
+        id: `msg_cust_${Date.now()}`,
+        sender: 'user',
+        role: 'user',
+        text: `✕ I declined the proposed date/budget. Reason: "${reason}". Please modify and resend.`,
+        timestamp: new Date().toISOString()
+      });
+
+      updatedChat.push({
+        id: `msg_addi_${Date.now()}`,
+        sender: 'admin',
+        role: 'admin',
+        text: `Understood! We have notified the Admin team with your feedback ("${reason}"). They will modify the project details and resend a revised proposal to you shortly.`,
+        timestamp: new Date().toISOString()
+      });
+
+      profileService.saveProfile({
+        ...prof,
+        chatHistory: updatedChat
+      });
+
+      // 3. Broadcast events
+      window.dispatchEvent(new CustomEvent('addus_chat_updated'));
+      window.dispatchEvent(new CustomEvent('addus_profile_updated'));
+      window.dispatchEvent(new CustomEvent('addus_approvals_updated'));
+      window.dispatchEvent(new CustomEvent('addus_projects_updated'));
+
+      alert('Feedback sent! Admin has been notified to modify the details and resend.');
+    } catch (e) {
+      console.warn('Reject proposal error:', e);
+    }
+  };
 
   const handleSend = async (e) => {
     if (e) e.preventDefault();
@@ -161,7 +352,89 @@ export function ADDIChatScreen({ onBack = null, context = {} }) {
                 </div>
               )}
 
-              <p className="bubble-text-plain">{msg.content}</p>
+              <p className="bubble-text-plain" style={{ whiteSpace: 'pre-line' }}>{msg.content}</p>
+
+              {/* Render Admin Counter-Proposal Card */}
+              {msg.counterProposal && (
+                <div 
+                  style={{
+                    background: 'linear-gradient(135deg, #1E1E2E, #161622)',
+                    border: '1px solid rgba(124, 92, 255, 0.4)',
+                    borderRadius: '14px',
+                    padding: '14px',
+                    marginTop: '10px',
+                    boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+                    width: '100%',
+                    boxSizing: 'border-box'
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '8px' }}>
+                    <Sparkles size={16} color="#7C5CFF" />
+                    <span style={{ fontSize: '13px', fontWeight: '800', color: '#FFF' }}>
+                      📋 ADDUS Admin Counter-Proposal
+                    </span>
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '13px', color: '#D1D5DB', marginBottom: '12px' }}>
+                    <div>📅 Proposed Shoot Date: <strong style={{ color: '#00D1FF' }}>{msg.counterProposal.proposedShootDate}</strong></div>
+                    <div>💰 Proposed Budget: <strong style={{ color: '#10B981' }}>₹{Number(msg.counterProposal.proposedBudget).toLocaleString('en-IN')}</strong></div>
+                    {msg.counterProposal.adminNote && (
+                      <div style={{ marginTop: '4px', fontStyle: 'italic', color: '#9CA3AF', background: 'rgba(255,255,255,0.03)', padding: '6px 10px', borderRadius: '6px' }}>
+                        "{msg.counterProposal.adminNote}"
+                      </div>
+                    )}
+                  </div>
+
+                  {msg.counterProposal.status === 'pending' ? (
+                    <div style={{ display: 'flex', gap: '10px', marginTop: '12px' }}>
+                      <button
+                        type="button"
+                        onClick={() => handleAcceptProposal(msg.counterProposal)}
+                        style={{
+                          flex: 1,
+                          padding: '10px 12px',
+                          background: 'linear-gradient(135deg, #10B981, #059669)',
+                          border: 'none',
+                          borderRadius: '8px',
+                          color: '#FFF',
+                          fontSize: '12px',
+                          fontWeight: '800',
+                          cursor: 'pointer',
+                          boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
+                        }}
+                      >
+                        ✓ Accept Admin Proposal
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => handleRejectProposal(msg.counterProposal)}
+                        style={{
+                          flex: 1,
+                          padding: '10px 12px',
+                          background: 'rgba(239, 68, 68, 0.15)',
+                          border: '1px solid rgba(239, 68, 68, 0.3)',
+                          borderRadius: '8px',
+                          color: '#EF4444',
+                          fontSize: '12px',
+                          fontWeight: '700',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        ✕ Reject Proposal
+                      </button>
+                    </div>
+                  ) : msg.counterProposal.status === 'accepted' ? (
+                    <div style={{ padding: '8px 12px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '8px', color: '#10B981', fontSize: '12px', fontWeight: '800', textAlign: 'center' }}>
+                      ✅ Proposal Accepted — Project is LIVE
+                    </div>
+                  ) : (
+                    <div style={{ padding: '8px 12px', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '8px', color: '#EF4444', fontSize: '12px', fontWeight: '800', textAlign: 'center' }}>
+                      ❌ Proposal Declined — Admin Notified to Modify Details
+                    </div>
+                  )}
+                </div>
+              )}
 
               <span className="bubble-timestamp">{msg.timestamp}</span>
             </div>
@@ -236,3 +509,5 @@ export function ADDIChatScreen({ onBack = null, context = {} }) {
     </div>
   );
 }
+
+export default ADDIChatScreen;

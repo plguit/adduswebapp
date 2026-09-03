@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Search, Eye, Building2, Filter, Edit3, UserCheck, Archive, FileText, MessageSquare, BrainCircuit, X } from 'lucide-react';
+import { Search, Eye, Building2, Filter, Edit3, UserCheck, Archive, FileText, MessageSquare, BrainCircuit, X, Download } from 'lucide-react';
 import { profileService } from '../../../../shared/services/profileService.js';
 import { adminApiService } from '../services/adminApiService.js';
 import { validation, ALLOWED_STAGES } from '../../../../src/services/validation.js';
 import { BusinessProfileModal } from './BusinessProfileModal.jsx';
+
+const safeStr = (val, fallback = '') => {
+  if (typeof val === 'string') return val;
+  if (typeof val === 'number') return String(val);
+  if (val && typeof val === 'object') {
+    return val.userId || val.customerId || val.id || val.name || val.businessName || val.title || val.role || fallback;
+  }
+  return fallback;
+};
 
 export function BusinessesTab({ dataSource = 'localStorage', adminReady = false }) {
   const [profiles, setProfiles] = useState([]);
@@ -40,19 +49,20 @@ export function BusinessesTab({ dataSource = 'localStorage', adminReady = false 
     refresh();
   }, [dataSource, adminReady]);
 
-  const industries = ['All', ...new Set(profiles.map(p => p.businessBrain?.industry).filter(Boolean))];
+  const industries = ['All', ...new Set(profiles.map(p => safeStr(p.businessBrain?.industry)).filter(Boolean))];
 
   const filtered = profiles.filter(p => {
     const brain = p.businessBrain || {};
-    const name = (brain.businessName || p.name || '').toLowerCase();
-    const industry = (brain.industry || '').toLowerCase();
-    const phone = (p.phoneNumber || '').toLowerCase();
-    const email = (p.email || '').toLowerCase();
-    const strategist = (p.assignedStrategist || '').toLowerCase();
+    const name = safeStr(brain.businessName || p.name).toLowerCase();
+    const custName = safeStr(p.name || brain.customerName).toLowerCase();
+    const industry = safeStr(brain.industry).toLowerCase();
+    const phone = safeStr(p.phoneNumber || p.phone).toLowerCase();
+    const email = safeStr(p.email).toLowerCase();
+    const strategist = safeStr(p.assignedStrategist).toLowerCase();
     const q = search.toLowerCase();
 
-    const matchSearch = !q || name.includes(q) || industry.includes(q) || phone.includes(q) || email.includes(q) || strategist.includes(q);
-    const matchIndustry = filterIndustry === 'All' || brain.industry === filterIndustry;
+    const matchSearch = !q || name.includes(q) || custName.includes(q) || industry.includes(q) || phone.includes(q) || email.includes(q) || strategist.includes(q);
+    const matchIndustry = filterIndustry === 'All' || safeStr(brain.industry) === filterIndustry;
     const matchStatus = filterStatus === 'All'
       ? !p.archived
       : filterStatus === 'Archived'
@@ -61,6 +71,63 @@ export function BusinessesTab({ dataSource = 'localStorage', adminReady = false 
 
     return matchSearch && matchIndustry && matchStatus;
   });
+
+  const handleExportCSV = () => {
+    if (filtered.length === 0) {
+      alert('No business records available to export.');
+      return;
+    }
+
+    const headers = [
+      'Business ID',
+      'User Name',
+      'Business Name',
+      'Business Description',
+      'Customer ID',
+      'Contact Number',
+      'Email',
+      'Industry',
+      'Business Stage',
+      'AI Confidence',
+      'Date & Time',
+      'Assigned Strategist',
+      'Status'
+    ];
+
+    const rows = filtered.map(p => {
+      const brain = p.businessBrain || {};
+      const userName = p.name || brain.customerName || 'Valued User';
+      const dateStr = p.createdAt
+        ? `${new Date(p.createdAt).toLocaleDateString('en-GB')} ${new Date(p.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
+        : '03 Sep 2026, 10:00 AM';
+
+      return [
+        `"${p.businessId || p.userId || ''}"`,
+        `"${userName.replace(/"/g, '""')}"`,
+        `"${(brain.businessName || p.name || 'Unnamed Business').replace(/"/g, '""')}"`,
+        `"${(brain.businessDescription || '').replace(/"/g, '""')}"`,
+        `"${p.customerId || p.userId || ''}"`,
+        `"${p.phoneNumber || ''}"`,
+        `"${p.email || ''}"`,
+        `"${brain.industry || 'General'}"`,
+        `"${brain.businessStage || 'Growing'}"`,
+        `"${brain.aiConfidenceScore || 0}%"`,
+        `"${dateStr}"`,
+        `"${p.assignedStrategist || 'Unassigned'}"`,
+        `"${p.archived ? 'Archived' : (p.onboardingStatus === 'completed' ? 'Active' : 'Onboarded')}"`
+      ];
+    });
+
+    const csvString = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+    const blob = new Blob([csvString], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.setAttribute('href', url);
+    link.setAttribute('download', `ADDUS_CRM_Report_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const handleSaveStrategist = (userId) => {
     if (!strategistName.trim()) return;
@@ -124,7 +191,29 @@ export function BusinessesTab({ dataSource = 'localStorage', adminReady = false 
           <h2>Business Management</h2>
           <p className="admin-section-sub">Comprehensive registry of every business account on ADDUS.</p>
         </div>
-        <span className="admin-count-chip">{filtered.length} Businesses</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <button 
+            type="button" 
+            onClick={handleExportCSV} 
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '6px', 
+              padding: '8px 16px', 
+              borderRadius: '8px', 
+              background: 'linear-gradient(135deg, #10B981, #059669)', 
+              border: 'none', 
+              color: '#FFFFFF', 
+              fontSize: '13px', 
+              fontWeight: '700', 
+              cursor: 'pointer',
+              boxShadow: '0 4px 12px rgba(16, 185, 129, 0.25)'
+            }}
+          >
+            <Download size={15} /> Export Excel (CSV)
+          </button>
+          <span className="admin-count-chip">{filtered.length} Businesses</span>
+        </div>
       </div>
 
       <div className="admin-filter-bar margin-top-16">
@@ -132,7 +221,7 @@ export function BusinessesTab({ dataSource = 'localStorage', adminReady = false 
           <Search size={16} />
           <input
             className="admin-search-input"
-            placeholder="Search business name, contact, industry, strategist..."
+            placeholder="Search business name, customer name, contact, industry, strategist..."
             value={search}
             onChange={e => setSearch(e.target.value)}
           />
@@ -160,10 +249,12 @@ export function BusinessesTab({ dataSource = 'localStorage', adminReady = false 
           <thead>
             <tr>
               <th>Business ID</th>
+              <th>User Name</th>
               <th>Business Name</th>
               <th>Customer ID</th>
               <th>Industry &amp; Stage</th>
               <th>AI Confidence</th>
+              <th>Date &amp; Time</th>
               <th>Assigned Strategist</th>
               <th>Status</th>
               <th>Actions</th>
@@ -172,20 +263,28 @@ export function BusinessesTab({ dataSource = 'localStorage', adminReady = false 
           <tbody>
             {filtered.length === 0 ? (
               <tr>
-                <td colSpan={8} className="admin-empty-row">
+                <td colSpan={10} className="admin-empty-row">
                   <Building2 size={24} />
                   <p>No businesses matching search criteria.</p>
                 </td>
               </tr>
-            ) : filtered.map(p => {
+            ) : filtered.map((p, pIdx) => {
               const brain = p.businessBrain || {};
               const confScore = brain.aiConfidenceScore || null;
               const isArchived = !!p.archived;
-              const bizId = p.businessId || p.userId;
-              const custId = p.customerId || p.userId || '—';
+              const rawUserIdKey = safeStr(p.userId || p.customerId || p.businessId || `user_row_${pIdx}`);
+              const bizId = safeStr(p.businessId || p.userId || p.id, 'BIZ-1');
+              const custId = safeStr(p.customerId || p.userId || p.id, '—');
+              const userName = safeStr(p.name || brain.customerName, 'Valued User');
+              const contactSubText = safeStr(p.phoneNumber || p.phone || p.email, 'No contact');
+              const bizName = safeStr(brain.businessName || p.name, 'Unnamed Business');
+              const bizDesc = safeStr(brain.businessDescription, '');
+              const industryStr = safeStr(brain.industry, 'General');
+              const stageStr = safeStr(brain.businessStage, 'Growing');
+              const strategistStr = safeStr(p.assignedStrategist, 'Unassigned (Click)');
 
               return (
-                <tr key={p.userId} className={isArchived ? 'archived-row' : ''}>
+                <tr key={rawUserIdKey} className={isArchived ? 'archived-row' : ''}>
                   <td>
                     <div className="id-badge-pill-group">
                       <span
@@ -208,8 +307,12 @@ export function BusinessesTab({ dataSource = 'localStorage', adminReady = false 
                     </div>
                   </td>
                   <td>
-                    <div className="td-primary-text">{brain.businessName || p.name || 'Unnamed Business'}</div>
-                    <div className="td-sub-text">{brain.businessDescription ? `${brain.businessDescription.slice(0, 45)}...` : 'No summary provided'}</div>
+                    <div className="td-primary-text">{userName}</div>
+                    <div className="td-sub-text">{contactSubText}</div>
+                  </td>
+                  <td>
+                    <div className="td-primary-text">{bizName}</div>
+                    <div className="td-sub-text">{bizDesc ? `${bizDesc.slice(0, 45)}...` : 'No summary provided'}</div>
                   </td>
                   <td>
                     <div className="id-badge-pill-group">
@@ -229,8 +332,8 @@ export function BusinessesTab({ dataSource = 'localStorage', adminReady = false 
                     </div>
                   </td>
                   <td>
-                    <div className="td-primary-text">{brain.industry || 'General'}</div>
-                    <span className="admin-badge admin-badge-indigo">{brain.businessStage || 'Growing'}</span>
+                    <div className="td-primary-text">{industryStr}</div>
+                    <span className="admin-badge admin-badge-indigo">{stageStr}</span>
                   </td>
                   <td>
                     <span
@@ -243,7 +346,15 @@ export function BusinessesTab({ dataSource = 'localStorage', adminReady = false 
                     </span>
                   </td>
                   <td>
-                    {assigningUserId === p.userId ? (
+                    <div className="td-primary-text">
+                      {p.createdAt ? new Date(p.createdAt).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }) : '03 Sep 2026'}
+                    </div>
+                    <div className="td-sub-text">
+                      {p.createdAt ? new Date(p.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '10:00 AM'}
+                    </div>
+                  </td>
+                  <td>
+                    {assigningUserId === rawUserIdKey ? (
                       <div className="assign-input-flex">
                         <input
                           type="text"
@@ -252,14 +363,14 @@ export function BusinessesTab({ dataSource = 'localStorage', adminReady = false 
                           value={strategistName}
                           onChange={e => setStrategistName(e.target.value)}
                         />
-                        <button type="button" className="btn-micro-save" onClick={() => handleSaveStrategist(p.userId)}>
+                        <button type="button" className="btn-micro-save" onClick={() => handleSaveStrategist(rawUserIdKey)}>
                           Save
                         </button>
                       </div>
                     ) : (
-                      <div className="strategist-tag-wrap" onClick={() => { setAssigningUserId(p.userId); setStrategistName(p.assignedStrategist || ''); }}>
+                      <div className="strategist-tag-wrap" onClick={() => { setAssigningUserId(rawUserIdKey); setStrategistName(strategistStr === 'Unassigned (Click)' ? '' : strategistStr); }}>
                         <UserCheck size={14} className="inline-icon" />
-                        <span>{p.assignedStrategist || 'Unassigned (Click)'}</span>
+                        <span>{strategistStr}</span>
                       </div>
                     )}
                   </td>

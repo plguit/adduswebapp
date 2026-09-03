@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../../utils/i18n.js';
 import { UniversalNotificationEngine } from '../../services/brain/UniversalNotificationEngine.js';
+import { AllRecommendedServicesView } from '../../../shared/components/widgets/AllRecommendedServicesView.jsx';
 import { 
   validatePhone, 
   validateEmail, 
@@ -21,6 +22,7 @@ import {
 } from '../../utils/validators.js';
 import { checkDuplicateBusiness, extractDomain } from '../../utils/duplicateDetector.js';
 import { LegalPages } from '../../../apps/customer/src/components/LegalPages.jsx';
+import { AuthScreen } from '../onboarding/AuthScreen.jsx';
 
 import { useOnboardingStore } from '../../store/onboardingStore';
 import { businessAnalysisService } from '../../services/businessAnalysisService';
@@ -800,6 +802,7 @@ export function ConversationalOnboarding({ onProjectCreated }) {
   /* Auth handled centrally by AuthScreen */
 
   const [step4Stage, setStep4Stage] = useState('mascot'); // 'mascot' -> 'card'
+  const [showAuthScreen, setShowAuthScreen] = useState(false);
   const [history, setHistory] = useState([]);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const messagesEndRef = useRef(null);
@@ -1013,9 +1016,10 @@ export function ConversationalOnboarding({ onProjectCreated }) {
         }
       } else {
         const cleanOtp = text.replace(/\D/g, '');
-        setOtpInput(cleanOtp || text);
-        if ((cleanOtp || text).length >= 4) {
-          await handleVerifyOTP({ preventDefault: () => {} });
+        const finalOtp = cleanOtp || text;
+        setOtpInput(finalOtp);
+        if (finalOtp.length >= 4) {
+          await handleVerifyOTP({ preventDefault: () => {} }, finalOtp);
         }
       }
       return;
@@ -1156,11 +1160,13 @@ try {
     setOtpAttempts(0);
   };
 
-    const handleVerifyOTP = async (e) => {
+    const handleVerifyOTP = async (e, directOtpVal = null) => {
     if (e) e.preventDefault();
     setLoginError('');
 
-    const otpVal = validateOTP(otpInput, otpAttempts);
+    const otpToValidate = directOtpVal !== null ? directOtpVal : otpInput;
+
+    const otpVal = validateOTP(otpToValidate, otpAttempts);
     if (!otpVal.isValid) {
       if (otpVal.blocked) {
         setLoginError(otpVal.message);
@@ -1177,9 +1183,9 @@ try {
     let verifyRes = null;
     try {
       if (authMethod === 'phone') {
-        verifyRes = await otpService.verifyOTP(phoneInput, otpInput, otpAttempts);
+        verifyRes = await otpService.verifyOTP(phoneInput, otpToValidate, otpAttempts);
       } else {
-        verifyRes = await emailAuthService.verifyEmailOTP(emailInput, otpInput);
+        verifyRes = await emailAuthService.verifyEmailOTP(emailInput, otpToValidate);
       }
     } catch (err) {
       console.warn('OTP verify exception:', err);
@@ -1260,7 +1266,7 @@ try {
     localStorage.setItem('HAS_EXISTING_ADDUS_ACCOUNT', 'true');
 
     // IMMEDIATELY TRANSITION TO EXISTING ADDI BUSINESS INFORMATION SCREEN (Step 3)
-    setStepIndex(3);
+    setShowCelebrationModal(true); setTimeout(() => { setShowCelebrationModal(false); setStepIndex(3); }, 2500);
   };
 
   const handleSaveName = (e) => {
@@ -1962,7 +1968,7 @@ try {
       id: `r${idx}`,
       title: srv,
       category: 'Customer Requested',
-      reasoning: `You specifically requested this service for your roadmap.`
+      reasoning: `Requested service for project scope.`
     }));
     updateState({ aiRecommendations: staticRecs });
     setStepIndex(7);
@@ -2065,8 +2071,9 @@ try {
       customerName: nameVal.name,
       title: title,
       type: effectiveScope.join(', '),
-      status: 'planning',
-      shootDate: shootDate || state.preferredShootDate || null,
+      status: 'Submitted',
+      lifecycleStage: 'Submitted',
+      shootDate: projectDate || shootDate || state.preferredShootDate || null,
       deliveryDate: deliveryDate || state.preferredDeliveryDate || null,
       scheduleRequests: state.scheduleRequests || scheduleRequests || {},
       businessProfile: bProf,
@@ -2077,7 +2084,28 @@ try {
     };
 
     try {
+      UniversalNotificationEngine.notify({
+        userId: 'admin',
+        role: 'Admin',
+        type: 'new_project_booking',
+        title: '🎉 New Onboarding Project Submitted',
+        message: `${nameVal.name} (${bProf.businessName || 'Business'}) submitted project "${title}". Listed in Approvals Queue.`,
+        priority: 'high',
+        source: 'onboarding_completion',
+        metadata: {
+          customerName: nameVal.name,
+          businessName: bProf.businessName,
+          title,
+          services: effectiveScope
+        }
+      });
+    } catch(e) {
+      console.warn('Notification engine warning:', e);
+    }
+
+    try {
       createDraftProject(proj);
+      window.dispatchEvent(new CustomEvent('addus_projects_updated'));
     } catch (err) {
       console.error('[Onboarding] Failed to create draft project:', err);
       setFormError('Failed to create project. Please try again.');
@@ -2121,9 +2149,16 @@ try {
   const prof = state.businessProfile || {};
   const isLoginScreen = stepIndex === 1;
 
-  // Authentication handled centrally by AuthScreen
-
-
+  if (showAuthScreen || (typeof window !== 'undefined' && localStorage.getItem('addus_force_auth_screen') === 'true')) {
+    return (
+      <AuthScreen 
+        onAuthSuccess={() => {
+          localStorage.removeItem('addus_force_auth_screen');
+          window.location.reload();
+        }} 
+      />
+    );
+  }
 
   return (
     <div className="hotstar-layout-wrapper white-page-mode">
@@ -2258,18 +2293,28 @@ try {
                 style={{ width: '100%', minHeight: '44px' }}
                 onClick={() => {
                   setShowDuplicateModal(false);
-                  const biz = duplicateMatch.existingBusiness || {};
-                  if (biz.phoneNumber) {
-                    setAuthMethod('phone');
-                    setPhoneInput(biz.phoneNumber);
-                  } else if (biz.email) {
-                    setAuthMethod('email');
-                    setEmailInput(biz.email);
+                  const biz = duplicateMatch?.existingBusiness || {};
+                  const allProfiles = profileService.getAllProfiles() || [];
+                  const matchedProf = allProfiles.find(p => 
+                    (biz.userId && (p.userId === biz.userId || p.customerId === biz.userId)) ||
+                    (biz.phoneNumber && (p.phoneNumber === biz.phoneNumber || p.phone === biz.phoneNumber)) ||
+                    (biz.email && p.email === biz.email)
+                  );
+
+                  const targetPhone = biz.phoneNumber || matchedProf?.phoneNumber || matchedProf?.phone || state.phone || '';
+
+                  // Clear current draft session & onboarding state
+                  authService.logout();
+                  sessionManager.clearSession();
+                  localStorage.removeItem('addus_onboarding_state');
+
+                  if (targetPhone) {
+                    localStorage.setItem('addus_prefill_phone', targetPhone.replace(/\D/g, '').slice(-10));
                   }
-                  setOtpSent(false);
-                  setOtpInput('');
-                  setLoginError('');
-                  setStepIndex(1); // Force Login flow
+
+                  // Force AuthScreen (Mobile Verification & OTP Page) immediately in React
+                  localStorage.setItem('addus_force_auth_screen', 'true');
+                  setShowAuthScreen(true);
                 }}
               >
                 <span>Login to existing account</span>
@@ -2992,6 +3037,7 @@ try {
                       z-index: 1;
                       box-shadow: 0 2px 10px rgba(255, 0, 127, 0.4);
                       overflow: hidden;
+                      pointer-events: none;
                     }
                     .recommended-badge::after {
                       content: '';
@@ -3045,10 +3091,18 @@ try {
                   }}>
                     {(() => {
                       const userSelected = state.selectedServices || finalScope || [];
-                      const displayItems = userSelected.length > 0 ? userSelected : (state.fullRecommendationData?.recommendations || state.aiRecommendations || []).map(r => r.serviceName || r.title);
-                      const validItems = displayItems.filter(Boolean);
+                      let displayItems = [];
+if (userSelected.length > 0) {
+  displayItems = userSelected.map(u => typeof u === 'string' ? u : (u?.title || u?.serviceName || 'Service'));
+} else {
+  const recs = state.fullRecommendationData?.recommendations || state.aiRecommendations || [];
+  displayItems = recs.map(r => r?.serviceName || r?.title);
+}
+                      let validItems = displayItems.filter(Boolean);
 
-                      if (validItems.length === 0) return null;
+                      if (validItems.length === 0) {
+                        validItems = ['Video Production', 'Advertisement', 'Social Media Management'];
+                      }
 
                       const carouselItems = validItems.flatMap(title => {
                         if (title === 'Video Production' || title === 'Photography' || title === 'Video & Photo Editing') {
@@ -3402,35 +3456,12 @@ try {
                   </div>
                 </div>
               )}
-            
-              </div>
-            )}
-            {/* Fallback for when API fails */}
-            {!isGeneratingRecommendation && !state.fullRecommendationData && (
-              <div className="duolingo-options-stack margin-top-20">
-                {(state.aiRecommendations || []).map((item, idx) => (
-                  <button
-                    key={item.id || idx}
-                    type="button"
-                    className={`duolingo-option-card chat-stagger-${Math.min(idx + 1, 3)}`}
-                    onClick={() => {
-                      updateState({ selectedServices: [item.title] });
-                      setFinalScope([item.title]);
-                      setStepIndex(8);
-                    }}
-                  >
-                    <div className="option-content-col">
-                      <span className="option-title-text">â˜…â˜…â˜…â˜…â˜… {item.title}</span>
-                      <span className="option-sub-text">{item.reasoning}</span>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
+            </div>
+          )}
+        </div>
+      )}
 
-        {/* STEP 8: SCHEDULING (INDEPENDENT PER-SERVICE DATE REQUESTS â€” NO TIME PICKER) */}
+        {/* STEP 8: SCHEDULING */}
         {stepIndex === 8 && (
           <div className="duolingo-step-card active-step-card">
             <div className="duolingo-mascot-row">
@@ -3659,60 +3690,9 @@ try {
       {showViewAll && (
         <div style={{
           position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
-          backgroundColor: '#F8F9FA', zIndex: 99998, overflowY: 'auto', padding: '24px 16px'
+          zIndex: 99998
         }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-            <button 
-              onClick={() => setShowViewAll(false)}
-              style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'none', border: 'none', fontSize: '16px', fontWeight: '700', cursor: 'pointer', marginBottom: '24px', color: '#111' }}
-            >
-              <ChevronLeft size={20} /> Back to Onboarding
-            </button>
-            <h1 style={{ fontSize: '28px', fontWeight: '800', marginBottom: '32px', color: '#111' }}>All Recommended Services</h1>
-            
-            <style>{`
-              .view-all-grid {
-                display: grid;
-                grid-template-columns: 1fr; /* Mobile: 1 column */
-                gap: 24px;
-                padding-bottom: 60px;
-                max-width: 100%;
-              }
-              @media (min-width: 768px) {
-                .view-all-grid {
-                  grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns exactly */
-                }
-              }
-            `}</style>
-
-            <div className="view-all-grid">
-              {[
-                { title: 'Video Production', video: '/videos/video1.mp4', amount: '₹15,000', includes: ['Influencer / Model', 'Camera', 'Script Writer', 'Video Editor'] },
-                { title: 'Photography', video: '/videos/video2.mp4', amount: '₹25,000', includes: ['Pro Camera Gear', 'Studio Lighting', 'Creative Director', 'Advanced Editing'] },
-                { title: 'Video & Photo Editing', video: '/videos/video3.mp4', amount: '₹10,000', includes: ['Basic Setup', 'Standard Lighting', 'Raw Footage', 'Minimal Edit'] },
-                { title: 'Social Media Management', video: '/videos/video1.mp4', amount: '₹15,000', includes: ['Content Calendar', 'Daily Posting', 'Community Management'] }
-              ].map((item, idx) => (
-                <div key={idx} style={{ position: 'relative', borderRadius: '24px', overflow: 'hidden', backgroundColor: '#FFF', boxShadow: '0 10px 40px rgba(0,0,0,0.06)' }}>
-                  <div style={{ width: '100%', paddingTop: '140%', position: 'relative' }}>
-                    <video src={item.video} autoPlay loop muted playsInline style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-                    <button type="button" onClick={() => setFullscreenVideo(item.video)} style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: '44px', height: '44px', borderRadius: '50%', background: 'rgba(255, 255, 255, 0.9)', border: 'none', display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer', boxShadow: '0 4px 16px rgba(0,0,0,0.2)', paddingLeft: '3px', zIndex: 2 }}>
-                      <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 1.5L12.5 8L1.5 14.5V1.5Z" fill="#111111" stroke="#111111" strokeWidth="2" strokeLinejoin="round"/></svg>
-                    </button>
-                  </div>
-                  <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', background: '#FFFFFF', padding: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxWidth: '60%' }}>
-                      <span style={{ fontSize: '12px', fontWeight: '800', color: '#111', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Includes</span>
-                      <ul style={{ margin: 0, paddingLeft: '16px', fontSize: '13px', color: '#666', lineHeight: '1.4', listStyleType: 'disc' }}>{item.includes.map((inc, i) => <li key={i} style={{ paddingBottom: '2px' }}>{inc}</li>)}</ul>
-                    </div>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '6px', maxWidth: '40%' }}>
-                      <h3 style={{ margin: 0, fontSize: '16px', fontWeight: '800', color: '#111111', textAlign: 'right', lineHeight: '1.2' }}>{item.title}</h3>
-                      <span style={{ fontSize: '16px', fontWeight: '800', color: '#00D1FF' }}>{item.amount}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <AllRecommendedServicesView onBack={() => setShowViewAll(false)} />
         </div>
       )}
 
@@ -3829,4 +3809,5 @@ try {
 }
 
 export default ConversationalOnboarding;
+
 

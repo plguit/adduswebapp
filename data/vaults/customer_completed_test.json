@@ -7,5 +7,46 @@
   "onboardingStatus": "completed",
   "lastVisitedScreen": "dashboard",
   "createdAt": "2026-08-17T12:54:44.821Z",
-  "lastLoginAt": "2026-08-17T12:54:44.822Z"
+  "lastLoginAt": "2026-09-03T06:34:49.903Z",
+  "authProvider": "phone",
+  "fieldProvenance": {
+    "authProvider": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-03T06:34:49.904Z",
+      "valueSummary": "phone"
+    },
+    "lastLoginAt": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-03T06:34:49.904Z",
+      "valueSummary": "2026-09-03T06:34:49.903Z"
+    }
+  },
+  "aiConfidenceScore": 10,
+  "lastUpdated": "2026-09-03T06:34:49.904Z",
+  "auditLog": [
+    {
+      "timestamp": "2026-09-03T06:34:49.904Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "8888888888",
+        "authProvider": "phone",
+        "userId": "customer_completed_test",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-09-03T06:34:49.903Z"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ]
 }

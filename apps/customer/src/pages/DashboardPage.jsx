@@ -3,7 +3,7 @@ import {
   Bell, Sparkles, Video, Camera, Palette, Globe, Share2, Package,
   MoreHorizontal, Home, FolderKanban, User, Send, LogOut, Clock,
   Calendar, Rocket, CheckCircle2, ChevronRight, Brain, Edit2, AlertCircle, MessageSquare, Download, Menu, FileText, ShieldCheck, Upload,
-  Megaphone, TrendingUp, Scissors
+  Megaphone, TrendingUp, Scissors, Smartphone, Plus, Play
 } from 'lucide-react';
 import { useOnboardingStore } from '../../../../shared/hooks/useOnboardingStore.js';
 import { useProjectStore, updateProjectInStore, getProjectBudgetDisplay, getServiceScheduleType } from '../../../../shared/hooks/useProjectStore.js';
@@ -26,6 +26,61 @@ import { HamburgerDrawer } from '../../../../shared/components/widgets/Hamburger
 import { CustomerGalleryView } from '../../../../shared/components/widgets/CustomerGalleryView.jsx';
 import { ProfileTab } from '../../../../shared/components/widgets/ProfileTab.jsx';
 import { ExpertSuggestionsSection } from '../../../../shared/components/widgets/ExpertSuggestionsSection.jsx';
+import { MascotLottiePlayer } from '../../../../src/components/chat/MascotLottiePlayer.jsx';
+
+function CustomerQuotationWidget({ project }) {
+  if (!project) return null;
+  const rawBudget = project.budget || (project.quotation?.total ? `₹${Number(project.quotation.total).toLocaleString('en-IN')}` : '₹15,000');
+  const budgetText = typeof rawBudget === 'object' ? (rawBudget.total || rawBudget.amount || 'Standard Budget') : String(rawBudget);
+
+  const rawShootDate = project.shootDate || project.requestedShootDate || 'TBC';
+  const shootDateText = typeof rawShootDate === 'object' ? (rawShootDate.date || 'TBC') : String(rawShootDate);
+
+  const rawDelivery = project.estimatedDelivery || '7 Days';
+  const deliveryText = typeof rawDelivery === 'object' ? (rawDelivery.time || '7 Days') : String(rawDelivery);
+
+  const rawDeliverables = project.deliverables || project.selectedServices || [project.service || 'Video Ad'];
+  const deliverableList = Array.isArray(rawDeliverables) ? rawDeliverables : [rawDeliverables];
+
+  return (
+    <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '14px', padding: '16px', marginBottom: '14px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+        <h4 style={{ margin: 0, fontSize: '14px', fontWeight: '800', color: '#0F172A', display: 'flex', alignItems: 'center', gap: '6px' }}>
+          💰 Quotation & Deliverables
+        </h4>
+        <span style={{ fontSize: '11px', fontWeight: '700', background: 'rgba(16,185,129,0.12)', color: '#10B981', padding: '3px 8px', borderRadius: '6px' }}>
+          Budget: {budgetText}
+        </span>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', fontSize: '12px', color: '#475569', marginBottom: '10px' }}>
+        <div>📅 <strong>Shoot Date:</strong> {shootDateText}</div>
+        <div>⏱️ <strong>Estimated Delivery:</strong> {deliveryText}</div>
+      </div>
+
+      <div style={{ fontSize: '12px', color: '#475569' }}>
+        <strong>Included Deliverables:</strong>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '6px' }}>
+          {deliverableList.map((item, idx) => {
+            let label = '';
+            if (typeof item === 'string') {
+              label = item;
+            } else if (item && typeof item === 'object') {
+              label = item.name || item.title || item.serviceName || item.service || item.category || item.id || 'Deliverable Item';
+            } else {
+              label = String(item || 'Deliverable');
+            }
+            return (
+              <span key={idx} style={{ background: '#FFFFFF', border: '1px solid #CBD5E1', padding: '3px 8px', borderRadius: '6px', fontSize: '11px', color: '#1E293B', fontWeight: '600' }}>
+                ✓ {label}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function NotificationCenter({ userId, isOpen, onClose }) {
   const [notifs, setNotifs] = useState([]);
@@ -44,21 +99,31 @@ function NotificationCenter({ userId, isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className="admin-modal-overlay" onClick={onClose}>
-      <div className="admin-modal-content" style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)', maxWidth: '420px', width: '90%', maxHeight: '70vh', display: 'flex', flexDirection: 'column' }} onClick={e => e.stopPropagation()}>
-        <div className="modal-top-header flex-between">
-          <h3 className="modal-title" style={{ fontSize: '16px', fontWeight: '700' }}>Notifications</h3>
-          <button className="duolingo-secondary-btn micro-btn" onClick={onClose}>Close</button>
+    <div className="admin-modal-overlay" onClick={onClose} style={{ zIndex: 99999, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+      <div className="admin-modal-content" style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: '20px', maxWidth: '520px', width: '100%', maxHeight: '80vh', display: 'flex', flexDirection: 'column', boxShadow: '0 24px 60px rgba(0, 0, 0, 0.25)', padding: '24px', margin: 'auto' }} onClick={e => e.stopPropagation()}>
+        <div className="modal-top-header flex-between" style={{ paddingBottom: '12px', borderBottom: '1px solid #F1F5F9' }}>
+          <h3 className="modal-title" style={{ fontSize: '17px', fontWeight: '700', color: '#111111', display: 'flex', alignItems: 'center', gap: '8px', margin: 0 }}>
+            <Bell size={18} style={{ color: '#7C5CFF' }} /> Notifications
+          </h3>
+          <button className="duolingo-secondary-btn micro-btn" style={{ background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#334155', padding: '4px 12px', borderRadius: '8px', cursor: 'pointer' }} onClick={onClose}>Close</button>
         </div>
-        <div style={{ flex: 1, overflowY: 'auto', marginTop: '12px' }}>
-          {notifs.length === 0 && <div style={{ padding: '20px', textAlign: 'center', color: '#6B6B6B' }}>No notifications yet.</div>}
+        <div style={{ flex: 1, overflowY: 'auto', marginTop: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          {notifs.length === 0 && <div style={{ padding: '32px 16px', textAlign: 'center', color: '#64748B', fontSize: '13px' }}>No notifications yet.</div>}
           {notifs.map(n => (
-            <div key={n.id} style={{ padding: '12px', borderBottom: '1px solid #E5E7EB', background: n.read ? 'transparent' : 'rgba(124,92,255,0.06)' }}>
-              <div style={{ fontSize: '13px', color: '#111111', marginBottom: '4px' }}>{n.title}</div>
-              <div style={{ fontSize: '12px', color: '#6B6B6B', marginBottom: '6px' }}>{n.message}</div>
+            <div key={n.id} style={{ padding: '12px 14px', border: '1px solid #F1F5F9', borderRadius: '10px', background: n.read ? '#FFFFFF' : '#F8FAFC', borderLeft: n.read ? '1px solid #F1F5F9' : '3px solid #7C5CFF' }}>
+              <div style={{ fontSize: '13px', fontWeight: '600', color: '#0F172A', marginBottom: '4px' }}>{n.title || 'System Notification'}</div>
+              <div style={{ fontSize: '12px', color: '#475569', marginBottom: '8px', lineHeight: '1.4' }}>{n.message}</div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontSize: '11px', color: '#6B7280' }}>{new Date(n.createdAt).toLocaleString()}</span>
-                {!n.read && <button className="duolingo-secondary-btn micro-btn" style={{ fontSize: '11px', padding: '4px 10px' }} onClick={() => markRead(n.id)}>Mark as read</button>}
+                <span style={{ fontSize: '11px', color: '#94A3B8' }}>{new Date(n.createdAt).toLocaleString([], { dateStyle: 'short', timeStyle: 'short' })}</span>
+                {!n.read && (
+                  <button 
+                    className="micro-btn" 
+                    style={{ fontSize: '11px', padding: '4px 10px', background: '#7C5CFF', color: '#FFFFFF', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: '600' }} 
+                    onClick={() => markRead(n.id)}
+                  >
+                    Mark as read
+                  </button>
+                )}
               </div>
             </div>
           ))}
@@ -403,19 +468,31 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
           id: m.id || `msg_${Math.random()}`,
           role: isAdmin ? 'admin' : ((m.sender === 'user' || m.role === 'user') ? 'user' : 'assistant'),
           senderName: isAdmin ? (m.senderName || 'Admin Team') : ((m.sender === 'user' || m.role === 'user') ? resolvedUserName : 'ADDI'),
-          text: m.text || m.content || ''
+          text: m.text || m.content || '',
+          counterProposal: m.counterProposal || null
         };
       });
 
       setMessages(prev => {
         if (
           prev.length === mapped.length &&
-          prev.every((p, idx) => p.id === mapped[idx].id && p.text === mapped[idx].text && p.role === mapped[idx].role)
+          prev.every((p, idx) => p.id === mapped[idx].id && p.text === mapped[idx].text && p.role === mapped[idx].role && p.counterProposal === mapped[idx].counterProposal)
         ) {
           return prev;
         }
         return mapped;
       });
+
+      // Mark incoming Admin messages as read by customer
+      if (userProf && userProf.chatHistory && userProf.chatHistory.some(c => (c.sender === 'admin' || c.role === 'admin' || c.senderRole === 'Admin') && !c.read)) {
+        const updatedHistory = userProf.chatHistory.map(c => {
+          if ((c.sender === 'admin' || c.role === 'admin' || c.senderRole === 'Admin') && !c.read) {
+            return { ...c, read: true, readAt: new Date().toISOString() };
+          }
+          return c;
+        });
+        profileService.saveProfile({ ...userProf, chatHistory: updatedHistory });
+      }
     } else {
       const initialGreeting = resolvedUserName !== 'there'
         ? `Hi ${resolvedUserName}! 👋 I'm ADDI, your AI Creative Strategist. I can assist with shoot schedules, drone footage, budget adjustments, branding, reels, or package updates for ${businessName}. What would you like to work on today?`
@@ -424,6 +501,136 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
         if (prev.length === 1 && prev[0].text === initialGreeting) return prev;
         return [{ role: 'assistant', text: initialGreeting, senderName: 'ADDI' }];
       });
+    }
+  };
+
+  const handleAcceptProposal = (proposal) => {
+    try {
+      if (proposal.projectId) {
+        updateProjectInStore(proposal.projectId, {
+          shootDate: proposal.proposedShootDate,
+          budget: proposal.proposedBudget ? `₹${Number(proposal.proposedBudget).toLocaleString('en-IN')}` : '₹15,000',
+          status: 'Approved',
+          lifecycleStage: 'Approved'
+        }, { actor: 'Customer', role: 'Customer' });
+      }
+
+      const allProfiles = profileService.getAllProfiles();
+      allProfiles.forEach(prof => {
+        const chat = (prof.chatHistory || []).map(c => {
+          if (c.counterProposal && (c.counterProposal.reqId === proposal.reqId || c.counterProposal.projectId === proposal.projectId)) {
+            return { ...c, counterProposal: { ...c.counterProposal, status: 'accepted' } };
+          }
+          return c;
+        });
+
+        chat.push({
+          id: `msg_cust_${Date.now()}`,
+          sender: 'user',
+          role: 'user',
+          text: '✓ I accepted the proposed date and budget changes. Let us proceed!',
+          timestamp: new Date().toISOString()
+        });
+
+        chat.push({
+          id: `msg_addi_${Date.now()}`,
+          sender: 'admin',
+          role: 'admin',
+          text: '🎉 Awesome! Proposal confirmed. Your project status is now LIVE in Strategy Preparation!',
+          timestamp: new Date().toISOString()
+        });
+
+        const updated = profileService.saveProfile({ ...prof, chatHistory: chat });
+        syncService.syncProfile(prof.userId, updated);
+      });
+
+      try {
+        localStorage.removeItem('ADDUS_LATEST_PROPOSAL_GLOBAL');
+        if (proposal.projectId) localStorage.removeItem(`ADDUS_LATEST_PROPOSAL_${proposal.projectId}`);
+      } catch {}
+
+      window.dispatchEvent(new CustomEvent('addus_chat_updated'));
+      window.dispatchEvent(new CustomEvent('addus_profile_updated'));
+      window.dispatchEvent(new CustomEvent('addus_approvals_updated'));
+      window.dispatchEvent(new CustomEvent('addus_projects_updated'));
+
+      alert('🎉 Proposal accepted! Your project is now active and live.');
+    } catch (e) {
+      console.warn('Accept proposal error:', e);
+    }
+  };
+
+  const handleRejectProposal = (proposal) => {
+    try {
+      const reasonInput = window.prompt(
+        'Please state your reason for declining this proposal so Admin can adjust the details:',
+        'Shoot date not convenient / Budget needs adjustment'
+      );
+
+      if (reasonInput === null) return; // User cancelled
+      const reason = reasonInput.trim() || 'Customer requested date/budget adjustments.';
+
+      if (proposal.projectId) {
+        updateProjectInStore(proposal.projectId, {
+          status: 'Customer Rejected',
+          rejectionReason: reason,
+          customerNote: `Declined proposal. Reason: ${reason}`
+        }, { actor: 'Customer', role: 'Customer' });
+      }
+
+      const allProfiles = profileService.getAllProfiles();
+      allProfiles.forEach(prof => {
+        const chat = (prof.chatHistory || []).map(c => {
+          if (c.counterProposal && (c.counterProposal.reqId === proposal.reqId || c.counterProposal.projectId === proposal.projectId)) {
+            return { ...c, counterProposal: { ...c.counterProposal, status: 'rejected', rejectionReason: reason } };
+          }
+          return c;
+        });
+
+        chat.push({
+          id: `msg_cust_${Date.now()}`,
+          sender: 'user',
+          role: 'user',
+          text: `✕ I declined the proposed date/budget. Reason: "${reason}". Please modify and resend.`,
+          timestamp: new Date().toISOString()
+        });
+
+        chat.push({
+          id: `msg_addi_${Date.now()}`,
+          sender: 'admin',
+          role: 'admin',
+          text: `Understood! We have notified the Admin team with your feedback ("${reason}"). They will modify the project details and resend a revised proposal to you shortly.`,
+          timestamp: new Date().toISOString()
+        });
+
+        const updated = profileService.saveProfile({ ...prof, chatHistory: chat });
+        syncService.syncProfile(prof.userId, updated);
+      });
+
+      // Dispatch high-priority notification to Admin
+      NotificationEngine.notify({
+        userId: 'admin',
+        role: 'Admin',
+        type: 'proposal_rejected',
+        title: '⚠️ Proposal Declined by Customer',
+        message: `Customer declined proposal for "${proposal.projectName || 'Project'}". Reason: "${reason}". Click to re-edit & resend.`,
+        priority: 'high',
+        deepLink: '/admin?tab=approvals'
+      });
+
+      try {
+        localStorage.removeItem('ADDUS_LATEST_PROPOSAL_GLOBAL');
+        if (proposal.projectId) localStorage.removeItem(`ADDUS_LATEST_PROPOSAL_${proposal.projectId}`);
+      } catch {}
+
+      window.dispatchEvent(new CustomEvent('addus_chat_updated'));
+      window.dispatchEvent(new CustomEvent('addus_profile_updated'));
+      window.dispatchEvent(new CustomEvent('addus_approvals_updated'));
+      window.dispatchEvent(new CustomEvent('addus_projects_updated'));
+
+      alert('Feedback sent! Admin has been notified to modify the details and resend.');
+    } catch (e) {
+      console.warn('Reject proposal error:', e);
     }
   };
 
@@ -643,71 +850,204 @@ function ADDIChatStrip({ project, brain, userId, userName: propUserName, product
     } finally { setIsTyping(false); }
   };
 
+  const [expanded, setExpanded] = useState(false);
+
   return (
-    <div className="addi-chat-strip">
-      <div className="addi-strip-header flex-between" style={{ display: 'flex', alignItems: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <div className="addi-strip-avatar"><Sparkles size={13} /></div>
-          <span style={{ fontWeight: '700' }}>ADDI &amp; Admin Support</span>
-        </div>
-        <span style={{ fontSize: '11px', color: '#34d399', display: 'flex', alignItems: 'center', gap: '4px' }}>● Live Sync</span>
-      </div>
-
-      <div ref={chatMessagesAreaRef} className="addi-chat-messages-area" style={{ maxHeight: '220px', overflowY: 'auto', marginBottom: '10px' }}>
-        {messages.length === 0 && (
-          <div style={{ fontSize: '12px', color: 'var(--text-secondary)', padding: '8px 0' }}>
-            Ask ADDI about your project, request changes, or message support.
-          </div>
-        )}
-        {messages.map((m, i) => {
-          const isAdmin = m.role === 'admin' || m.senderName?.toLowerCase().includes('admin');
-          const isUser = m.role === 'user';
-          return (
-            <div key={m.id || i} style={{ marginBottom: '8px', display: 'flex', flexDirection: 'column', alignItems: isUser ? 'flex-end' : 'flex-start' }}>
-              <span style={{ fontSize: '10px', color: isAdmin ? '#A78BFA' : (isUser ? '#9CA3AF' : '#00D1FF'), marginBottom: '2px', fontWeight: '600' }}>
-                {isAdmin ? '🛡️ Admin Team' : (isUser ? '👤 You' : '🤖 ADDI')}
-              </span>
-              <div style={{
-                background: isUser
-                  ? 'linear-gradient(135deg,#7c5cff,#4f46e5)'
-                  : (isAdmin ? 'rgba(124,92,255,0.15)' : '#F3F4F6'),
-                border: isUser
-                  ? 'none'
-                  : (isAdmin ? '1px solid rgba(167,139,250,0.3)' : '1px solid rgba(0,0,0,0.08)'),
-                borderRadius: isUser ? '12px 12px 2px 12px' : '2px 12px 12px 12px',
-                padding: '8px 12px', maxWidth: '85%', fontSize: '12px', color: isUser ? '#FFFFFF' : '#111111', lineHeight: 1.5
-              }}>
-                {m.text}
-              </div>
+    <div style={{ width: '100%', maxWidth: '800px', margin: '0 auto 12px auto' }}>
+      {/* 1ST: Message Showing Box (Expanded Chat History & Suggestions) */}
+      {(expanded || messages.length > 0) && (
+        <div style={{
+          background: '#FFFFFF',
+          borderRadius: '16px',
+          padding: '16px 20px',
+          marginBottom: '12px',
+          border: '1px solid #E2E8F0',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)'
+        }}>
+          <div className="flex-between" style={{ marginBottom: '12px', paddingBottom: '8px', borderBottom: '1px solid #F1F5F9' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <div className="addi-strip-avatar" style={{ background: '#F3E8FF', color: '#7C5CFF', padding: '4px', borderRadius: '50%' }}><Sparkles size={14} /></div>
+              <span style={{ fontWeight: '700', fontSize: '13px', color: '#1E293B' }}>ADDI &amp; Admin Support</span>
             </div>
-          );
-        })}
-        {isTyping && (
-          <div style={{ display: 'flex', gap: '4px', padding: '8px 12px' }}>
-            {[0, 0.2, 0.4].map((d, i) => (
-              <div key={i} style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--accent-purple)', animation: `pulse 1s infinite ${d}s` }} />
-            ))}
+            <button onClick={() => setExpanded(false)} style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer', fontSize: '12px' }}>Close</button>
           </div>
-        )}
-      </div>
 
-      <div className="addi-strip-suggestion-chips">
-        {SUGGESTIONS.map(s => (
-          <button key={s} className="suggestion-chip" onClick={() => sendMessage(s)}>{s}</button>
-        ))}
-      </div>
+          <div ref={chatMessagesAreaRef} style={{ maxHeight: '200px', overflowY: 'auto' }}>
+            {messages.map((m, i) => {
+              const isAdmin = m.role === 'admin' || m.senderName?.toLowerCase().includes('admin');
+              const isUser = m.role === 'user';
+              return (
+                <div key={m.id || i} style={{ marginBottom: '8px', display: 'flex', flexDirection: 'column', alignItems: isUser ? 'flex-end' : 'flex-start', width: '100%' }}>
+                  <span style={{ fontSize: '10px', color: isAdmin ? '#7C5CFF' : (isUser ? '#64748B' : '#0284C7'), marginBottom: '2px', fontWeight: '600' }}>
+                    {isAdmin ? '🛡️ Admin Team' : (isUser ? '👤 You' : '🤖 ADDI')}
+                  </span>
+                  <div style={{
+                    background: isUser ? '#7C5CFF' : (isAdmin ? '#F3E8FF' : '#F8FAFC'),
+                    borderRadius: isUser ? '12px 12px 2px 12px' : '2px 12px 12px 12px',
+                    padding: '8px 12px', maxWidth: '85%', fontSize: '13px', color: isUser ? '#FFFFFF' : '#1E293B', border: isUser ? 'none' : '1px solid #E2E8F0'
+                  }}>
+                    {m.text}
+                  </div>
 
-      <div className="addi-strip-input-row" style={{ marginTop: '10px' }}>
+                  {m.counterProposal && (
+                    <div 
+                      style={{
+                        background: 'linear-gradient(135deg, #1E1E2E, #161622)',
+                        border: '1px solid rgba(124, 92, 255, 0.4)',
+                        borderRadius: '14px',
+                        padding: '14px',
+                        marginTop: '6px',
+                        color: '#FFF',
+                        boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
+                        maxWidth: '90%',
+                        boxSizing: 'border-box'
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '6px' }}>
+                        <Sparkles size={14} color="#7C5CFF" />
+                        <span style={{ fontSize: '12px', fontWeight: '800', color: '#FFF' }}>
+                          📋 ADDUS Admin Counter-Proposal
+                        </span>
+                      </div>
+
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '12px', color: '#D1D5DB', marginBottom: '10px' }}>
+                        <div>📅 Proposed Shoot Date: <strong style={{ color: '#00D1FF' }}>{m.counterProposal.proposedShootDate}</strong></div>
+                        <div>💰 Proposed Budget: <strong style={{ color: '#10B981' }}>₹{Number(m.counterProposal.proposedBudget).toLocaleString('en-IN')}</strong></div>
+                        {m.counterProposal.adminNote && (
+                          <div style={{ marginTop: '4px', fontStyle: 'italic', color: '#9CA3AF', background: 'rgba(255,255,255,0.04)', padding: '6px 8px', borderRadius: '6px' }}>
+                            "{m.counterProposal.adminNote}"
+                          </div>
+                        )}
+                      </div>
+
+                      {m.counterProposal.status === 'pending' ? (
+                        <div style={{ display: 'flex', gap: '8px', marginTop: '10px' }}>
+                          <button
+                            type="button"
+                            onClick={() => handleAcceptProposal(m.counterProposal)}
+                            style={{
+                              flex: 1,
+                              padding: '8px 10px',
+                              background: 'linear-gradient(135deg, #10B981, #059669)',
+                              border: 'none',
+                              borderRadius: '8px',
+                              color: '#FFF',
+                              fontSize: '11px',
+                              fontWeight: '800',
+                              cursor: 'pointer',
+                              boxShadow: '0 4px 12px rgba(16, 185, 129, 0.3)'
+                            }}
+                          >
+                            ✓ Accept Admin Proposal
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => handleRejectProposal(m.counterProposal)}
+                            style={{
+                              flex: 1,
+                              padding: '8px 10px',
+                              background: 'rgba(239, 68, 68, 0.15)',
+                              border: '1px solid rgba(239, 68, 68, 0.3)',
+                              borderRadius: '8px',
+                              color: '#EF4444',
+                              fontSize: '11px',
+                              fontWeight: '700',
+                              cursor: 'pointer'
+                            }}
+                          >
+                            ✕ Reject Proposal
+                          </button>
+                        </div>
+                      ) : m.counterProposal.status === 'accepted' ? (
+                        <div style={{ padding: '6px 10px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.3)', borderRadius: '6px', color: '#10B981', fontSize: '11px', fontWeight: '800', textAlign: 'center' }}>
+                          ✅ Proposal Accepted — Project is LIVE
+                        </div>
+                      ) : (
+                        <div style={{ padding: '6px 10px', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '6px', color: '#EF4444', fontSize: '11px', fontWeight: '800', textAlign: 'center' }}>
+                          ❌ Proposal Declined — Admin Notified to Modify Details
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* 2ND: Message Typing Box / Keyboard Input Pill Bar */}
+      <div 
+        style={{
+          background: '#FFFFFF',
+          borderRadius: '50px',
+          padding: '8px 12px 8px 16px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.04)',
+          border: '1px solid #E2E8F0',
+          transition: 'all 0.2s ease'
+        }}
+      >
+        <button 
+          type="button"
+          onClick={() => setExpanded(!expanded)}
+          title="Toggle Chat View"
+          style={{
+            width: '38px',
+            height: '38px',
+            borderRadius: '50%',
+            background: '#F8FAFC',
+            border: '1px solid #E2E8F0',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            flexShrink: 0
+          }}
+        >
+          <Plus size={18} color="#64748B" />
+        </button>
+
         <input
           type="text"
-          className="addi-strip-input"
           placeholder="Ask ADDI or message admin team..."
           value={input}
           onChange={e => setInput(e.target.value)}
-          onKeyDown={e => { if (e.key === 'Enter' && input.trim()) sendMessage(input.trim()); }}
+          onFocus={() => setExpanded(true)}
+          onKeyDown={e => { if (e.key === 'Enter' && input.trim()) { sendMessage(input.trim()); setExpanded(true); } }}
+          style={{
+            border: 'none',
+            outline: 'none',
+            background: 'transparent',
+            width: '100%',
+            fontSize: '15px',
+            color: '#1E293B'
+          }}
         />
-        <button className="addi-strip-send" disabled={!input.trim() || isTyping} onClick={() => sendMessage(input.trim())}>
-          <Send size={14} />
+
+        <button 
+          type="button"
+          disabled={!input.trim() || isTyping}
+          onClick={() => { sendMessage(input.trim()); setExpanded(true); }}
+          style={{
+            width: '38px',
+            height: '38px',
+            borderRadius: '50%',
+            background: input.trim() ? '#7C5CFF' : '#F1F5F9',
+            color: input.trim() ? '#FFFFFF' : '#94A3B8',
+            border: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: input.trim() ? 'pointer' : 'default',
+            flexShrink: 0,
+            transition: 'all 0.2s ease'
+          }}
+        >
+          <Send size={16} />
         </button>
       </div>
     </div>
@@ -992,7 +1332,6 @@ export function DashboardPage({ showToast, onToastDismiss }) {
     return (
       <div className="dashboard-viewport fade-in">
         <ProjectsTab onCreateNew={() => setActiveTab('home')} defaultFilter={projectsFilter} />
-        <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
     );
   }
@@ -1009,7 +1348,6 @@ export function DashboardPage({ showToast, onToastDismiss }) {
             setActiveTab('home');
           }}
         />
-        <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
     );
   }
@@ -1073,7 +1411,6 @@ export function DashboardPage({ showToast, onToastDismiss }) {
             ))}
           </div>
         </div>
-        <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
     );
   }
@@ -1133,7 +1470,6 @@ export function DashboardPage({ showToast, onToastDismiss }) {
           onBack={() => setActiveTab('home')} 
           onSaveProfile={(patch) => updateProfile(patch)} 
         />
-        <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
     );
   }
@@ -1142,7 +1478,6 @@ export function DashboardPage({ showToast, onToastDismiss }) {
     return (
       <div className="dashboard-viewport fade-in" style={{ overflowY: 'auto' }}>
         <LegalPages type="terms" onBack={() => setActiveTab('home')} />
-        <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
     );
   }
@@ -1151,33 +1486,40 @@ export function DashboardPage({ showToast, onToastDismiss }) {
     return (
       <div className="dashboard-viewport fade-in" style={{ overflowY: 'auto' }}>
         <LegalPages type="privacy" onBack={() => setActiveTab('home')} />
-        <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
       </div>
     );
   }
 
   return (
-    <div className="dashboard-viewport fade-in">
+    <div className="dashboard-viewport customer-dashboard-page fade-in" style={{ background: '#FFFFFF', minHeight: '100vh', color: '#111111' }}>
       
       
 
       <ToastNotification message={toast} onDismiss={() => { setToast(''); if (onToastDismiss) onToastDismiss(); }} />
 
-      <header className="dashboard-top-bar flex-between" style={{ padding: '12px 24px', background: '#FFFFFF', borderBottom: '1px solid #E5E7EB' }}>
-        <div className="top-brand flex-center" style={{ gap: '8px' }}>
-          <button className="top-icon-btnHamburger" style={{ background: 'none', border: 'none', color: '#111111', cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={() => setIsDrawerOpen(true)}>
+      <header style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', height: '64px', padding: '0 24px', background: '#FFFFFF', borderBottom: '1px solid #E2E8F0', position: 'sticky', top: 0, zIndex: 100, boxSizing: 'border-box' }}>
+        {/* Left Side: Hamburger Menu & ADDUS Logo */}
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '12px' }}>
+          <button 
+            type="button"
+            title="Open Menu" 
+            style={{ background: 'none', border: 'none', color: '#0F172A', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '6px', borderRadius: '8px' }} 
+            onClick={() => setIsDrawerOpen(true)}
+          >
             <Menu size={22} />
           </button>
-          <div className="top-brand flex-center" style={{ margin: 0 }}>
-            <img src="/addus_logo.png" alt="ADDUS" style={{ height: '24px', width: 'auto' }} />
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <img src="/addus_logo.png" alt="ADDUS" style={{ height: '24px', width: 'auto', display: 'block' }} />
           </div>
         </div>
-        <div className="top-actions flex-center" style={{ gap: '8px' }}>
+
+        {/* Right Side: Product Selector, Notifications Bell & Logout Button */}
+        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '10px' }}>
           {products.length > 0 && (
             <select
               value={selectedProductId || ''}
               onChange={(e) => setSelectedProductId(e.target.value || null)}
-              style={{ background: '#E5E7EB', border: '1px solid rgba(0,0,0,0.12)', color: '#111111', borderRadius: '8px', padding: '6px 10px', fontSize: '13px', cursor: 'pointer' }}
+              style={{ background: '#F1F5F9', border: '1px solid #CBD5E1', color: '#0F172A', borderRadius: '8px', padding: '6px 10px', fontSize: '13px', cursor: 'pointer' }}
             >
               <option value="">All Business</option>
               {products.map(p => (
@@ -1185,12 +1527,28 @@ export function DashboardPage({ showToast, onToastDismiss }) {
               ))}
             </select>
           )}
-          <button className="top-icon-btn" title="Notifications" onClick={() => setIsNotificationCenterOpen(true)} style={{ position: 'relative' }}>
-            <Bell size={20} />
-            {unreadNotifications > 0 && <span style={{ position: 'absolute', top: '-4px', right: '-4px', background: '#EF4444', color: '#111111', fontSize: '10px', fontWeight: '700', borderRadius: '50%', width: '16px', height: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{unreadNotifications}</span>}
+
+          <button 
+            type="button"
+            title="Notifications" 
+            onClick={() => setIsNotificationCenterOpen(true)} 
+            style={{ position: 'relative', background: '#F1F5F9', border: '1px solid #E2E8F0', borderRadius: '50%', width: '38px', height: '38px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#0F172A', flexShrink: 0 }}
+          >
+            <Bell size={18} />
+            {unreadNotifications > 0 && (
+              <span style={{ position: 'absolute', top: '-2px', right: '-2px', background: '#EF4444', color: '#FFFFFF', fontSize: '10px', fontWeight: '700', borderRadius: '50%', width: '18px', height: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid #FFFFFF' }}>
+                {unreadNotifications}
+              </span>
+            )}
           </button>
-          <button className="top-icon-btn" title="Logout" onClick={() => { authService.logout(); resetState(); window.location.reload(); }}>
-            <LogOut size={20} />
+
+          <button 
+            type="button"
+            title="Logout" 
+            onClick={() => { authService.logout(); resetState(); window.location.reload(); }} 
+            style={{ background: '#F1F5F9', border: '1px solid #E2E8F0', borderRadius: '50%', width: '38px', height: '38px', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: '#0F172A', flexShrink: 0 }}
+          >
+            <LogOut size={18} />
           </button>
         </div>
       </header>
@@ -1199,103 +1557,163 @@ export function DashboardPage({ showToast, onToastDismiss }) {
       {renderActivityFeedDrawer()}
       <NotificationCenter userId={userId} isOpen={isNotificationCenterOpen} onClose={() => setIsNotificationCenterOpen(false)} />
 
-      <main className="dashboard-content-container" style={{ padding: '24px 24px 100px 24px' }}>
+      <main className="dashboard-content-container" style={{ padding: '32px 24px 100px 24px', background: '#FFFFFF', minHeight: '100vh', color: '#111111' }}>
         <section className="greeting-section" style={{ marginBottom: '20px' }}>
           <h1 className="greeting-headline" style={{ fontSize: '28px', fontWeight: '800', color: '#111111' }}>{greetingHeadline}</h1>
-          <p className="greeting-subtext" style={{ fontSize: '14px', color: '#6B6B6B', marginTop: '4px' }}>{getGreeting()} — Welcome to your ADDUS workspace</p>
+          <p className="greeting-subtext" style={{ fontSize: '14px', color: '#475569', marginTop: '4px' }}>{getGreeting()} — Welcome to your ADDUS workspace</p>
         </section>
+
+        {/* CURRENT PROJECT BUTTON ABOVE ADDI CHAT BOX */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+          <button
+            type="button"
+            onClick={() => {
+              if (latestProject) {
+                setSelectedDetailProject(latestProject);
+              } else {
+                setSelectedDetailProject({ isNoProject: true });
+              }
+            }}
+            style={{
+              background: '#FFFFFF',
+              border: '1px solid #E2E8F0',
+              borderRadius: '30px',
+              padding: '10px 22px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              cursor: 'pointer',
+              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04)',
+              fontSize: '14px',
+              fontWeight: '700',
+              color: '#0F172A',
+              transition: 'all 0.2s ease'
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 24px rgba(0, 0, 0, 0.08)';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.04)';
+            }}
+          >
+            <FolderKanban size={18} style={{ color: '#7C5CFF' }} />
+            <span>
+              {latestProject
+                ? `Current Project: ${latestProject.service || latestProject.title || `#${latestProject.id}`}`
+                : 'View Project Details'}
+            </span>
+            <span style={{ fontSize: '11px', background: '#F3E8FF', color: '#7C5CFF', padding: '2px 8px', borderRadius: '12px', fontWeight: '600' }}>
+              {latestProject?.status || 'Active Workspace'}
+            </span>
+            <ChevronRight size={16} style={{ color: '#64748B' }} />
+          </button>
+        </div>
 
         {/* 1. TOP: ADDI & ADMIN SUPPORT CHAT STRIP */}
         <section style={{ marginBottom: '24px' }}>
           <ADDIChatStrip project={latestProject} brain={brain} userId={userId} userName={userNameText} products={products} selectedProductId={selectedProductId} />
         </section>
 
-        {/* 2. WHAT WOULD YOU LIKE TO CREATE? */}
-        <section className="quick-actions-section" style={{ marginBottom: '24px' }}>
-          <div className="flex-between" style={{ marginBottom: '12px' }}>
-            <h3 className="section-title" style={{ marginBottom: 0, fontSize: '16px', fontWeight: '700' }}>
-              What do you need help with?
-            </h3>
-          </div>
-          <div className="quick-actions-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '12px' }}>
-            {getDynamicQuickActions().map(action => {
-              const Icon = action.icon;
+        {/* 2. WHAT DO YOU NEED HELP WITH? */}
+        <section className="quick-actions-section" style={{ marginBottom: '32px' }}>
+          <h2 style={{ fontSize: '20px', fontWeight: '800', color: '#0F172A', marginBottom: '16px' }}>
+            What do you need help with?
+          </h2>
+          <div 
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(210px, 1fr))',
+              gap: '16px',
+              maxWidth: '960px',
+              margin: '0 auto'
+            }}
+          >
+            {[
+              { id: 'video_shoot', category: 'Video Shoot', exploreLabel: 'Video Shoot', isVideo: true, image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80' },
+              { id: 'photo_shoot', category: 'Photo Shoot', exploreLabel: 'Photo Shoot', image: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=600&q=80' },
+              { id: 'branding', category: 'Branding', exploreLabel: 'Branding', image: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=600&q=80' },
+              { id: 'social_media', category: 'Social Media Management', exploreLabel: 'Social Media Management', image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?auto=format&fit=crop&w=600&q=80' },
+              { id: 'paid_ads', category: 'Paid Advertisements', exploreLabel: 'Paid Advertisements', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80' },
+              { id: 'video_photo_edit', category: 'Video & Photo Editing', exploreLabel: 'Video & Photo Editing', image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=600&q=80' },
+              { id: 'packaging_design', category: 'Product & Packaging Design', exploreLabel: 'Product & Packaging Design', image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?auto=format&fit=crop&w=600&q=80' },
+              { id: 'product_campaign', category: 'Product Campaign', exploreLabel: 'Product Campaign', image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80' },
+              { id: 'content_copywriting', category: 'Content & Copywriting', exploreLabel: 'Content & Copywriting', image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80' },
+              { id: 'influencer_sourcing', category: 'Influencer & Collab', exploreLabel: 'Influencer & Collab', image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80' }
+            ].map(card => {
               return (
-                <button key={action.id} className="quick-action-card" style={{ cursor: 'pointer', border: '1px solid #F9FAFB', background: '#FFFFFF' }} onClick={() => handleQuickAction(action)}>
-                  <div className="action-icon-wrap" style={{ background: `${action.color}18`, color: action.color }}>
-                    <Icon size={22} />
+                <div
+                  key={card.id}
+                  onClick={() => handleQuickAction(card)}
+                  style={{
+                    height: '140px',
+                    borderRadius: '16px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    background: `url(${card.image}) center/cover no-repeat`,
+                    boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
+                    transition: 'all 0.25s ease'
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)';
+                    e.currentTarget.style.boxShadow = '0 12px 28px rgba(0, 0, 0, 0.2)';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                    e.currentTarget.style.boxShadow = '0 4px 16px rgba(0, 0, 0, 0.12)';
+                  }}
+                >
+                  {/* Dark Gradient Overlay */}
+                  <div 
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      background: 'linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.35) 55%, rgba(0, 0, 0, 0.05) 100%)',
+                      padding: '16px',
+                      display: 'flex',
+                      alignItems: 'flex-end',
+                      justify: 'space-between',
+                      gap: '8px'
+                    }}
+                  >
+                    <div 
+                      style={{
+                        fontSize: '16px',
+                        fontWeight: '800',
+                        color: '#FFFFFF',
+                        lineHeight: '1.25',
+                        textShadow: '0 2px 4px rgba(0, 0, 0, 0.6)'
+                      }}
+                    >
+                      {card.exploreLabel}
+                    </div>
+
+                    {card.isVideo && (
+                      <div 
+                        style={{
+                          width: '36px',
+                          height: '36px',
+                          borderRadius: '50%',
+                          background: 'rgba(255, 255, 255, 0.25)',
+                          backdropFilter: 'blur(4px)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          flexShrink: 0,
+                          border: '1px solid rgba(255, 255, 255, 0.3)'
+                        }}
+                      >
+                        <Play size={18} fill="#FFFFFF" color="#FFFFFF" style={{ marginLeft: '2px' }} />
+                      </div>
+                    )}
                   </div>
-                  <span className="action-label" style={{ fontWeight: '500' }}>{action.exploreLabel}</span>
-                  {action.description && <span style={{ fontSize: '9px', color: '#6B7280', marginTop: '2px', textAlign: 'center' }}>{action.description}</span>}
-                </button>
+                </div>
               );
             })}
           </div>
         </section>
-
-        {/* 3. ACTIVE PROJECT TIMELINES / EMPTY STATE (Multi-Project Support) */}
-        {projects.length > 0 ? (
-          <section style={{ marginBottom: '24px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <div className="flex-between" style={{ marginBottom: '4px' }}>
-              <h3 className="section-title" style={{ marginBottom: 0, fontSize: '16px', fontWeight: '700', color: '#111111' }}>
-                Your Active Project
-              </h3>
-              <button className="create-new-link flex-center" style={{ fontSize: '13px' }} onClick={() => { setActiveTab('projects'); setProjectsFilter('All'); }}>
-                View All Projects <ChevronRight size={14} />
-              </button>
-            </div>
-            {projects.map((proj, pIdx) => (
-              <div key={proj.id || pIdx} className="admin-card" style={{ background: '#FFFFFF', borderRadius: '12px', padding: '20px', border: '1px solid rgba(0,209,255,0.2)' }}>
-                <div className="flex-between margin-bottom-12">
-                  <div>
-                    <span className="admin-badge admin-badge-indigo" style={{ marginBottom: '4px', display: 'inline-block' }}>{proj.service || proj.type}</span>
-                    <h4 style={{ fontSize: '16px', fontWeight: '700', color: '#111111', margin: '4px 0 0 0' }}>{proj.title || `${proj.service || 'Project'} #${proj.id}`}</h4>
-                  </div>
-                  <button 
-                    type="button" 
-                    className="duolingo-secondary-btn micro-btn"
-                    onClick={() => setSelectedDetailProject(proj)}
-                  >
-                    Open Project →
-                  </button>
-                </div>
-                <ProjectTimeline project={proj} />
-              </div>
-            ))}
-          </section>
-        ) : (
-          <section className="dashboard-widget-section" style={{ marginBottom: '24px' }}>
-            <div className="empty-state-card flex-center" style={{ padding: '36px 20px', background: '#FFFFFF', border: '1px dashed rgba(0,0,0,0.1)', borderRadius: '12px' }}>
-              <Rocket size={32} className="empty-icon" style={{ color: '#7C5CFF' }} />
-              <p className="empty-state-text" style={{ fontSize: '15px', fontWeight: '600', marginTop: '8px' }}>No active projects yet.</p>
-              <p style={{ fontSize: '12px', color: '#6B6B6B', marginTop: '4px', textAlign: 'center' }}>
-                Select a service below to launch your project.
-              </p>
-            </div>
-          </section>
-        )}
-
-        {/* 4. COMPACT STATUS BAR */}
-        <section style={{ marginBottom: '20px', display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' }}>
-          <span style={{ fontSize: '12px', color: '#6B6B6B', background: '#F9FAFB', padding: '6px 12px', borderRadius: '20px', border: '1px solid #E5E7EB' }}>
-            Projects: {projects.length}
-          </span>
-          <span style={{ fontSize: '12px', color: '#6B6B6B', background: '#F9FAFB', padding: '6px 12px', borderRadius: '20px', border: '1px solid #E5E7EB' }}>
-            Pending Reviews: {pendingReviewsCount}
-          </span>
-          <span style={{ fontSize: '12px', color: '#6B6B6B', background: '#F9FAFB', padding: '6px 12px', borderRadius: '20px', border: '1px solid #E5E7EB' }}>
-            Upcoming Deliveries: {upcomingDeliveriesCount}
-          </span>
-          <span style={{ fontSize: '12px', color: '#6B6B6B', background: '#F9FAFB', padding: '6px 12px', borderRadius: '20px', border: '1px solid #E5E7EB', cursor: 'pointer' }} onClick={() => setIsActivityOpen(true)}>
-            Recent Updates: {recentUpdatesCount}
-          </span>
-        </section>
-
-        {brain?.businessName && (
-          <section style={{ marginBottom: '16px' }}>
-            <BusinessBrainCard brain={brain} onEdit={() => { setActiveTab('profile'); setProfileSubTab('business'); }} />
-          </section>
-        )}
 
         {expertStatus && (
           <section style={{ marginBottom: '16px' }}>
@@ -1307,8 +1725,6 @@ export function DashboardPage({ showToast, onToastDismiss }) {
             />
           </section>
         )}
-
-        <NotificationsPanel userId={userId} />
 
         {/* 5. EXPERT SUGGESTIONS */}
         <ExpertSuggestionsSection 
@@ -1326,40 +1742,55 @@ export function DashboardPage({ showToast, onToastDismiss }) {
           }} 
         />
 
-        {/* 6. BOTTOM: RECENT UPDATES */}
-        <section className="admin-card margin-bottom-24" style={{ background: '#FFFFFF', padding: '20px', borderRadius: '12px', border: '1px solid #E5E7EB' }}>
-          <div className="flex-between margin-bottom-12">
-            <h3 className="section-title" style={{ marginBottom: 0, fontSize: '16px', fontWeight: '700', color: '#111111', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Bell size={18} style={{ color: '#10B981' }} /> Recent Activity
-            </h3>
-            <button className="duolingo-secondary-btn micro-btn" onClick={() => setIsActivityOpen(true)}>View All Updates</button>
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            {allUpdates.slice(0, 3).map(up => (
-              <div key={up.id} style={{ padding: '10px 12px', background: '#FFFFFF', borderRadius: '8px', borderLeft: '3px solid #10B981' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#6B6B6B', marginBottom: '2px' }}>
-                  <strong>{up.projectId} · {up.projectService}</strong>
-                  <span>{new Date(up.createdAt).toLocaleDateString()}</span>
-                </div>
-                <div style={{ fontSize: '13px', color: '#111111' }}>"{up.text}"</div>
-              </div>
-            ))}
-             {allUpdates.length === 0 && (
-               <div style={{ fontSize: '12px', color: '#6B6B6B', padding: '10px 0', textAlign: 'center' }}>No recent activity yet.</div>
-             )}
-          </div>
-        </section>
-
         <div style={{ height: '40px' }} />
       </main>
 
       {/* Customer Full Project Workspace Modal */}
       {selectedDetailProject && (
-        <div className="admin-modal-overlay" onClick={() => setSelectedDetailProject(null)}>
-          <div className="admin-modal-content large-ops-modal" style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.08)' }} onClick={e => e.stopPropagation()}>
-            <div className="modal-top-header flex-between">
-              <div>
-                <h3 className="modal-title" style={{ fontSize: '18px', fontWeight: '800' }}>🎬 Project Workspace: {selectedDetailProject.id}</h3>
+        selectedDetailProject.isNoProject || !selectedDetailProject.id ? (
+          <div className="admin-modal-overlay" onClick={() => setSelectedDetailProject(null)} style={{ zIndex: 99999, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+            <div className="admin-modal-content" style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.12)', borderRadius: '24px', maxWidth: '480px', width: '100%', padding: '36px 28px', textAlign: 'center', boxShadow: '0 24px 60px rgba(0, 0, 0, 0.4)', margin: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }} onClick={e => e.stopPropagation()}>
+              
+              {/* Mascot Sitting Lottie Player */}
+              <div style={{ width: '180px', height: '180px', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <MascotLottiePlayer width={180} height={180} path="/lottiefile/mascot_on_chair.json" />
+              </div>
+
+              <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#0F172A', margin: '0 0 8px 0' }}>
+                No Active Projects
+              </h3>
+
+              <p style={{ fontSize: '13.5px', color: '#64748B', margin: '0 0 24px 0', lineHeight: '1.5', maxWidth: '380px' }}>
+                You don't have any active projects right now. Start a new project with ADDI to launch your campaign!
+              </p>
+
+              <div style={{ display: 'flex', gap: '12px', width: '100%', justifyContent: 'center' }}>
+                <button
+                  type="button"
+                  onClick={() => setSelectedDetailProject(null)}
+                  style={{ background: '#F1F5F9', border: '1px solid #CBD5E1', color: '#475569', padding: '10px 18px', borderRadius: '10px', fontSize: '13px', fontWeight: '700', cursor: 'pointer' }}
+                >
+                  Close
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSelectedDetailProject(null);
+                    setActiveTab('home');
+                  }}
+                  style={{ background: 'linear-gradient(135deg, #7C5CFF, #6366F1)', border: 'none', color: '#FFFFFF', padding: '10px 20px', borderRadius: '10px', fontSize: '13px', fontWeight: '800', cursor: 'pointer', boxShadow: '0 4px 14px rgba(124, 92, 255, 0.4)' }}
+                >
+                  + Start Project with ADDI
+                </button>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="admin-modal-overlay" onClick={() => setSelectedDetailProject(null)} style={{ zIndex: 99999, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '16px' }}>
+            <div className="admin-modal-content large-ops-modal" style={{ background: '#FFFFFF', border: '1px solid rgba(0,0,0,0.12)', borderRadius: '20px', maxWidth: '850px', width: '100%', maxHeight: '88vh', overflowY: 'auto', padding: '24px', boxShadow: '0 24px 60px rgba(0, 0, 0, 0.4)', margin: 'auto' }} onClick={e => e.stopPropagation()}>
+              <div className="modal-top-header flex-between">
+                <div>
+                  <h3 className="modal-title" style={{ fontSize: '18px', fontWeight: '800' }}>🎬 Project Workspace: {selectedDetailProject.id}</h3>
                 <span className="text-muted text-xs">Service: {selectedDetailProject.service} · Status: <strong>{selectedDetailProject.status}</strong></span>
               </div>
               <button className="duolingo-secondary-btn micro-btn" onClick={() => setSelectedDetailProject(null)}>Close</button>
@@ -1687,8 +2118,9 @@ export function DashboardPage({ showToast, onToastDismiss }) {
             <div className="margin-top-16">
               <ProjectFolders project={selectedDetailProject} role="Customer" onUpdate={reloadProjects} />
             </div>
+            </div>
           </div>
-        </div>
+        )
       )}
 
       {/* Style Preview Modal */}
@@ -1727,27 +2159,7 @@ export function DashboardPage({ showToast, onToastDismiss }) {
           onClose={() => setShowStylePreview(false)}
         />
       )}
-
-      <BottomNav activeTab={activeTab} setActiveTab={setActiveTab} />
     </div>
-  );
-}
-
-
-
-function BottomNav({ activeTab, setActiveTab }) {
-  return (
-    <nav className="bottom-nav-bar flex-between" style={{ borderTop: '1px solid #E5E7EB' }}>
-      <button className={`nav-tab ${activeTab === 'home' ? 'tab-active' : ''}`} onClick={() => setActiveTab('home')}>
-        <Home size={20} /><span>Home</span>
-      </button>
-      <button className={`nav-tab ${activeTab === 'projects' ? 'tab-active' : ''}`} onClick={() => setActiveTab('projects')}>
-        <FolderKanban size={20} /><span>Projects</span>
-      </button>
-      <button className={`nav-tab ${activeTab === 'profile' ? 'tab-active' : ''}`} onClick={() => setActiveTab('profile')}>
-        <User size={20} /><span>Profile</span>
-      </button>
-    </nav>
   );
 }
 

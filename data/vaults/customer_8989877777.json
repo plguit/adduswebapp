@@ -1,0 +1,218 @@
+{
+  "businessName": "daaif",
+  "industry": "fintech",
+  "businessStage": null,
+  "businessDescription": null,
+  "products": [],
+  "services": [],
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 20,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-09-02T04:23:37.167Z",
+  "websiteUrl": null,
+  "websiteAnalyzedAt": null,
+  "websiteContentHash": null,
+  "websiteEvidenceItems": [],
+  "websiteRetrievalMeta": null,
+  "addiRecommendations": {
+    "summary": "AI analysis failed. Manual expert review required.",
+    "observations": [],
+    "strengths": [],
+    "gaps": [],
+    "recommendations": [],
+    "predictions": [],
+    "confidence": "UNKNOWN",
+    "evidenceRefs": [],
+    "insufficientEvidence": true,
+    "humanReviewRequired": true,
+    "generatedAt": "2026-09-02T04:23:37.167Z",
+    "recommendationSummary": {
+      "total": 0,
+      "recommended": 0,
+      "alreadySufficient": 0,
+      "notSuggested": 0,
+      "needsMoreInfo": 0,
+      "highPriority": 0
+    },
+    "requiresExpertReview": true,
+    "humanReviewReasons": [
+      "Insufficient evidence for reliable analysis",
+      "Expert review recommended before acting on recommendations"
+    ],
+    "humanReviewFlaggedAt": "2026-09-02T04:23:37.167Z",
+    "userId": "customer_8989877777",
+    "websiteInspectionPerformed": false,
+    "budgetStatus": "requires_admin_pricing"
+  },
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-09-02T04:23:37.167Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "addiRecommendations",
+        "strategicIntelligence"
+      ],
+      "data": {
+        "addiRecommendations": {
+          "summary": "AI analysis failed. Manual expert review required.",
+          "observations": [],
+          "strengths": [],
+          "gaps": [],
+          "recommendations": [],
+          "predictions": [],
+          "confidence": "UNKNOWN",
+          "evidenceRefs": [],
+          "insufficientEvidence": true,
+          "humanReviewRequired": true,
+          "generatedAt": "2026-09-02T04:23:37.167Z",
+          "recommendationSummary": {
+            "total": 0,
+            "recommended": 0,
+            "alreadySufficient": 0,
+            "notSuggested": 0,
+            "needsMoreInfo": 0,
+            "highPriority": 0
+          },
+          "requiresExpertReview": true,
+          "humanReviewReasons": [
+            "Insufficient evidence for reliable analysis",
+            "Expert review recommended before acting on recommendations"
+          ],
+          "humanReviewFlaggedAt": "2026-09-02T04:23:37.167Z",
+          "userId": "customer_8989877777",
+          "websiteInspectionPerformed": false,
+          "budgetStatus": "requires_admin_pricing"
+        },
+        "strategicIntelligence": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-02T04:23:25.803Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "businessName",
+        "industry",
+        "products",
+        "services"
+      ],
+      "data": {
+        "businessName": "daaif",
+        "industry": "fintech",
+        "products": [],
+        "services": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-02T04:23:25.759Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "customerProvidedDescription"
+      ],
+      "data": {
+        "customerProvidedDescription": "daaif. Industry: fintech. Segment: b2b. me that is"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": null,
+  "email": null,
+  "authProvider": null,
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-09-02T04:22:37.567Z",
+  "lastLoginAt": "2026-09-02T04:22:37.567Z",
+  "fieldProvenance": {
+    "customerProvidedDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-02T04:23:25.758Z",
+      "valueSummary": "daaif. Industry: fintech. Segment: b2b. me that is"
+    },
+    "businessName": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-02T04:23:25.803Z",
+      "valueSummary": "daaif"
+    },
+    "industry": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-02T04:23:25.803Z",
+      "valueSummary": "fintech"
+    },
+    "products": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-02T04:23:25.803Z",
+      "valueSummary": "0 items"
+    },
+    "services": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-02T04:23:25.803Z",
+      "valueSummary": "0 items"
+    },
+    "addiRecommendations": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-02T04:23:37.167Z",
+      "valueSummary": "{\"summary\":\"AI analysis failed. Manual expert review required.\",\"observations\":[],\"strengths\":[],\"ga"
+    },
+    "strategicIntelligence": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-02T04:23:37.167Z",
+      "valueSummary": "0 items"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "customerProvidedDescription": "daaif. Industry: fintech. Segment: b2b. me that is"
+}

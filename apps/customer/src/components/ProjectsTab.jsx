@@ -4,6 +4,7 @@ import { useProjectStore, getServiceScheduleType } from '../../../../shared/hook
 import { ProjectTimeline } from '../../../../src/components/operations/ProjectTimeline.jsx';
 import { DeliverablesManager } from '../../../../src/components/operations/DeliverablesManager.jsx';
 import { ProjectFolders } from '../../../../src/components/operations/ProjectFolders.jsx';
+import { MascotLottiePlayer } from '../../../../src/components/chat/MascotLottiePlayer.jsx';
 
 export function ProjectsTab({ onCreateNew, defaultFilter = 'All' }) {
   const { projects, reloadProjects } = useProjectStore();
@@ -49,7 +50,7 @@ export function ProjectsTab({ onCreateNew, defaultFilter = 'All' }) {
   return (
     <div className="dashboard-content-container" style={{ paddingTop: '20px' }}>
       <div className="flex-between margin-bottom-16">
-        <h2 className="section-title" style={{ fontSize: '20px', margin: 0 }}>My Projects (Operations Engine)</h2>
+        <h2 className="section-title" style={{ fontSize: '20px', margin: 0 }}>My Projects</h2>
         <button className="primary-btn btn-compact" onClick={onCreateNew}>
           <Plus size={14} /> New Project
         </button>
@@ -64,9 +65,19 @@ export function ProjectsTab({ onCreateNew, defaultFilter = 'All' }) {
       </div>
 
       {filtered.length === 0 ? (
-        <div className="empty-state-card flex-center" style={{ padding: '40px 20px' }}>
-          <FolderKanban size={32} className="empty-icon" />
-          <p className="empty-state-text">No projects in "{filter}".</p>
+        <div className="empty-state-card flex-center" style={{ padding: '48px 24px', display: 'flex', flexDirection: 'column', alignItems: 'center', background: '#FFFFFF', borderRadius: '24px', border: '1px solid #E2E8F0', marginTop: '16px', textAlign: 'center', boxShadow: '0 4px 16px rgba(0,0,0,0.03)' }}>
+          <div style={{ width: '180px', height: '180px', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <MascotLottiePlayer width={180} height={180} path="/lottiefile/mascot_on_chair.json" />
+          </div>
+          <h3 style={{ fontSize: '20px', fontWeight: '800', color: '#0F172A', margin: '0 0 8px 0' }}>
+            No Active Projects
+          </h3>
+          <p style={{ fontSize: '13.5px', color: '#64748B', margin: '0 0 20px 0', textAlign: 'center', maxWidth: '380px', lineHeight: '1.5' }}>
+            You don't have any active projects in "{filter}". Start a new project with ADDI to launch your campaign!
+          </p>
+          <button className="primary-btn btn-compact" onClick={onCreateNew} style={{ padding: '10px 22px', borderRadius: '10px', fontSize: '13px', fontWeight: '800', background: 'linear-gradient(135deg, #7C5CFF, #6366F1)', color: '#FFF', border: 'none', boxShadow: '0 4px 14px rgba(124, 92, 255, 0.4)' }}>
+            <Plus size={14} style={{ marginRight: '6px' }} /> Start New Project
+          </button>
         </div>
       ) : (
         <div className="projects-list-grid flex-col gap-12">

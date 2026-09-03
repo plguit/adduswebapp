@@ -36,7 +36,10 @@ export const PROJECT_TIMELINE_PHASES = [
   { key: 'delivered', label: 'Delivered', triggerStage: 'Delivered' }
 ];
 
-export function getServiceScheduleType(serviceName = '') {
+export function getServiceScheduleType(service = 'Video Ad') {
+  const serviceName = typeof service === 'string'
+    ? service
+    : (service?.name || service?.title || service?.serviceName || service?.service || service?.id || 'Video Ad');
   const lower = serviceName.toLowerCase();
   if (
     lower.includes('photo') ||
@@ -53,7 +56,10 @@ export function getServiceScheduleType(serviceName = '') {
 
 export function getTimelinePhasesForServices(services = []) {
   const serviceList = (services && services.length > 0) ? services : ['video'];
-  return serviceList.map(serviceName => {
+  return serviceList.map(rawService => {
+    const serviceName = typeof rawService === 'string'
+      ? rawService
+      : (rawService?.name || rawService?.title || rawService?.serviceName || rawService?.service || rawService?.id || 'Creative Service');
     const lower = serviceName.toLowerCase();
     let label = serviceName;
     let phases = [];
@@ -628,11 +634,39 @@ export function useProjectStore(userId = null) {
 
     setProjects((prev) => {
       const updated = [newProject, ...prev];
+      const sKey = storeKey || getProjectsKey(uid);
+      try {
+        storage.set(sKey, updated);
+      } catch (e) {}
       return updated;
     });
 
+    // Also persist into user profile projects array & central store
+    try {
+      const globalKey = 'PROJECTS_STORE_GLOBAL';
+      const existingGlobal = storage.get(globalKey, []);
+      const updatedGlobal = [newProject, ...existingGlobal.filter(p => p.id !== newProject.id)];
+      storage.set(globalKey, updatedGlobal);
+
+      if (uid) {
+        const prof = profileService.getProfileById(uid) || {};
+        const existingProjs = prof.projects || [];
+        const updatedProf = profileService.saveProfile({
+          ...prof,
+          userId: uid,
+          projects: [newProject, ...existingProjs.filter(p => p.id !== newProject.id)]
+        });
+        window.dispatchEvent(new CustomEvent('addus_profile_updated', { detail: updatedProf }));
+      }
+    } catch (e) {
+      console.warn('[projectStore] Profile/Global storage sync error:', e);
+    }
+
+    window.dispatchEvent(new CustomEvent('addus_project_store_updated'));
+    window.dispatchEvent(new CustomEvent('addus_projects_updated'));
+
     NotificationEngine.notify({
-      userId: uid,
+      userId: uid || 'global',
       role: 'Customer',
       title: 'Project Submitted',
       message: `Project ${projectId} (${newProject.service}) submitted successfully!`,
@@ -743,6 +777,8 @@ export function getActiveProductIds(userId) {
 export function getAllProjectsAcrossUsers() {
   const allProjects = [];
   const seenIds = new Set();
+
+  // 1. Scan localStorage PROJECTS_STORE keys
   try {
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
@@ -751,8 +787,8 @@ export function getAllProjectsAcrossUsers() {
           const items = JSON.parse(localStorage.getItem(key) || '[]');
           if (Array.isArray(items)) {
             items.forEach(p => {
-              if (p && p.id && !seenIds.has(p.id)) {
-                seenIds.add(p.id);
+              if (p && (p.id || p.projectId) && !seenIds.has(p.id || p.projectId)) {
+                seenIds.add(p.id || p.projectId);
                 allProjects.push(p);
               }
             });
@@ -761,6 +797,25 @@ export function getAllProjectsAcrossUsers() {
       }
     }
   } catch { /* skip */ }
+
+  // 2. Scan all user profiles in profileService
+  try {
+    const profiles = profileService.getAllProfiles();
+    profiles.forEach(prof => {
+      const userProjects = prof.projects || [];
+      userProjects.forEach(p => {
+        if (p && (p.id || p.projectId) && !seenIds.has(p.id || p.projectId)) {
+          seenIds.add(p.id || p.projectId);
+          allProjects.push({
+            ...p,
+            customerName: p.customerName || prof.name || prof.businessBrain?.customerName || prof.businessBrain?.businessName || 'Valued Client'
+          });
+        }
+      });
+    });
+  } catch { /* skip */ }
+
+  allProjects.sort((a, b) => new Date(b.createdAt || Date.now()) - new Date(a.createdAt || Date.now()));
   return allProjects;
 }
 
@@ -772,6 +827,7 @@ export function updateProjectInStore(projectId, patch, actorInfo = { actor: 'Sys
     const now = new Date().toISOString();
     let updatedProjectRecord = null;
 
+    // 1. Scan and update localStorage PROJECTS_STORE keys
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       if (key && key.startsWith('PROJECTS_STORE')) {
@@ -834,8 +890,53 @@ export function updateProjectInStore(projectId, patch, actorInfo = { actor: 'Sys
       }
     }
 
+    // 2. Scan and update user profiles in profileService
+    try {
+      const profiles = profileService.getAllProfiles();
+      profiles.forEach(prof => {
+        const userProjects = prof.projects || [];
+        const foundProj = userProjects.find(p => p.id === projectId || p.projectId === projectId);
+        if (foundProj) {
+          const prevStatus = foundProj.status;
+          const newStatus = patch.status || prevStatus;
+          let newActivityLog = foundProj.activityLog || [];
+          if (patch.status && patch.status !== prevStatus) {
+            newActivityLog = [
+              {
+                timestamp: now,
+                actor: actorInfo.actor || 'Admin',
+                role: actorInfo.role || 'Admin',
+                action: `Status changed to ${newStatus}`,
+                previousValue: prevStatus,
+                newValue: newStatus,
+                notes: patch.activityNote || `Status updated by ${actorInfo.actor || 'System'}`
+              },
+              ...newActivityLog
+            ];
+          }
+
+          const updatedProj = {
+            ...foundProj,
+            ...patch,
+            activityLog: newActivityLog,
+            updatedAt: now
+          };
+          if (!updatedProjectRecord) updatedProjectRecord = updatedProj;
+
+          const updatedUserProjects = userProjects.map(p => (p.id === projectId || p.projectId === projectId) ? updatedProj : p);
+          profileService.saveProfile({
+            ...prof,
+            projects: updatedUserProjects
+          });
+        }
+      });
+    } catch (e) {
+      console.warn('[projectStore] Profile sync in updateProjectInStore error:', e);
+    }
+
     // Broadcast update event across window tabs
     window.dispatchEvent(new CustomEvent('addus_project_store_updated', { detail: { projectId, patch } }));
+    window.dispatchEvent(new CustomEvent('addus_projects_updated', { detail: { projectId, patch } }));
 
     // Trigger Business Vault enrichment if project is Archived or Delivered
     if (updatedProjectRecord && (updatedProjectRecord.status === 'Archived' || updatedProjectRecord.status === 'Delivered')) {

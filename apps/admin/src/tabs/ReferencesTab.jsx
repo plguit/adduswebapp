@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Edit2, Trash2, CheckCircle, Image, Video, FileText, Link, ShieldCheck, Eye, EyeOff } from 'lucide-react';
 import { referenceLibraryService } from '../../../../shared/services/referenceLibraryService.js';
+import { getEmbeddableVideoUrl } from '../../../../shared/utils/mediaUtils.js';
 
 const CATEGORIES = [
   'Website', 'Logo Design', 'Brand Identity', 'Packaging', 
@@ -19,6 +20,7 @@ export function ReferencesTab({ dataSource = 'localStorage', adminReady = false 
     subtitle: '',
     category: 'Website',
     deliverableType: 'Website',
+    aspectRatio: 'auto',
     mediaUrl: '',
     thumbnail: '',
     indicativePrice: '',
@@ -41,11 +43,12 @@ export function ReferencesTab({ dataSource = 'localStorage', adminReady = false 
     setForm({
       title: '',
       subtitle: '',
-      category: 'Website',
-      deliverableType: 'Website',
+      category: 'Video Shoot',
+      deliverableType: 'Video Shoot',
+      aspectRatio: 'portrait',
       mediaUrl: '',
       thumbnail: '',
-      indicativePrice: 'Price available after expert review',
+      indicativePrice: '',
       isActive: true
     });
     setModalOpen(true);
@@ -58,6 +61,7 @@ export function ReferencesTab({ dataSource = 'localStorage', adminReady = false 
       subtitle: item.subtitle || '',
       category: item.category || 'Website',
       deliverableType: item.deliverableType || item.category || 'Website',
+      aspectRatio: item.aspectRatio || 'auto',
       mediaUrl: item.mediaUrl || '',
       thumbnail: item.thumbnail || '',
       indicativePrice: item.indicativePrice || 'Price available after expert review',
@@ -69,9 +73,18 @@ export function ReferencesTab({ dataSource = 'localStorage', adminReady = false 
   const handleSave = (e) => {
     e.preventDefault();
     if (!form.title.trim()) return;
+    const isVideo = form.category?.toLowerCase().includes('video') || form.deliverableType?.toLowerCase().includes('video') || form.mediaUrl?.includes('.mp4');
+    let finalRatio = form.aspectRatio;
+    if (!finalRatio || finalRatio === 'auto') {
+      const combined = `${form.title} ${form.subtitle} ${form.category}`.toLowerCase();
+      finalRatio = (combined.includes('portrait') || combined.includes('vertical') || combined.includes('reel') || combined.includes('model') || combined.includes('resort')) ? 'portrait' : 'landscape';
+    }
+
     referenceLibraryService.saveReference({
       id: editingItem?.id,
       ...form,
+      isVideo,
+      aspectRatio: finalRatio,
       title: form.title.trim(),
       subtitle: form.subtitle.trim(),
       indicativePrice: form.indicativePrice.trim() || 'Price available after expert review'
@@ -145,11 +158,43 @@ export function ReferencesTab({ dataSource = 'localStorage', adminReady = false 
                 </button>
               </div>
 
-              {item.thumbnail && (
-                <div style={{ height: '120px', borderRadius: '8px', overflow: 'hidden', marginBottom: '12px', background: '#000' }}>
-                  <img src={item.thumbnail} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                </div>
-              )}
+              {(() => {
+                const videoEmbed = getEmbeddableVideoUrl(item.mediaUrl || item.thumbnail);
+                if (videoEmbed && videoEmbed.type === 'iframe') {
+                  return (
+                    <div style={{ height: '140px', borderRadius: '8px', overflow: 'hidden', marginBottom: '12px', background: '#000' }}>
+                      <iframe 
+                        src={videoEmbed.url} 
+                        style={{ width: '100%', height: '100%', border: 'none' }} 
+                        allow="autoplay; encrypted-media; fullscreen" 
+                        allowFullScreen 
+                        title={item.title} 
+                      />
+                    </div>
+                  );
+                }
+                if (videoEmbed && videoEmbed.type === 'video' && item.mediaUrl && (item.category?.toLowerCase().includes('video') || item.mediaUrl.endsWith('.mp4'))) {
+                  return (
+                    <div style={{ height: '140px', borderRadius: '8px', overflow: 'hidden', marginBottom: '12px', background: '#000' }}>
+                      <video 
+                        src={videoEmbed.url} 
+                        poster={item.thumbnail !== item.mediaUrl ? item.thumbnail : undefined}
+                        controls 
+                        preload="metadata"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                      />
+                    </div>
+                  );
+                }
+                if (item.thumbnail) {
+                  return (
+                    <div style={{ height: '140px', borderRadius: '8px', overflow: 'hidden', marginBottom: '12px', background: '#000' }}>
+                      <img src={item.thumbnail} alt={item.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                  );
+                }
+                return null;
+              })()}
 
               <h4 style={{ fontSize: '15px', fontWeight: '700', color: '#FFF', marginBottom: '4px' }}>{item.title}</h4>
               <p style={{ fontSize: '12px', color: '#9CA3AF', marginBottom: '12px', lineHeight: '1.4' }}>{item.subtitle}</p>
@@ -225,16 +270,50 @@ export function ReferencesTab({ dataSource = 'localStorage', adminReady = false 
                 </div>
               </div>
 
-              <div className="admin-field-group">
-                <label className="admin-field-label">Media Asset URL / Cloud Link (Video, Image, PDF)</label>
-                <input 
-                  type="text" 
-                  className="admin-field-input" 
-                  placeholder="https://... or /products/frame_18.png"
-                  value={form.mediaUrl}
-                  onChange={e => setForm({ ...form, mediaUrl: e.target.value, thumbnail: e.target.value })}
-                />
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                <div className="admin-field-group">
+                  <label className="admin-field-label">Media Asset URL / Cloud Link (Video, Image, PDF)</label>
+                  <input 
+                    type="text" 
+                    className="admin-field-input" 
+                    placeholder="https://... or /videos/cozy_office_decor.mp4"
+                    value={form.mediaUrl}
+                    onChange={e => setForm({ ...form, mediaUrl: e.target.value, thumbnail: e.target.value })}
+                  />
+                </div>
+
+                <div className="admin-field-group">
+                  <label className="admin-field-label">Format Model / Aspect Ratio</label>
+                  <select 
+                    className="admin-field-input"
+                    value={form.aspectRatio || 'auto'}
+                    onChange={e => setForm({ ...form, aspectRatio: e.target.value })}
+                  >
+                    <option value="auto">✨ Auto Detect</option>
+                    <option value="portrait">📱 Portrait (9:16 Reel / Story / Mobile)</option>
+                    <option value="landscape">🖥️ Landscape (16:9 Cinema / Commercial)</option>
+                  </select>
+                </div>
               </div>
+
+              {/* Live Preview in Admin Modal */}
+              {form.mediaUrl && (
+                <div style={{ padding: '10px', background: '#0F172A', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
+                  <div style={{ fontSize: '11px', color: '#94A3B8', marginBottom: '6px', fontWeight: '600' }}>
+                    Live Asset Preview ({form.aspectRatio === 'portrait' ? '📱 9:16 Portrait' : '🖥️ 16:9 Landscape'}):
+                  </div>
+                  {(() => {
+                    const embed = getEmbeddableVideoUrl(form.mediaUrl);
+                    if (embed?.type === 'iframe') {
+                      return <iframe src={embed.url} style={{ width: '100%', height: '180px', border: 'none', borderRadius: '6px' }} title="Preview" />;
+                    }
+                    if (embed?.type === 'video' || form.mediaUrl.endsWith('.mp4')) {
+                      return <video src={embed?.url || form.mediaUrl} controls style={{ maxHeight: '180px', maxWidth: '100%', borderRadius: '6px' }} />;
+                    }
+                    return <img src={form.mediaUrl} alt="Preview" style={{ maxHeight: '160px', maxWidth: '100%', objectFit: 'contain', borderRadius: '6px' }} />;
+                  })()}
+                </div>
+              )}
 
               <div className="flex-end-gap margin-top-16">
                 <button type="button" className="duolingo-secondary-btn" onClick={() => setModalOpen(false)}>Cancel</button>

@@ -22,7 +22,7 @@ export const sessionManager = {
    */
   isAuthenticated() {
     const session = this.getSession();
-    return !!(session && session.userId && session.token);
+    return !!(session && session.userId);
   },
 
   /**

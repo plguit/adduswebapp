@@ -1,4 +1,7 @@
-import express from 'express';
+﻿import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
+import { syncDatabase } from './backend/models/index.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -10,6 +13,7 @@ import customerRoutes from './backend/routes/customerRoutes.js';
 import adminRoutes from './backend/routes/adminRoutes.js';
 import creatorRoutes from './backend/routes/creatorRoutes.js';
 import authRoutes from './backend/routes/authRoutes.js';
+
 import { rateLimiter } from './middleware/rateLimiter.js';
 import { securityHeaders } from './middleware/securityHeaders.js';
 import { requestId } from './middleware/requestId.js';
@@ -24,6 +28,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, { cors: { origin: '*' } });
+
+io.on('connection', (socket) => {
+  socket.on('join_room', (room) => socket.join(room));
+});
+app.set('io', io);
+app.use((req, res, next) => { req.io = io; next(); });
 const PORT = process.env.PORT || 3000;
 
 // Middleware
@@ -57,6 +69,7 @@ app.use('/api/customer', customerRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/creator', creatorRoutes);
 
+
 // Health Endpoint
 app.get('/api/health', healthCheck);
 
@@ -77,10 +90,15 @@ app.get('*', (req, res) => {
 app.use(errorHandler);
 
 if (process.env.NODE_ENV !== 'test' && !process.env.VERCEL) {
-  app.listen(PORT, '0.0.0.0', () => {
+  server.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 ADDUS Platform Server listening on port ${PORT}`);
   });
 }
 
 export default app;
 export { app };
+
+
+
+
+

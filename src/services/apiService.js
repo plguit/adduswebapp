@@ -66,15 +66,20 @@ function normalizeError(error) {
 export const apiService = {
   async request(endpoint, options = {}, retryCount = 0) {
     const url = `${API_BASE}${endpoint}`;
+    const timeoutMs = options.timeout || 2500;
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
 
     try {
       const res = await fetch(url, {
         ...options,
+        signal: controller.signal,
         headers: {
           ...getAuthHeaders(),
           ...(options.headers || {})
         }
       });
+      clearTimeout(timer);
 
       const contentType = res.headers.get('content-type') || '';
       if (contentType.includes('text/html')) {
@@ -99,8 +104,17 @@ export const apiService = {
 
       return await res.json();
     } catch (error) {
+      clearTimeout(timer);
+      const isAbort = error.name === 'AbortError' || error.message?.includes('aborted');
+      if (isAbort) {
+        const err = new Error('Backend connection timed out. Falling back to local offline mode.');
+        err.type = 'REQUEST_TIMEOUT';
+        err.retryable = false;
+        throw err;
+      }
+
       const normalized = normalizeError(error);
-      const isRetryable = normalized.retryable && RETRYABLE_METHODS.includes(options.method || 'POST') && retryCount < MAX_RETRIES;
+      const isRetryable = normalized.retryable && RETRYABLE_METHODS.includes(options.method || 'POST') && retryCount < MAX_RETRIES && !endpoint.includes('/auth/login');
 
       if (isRetryable) {
         await sleep(RETRY_DELAY * (retryCount + 1));
@@ -114,10 +128,11 @@ export const apiService = {
     }
   },
 
-  async post(endpoint, body) {
+  async post(endpoint, body, options = {}) {
     return this.request(endpoint, {
       method: 'POST',
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
+      ...options
     });
   },
 

@@ -35,7 +35,7 @@
   "missingAssets": [],
   "aiConfidenceScore": 45,
   "conversationStatus": "discovering",
-  "lastUpdated": "2026-08-22T10:57:35.793Z",
+  "lastUpdated": "2026-09-03T07:52:36.826Z",
   "websiteUrl": "https://laestuaire.in/",
   "websiteAnalyzedAt": "2026-08-20T13:37:20.086Z",
   "websiteContentHash": "7c",
@@ -76,6 +76,72 @@
   "diagnosisGeneratedAt": null,
   "strategicIntelligence": [],
   "auditLog": [
+    {
+      "timestamp": "2026-09-03T07:52:36.826Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-09-03T07:52:36.822Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-03T05:39:01.623Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-09-03T05:39:01.622Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-03T05:30:35.495Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7907963442",
+        "authProvider": "phone",
+        "userId": "customer_7907963442",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-09-03T05:30:35.494Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
     {
       "timestamp": "2026-08-22T10:57:35.793Z",
       "actor": "system",
@@ -1203,151 +1269,6 @@
         "websiteUrl": "https://laestuaire.in/"
       },
       "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T13:37:20.086Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "websiteUrl",
-        "websiteAnalyzedAt",
-        "websiteContentHash",
-        "websiteEvidenceItems",
-        "websiteRetrievalMeta",
-        "businessName",
-        "industry",
-        "businessDescription",
-        "location",
-        "services",
-        "products",
-        "targetAudience",
-        "businessStage",
-        "brandPersonality",
-        "contactInfo",
-        "socialLinks",
-        "aiConfidenceScore",
-        "confidenceStatus",
-        "confidenceReason",
-        "sourceType",
-        "summary",
-        "summaryProvenance",
-        "summaryConfidence",
-        "discoveredAssets",
-        "analysisStage",
-        "classification"
-      ],
-      "data": {
-        "websiteUrl": "https://laestuaire.in",
-        "websiteAnalyzedAt": "2026-08-20T13:37:20.086Z",
-        "websiteContentHash": "7c",
-        "websiteEvidenceItems": [
-          {
-            "evidenceId": "FAST_EV_1787233037312_title",
-            "observation": "Page title: \"Best Beach Resort in Cherai | Pool &amp; Backwater Resort Near Cherai Beach\"",
-            "evidence": "Best Beach Resort in Cherai | Pool &amp; Backwater Resort Near Cherai Beach",
-            "source": "https://laestuaire.in/",
-            "sourceType": "WEBSITE",
-            "confidence": "high",
-            "field": "identity",
-            "checkedAt": "2026-08-20T13:37:17.312Z",
-            "stage": "FAST_PATH"
-          },
-          {
-            "evidenceId": "FAST_EV_1787233037312_meta",
-            "observation": "Meta description found",
-            "evidence": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
-            "source": "https://laestuaire.in/",
-            "sourceType": "WEBSITE",
-            "confidence": "high",
-            "field": "business_description",
-            "checkedAt": "2026-08-20T13:37:17.312Z",
-            "stage": "FAST_PATH"
-          }
-        ],
-        "websiteRetrievalMeta": {
-          "finalUrl": "https://laestuaire.in/",
-          "httpStatus": 200,
-          "pagesInspected": [
-            "https://laestuaire.in/"
-          ]
-        },
-        "businessName": "La Estuaire Cherai",
-        "industry": "Hospitality",
-        "businessDescription": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
-        "services": [
-          "Pool access",
-          "Backwater views",
-          "Kayaking",
-          "Kerala dining",
-          "Accommodation"
-        ],
-        "products": [],
-        "contactInfo": {
-          "email": null,
-          "phone": null
-        },
-        "socialLinks": [],
-        "aiConfidenceScore": 92,
-        "confidenceStatus": "PARTIAL_EVIDENCE",
-        "confidenceReason": "AI enriched partial deterministic profile",
-        "sourceType": "VERIFIED_WEBSITE",
-        "summary": "La Estuaire Cherai is a hospitality property specializing in pool access, backwater views, kayaking, kerala dining and accommodation La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach..",
-        "summaryProvenance": "EVIDENCE_ANCHORED",
-        "summaryConfidence": 80,
-        "discoveredAssets": [],
-        "analysisStage": "FAST_PATH",
-        "classification": {
-          "class": "SIMPLE",
-          "reason": "STATIC_OR_MINIMAL"
-        }
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T13:36:40.907Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "phoneNumber",
-        "authProvider",
-        "userId",
-        "lastLoginAt"
-      ],
-      "data": {
-        "phoneNumber": "7907963442",
-        "authProvider": "phone",
-        "userId": "customer_7907963442",
-        "lastLoginAt": "2026-08-20T13:36:40.906Z"
-      },
-      "provenance": "AI_GENERATED"
-    },
-    {
-      "timestamp": "2026-08-20T07:38:59.566Z",
-      "actor": "system",
-      "action": "vault_update",
-      "fields": [
-        "businessName",
-        "industry",
-        "businessDescription",
-        "products",
-        "services",
-        "websiteUrl"
-      ],
-      "data": {
-        "businessName": "La Estuaire Cherai",
-        "industry": "Hospitality",
-        "businessDescription": "La Estuaire Cherai is a premium beach resort in Cherai offering pool access, backwater views, kayaking, Kerala dining, and comfortable stays near Cherai Beach.",
-        "products": [],
-        "services": [
-          "Pool access",
-          "Backwater views",
-          "Kayaking",
-          "Kerala dining",
-          "Accommodation"
-        ],
-        "websiteUrl": "https://laestuaire.in/"
-      },
-      "provenance": "AI_GENERATED"
     }
   ],
   "name": null,
@@ -1398,7 +1319,7 @@
   "expertReviewCompletedAt": null,
   "expertNotes": null,
   "createdAt": "2026-08-20T07:14:44.909Z",
-  "lastLoginAt": "2026-08-22T10:57:33.396Z",
+  "lastLoginAt": "2026-09-03T07:52:36.822Z",
   "fieldProvenance": {
     "phoneNumber": {
       "provenance": "AI_GENERATED",
@@ -1421,8 +1342,8 @@
     "lastLoginAt": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-08-22T10:57:33.397Z",
-      "valueSummary": "2026-08-22T10:57:33.396Z"
+      "lastVerifiedAt": "2026-09-03T07:52:36.825Z",
+      "valueSummary": "2026-09-03T07:52:36.822Z"
     },
     "websiteUrl": {
       "provenance": "AI_GENERATED",

@@ -4823,8 +4823,10 @@ html, body, #root {
   -webkit-backdrop-filter: blur(16px) !important;
   z-index: 10000 !important;
   display: flex !important;
-  align-items: flex-start !important;
-  justify-content: flex-end !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 16px !important;
+  box-sizing: border-box !important;
 }
 
 .admin-modal-drawer {
@@ -5072,30 +5074,47 @@ html, body, #root {
 .admin-notif-msg { flex: 1; font-size: 12px; color: var(--text-secondary); }
 .admin-notif-date { font-size: 10px; color: var(--text-secondary); white-space: nowrap; }
 
-/* Viewports - Transparent background */
+/* Viewports - Transparent background for onboarding */
 .chat-onboarding-viewport,
-.dashboard-viewport,
 .conversational-viewport {
   background: transparent !important;
   color: #FFFFFF !important;
 }
 
-/* Header Bar — Borderless Glass */
-.chat-app-header,
-.dashboard-top-bar {
+/* Dashboard Viewport - White background & black text */
+.customer-dashboard-page,
+.customer-dashboard-page.dashboard-viewport {
+  background: #FFFFFF !important;
+  color: #111111 !important;
+}
+
+/* Header Bar */
+.chat-app-header {
   background: rgba(255, 255, 255, 0.08) !important;
   backdrop-filter: blur(24px) saturate(190%) !important;
   -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
+.customer-dashboard-page .dashboard-top-bar {
+  background: #FFFFFF !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
 .top-brand .brand-name,
-.greeting-headline,
 .chat-header-title,
 .header-title {
   color: #FFFFFF !important;
   font-size: 22px !important;
   font-weight: 700 !important;
+}
+
+.customer-dashboard-page .greeting-headline {
+  color: #111111 !important;
+  font-size: 28px !important;
+  font-weight: 800 !important;
 }
 
 .header-status-badge,
@@ -20764,3 +20783,155 @@ textarea.clean-white-textarea {
 .category-option-card.option-selected {
   background-image: linear-gradient(#F8F9FA, #F8F9FA), linear-gradient(90deg, #8B5CF6, #EC4899) !important;
 }
+
+
+.premium-service-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .premium-service-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (min-width: 1024px) {
+    .premium-service-cards-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.premium-service-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 4 / 3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.premium-service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.premium-service-card img, 
+.premium-service-card video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.premium-service-card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 16px;
+    z-index: 10;
+}
+
+.premium-service-card-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.premium-service-card-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.premium-play-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+.premium-service-card:hover .premium-play-btn {
+    background: rgba(255, 255, 255, 0.4);
+}
+.premium-play-btn svg {
+    fill: #fff;
+    width: 16px;
+    height: 16px;
+    margin-left: 2px;
+}
+
+/* ==========================================================================
+   CUSTOMER DASHBOARD THEME OVERRIDES — PURE WHITE & BLACK CONTENT
+   (Scoped strictly to .customer-dashboard-page so onboarding remains 100% unaffected)
+   ========================================================================== */
+.customer-dashboard-page {
+  background: #FFFFFF !important;
+  color: #111111 !important;
+}
+
+.customer-dashboard-page .brain-summary-card,
+.customer-dashboard-page .expert-review-card,
+.customer-dashboard-page .admin-card,
+.customer-dashboard-page .empty-state-card,
+.customer-dashboard-page .project-status-workspace-card {
+  background: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
+  color: #111111 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.customer-dashboard-page .brain-card-title,
+.customer-dashboard-page .section-title,
+.customer-dashboard-page .ws-project-title,
+.customer-dashboard-page .modal-title,
+.customer-dashboard-page .brain-field-value {
+  color: #0F172A !important;
+}
+
+.customer-dashboard-page .brain-field-label,
+.customer-dashboard-page .greeting-subtext,
+.customer-dashboard-page .empty-state-text {
+  color: #475569 !important;
+}
+
+/* ── RESTORE CHAT ONBOARDING MASCOT VISIBILITY ── */
+.duolingo-mascot-row .mascot-lottie-wrapper,
+.active-mascot-wrapper .mascot-lottie-wrapper {
+  width: 130px !important;
+  height: 130px !important;
+  min-width: 130px !important;
+  min-height: 130px !important;
+  max-width: 130px !important;
+  max-height: 130px !important;
+  overflow: visible !important;
+}
+
+.duolingo-mascot-row .mascot-lottie-wrapper svg,
+.active-mascot-wrapper .mascot-lottie-wrapper svg {
+  width: 130px !important;
+  height: 130px !important;
+  max-width: 130px !important;
+  max-height: 130px !important;
+  transform: scale(1.65) !important;
+  transform-origin: center center !important;
+  overflow: visible !important;
+}
+

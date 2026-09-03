@@ -198,14 +198,14 @@ export function ExpertSuggestionsSection({ userProfile, brain = {}, onBookSugges
 
 function SuggestionCard({ sug, onBook }) {
   return (
-    <div style={{ background: '#1A1A24', borderRadius: '10px', border: '1px solid rgba(0,209,255,0.2)', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+    <div style={{ background: '#FFFFFF', borderRadius: '12px', border: '1px solid #E2E8F0', padding: '16px', display: 'flex', flexDirection: 'column', gap: '8px', boxShadow: '0 4px 16px rgba(0,0,0,0.03)' }}>
       <div className="flex-between">
-        <span style={{ fontSize: '11px', fontWeight: '700', color: '#00D1FF', textTransform: 'uppercase' }}>{sug.service || 'Strategic Package'}</span>
-        <span style={{ fontSize: '10px', background: 'rgba(52,211,153,0.15)', color: '#34D399', padding: '2px 6px', borderRadius: '4px', fontWeight: '600' }}>{sug.priority || 'Recommended'}</span>
+        <span style={{ fontSize: '11px', fontWeight: '700', color: '#7C5CFF', textTransform: 'uppercase' }}>{sug.service || 'Strategic Package'}</span>
+        <span style={{ fontSize: '10px', background: '#D1FAE5', color: '#059669', padding: '2px 6px', borderRadius: '4px', fontWeight: '600' }}>{sug.priority || 'Recommended'}</span>
       </div>
-      <h4 style={{ fontSize: '15px', fontWeight: '700', color: '#FFF', margin: 0 }}>{sug.title || sug.service}</h4>
-      <p style={{ fontSize: '12px', color: '#9CA3AF', margin: 0, lineHeight: '1.4' }}>{sug.reason || sug.description || 'Recommended based on your business analysis.'}</p>
-      <button type="button" onClick={() => onBook?.(sug)} style={{ background: 'linear-gradient(135deg, #00D1FF, #7c5cff)', border: 'none', borderRadius: '6px', color: '#fff', fontSize: '12px', fontWeight: 600, padding: '8px 12px', cursor: 'pointer' }}>
+      <h4 style={{ fontSize: '15px', fontWeight: '700', color: '#111111', margin: 0 }}>{sug.title || sug.service}</h4>
+      <p style={{ fontSize: '12px', color: '#475569', margin: 0, lineHeight: '1.4' }}>{sug.reason || sug.description || 'Recommended based on your business analysis.'}</p>
+      <button type="button" onClick={() => onBook?.(sug)} style={{ background: 'linear-gradient(135deg, #7C5CFF, #6366F1)', border: 'none', borderRadius: '6px', color: '#fff', fontSize: '12px', fontWeight: 600, padding: '8px 12px', cursor: 'pointer' }}>
         Book Service <ChevronRight size={14} style={{ display: 'inline' }} />
       </button>
     </div>

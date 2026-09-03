@@ -49,30 +49,51 @@ export const profileService = {
     const profiles = this.getAllProfiles();
     const now = new Date().toISOString();
 
-    let customerId = profileData.customerId;
+    const rawPhone = profileData.phoneNumber || profileData.phone || '';
+    const cleanPhone = rawPhone ? rawPhone.replace(/\D/g, '') : '';
+    const normPhone = cleanPhone.length >= 10 ? cleanPhone.slice(-10) : '';
+
+    const cleanEmail = (profileData.email || '').trim().toLowerCase();
+
+    // Multi-level lookup: 1. Match by ID, 2. Match by 10-digit Phone, 3. Match by Email
+    let existingIndex = profiles.findIndex((p) => 
+      (profileData.userId && (p.userId === profileData.userId || p.customerId === profileData.userId)) ||
+      (profileData.customerId && (p.customerId === profileData.customerId || p.userId === profileData.customerId))
+    );
+
+    if (existingIndex < 0 && normPhone) {
+      existingIndex = profiles.findIndex((p) => {
+        const pPhone = (p.phoneNumber || p.phone || '').replace(/\D/g, '');
+        return pPhone.length >= 10 && pPhone.slice(-10) === normPhone;
+      });
+    }
+
+    if (existingIndex < 0 && cleanEmail) {
+      existingIndex = profiles.findIndex((p) => (p.email || '').trim().toLowerCase() === cleanEmail);
+    }
+
+    const existing = existingIndex >= 0 ? profiles[existingIndex] : {};
+
+    let customerId = profileData.customerId || existing.customerId || profileData.userId || existing.userId;
     if (!customerId) {
       customerId = idGeneratorService.getNextId('ACA');
     }
 
-    let userId = profileData.userId || customerId;
+    let userId = profileData.userId || existing.userId || customerId;
 
-    let businessId = profileData.businessId;
+    let businessId = profileData.businessId || existing.businessId;
     if (!businessId) {
       businessId = idGeneratorService.getNextId('ABA');
     }
 
-    const existingIndex = profiles.findIndex((p) => p.userId === userId || p.customerId === customerId);
-    const existing = existingIndex >= 0 ? profiles[existingIndex] : {};
-
-    const rawPhone = profileData.phoneNumber || profileData.phone || existing.phoneNumber || existing.phone || '';
-    const cleanPhone = rawPhone ? rawPhone.replace(/\D/g, '') : '';
+    const finalPhone = cleanPhone || (existing.phoneNumber || existing.phone || '').replace(/\D/g, '');
 
     const mergedProfile = {
       userId,
       customerId: existing.customerId || customerId,
       businessId: existing.businessId || businessId,
-      phoneNumber: cleanPhone,
-      phone: cleanPhone,
+      phoneNumber: finalPhone,
+      phone: finalPhone,
       email: (profileData.email ?? existing.email ?? '').trim().toLowerCase(),
       name: profileData.name ?? existing.name ?? '',
       onboardingStatus: profileData.onboardingStatus ?? existing.onboardingStatus ?? 'in_progress',

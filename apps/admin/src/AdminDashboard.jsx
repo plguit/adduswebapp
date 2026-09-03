@@ -58,6 +58,8 @@ export function AdminDashboard({ onLogout }) {
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const [dataSource, setDataSource] = useState('localStorage');
   const [adminReady, setAdminReady] = useState(false);
+  const [adminNotifications, setAdminNotifications] = useState([]);
+  const [notifDropdownOpen, setNotifDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -66,6 +68,52 @@ export function AdminDashboard({ onLogout }) {
     };
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const loadNotifications = () => {
+    try {
+      const notifsMap = new Map();
+
+      // Read admin profile notifications
+      const adminProf = profileService.getProfileById('admin');
+      if (adminProf && adminProf.notifications) {
+        adminProf.notifications.forEach(n => notifsMap.set(n.id, n));
+      }
+
+      // Read all user profiles notifications
+      const allProfiles = profileService.getAllProfiles();
+      allProfiles.forEach(p => {
+        if (p.notifications) {
+          p.notifications.forEach(n => {
+            if (!notifsMap.has(n.id)) {
+              notifsMap.set(n.id, {
+                ...n,
+                userName: p.name || p.phoneNumber || p.businessBrain?.businessName || p.userId
+              });
+            }
+          });
+        }
+      });
+
+      const list = Array.from(notifsMap.values());
+      list.sort((a, b) => new Date(b.createdAt || Date.now()) - new Date(a.createdAt || Date.now()));
+      setAdminNotifications(list);
+    } catch (e) {
+      console.warn('Load admin notifications error:', e);
+    }
+  };
+
+  useEffect(() => {
+    loadNotifications();
+    const handleNotifDispatched = () => loadNotifications();
+    window.addEventListener('addus_notification_dispatched', handleNotifDispatched);
+    window.addEventListener('addus_projects_updated', handleNotifDispatched);
+    window.addEventListener('addus_project_store_updated', handleNotifDispatched);
+    return () => {
+      window.removeEventListener('addus_notification_dispatched', handleNotifDispatched);
+      window.removeEventListener('addus_projects_updated', handleNotifDispatched);
+      window.removeEventListener('addus_project_store_updated', handleNotifDispatched);
+    };
   }, []);
 
   // Keyboard shortcut Cmd/Ctrl + K for Global Search
@@ -138,6 +186,8 @@ export function AdminDashboard({ onLogout }) {
     setActiveTab(tabId);
     if (isMobile) setSidebarOpen(false);
   };
+
+  const unreadNotifsCount = adminNotifications.filter(n => n.unread !== false).length;
 
   const renderTab = () => {
     const commonProps = { dataSource, adminReady };
@@ -236,10 +286,117 @@ export function AdminDashboard({ onLogout }) {
           </div>
 
           <div className="admin-topbar-right">
-            <button className="topbar-bell-btn" title="Notifications">
-              <Bell size={16} />
-              <span className="bell-badge-dot"></span>
-            </button>
+            <div style={{ position: 'relative' }}>
+              <button 
+                className="topbar-bell-btn" 
+                title="Notifications"
+                onClick={() => setNotifDropdownOpen(o => !o)}
+                style={{ position: 'relative', cursor: 'pointer', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', padding: '6px 10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              >
+                <Bell size={16} color="#A78BFA" />
+                {unreadNotifsCount > 0 && (
+                  <span 
+                    style={{
+                      position: 'absolute',
+                      top: '-4px',
+                      right: '-4px',
+                      background: '#EF4444',
+                      color: '#FFF',
+                      fontSize: '10px',
+                      fontWeight: '800',
+                      borderRadius: '10px',
+                      padding: '1px 5px',
+                      lineHeight: '12px'
+                    }}
+                  >
+                    {unreadNotifsCount}
+                  </span>
+                )}
+              </button>
+
+              {/* Admin Notifications Dropdown Modal */}
+              {notifDropdownOpen && (
+                <div 
+                  className="fade-in"
+                  style={{
+                    position: 'absolute',
+                    top: '44px',
+                    right: '0',
+                    width: '360px',
+                    maxHeight: '440px',
+                    background: '#16161F',
+                    border: '1px solid rgba(124, 92, 255, 0.3)',
+                    borderRadius: '16px',
+                    boxShadow: '0 16px 40px rgba(0,0,0,0.6)',
+                    zIndex: 9999,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    overflow: 'hidden'
+                  }}
+                >
+                  <div style={{ padding: '14px 16px', background: '#1E1E2A', borderBottom: '1px solid rgba(255,255,255,0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <Bell size={16} color="#7C5CFF" />
+                      <span style={{ fontSize: '14px', fontWeight: '700', color: '#FFF' }}>Notifications</span>
+                      {unreadNotifsCount > 0 && (
+                        <span style={{ background: 'rgba(124,92,255,0.2)', color: '#A78BFA', fontSize: '11px', fontWeight: '700', padding: '2px 6px', borderRadius: '4px' }}>
+                          {unreadNotifsCount} new
+                        </span>
+                      )}
+                    </div>
+                    <button 
+                      type="button" 
+                      onClick={() => {
+                        profileService.markAllNotificationsRead('admin');
+                        loadNotifications();
+                      }}
+                      style={{ background: 'none', border: 'none', color: '#9CA3AF', fontSize: '11px', cursor: 'pointer' }}
+                    >
+                      Mark all read
+                    </button>
+                  </div>
+
+                  <div style={{ overflowY: 'auto', flex: 1, padding: '8px' }}>
+                    {adminNotifications.length === 0 ? (
+                      <div style={{ padding: '32px 16px', textAlign: 'center', color: '#64748B', fontSize: '13px' }}>
+                        No incoming notifications yet.
+                      </div>
+                    ) : (
+                      adminNotifications.map(n => (
+                        <div 
+                          key={n.id} 
+                          onClick={() => {
+                            setNotifDropdownOpen(false);
+                            setActiveTab('projects');
+                          }}
+                          style={{
+                            padding: '12px',
+                            borderRadius: '10px',
+                            background: n.unread !== false ? 'rgba(124, 92, 255, 0.08)' : 'transparent',
+                            borderBottom: '1px solid rgba(255,255,255,0.04)',
+                            cursor: 'pointer',
+                            marginBottom: '4px',
+                            transition: 'background 0.2s'
+                          }}
+                        >
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                            <span style={{ fontSize: '13px', fontWeight: '700', color: n.priority === 'high' ? '#38BDF8' : '#FFF' }}>
+                              {n.title}
+                            </span>
+                            <span style={{ fontSize: '10px', color: '#64748B' }}>
+                              {n.createdAt ? new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : ''}
+                            </span>
+                          </div>
+                          <p style={{ fontSize: '12px', color: '#9CA3AF', margin: 0, lineHeight: '1.4' }}>
+                            {n.message}
+                          </p>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
             <span className="admin-badge-live">● Live</span>
           </div>
         </header>

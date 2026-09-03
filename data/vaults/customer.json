@@ -35,7 +35,7 @@
   "missingAssets": [],
   "aiConfidenceScore": 60,
   "conversationStatus": "discovering",
-  "lastUpdated": "2026-09-01T04:16:09.063Z",
+  "lastUpdated": "2026-09-02T11:13:45.860Z",
   "websiteUrl": "ursel.in",
   "websiteAnalyzedAt": "2026-09-01T04:16:09.062Z",
   "websiteContentHash": "745b1aee",
@@ -88,12 +88,151 @@
   "websiteRetrievalMeta": {
     "pagesInspected": []
   },
-  "addiRecommendations": null,
+  "addiRecommendations": {
+    "summary": "AI analysis failed. Manual expert review required.",
+    "observations": [],
+    "strengths": [],
+    "gaps": [],
+    "recommendations": [],
+    "predictions": [],
+    "confidence": "UNKNOWN",
+    "evidenceRefs": [],
+    "insufficientEvidence": true,
+    "humanReviewRequired": true,
+    "generatedAt": "2026-09-02T11:13:45.857Z",
+    "recommendationSummary": {
+      "total": 0,
+      "recommended": 0,
+      "alreadySufficient": 0,
+      "notSuggested": 0,
+      "needsMoreInfo": 0,
+      "highPriority": 0
+    },
+    "requiresExpertReview": true,
+    "humanReviewReasons": [
+      "Insufficient evidence for reliable analysis",
+      "Expert review recommended before acting on recommendations"
+    ],
+    "humanReviewFlaggedAt": "2026-09-02T11:13:45.857Z",
+    "userId": "customer",
+    "websiteInspectionPerformed": false,
+    "budgetStatus": "requires_admin_pricing"
+  },
   "addiRecommendationsGeneratedAt": null,
   "diagnosis": null,
   "diagnosisGeneratedAt": null,
   "strategicIntelligence": [],
   "auditLog": [
+    {
+      "timestamp": "2026-09-02T11:13:45.860Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "addiRecommendations",
+        "strategicIntelligence"
+      ],
+      "data": {
+        "addiRecommendations": {
+          "summary": "AI analysis failed. Manual expert review required.",
+          "observations": [],
+          "strengths": [],
+          "gaps": [],
+          "recommendations": [],
+          "predictions": [],
+          "confidence": "UNKNOWN",
+          "evidenceRefs": [],
+          "insufficientEvidence": true,
+          "humanReviewRequired": true,
+          "generatedAt": "2026-09-02T11:13:45.857Z",
+          "recommendationSummary": {
+            "total": 0,
+            "recommended": 0,
+            "alreadySufficient": 0,
+            "notSuggested": 0,
+            "needsMoreInfo": 0,
+            "highPriority": 0
+          },
+          "requiresExpertReview": true,
+          "humanReviewReasons": [
+            "Insufficient evidence for reliable analysis",
+            "Expert review recommended before acting on recommendations"
+          ],
+          "humanReviewFlaggedAt": "2026-09-02T11:13:45.857Z",
+          "userId": "customer",
+          "websiteInspectionPerformed": false,
+          "budgetStatus": "requires_admin_pricing"
+        },
+        "strategicIntelligence": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-02T11:09:52.866Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "customerProvidedDescription"
+      ],
+      "data": {
+        "customerProvidedDescription": "Test Company. We provide video production and photo shooting services for businesses."
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-02T06:21:02.987Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "addiRecommendations",
+        "strategicIntelligence"
+      ],
+      "data": {
+        "addiRecommendations": {
+          "summary": "AI analysis failed. Manual expert review required.",
+          "observations": [],
+          "strengths": [],
+          "gaps": [],
+          "recommendations": [],
+          "predictions": [],
+          "confidence": "UNKNOWN",
+          "evidenceRefs": [],
+          "insufficientEvidence": true,
+          "humanReviewRequired": true,
+          "generatedAt": "2026-09-02T06:21:02.986Z",
+          "recommendationSummary": {
+            "total": 0,
+            "recommended": 0,
+            "alreadySufficient": 0,
+            "notSuggested": 0,
+            "needsMoreInfo": 0,
+            "highPriority": 0
+          },
+          "requiresExpertReview": true,
+          "humanReviewReasons": [
+            "Insufficient evidence for reliable analysis",
+            "Expert review recommended before acting on recommendations"
+          ],
+          "humanReviewFlaggedAt": "2026-09-02T06:21:02.986Z",
+          "userId": "customer",
+          "websiteInspectionPerformed": false,
+          "budgetStatus": "requires_admin_pricing"
+        },
+        "strategicIntelligence": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-02T06:20:48.878Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "customerProvidedDescription"
+      ],
+      "data": {
+        "customerProvidedDescription": "susu. Industry: dadi. Segment: b2b. chinchu chichcu jj"
+      },
+      "provenance": "AI_GENERATED"
+    },
     {
       "timestamp": "2026-09-01T04:16:09.063Z",
       "actor": "system",
@@ -610,6 +749,24 @@
       "confidence": 0.4,
       "lastVerifiedAt": "2026-09-01T04:16:09.062Z",
       "valueSummary": "Students (13+), professionals, and career explorers"
+    },
+    "customerProvidedDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-02T11:09:52.866Z",
+      "valueSummary": "Test Company. We provide video production and photo shooting services for businesses."
+    },
+    "addiRecommendations": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-02T11:13:45.860Z",
+      "valueSummary": "{\"summary\":\"AI analysis failed. Manual expert review required.\",\"observations\":[],\"strengths\":[],\"ga"
+    },
+    "strategicIntelligence": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-02T11:13:45.860Z",
+      "valueSummary": "0 items"
     }
   },
   "customerPreferences": {
@@ -636,5 +793,6 @@
   "classification": {
     "class": "SIMPLE",
     "reason": "STATIC_OR_MINIMAL"
-  }
+  },
+  "customerProvidedDescription": "Test Company. We provide video production and photo shooting services for businesses."
 }

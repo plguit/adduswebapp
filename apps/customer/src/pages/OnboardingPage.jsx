@@ -7,6 +7,7 @@ import { authService } from '../../../../shared/services/authService.js';
 import { syncService } from '../../../../src/services/syncService.js';
 import { getAuthoritativeState, resolveFlow } from '../../../../src/services/flowController.js';
 import { SplashScreen } from '../../../../src/components/onboarding/SplashScreen.jsx';
+import { AuthScreen } from '../../../../src/components/onboarding/AuthScreen.jsx';
 import { ConversationalOnboarding } from '../../../../src/components/chat/ConversationalOnboarding.jsx';
 import { DashboardPage } from './DashboardPage.jsx';
 import { ToastNotification } from '../../../../src/components/dashboard/ToastNotification.jsx';
@@ -110,6 +111,8 @@ export function Onboarding() {
   });
 
   const isDashboardStep = forceDashboard || flowResolution.appState === 'dashboard' || flowResolution.nextStep === 'dashboard' || state.currentStep === 'dashboard' || state.onboardingStatus === 'completed';
+  const isAuthenticated = sessionManager.isAuthenticated();
+  const hasCompletedAuth = isAuthenticated || state.verified;
 
   const handleProjectCreated = (project) => {
     const targetUserId = state.userId || session?.userId || `user_${Date.now()}`;
@@ -164,14 +167,28 @@ export function Onboarding() {
     window.location.reload();
   };
 
+  const forceAuth = typeof window !== 'undefined' && localStorage.getItem('addus_force_auth_screen') === 'true';
+
   // Splash screen (always first)
-  if (showSplash) {
+  if (showSplash && !forceAuth) {
     return <SplashScreen onComplete={() => setShowSplash(false)} />;
   }
 
   // Account Rejected / Restricted
-  if (isRejected) {
+  if (isRejected && !forceAuth) {
     return <AccountRestrictedScreen profile={currentProfile} onReapply={handleReapply} onLogout={handleLogout} />;
+  }
+
+  // Unauthenticated or Forced Auth -> Render Clean White AuthScreen (Mobile Number / OTP)
+  if (forceAuth || (!isAuthenticated && !hasCompletedAuth)) {
+    return (
+      <AuthScreen 
+        onAuthSuccess={() => {
+          localStorage.removeItem('addus_force_auth_screen');
+          window.location.reload();
+        }} 
+      />
+    );
   }
 
   // Dashboard

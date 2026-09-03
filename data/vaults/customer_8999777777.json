@@ -1,0 +1,92 @@
+{
+  "businessName": null,
+  "industry": null,
+  "businessStage": null,
+  "businessDescription": null,
+  "products": [],
+  "services": null,
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 0,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-09-03T05:35:34.854Z",
+  "websiteUrl": null,
+  "websiteAnalyzedAt": null,
+  "websiteContentHash": null,
+  "websiteEvidenceItems": [],
+  "websiteRetrievalMeta": null,
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-09-03T05:35:34.854Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "customerProvidedDescription"
+      ],
+      "data": {
+        "customerProvidedDescription": "jsjs. Industry: business. Segment: b2b. hi hai hui"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": null,
+  "email": null,
+  "authProvider": null,
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-09-03T05:35:02.572Z",
+  "lastLoginAt": "2026-09-03T05:35:02.572Z",
+  "fieldProvenance": {
+    "customerProvidedDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-03T05:35:34.854Z",
+      "valueSummary": "jsjs. Industry: business. Segment: b2b. hi hai hui"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "customerProvidedDescription": "jsjs. Industry: business. Segment: b2b. hi hai hui"
+}

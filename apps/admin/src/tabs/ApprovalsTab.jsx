@@ -17,6 +17,127 @@ export function ApprovalsTab({ dataSource = 'localStorage', adminReady = false }
   const [filter, setFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [requests, setRequests] = useState([]);
+  const [editModalReq, setEditModalReq] = useState(null);
+  const [editForm, setEditForm] = useState({ proposedShootDate: '', proposedBudget: '', adminNote: '' });
+
+  const handleOpenEditModal = (req) => {
+    setEditModalReq(req);
+    const allProjects = getAllProjectsAcrossUsers();
+    const proj = allProjects.find(p => p.id === req.projectId);
+    setEditForm({
+      proposedShootDate: proj?.shootDate || new Date().toISOString().split('T')[0],
+      proposedBudget: proj?.budget ? String(proj.budget).replace(/[^0-9]/g, '') : '15000',
+      adminNote: ''
+    });
+  };
+
+  const handleSendCounterProposal = (e) => {
+    e.preventDefault();
+    if (!editModalReq) return;
+
+    const req = editModalReq;
+    const targetUserId = req.customerId;
+
+    const proposalData = {
+      reqId: req.id,
+      projectId: req.projectId,
+      proposedShootDate: editForm.proposedShootDate,
+      proposedBudget: editForm.proposedBudget,
+      adminNote: editForm.adminNote,
+      status: 'pending'
+    };
+
+    const proposalMsg = {
+      id: `msg_proposal_${Date.now()}`,
+      sender: 'admin',
+      role: 'admin',
+      senderName: 'ADDUS Operations Lead',
+      text: `📋 ADDUS Admin Counter-Proposal for "${req.projectName}":\n• Proposed Shoot Date: ${editForm.proposedShootDate}\n• Proposed Budget: ₹${Number(editForm.proposedBudget).toLocaleString('en-IN')}\n• Note: ${editForm.adminNote || 'Please review the adjusted proposal and confirm.'}`,
+      timestamp: new Date().toISOString(),
+      counterProposal: proposalData
+    };
+
+    // 1. Update Project status in projectStore
+    if (req.projectId) {
+      updateProjectInStore(req.projectId, {
+        shootDate: editForm.proposedShootDate,
+        budget: editForm.proposedBudget ? `₹${Number(editForm.proposedBudget).toLocaleString('en-IN')}` : '₹15,000',
+        status: 'Awaiting Customer Acceptance',
+        proposalNote: editForm.adminNote,
+        latestCounterProposal: proposalData
+      }, { actor: 'Admin Lead', role: 'Admin' });
+    }
+
+    // 2. Persist proposal to localStorage global keys for instant customer chat loading
+    try {
+      localStorage.setItem(`ADDUS_LATEST_PROPOSAL_${req.projectId}`, JSON.stringify(proposalMsg));
+      localStorage.setItem('ADDUS_LATEST_PROPOSAL_GLOBAL', JSON.stringify(proposalMsg));
+    } catch {}
+
+    // 3. Add Counter-Proposal to Customer Profiles
+    try {
+      const allProfiles = profileService.getAllProfiles();
+      allProfiles.forEach(prof => {
+        const isMatch = prof.userId === targetUserId || prof.customerId === targetUserId || (prof.projects || []).some(p => p.id === req.projectId);
+        if (isMatch || allProfiles.length <= 2) {
+          const chat = prof.chatHistory || [];
+          const notifs = prof.notifications || [];
+
+          if (!chat.some(c => c.id === proposalMsg.id)) {
+            chat.push(proposalMsg);
+          }
+
+          notifs.unshift({
+            id: `notif_prop_${Date.now()}`,
+            title: '📋 Counter-Proposal Received',
+            message: `Admin sent a proposed date/budget adjustment for "${req.projectName}". Open chat to review & confirm.`,
+            read: false,
+            createdAt: new Date().toISOString()
+          });
+
+          const updated = profileService.saveProfile({
+            ...prof,
+            chatHistory: chat,
+            notifications: notifs
+          });
+          syncService.syncProfile(prof.userId, updated);
+        }
+      });
+    } catch (err) {
+      console.warn('[ApprovalsTab] Save profile proposal error:', err);
+    }
+
+    // 4. Dispatch Notifications
+    try {
+      NotificationEngine.notify({
+        userId: targetUserId || 'global',
+        role: 'Customer',
+        type: 'counter_proposal_received',
+        title: '📋 Counter-Proposal Received',
+        message: `Admin modified details for "${req.projectName}". Proposed Shoot: ${editForm.proposedShootDate}, Budget: ₹${Number(editForm.proposedBudget).toLocaleString('en-IN')}. Open chat to confirm or reject.`,
+        priority: 'high'
+      });
+
+      NotificationEngine.notify({
+        userId: 'global',
+        role: 'Customer',
+        type: 'counter_proposal_received',
+        title: '📋 Counter-Proposal Received',
+        message: `Admin modified details for "${req.projectName}". Proposed Shoot: ${editForm.proposedShootDate}, Budget: ₹${Number(editForm.proposedBudget).toLocaleString('en-IN')}. Open chat to confirm or reject.`,
+        priority: 'high'
+      });
+    } catch {}
+
+    // 5. Update Approvals state
+    setRequests(prev => prev.map(r => r.id === req.id ? { ...r, status: 'awaiting_customer', details: `Admin counter-proposal sent: Shoot Date: ${editForm.proposedShootDate}, Budget: ₹${editForm.proposedBudget}` } : r));
+    setEditModalReq(null);
+
+    window.dispatchEvent(new CustomEvent('addus_chat_updated', { detail: proposalMsg }));
+    window.dispatchEvent(new CustomEvent('addus_notification_dispatched'));
+    window.dispatchEvent(new CustomEvent('addus_profile_updated'));
+    window.dispatchEvent(new CustomEvent('addus_approvals_updated'));
+    window.dispatchEvent(new CustomEvent('addus_projects_updated'));
+  };
 
   const loadRequests = useCallback(() => {
     const allProjects = getAllProjectsAcrossUsers() || [];
@@ -36,6 +157,47 @@ export function ApprovalsTab({ dataSource = 'localStorage', adminReady = false }
       const d = new Date(ts);
       return d.toLocaleString('en-IN', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
     };
+
+    // 0. Ingest New Project Requests (submitted/under review/planning/draft)
+    allProjects.forEach(proj => {
+      if (!proj || !proj.id) return;
+
+      const reqId = `proj_req_${proj.id}`;
+      if (seenIds.has(reqId)) return;
+      seenIds.add(reqId);
+
+      const profile = profileMap[proj.userId] || profileMap[proj.customerId] || {};
+      const brain = profile.businessBrain || {};
+      const custName = brain.businessName || profile.name || proj.customerName || 'Valued Client';
+
+      const isAwaitingCustomer = proj.status === 'Awaiting Customer Acceptance';
+      const isCustomerRejected = proj.status === 'Customer Rejected' || (proj.latestCounterProposal && proj.latestCounterProposal.status === 'rejected');
+      const isPending = ['Submitted', 'Under Review', 'planning', 'Draft'].includes(proj.status);
+      const isApproved = ['Approved', 'Strategy Preparation', 'Waiting for Customer Approval', 'Creator Assignment', 'In Production', 'Internal Quality Review', 'Customer Review', 'Delivered'].includes(proj.status);
+
+      let reqStatus = isAwaitingCustomer ? 'awaiting_customer' : (isCustomerRejected ? 'customer_rejected' : (isPending ? 'pending' : (isApproved ? 'approved' : 'rejected')));
+      const rejReason = proj.rejectionReason || proj.latestCounterProposal?.rejectionReason || proj.customerNote || null;
+
+      built.push({
+        id: reqId,
+        projectId: proj.id,
+        isNewProjectRequest: true,
+        projectName: proj.title || proj.service || 'New Creative Project',
+        customerName: custName,
+        customerId: proj.userId || proj.customerId,
+        type: 'New Project Request',
+        requestedBy: custName,
+        date: formatDateWithTime(proj.createdAt),
+        rawDate: proj.createdAt ? new Date(proj.createdAt).getTime() : Date.now(),
+        details: `Requested services: ${proj.selectedServices?.join(', ') || proj.service || 'Creative Service'}. Budget: ${proj.budget || 'Pending Review'}. Requested Shoot/Delivery: ${proj.shootDate || proj.deliveryDate || 'TBD'}.`,
+        impact: {
+          timeline: proj.shootDate ? `Shoot Date: ${proj.shootDate}` : 'Timeline Review',
+          budget: proj.budget || 'Price Adjustment'
+        },
+        status: reqStatus,
+        rejectionReason: rejReason
+      });
+    });
 
     // 1. Ingest from all projects revisionRequests
     allProjects.forEach(proj => {
@@ -182,9 +344,32 @@ export function ApprovalsTab({ dataSource = 'localStorage', adminReady = false }
   }, [loadRequests]);
 
   const handleAction = (id, newStatus, projectId, customerId, typeName) => {
+    // 0. New Project Request Approval Logic
+    const currentReq = requests.find(r => r.id === id);
+    if (currentReq && currentReq.isNewProjectRequest && currentReq.projectId) {
+      const targetStatus = newStatus === 'approved' ? 'Approved' : 'Cancelled';
+      updateProjectInStore(currentReq.projectId, {
+        status: targetStatus,
+        lifecycleStage: targetStatus
+      }, { actor: 'Admin Lead', role: 'Admin' });
+
+      if (currentReq.customerId) {
+        NotificationEngine.notify({
+          userId: currentReq.customerId,
+          role: 'Customer',
+          type: newStatus === 'approved' ? 'project_approved' : 'project_rejected',
+          title: newStatus === 'approved' ? '🎉 Project Approved!' : 'Project Update',
+          message: newStatus === 'approved'
+            ? `Your project "${currentReq.projectName}" has been approved by ADDUS Admin! Your project timeline and execution are now live.`
+            : `Your project request for "${currentReq.projectName}" could not be approved at this time.`,
+          priority: 'high'
+        });
+      }
+    }
+
     // 1. Update Project Store
     const allProjects = getAllProjectsAcrossUsers();
-    const proj = allProjects.find(p => p.id === projectId || p.userId === customerId);
+    const proj = allProjects.find(p => p.id === (projectId || currentReq?.projectId) || p.userId === customerId);
     if (proj) {
       const updatedRevisions = (proj.revisionRequests || []).map(r =>
         r.id === id ? { ...r, status: newStatus, resolvedAt: new Date().toISOString() } : r
@@ -392,32 +577,317 @@ export function ApprovalsTab({ dataSource = 'localStorage', adminReady = false }
               </div>
             </div>
 
-            {req.status === 'pending' ? (
-              <div className="approval-actions-row margin-top-16">
-                <button 
-                  className="btn-admin-action btn-approve" 
-                  onClick={() => handleAction(req.id, 'approved', req.projectId, req.customerId, req.type)}
+            {req.status === 'customer_rejected' ? (
+              <div style={{ marginTop: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div style={{ padding: '10px 12px', background: 'rgba(239, 68, 68, 0.12)', borderRadius: '8px', border: '1px solid rgba(239, 68, 68, 0.3)' }}>
+                  <div style={{ fontSize: '12px', fontWeight: '800', color: '#EF4444', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <XCircle size={14} /> Customer Declined Proposal
+                  </div>
+                  {req.rejectionReason && (
+                    <div style={{ fontSize: '11px', color: '#FCA5A5', fontStyle: 'italic' }}>
+                      Reason: "{req.rejectionReason}"
+                    </div>
+                  )}
+                </div>
+                <button
+                  type="button"
+                  onClick={() => handleOpenEditModal(req)}
+                  style={{
+                    width: '100%',
+                    background: 'linear-gradient(135deg, #7C5CFF, #6366F1)',
+                    border: 'none',
+                    color: '#FFF',
+                    borderRadius: '8px',
+                    padding: '9px 12px',
+                    fontSize: '12px',
+                    fontWeight: '800',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '6px',
+                    boxShadow: '0 4px 14px rgba(124, 92, 255, 0.4)'
+                  }}
                 >
-                  <Check size={14} /> Accept Request
-                </button>
-                <button 
-                  className="btn-admin-action btn-reject" 
-                  onClick={() => handleAction(req.id, 'rejected', req.projectId, req.customerId, req.type)}
-                >
-                  <X size={14} /> Reject Request
+                  ✏️ Re-Edit & Resend Counter-Proposal
                 </button>
               </div>
+            ) : req.status === 'pending' ? (
+              <div className="approval-actions-row margin-top-16" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                <div style={{ display: 'flex', gap: '8px', width: '100%' }}>
+                  <button 
+                    className="btn-admin-action btn-approve" 
+                    onClick={() => handleAction(req.id, 'approved', req.projectId, req.customerId, req.type)}
+                    style={{ flex: 1 }}
+                  >
+                    <Check size={14} /> Accept Request
+                  </button>
+                  <button 
+                    className="btn-admin-action btn-reject" 
+                    onClick={() => handleAction(req.id, 'rejected', req.projectId, req.customerId, req.type)}
+                    style={{ flex: 1 }}
+                  >
+                    <X size={14} /> Reject Request
+                  </button>
+                </div>
+                
+                {req.isNewProjectRequest && (
+                  <button
+                    type="button"
+                    onClick={() => handleOpenEditModal(req)}
+                    style={{
+                      width: '100%',
+                      background: 'rgba(124, 92, 255, 0.15)',
+                      border: '1px solid rgba(124, 92, 255, 0.3)',
+                      color: '#A78BFA',
+                      borderRadius: '8px',
+                      padding: '8px 12px',
+                      fontSize: '12px',
+                      fontWeight: '700',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    ✏️ Modify Details (Counter-Proposal)
+                  </button>
+                )}
+              </div>
+            ) : req.status === 'awaiting_customer' ? (
+              <div style={{ padding: '10px 12px', background: 'rgba(245, 158, 11, 0.1)', borderRadius: '8px', border: '1px solid rgba(245, 158, 11, 0.2)', marginTop: '12px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span style={{ fontSize: '12px', fontWeight: '700', color: '#F59E0B' }}>⏳ Counter-Proposal Sent</span>
+                <span style={{ fontSize: '11px', color: '#9CA3AF' }}>Awaiting Customer Chat Decision</span>
+              </div>
             ) : (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)', marginTop: 'auto' }}>
-                <span style={{ fontSize: '11px', color: '#9CA3AF' }}>Status:</span>
-                <span style={{ fontSize: '12px', fontWeight: '600', color: req.status === 'approved' ? '#10B981' : '#EF4444' }}>
-                  {req.status === 'approved' ? '✓ Approved by Admin' : '✕ Rejected'}
-                </span>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 12px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                  <span style={{ fontSize: '11px', color: '#9CA3AF' }}>Status:</span>
+                  <span style={{ fontSize: '12px', fontWeight: '600', color: req.status === 'approved' ? '#10B981' : '#EF4444' }}>
+                    {req.status === 'approved' ? '✓ Approved by Admin' : '✕ Rejected'}
+                  </span>
+                </div>
+                {req.isNewProjectRequest && req.status === 'rejected' && (
+                  <button
+                    type="button"
+                    onClick={() => handleOpenEditModal(req)}
+                    style={{
+                      width: '100%',
+                      background: 'rgba(124, 92, 255, 0.15)',
+                      border: '1px solid rgba(124, 92, 255, 0.3)',
+                      color: '#A78BFA',
+                      borderRadius: '8px',
+                      padding: '8px 12px',
+                      fontSize: '12px',
+                      fontWeight: '700',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    ✏️ Re-Edit & Resend Proposal
+                  </button>
+                )}
               </div>
             )}
           </div>
         ))}
       </div>
+
+      {/* Admin Modify Details / Counter-Proposal Modal */}
+      {editModalReq && (
+        <div 
+          className="fade-in"
+          onClick={() => setEditModalReq(null)}
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            background: 'rgba(0, 0, 0, 0.75)',
+            backdropFilter: 'blur(8px)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 999999,
+            padding: '16px',
+            boxSizing: 'border-box'
+          }}
+        >
+          <div 
+            onClick={e => e.stopPropagation()} 
+            style={{
+              width: '100%',
+              maxWidth: '520px',
+              background: '#161622',
+              border: '1px solid rgba(124, 92, 255, 0.4)',
+              borderRadius: '20px',
+              padding: '28px',
+              boxShadow: '0 24px 60px rgba(0, 0, 0, 0.85)',
+              boxSizing: 'border-box'
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+              <h3 className="modal-title" style={{ fontSize: '18px', fontWeight: '800', color: '#FFF', margin: 0 }}>
+                ✏️ Modify Project Request Details
+              </h3>
+              <button 
+                className="admin-icon-btn" 
+                onClick={() => setEditModalReq(null)} 
+                style={{ background: 'none', border: 'none', color: '#9CA3AF', cursor: 'pointer', padding: '4px' }}
+                title="Close"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            {editModalReq.rejectionReason && (
+              <div style={{ margin: '8px 0 14px 0', padding: '10px 14px', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '10px', fontSize: '12px', color: '#FCA5A5' }}>
+                <strong>💬 Customer Rejection Feedback:</strong> "{editModalReq.rejectionReason}"
+              </div>
+            )}
+
+            <p style={{ fontSize: '13px', color: '#9CA3AF', margin: '0 0 20px 0', lineHeight: '1.4' }}>
+              Propose updated Date and Budget for <strong style={{ color: '#FFF' }}>{editModalReq.projectName}</strong>. The customer will receive an Accept/Reject decision card in ADDI Chat.
+            </p>
+
+            <form onSubmit={handleSendCounterProposal}>
+              <div style={{ marginBottom: '16px' }}>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#A78BFA', marginBottom: '6px' }}>
+                  📅 Proposed Shoot Date
+                </label>
+                <div style={{ display: 'flex', gap: '8px' }}>
+                  <input
+                    type="text"
+                    required
+                    placeholder="YYYY-MM-DD (e.g. 2026-09-10)"
+                    value={editForm.proposedShootDate}
+                    onChange={e => setEditForm({ ...editForm, proposedShootDate: e.target.value })}
+                    style={{
+                      flex: 1,
+                      background: '#1A1A26',
+                      border: '1px solid rgba(255,255,255,0.15)',
+                      borderRadius: '10px',
+                      padding: '12px 14px',
+                      color: '#FFF',
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      outline: 'none'
+                    }}
+                  />
+                  <input
+                    type="date"
+                    onChange={e => {
+                      if (e.target.value) setEditForm({ ...editForm, proposedShootDate: e.target.value });
+                    }}
+                    style={{
+                      width: '44px',
+                      height: '44px',
+                      background: '#1A1A26',
+                      border: '1px solid rgba(255,255,255,0.15)',
+                      borderRadius: '10px',
+                      color: '#FFF',
+                      cursor: 'pointer',
+                      colorScheme: 'dark',
+                      padding: '6px'
+                    }}
+                    title="Pick Date from Calendar"
+                  />
+                </div>
+              </div>
+
+              <div style={{ marginBottom: '16px' }}>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#A78BFA', marginBottom: '6px' }}>
+                  💰 Proposed Budget (₹)
+                </label>
+                <input
+                  type="number"
+                  required
+                  placeholder="e.g. 18000"
+                  value={editForm.proposedBudget}
+                  onChange={e => setEditForm({ ...editForm, proposedBudget: e.target.value })}
+                  style={{
+                    width: '100%',
+                    background: '#1A1A26',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    borderRadius: '10px',
+                    padding: '12px 14px',
+                    color: '#FFF',
+                    fontSize: '14px',
+                    fontWeight: '600',
+                    boxSizing: 'border-box',
+                    outline: 'none'
+                  }}
+                />
+              </div>
+
+              <div style={{ marginBottom: '20px' }}>
+                <label style={{ display: 'block', fontSize: '12px', fontWeight: '700', color: '#A78BFA', marginBottom: '6px' }}>
+                  📝 Note to Customer (Explanatory Note)
+                </label>
+                <textarea
+                  rows={3}
+                  placeholder="e.g. Recommended premium 4K model shoot + location permit adjustments."
+                  value={editForm.adminNote}
+                  onChange={e => setEditForm({ ...editForm, adminNote: e.target.value })}
+                  style={{
+                    width: '100%',
+                    background: '#1A1A26',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    borderRadius: '10px',
+                    padding: '12px 14px',
+                    color: '#FFF',
+                    fontSize: '13px',
+                    resize: 'vertical',
+                    boxSizing: 'border-box',
+                    outline: 'none',
+                    lineHeight: '1.4'
+                  }}
+                />
+              </div>
+
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', marginTop: '24px' }}>
+                <button
+                  type="button"
+                  onClick={() => setEditModalReq(null)}
+                  style={{
+                    background: 'rgba(255,255,255,0.06)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    color: '#9CA3AF',
+                    padding: '10px 18px',
+                    borderRadius: '10px',
+                    fontSize: '13px',
+                    fontWeight: '600',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  style={{
+                    background: 'linear-gradient(135deg, #7C5CFF, #6366F1)',
+                    border: 'none',
+                    color: '#FFF',
+                    padding: '10px 20px',
+                    borderRadius: '10px',
+                    fontSize: '13px',
+                    fontWeight: '800',
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 14px rgba(124, 92, 255, 0.4)'
+                  }}
+                >
+                  Send Proposal to Customer Chat →
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

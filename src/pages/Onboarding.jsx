@@ -11,6 +11,7 @@ import { ToastNotification } from '../components/dashboard/ToastNotification.jsx
 export function Onboarding() {
   const { state, updateState, bindToUser } = useOnboardingStore();
   const [showSplash, setShowSplash] = useState(() => {
+    if (sessionManager.isAuthenticated()) return false;
     try {
       const hasSeenSplash = sessionStorage.getItem('HAS_SEEN_SPLASH');
       return !hasSeenSplash;
@@ -29,6 +30,8 @@ export function Onboarding() {
         bindToUser(activeUser.userId, {
           ...activeUser,
           verified: true,
+          currentStep: 'dashboard',
+          onboardingStatus: 'completed',
           expertReviewStatus: activeUser.expertReviewStatus || null,
           expertReviewSubmittedAt: activeUser.expertReviewSubmittedAt || null,
           chatHistory: activeUser.chatHistory || [],
@@ -37,8 +40,15 @@ export function Onboarding() {
     }
   }, []);
 
+  const activeSession = sessionManager.getSession();
+  const activeUser = sessionManager.getCurrentUser();
   const isAuthenticated = sessionManager.isAuthenticated();
-  const isCompleted = state.onboardingStatus === 'completed' || state.currentStep === 'dashboard';
+  const isCompleted = state.onboardingStatus === 'completed' ||
+                      state.currentStep === 'dashboard' ||
+                      activeSession?.lastVisitedScreen === 'dashboard' ||
+                      activeUser?.lastVisitedScreen === 'dashboard' ||
+                      activeUser?.currentStep === 'dashboard' ||
+                      activeUser?.onboardingStatus === 'completed';
   const isDashboardStep = isAuthenticated && isCompleted;
 
   if (showSplash) {

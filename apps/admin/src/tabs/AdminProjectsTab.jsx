@@ -73,10 +73,24 @@ export function AdminProjectsTab({ dataSource = 'localStorage', adminReady = fal
   };
 
   const handleAdvanceStatus = (proj) => {
+    const targetId = proj.id || proj.projectId;
     const currentIndex = PROJECT_LIFECYCLE_STAGES.indexOf(proj.status || 'Submitted');
     if (currentIndex >= 0 && currentIndex < PROJECT_LIFECYCLE_STAGES.length - 1) {
       const nextStatus = PROJECT_LIFECYCLE_STAGES[currentIndex + 1];
-      updateProjectInStore(proj.id, { status: nextStatus }, { actor: 'Admin Lead', role: 'Admin' });
+      updateProjectInStore(targetId, { status: nextStatus }, { actor: 'Admin Lead', role: 'Admin' });
+      
+      const custId = proj.customerId || proj.userId;
+      if (custId) {
+        NotificationEngine.notify({
+          userId: custId,
+          role: 'Customer',
+          type: 'project_advanced',
+          title: '🚀 Project Stage Advanced',
+          message: `Your project "${proj.service || proj.type}" has been advanced to "${nextStatus}".`,
+          priority: 'medium'
+        });
+      }
+
       refresh();
     }
   };
@@ -141,26 +155,9 @@ export function AdminProjectsTab({ dataSource = 'localStorage', adminReady = fal
     <div className="admin-tab-content fade-in">
       <div className="admin-section-header">
         <div>
-          <h2>Project Operations Engine (Sprint 4 Pipeline)</h2>
-          <p className="admin-section-sub">Full 15-stage operational pipeline from Customer submission to Admin strategy, Creator execution, Customer review, and Business Vault archiving.</p>
+          <h2>Project Operations Engine</h2>
         </div>
         <span className="admin-count-chip">{filtered.length} Active Operations</span>
-      </div>
-
-      {/* 15-Step Pipeline Tracker */}
-      <div className="admin-pipeline-scroll-wrap margin-top-16">
-        <div className="admin-pipeline-tracker" style={{ gridTemplateColumns: `repeat(${PROJECT_LIFECYCLE_STAGES.length}, minmax(130px, 1fr))` }}>
-          {PROJECT_LIFECYCLE_STAGES.map((step, idx) => {
-            const count = projects.filter(p => p.status === step).length;
-            return (
-              <div key={step} className={`pipeline-step-item ${filterStatus === step ? 'step-selected' : ''}`} onClick={() => setFilterStatus(filterStatus === step ? 'All' : step)}>
-                <span className="step-num">{idx + 1}</span>
-                <span className="step-label">{step}</span>
-                <span className="step-count">{count}</span>
-              </div>
-            );
-          })}
-        </div>
       </div>
 
       {/* Filters */}
@@ -178,7 +175,7 @@ export function AdminProjectsTab({ dataSource = 'localStorage', adminReady = fal
         <div className="admin-filter-group">
           <Filter size={15} />
           <select className="admin-select" value={filterStatus} onChange={e => setFilterStatus(e.target.value)}>
-            <option value="All">All 15 Lifecycle Stages</option>
+            <option value="All">All Lifecycle Stages</option>
             {PROJECT_LIFECYCLE_STAGES.map(s => <option key={s} value={s}>{s}</option>)}
           </select>
         </div>
@@ -191,7 +188,7 @@ export function AdminProjectsTab({ dataSource = 'localStorage', adminReady = fal
             <tr>
               <th>Project ID</th>
               <th>Service &amp; Title</th>
-              <th>Customer ID</th>
+              <th>Customer &amp; Business Details</th>
               <th>Assigned Creator</th>
               <th>Lifecycle Stage (15 Steps)</th>
               <th>Timeline</th>
@@ -202,9 +199,23 @@ export function AdminProjectsTab({ dataSource = 'localStorage', adminReady = fal
           <tbody>
             {filtered.length === 0 ? (
               <tr>
-                <td colSpan={8} className="admin-empty-row">
-                  <FolderKanban size={24} />
-                  <p>No projects currently matching criteria.</p>
+                <td colSpan={8} className="admin-empty-row" style={{ padding: '36px 16px', textAlign: 'center' }}>
+                  <FolderKanban size={32} color="#64748B" style={{ marginBottom: '12px' }} />
+                  <p style={{ fontSize: '14px', color: '#94A3B8', margin: '0 0 12px 0' }}>
+                    {filterStatus !== 'All' 
+                      ? `No projects currently in "${filterStatus}" stage.` 
+                      : 'No projects matching your search criteria.'}
+                  </p>
+                  {filterStatus !== 'All' && (
+                    <button 
+                      type="button" 
+                      className="duolingo-secondary-btn micro-btn"
+                      onClick={() => setFilterStatus('All')}
+                      style={{ padding: '6px 14px', fontSize: '12px' }}
+                    >
+                      Show All Lifecycle Stages ({projects.length})
+                    </button>
+                  )}
                 </td>
               </tr>
             ) : filtered.map(p => {
@@ -214,11 +225,31 @@ export function AdminProjectsTab({ dataSource = 'localStorage', adminReady = fal
               const custId = p.customerId || p.userId || '—';
               const creatorName = p.assignedCreator ? p.assignedCreator.name : (p.creatorId || 'Unassigned');
 
+              // Extract profile details
+              const profilesList = profileService.getAllProfiles() || [];
+              const matchedProf = profilesList.find(prof => 
+                (prof.userId && (prof.userId === custId || prof.userId === p.userId)) ||
+                (prof.customerId && prof.customerId === custId)
+              ) || {};
+              const brain = matchedProf.businessBrain || {};
+
+              const safeExtract = (v) => (typeof v === 'string' ? v : (v && typeof v === 'object' ? v.name || v.businessName || v.userId || '' : ''));
+              const customerName = safeExtract(p.customerName || p.clientName || matchedProf.name || brain.customerName) || 'Valued Client';
+              const businessName = safeExtract(p.businessName || brain.businessName || matchedProf.businessProfile?.businessName || matchedProf.name) || 'Personal Brand';
+              const contactPhone = safeExtract(p.phoneNumber || p.contactNumber || matchedProf.phoneNumber || matchedProf.phone);
+              const contactEmail = safeExtract(p.email || matchedProf.email);
+              const contactStr = contactPhone ? (contactEmail ? `${contactPhone} · ${contactEmail}` : contactPhone) : (contactEmail || 'No contact info');
+
               return (
-                <tr key={p.id}>
+                <tr 
+                  key={p.id}
+                  onClick={() => { setSelectedProject(p); setInspectorTab('overview'); }}
+                  style={{ cursor: 'pointer' }}
+                  className="project-table-row-hover"
+                >
                   <td>
                     <div className="id-badge-pill-group">
-                      <span className="id-badge-pill" title="Click to view Project Operations Inspector" onClick={() => { setSelectedProject(p); setInspectorTab('overview'); }}>
+                      <span className="id-badge-pill" title="Click to view Project Operations Inspector">
                         {projId}
                       </span>
                     </div>
@@ -228,8 +259,17 @@ export function AdminProjectsTab({ dataSource = 'localStorage', adminReady = fal
                     <div className="td-sub-text">{p.selectedStyle || ''}</div>
                   </td>
                   <td>
-                    <div className="id-badge-pill-group">
-                      <span className="id-badge-pill cust-id-pill">{custId}</span>
+                    <div className="td-primary-text" style={{ fontWeight: '700', color: '#FFFFFF', fontSize: '13px' }}>
+                      👤 {customerName}
+                    </div>
+                    <div className="td-sub-text" style={{ color: '#A78BFA', fontWeight: '600', fontSize: '12px', marginTop: '2px' }}>
+                      🏢 {businessName}
+                    </div>
+                    <div className="td-sub-text" style={{ color: '#94A3B8', fontSize: '11px', marginTop: '3px', display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                      <span>📞 {contactStr}</span>
+                      <span className="id-badge-pill cust-id-pill" style={{ padding: '1px 6px', fontSize: '10px', height: 'auto', lineHeight: '14px' }}>
+                        {custId}
+                      </span>
                     </div>
                   </td>
                   <td>
@@ -237,13 +277,16 @@ export function AdminProjectsTab({ dataSource = 'localStorage', adminReady = fal
                       {creatorName}
                     </span>
                   </td>
-                  <td>
+                  <td onClick={e => e.stopPropagation()}>
                     <div className="status-select-wrap">
                       <select
                         className="admin-status-dropdown"
                         value={p.status || 'Submitted'}
                         style={{ color, borderColor: color }}
-                        onChange={e => handleUpdateStatus(p.id, e.target.value)}
+                        onChange={e => {
+                          e.stopPropagation();
+                          handleUpdateStatus(p.id, e.target.value);
+                        }}
                       >
                         {PROJECT_LIFECYCLE_STAGES.map(s => (
                           <option key={s} value={s}>{s}</option>
@@ -260,21 +303,28 @@ export function AdminProjectsTab({ dataSource = 'localStorage', adminReady = fal
                       {p.quotation?.total ? `₹${Number(p.quotation.total).toLocaleString('en-IN')}` : (p.budget || 'Pending quote')}
                     </div>
                   </td>
-                  <td>
+                  <td onClick={e => e.stopPropagation()}>
                     <div className="admin-action-btn-group">
                       <button
                         type="button"
                         className="admin-primary-btn micro-btn"
-                        onClick={() => handleAdvanceStatus(p)}
+                        onClick={e => {
+                          e.stopPropagation();
+                          handleAdvanceStatus(p);
+                        }}
                         disabled={currentStepIdx >= PROJECT_LIFECYCLE_STAGES.length - 1}
-                        title="Advance stage"
+                        title="Advance to next lifecycle stage"
                       >
                         <span>Advance →</span>
                       </button>
                       <button
                         type="button"
                         className="admin-icon-btn"
-                        onClick={() => { setSelectedProject(p); setInspectorTab('overview'); }}
+                        onClick={e => {
+                          e.stopPropagation();
+                          setSelectedProject(p);
+                          setInspectorTab('overview');
+                        }}
                         title="Open Full Operational Inspector"
                       >
                         <ChevronRight size={16} />
@@ -297,9 +347,14 @@ export function AdminProjectsTab({ dataSource = 'localStorage', adminReady = fal
                 <h3 className="modal-title">⚙️ Operational Inspector: {selectedProject.id}</h3>
                 <span className="text-muted text-xs">Customer: {selectedProject.customerId || selectedProject.userId} · Created: {new Date(selectedProject.createdAt).toLocaleString()}</span>
               </div>
-              <button className="admin-primary-btn micro-btn" onClick={() => handleUpdateStatus(selectedProject.id, 'Archived')}>
-                <Archive size={14} /> Archive to Business Vault
-              </button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <button className="admin-primary-btn micro-btn" onClick={() => handleUpdateStatus(selectedProject.id, 'Archived')}>
+                  <Archive size={14} /> Archive to Vault
+                </button>
+                <button className="admin-icon-btn" onClick={() => setSelectedProject(null)} title="Close Inspector">
+                  <X size={18} />
+                </button>
+              </div>
             </div>
 
             {/* Inspector Navigation Tabs */}

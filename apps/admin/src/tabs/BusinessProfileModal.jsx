@@ -25,13 +25,21 @@ export function BusinessProfileModal({ profile, onClose }) {
   const projects = profileService.getProjects(profile.userId);
   const chatHistory = profileService.getChatHistory(profile.userId);
 
+  const safeVal = (v) => {
+    if (typeof v === 'string') return v;
+    if (typeof v === 'number') return String(v);
+    if (Array.isArray(v)) return v.map(x => safeVal(x)).filter(Boolean).join(', ');
+    if (v && typeof v === 'object') return v.name || v.title || v.userId || v.id || v.role || '';
+    return '';
+  };
+
   return (
     <div className="admin-modal-overlay" onClick={onClose}>
       <div className="admin-modal-drawer" onClick={e => e.stopPropagation()}>
         <div className="admin-modal-header">
           <div className="admin-modal-title">
             <Building2 size={18} />
-            <span>{brain.businessName || profile.name || 'Business Profile'}</span>
+            <span>{safeVal(brain.businessName || profile.name) || 'Business Profile'}</span>
           </div>
           <button className="admin-modal-close" onClick={onClose}><X size={20} /></button>
         </div>
@@ -41,17 +49,17 @@ export function BusinessProfileModal({ profile, onClose }) {
             <h3 className="admin-section-title">🧠 Business Brain</h3>
             <div className="admin-brain-grid">
               {[
-                ['Business Name', brain.businessName],
-                ['Industry', brain.industry],
-                ['Stage', brain.businessStage],
-                ['Target Audience', brain.targetAudience],
-                ['Brand Personality', brain.brandPersonality],
-                ['Website', brain.website],
-                ['Business Description', brain.businessDescription],
-                ['Products', Array.isArray(brain.products) ? brain.products.join(', ') : brain.products],
-                ['Services', Array.isArray(brain.services) ? brain.services.join(', ') : brain.services],
-                ['Business Goal', brain.businessGoal],
-                ['Challenges', brain.currentChallenge],
+                ['Business Name', safeVal(brain.businessName)],
+                ['Industry', safeVal(brain.industry)],
+                ['Stage', safeVal(brain.businessStage)],
+                ['Target Audience', safeVal(brain.targetAudience)],
+                ['Brand Personality', safeVal(brain.brandPersonality)],
+                ['Website', safeVal(brain.website)],
+                ['Business Description', safeVal(brain.businessDescription)],
+                ['Products', safeVal(brain.products)],
+                ['Services', safeVal(brain.services)],
+                ['Business Goal', safeVal(brain.businessGoal)],
+                ['Challenges', safeVal(brain.currentChallenge)],
                 ['AI Confidence', brain.aiConfidenceScore ? `${brain.aiConfidenceScore}%` : null],
               ].filter(([, v]) => v).map(([label, val]) => (
                 <div key={label} className="admin-brain-field">

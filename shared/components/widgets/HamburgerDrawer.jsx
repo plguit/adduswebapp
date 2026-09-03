@@ -18,32 +18,32 @@ export function HamburgerDrawer({
   };
 
   return (
-    <div className="celebration-modal-backdrop fade-in" style={{ zIndex: 99999, justifyContent: 'flex-start' }} onClick={onClose}>
+    <div className="celebration-modal-backdrop fade-in" style={{ zIndex: 99999, justifyContent: 'flex-start', background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)' }} onClick={onClose}>
       <div 
         className="scale-in" 
         style={{
           width: '320px',
           maxWidth: '85vw',
           height: '100%',
-          background: '#14141B',
-          borderRight: '1px solid rgba(255,255,255,0.08)',
+          background: '#FFFFFF',
+          borderRight: '1px solid #E2E8F0',
           padding: '24px 20px',
           display: 'flex',
           flexDirection: 'column',
-          justify: 'space-between',
-          boxShadow: '10px 0 30px rgba(0,0,0,0.5)'
+          justifyContent: 'space-between',
+          boxShadow: '10px 0 30px rgba(0,0,0,0.1)'
         }}
         onClick={e => e.stopPropagation()}
       >
         <div>
           {/* Header */}
-          <div className="flex-between" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '16px', marginBottom: '20px' }}>
+          <div className="flex-between" style={{ borderBottom: '1px solid #E2E8F0', paddingBottom: '16px', marginBottom: '20px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <img src="/addus_logo.png" alt="ADDUS" style={{ height: '24px', width: 'auto' }} />
             </div>
             <button 
               className="duolingo-secondary-btn micro-btn" 
-              style={{ padding: '6px', borderRadius: '50%', minHeight: 'auto' }}
+              style={{ padding: '6px', borderRadius: '50%', minHeight: 'auto', background: '#F1F5F9', border: '1px solid #E2E8F0', color: '#334155', cursor: 'pointer' }}
               onClick={onClose}
             >
               <X size={16} />
@@ -51,58 +51,13 @@ export function HamburgerDrawer({
           </div>
 
           {/* User Profile Card */}
-          <div style={{ background: 'rgba(255,255,255,0.03)', padding: '12px 14px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.06)', marginBottom: '24px' }}>
-            <div style={{ fontSize: '14px', fontWeight: '700', color: '#FFF' }}>{businessName}</div>
-            <div style={{ fontSize: '12px', color: '#9CA3AF', marginTop: '2px' }}>{userName}</div>
+          <div style={{ background: '#F8FAFC', padding: '12px 14px', borderRadius: '12px', border: '1px solid #E2E8F0', marginBottom: '24px' }}>
+            <div style={{ fontSize: '14px', fontWeight: '700', color: '#0F172A' }}>{businessName}</div>
+            <div style={{ fontSize: '12px', color: '#64748B', marginTop: '2px' }}>{userName}</div>
           </div>
 
           {/* Nav Items */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-            <button
-              className={`drawer-nav-btn ${activeTab === 'home' ? 'active' : ''}`}
-              onClick={() => handleNav('home')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                width: '100%',
-                padding: '12px 14px',
-                borderRadius: '8px',
-                border: 'none',
-                background: activeTab === 'home' ? 'rgba(0, 209, 255, 0.12)' : 'transparent',
-                color: activeTab === 'home' ? '#00D1FF' : '#E5E7EB',
-                fontWeight: activeTab === 'home' ? '700' : '500',
-                cursor: 'pointer',
-                textAlign: 'left'
-              }}
-            >
-              <Home size={18} />
-              <span style={{ flex: 1 }}>Dashboard Home</span>
-              <ChevronRight size={14} style={{ opacity: 0.5 }} />
-            </button>
-
-            <button
-              className={`drawer-nav-btn ${activeTab === 'projects' ? 'active' : ''}`}
-              onClick={() => handleNav('projects')}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                width: '100%',
-                padding: '12px 14px',
-                borderRadius: '8px',
-                border: 'none',
-                background: activeTab === 'projects' ? 'rgba(0, 209, 255, 0.12)' : 'transparent',
-                color: activeTab === 'projects' ? '#00D1FF' : '#E5E7EB',
-                fontWeight: activeTab === 'projects' ? '700' : '500',
-                cursor: 'pointer',
-                textAlign: 'left'
-              }}
-            >
-              <FolderKanban size={18} />
-              <span style={{ flex: 1 }}>Project Workspaces</span>
-              <ChevronRight size={14} style={{ opacity: 0.5 }} />
-            </button>
 
             <button
               className={`drawer-nav-btn ${activeTab === 'gallery' ? 'active' : ''}`}
@@ -115,14 +70,14 @@ export function HamburgerDrawer({
                 padding: '12px 14px',
                 borderRadius: '8px',
                 border: 'none',
-                background: activeTab === 'gallery' ? 'rgba(0, 209, 255, 0.12)' : 'transparent',
-                color: activeTab === 'gallery' ? '#00D1FF' : '#E5E7EB',
+                background: activeTab === 'gallery' ? '#F3E8FF' : 'transparent',
+                color: activeTab === 'gallery' ? '#7C5CFF' : '#334155',
                 fontWeight: activeTab === 'gallery' ? '700' : '500',
                 cursor: 'pointer',
                 textAlign: 'left'
               }}
             >
-              <Layers size={18} />
+              <Layers size={18} style={{ color: '#7C5CFF' }} />
               <span style={{ flex: 1 }}>Inspiration &amp; Gallery</span>
               <ChevronRight size={14} style={{ opacity: 0.5 }} />
             </button>
@@ -138,19 +93,19 @@ export function HamburgerDrawer({
                 padding: '12px 14px',
                 borderRadius: '8px',
                 border: 'none',
-                background: activeTab === 'profile' ? 'rgba(0, 209, 255, 0.12)' : 'transparent',
-                color: activeTab === 'profile' ? '#00D1FF' : '#E5E7EB',
+                background: activeTab === 'profile' ? '#F3E8FF' : 'transparent',
+                color: activeTab === 'profile' ? '#7C5CFF' : '#334155',
                 fontWeight: activeTab === 'profile' ? '700' : '500',
                 cursor: 'pointer',
                 textAlign: 'left'
               }}
             >
-              <Brain size={18} />
-              <span style={{ flex: 1 }}>Business Vault &amp; Profile</span>
+              <Brain size={18} style={{ color: '#7C5CFF' }} />
+              <span style={{ flex: 1 }}>Edit Business Profile &amp; Assets</span>
               <ChevronRight size={14} style={{ opacity: 0.5 }} />
             </button>
 
-            <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', margin: '12px 0' }} />
+            <div style={{ height: '1px', background: '#E2E8F0', margin: '12px 0' }} />
 
             <button
               className={`drawer-nav-btn ${activeTab === 'products' ? 'active' : ''}`}
@@ -163,8 +118,8 @@ export function HamburgerDrawer({
                 padding: '10px 14px',
                 borderRadius: '8px',
                 border: 'none',
-                background: activeTab === 'products' ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
-                color: '#9CA3AF',
+                background: activeTab === 'products' ? '#F1F5F9' : 'transparent',
+                color: '#64748B',
                 fontSize: '13px',
                 cursor: 'pointer',
                 textAlign: 'left'
@@ -185,8 +140,8 @@ export function HamburgerDrawer({
                 padding: '10px 14px',
                 borderRadius: '8px',
                 border: 'none',
-                background: activeTab === 'terms' ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
-                color: '#9CA3AF',
+                background: activeTab === 'terms' ? '#F1F5F9' : 'transparent',
+                color: '#64748B',
                 fontSize: '13px',
                 cursor: 'pointer',
                 textAlign: 'left'
@@ -207,8 +162,8 @@ export function HamburgerDrawer({
                 padding: '10px 14px',
                 borderRadius: '8px',
                 border: 'none',
-                background: activeTab === 'privacy' ? 'rgba(255, 255, 255, 0.08)' : 'transparent',
-                color: '#9CA3AF',
+                background: activeTab === 'privacy' ? '#F1F5F9' : 'transparent',
+                color: '#64748B',
                 fontSize: '13px',
                 cursor: 'pointer',
                 textAlign: 'left'
@@ -221,7 +176,7 @@ export function HamburgerDrawer({
         </div>
 
         {/* Footer Logout */}
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.08)', paddingTop: '16px' }}>
+        <div style={{ borderTop: '1px solid #E2E8F0', paddingTop: '16px' }}>
           <button
             onClick={() => {
               onClose();
@@ -234,9 +189,9 @@ export function HamburgerDrawer({
               width: '100%',
               padding: '12px 14px',
               borderRadius: '8px',
-              border: '1px solid rgba(248,113,113,0.3)',
-              background: 'rgba(248,113,113,0.08)',
-              color: '#F87171',
+              border: '1px solid #FEE2E2',
+              background: '#FEF2F2',
+              color: '#EF4444',
               fontWeight: '600',
               fontSize: '13px',
               cursor: 'pointer'

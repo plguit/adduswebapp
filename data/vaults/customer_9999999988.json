@@ -1,0 +1,92 @@
+{
+  "businessName": null,
+  "industry": null,
+  "businessStage": null,
+  "businessDescription": null,
+  "products": [],
+  "services": null,
+  "targetAudience": null,
+  "geographicMarket": null,
+  "idealCustomer": null,
+  "customerAge": null,
+  "customerType": null,
+  "pricingPosition": null,
+  "businessGoal": null,
+  "currentChallenge": null,
+  "competitiveAdvantage": null,
+  "timeline": null,
+  "budget": null,
+  "brandAssets": {
+    "website": null,
+    "socialLinks": null,
+    "photography": null,
+    "videos": null,
+    "logo": null,
+    "packaging": null,
+    "favicon": null
+  },
+  "discoveredAssets": [],
+  "missingAssets": [],
+  "aiConfidenceScore": 0,
+  "conversationStatus": "discovering",
+  "lastUpdated": "2026-09-03T06:36:26.062Z",
+  "websiteUrl": null,
+  "websiteAnalyzedAt": null,
+  "websiteContentHash": null,
+  "websiteEvidenceItems": [],
+  "websiteRetrievalMeta": null,
+  "addiRecommendations": null,
+  "addiRecommendationsGeneratedAt": null,
+  "diagnosis": null,
+  "diagnosisGeneratedAt": null,
+  "strategicIntelligence": [],
+  "auditLog": [
+    {
+      "timestamp": "2026-09-03T06:36:26.062Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "customerProvidedDescription"
+      ],
+      "data": {
+        "customerProvidedDescription": "sunny. Industry: tech. Segment: b2b. the you are"
+      },
+      "provenance": "AI_GENERATED"
+    }
+  ],
+  "name": null,
+  "phoneNumber": null,
+  "email": null,
+  "authProvider": null,
+  "onboardingStatus": null,
+  "projects": [],
+  "conversations": [],
+  "chatHistory": [],
+  "uploadedFiles": [],
+  "notifications": [],
+  "expertReviewStatus": null,
+  "expertReviewSubmittedAt": null,
+  "expertReviewCompletedAt": null,
+  "expertNotes": null,
+  "createdAt": "2026-09-03T06:36:03.638Z",
+  "lastLoginAt": "2026-09-03T06:36:03.638Z",
+  "fieldProvenance": {
+    "customerProvidedDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-03T06:36:26.062Z",
+      "valueSummary": "sunny. Industry: tech. Segment: b2b. the you are"
+    }
+  },
+  "customerPreferences": {
+    "communicationStyle": null,
+    "visualPreference": null,
+    "approvalStyle": null,
+    "notificationChannels": []
+  },
+  "memory": {
+    "durableFacts": [],
+    "lastFactExtractedAt": null
+  },
+  "customerProvidedDescription": "sunny. Industry: tech. Segment: b2b. the you are"
+}

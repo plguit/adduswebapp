@@ -4,58 +4,98 @@ const REFERENCE_KEY = 'ADDUS_ADMIN_REFERENCE_LIBRARY';
 
 const DEFAULT_REFERENCES = [
   {
-    id: 'ref_web_1',
-    title: 'Modern E-Commerce Experience',
-    subtitle: 'High-converting layout, fast load time & interactive product cards',
-    category: 'Website',
-    deliverableType: 'Website',
-    mediaUrl: '/products/frame_18.png',
-    thumbnail: '/products/frame_18.png',
-    indicativePrice: '₹25,000 - ₹45,000',
+    id: 'ref_resort_video_1',
+    title: 'Resort Presentation video',
+    subtitle: '4k video + Model',
+    category: 'Video Shoot',
+    deliverableType: 'Video Shoot',
+    aspectRatio: 'portrait',
+    mediaUrl: '/videos/cozy_office_decor.mp4',
+    thumbnail: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80',
+    indicativePrice: '15,000',
     isActive: true,
-    createdAt: new Date().toISOString()
-  },
-  {
-    id: 'ref_logo_1',
-    title: 'Minimalist Vector Identity',
-    subtitle: 'Clean geometry, versatile scaling & brand mark design',
-    category: 'Logo Design',
-    deliverableType: 'Logo Design',
-    mediaUrl: '/products/73690.jpg',
-    thumbnail: '/products/73690.jpg',
-    indicativePrice: '₹12,000 - ₹25,000',
-    isActive: true,
+    isVideo: true,
     createdAt: new Date().toISOString()
   },
   {
     id: 'ref_video_1',
-    title: 'Cinematic Brand Film',
-    subtitle: '4K Commercial Shoot • Spatial & Studio Lighting',
-    category: 'Brand Film',
-    deliverableType: 'Video Production',
+    title: 'Cinematic Commercial Video Shoot',
+    subtitle: '4K Commercial Shoot • Studio Lighting & Motion Graphics',
+    category: 'Video Shoot',
+    deliverableType: 'Video Shoot',
+    aspectRatio: 'landscape',
     mediaUrl: '/videos/cozy_office_decor.mp4',
-    thumbnail: '/products/73690.jpg',
+    thumbnail: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=600&q=80',
     indicativePrice: 'Price available after expert review',
     isActive: true,
+    isVideo: true,
     createdAt: new Date().toISOString()
   },
   {
     id: 'ref_photo_1',
     title: 'Studio Product Photography',
-    subtitle: '360° Studio Showcase & Lens Macro Shots',
-    category: 'Product Photography',
-    deliverableType: 'Photography',
-    mediaUrl: '/products/73689.jpg',
-    thumbnail: '/products/73689.jpg',
+    subtitle: 'High-Res Studio Showcase & Lens Macro Shots',
+    category: 'Photo Shoot',
+    deliverableType: 'Photo Shoot',
+    aspectRatio: 'landscape',
+    mediaUrl: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=600&q=80',
+    thumbnail: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=600&q=80',
     indicativePrice: '₹15,000 - ₹30,000',
     isActive: true,
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'ref_branding_1',
+    title: 'Minimalist Brand Identity & Guidelines',
+    subtitle: 'Logo geometry, brand colors & vector typography assets',
+    category: 'Branding',
+    deliverableType: 'Branding',
+    aspectRatio: 'landscape',
+    mediaUrl: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=600&q=80',
+    thumbnail: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=600&q=80',
+    indicativePrice: '₹12,000 - ₹25,000',
+    isActive: true,
+    createdAt: new Date().toISOString()
+  },
+  {
+    id: 'ref_video_edit_1',
+    title: 'Post-Production Video & Photo Editing',
+    subtitle: 'Color Grading, Audio Mix & VFX Motion Graphics',
+    category: 'Video & Photo Editing',
+    deliverableType: 'Video & Photo Editing',
+    aspectRatio: 'landscape',
+    mediaUrl: '/videos/cozy_office_decor.mp4',
+    thumbnail: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=600&q=80',
+    indicativePrice: '₹10,000 - ₹20,000',
+    isActive: true,
+    isVideo: true,
     createdAt: new Date().toISOString()
   }
 ];
 
 export const referenceLibraryService = {
   getReferences() {
-    return storage.get(REFERENCE_KEY, DEFAULT_REFERENCES);
+    const raw = storage.get(REFERENCE_KEY, DEFAULT_REFERENCES);
+    return (raw || []).map(item => {
+      const isVideo = item.isVideo || 
+        item.category?.toLowerCase().includes('video') || 
+        item.deliverableType?.toLowerCase().includes('video') ||
+        item.title?.toLowerCase().includes('video');
+      let aspectRatio = item.aspectRatio;
+      if (!aspectRatio) {
+        const str = `${item.title || ''} ${item.subtitle || ''} ${item.category || ''}`.toLowerCase();
+        if (str.includes('portrait') || str.includes('vertical') || str.includes('reel') || str.includes('model') || str.includes('resort')) {
+          aspectRatio = 'portrait';
+        } else {
+          aspectRatio = 'landscape';
+        }
+      }
+      return {
+        ...item,
+        isVideo: isVideo || false,
+        aspectRatio
+      };
+    });
   },
 
   getActiveReferences(category = null) {

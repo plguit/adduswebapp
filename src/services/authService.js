@@ -100,25 +100,17 @@ export const authService = {
     if (existing && (!backendRes || !backendRes.isNewUser)) {
       existing.phoneVerified = true;
       existing.updatedAt = new Date().toISOString();
-      const hasBiz = Boolean(
-        existing.businessName ||
-        existing.businessBrain?.businessName ||
-        (Array.isArray(existing.services) && existing.services.length > 0) ||
-        (Array.isArray(existing.businessBrain?.services) && existing.businessBrain.services.length > 0)
-      );
-      const targetStatus = (existing.onboardingStatus === 'completed' || hasBiz)
-        ? 'completed'
-        : (existing.onboardingStatus || 'in_progress');
-      const targetScreen = (existing.lastVisitedScreen === 'dashboard' || hasBiz)
-        ? 'dashboard'
-        : (existing.lastVisitedScreen || 'welcome');
+      
+      const targetStatus = 'completed';
+      const targetScreen = 'dashboard';
 
       const updated = profileService.saveProfile({
         ...existing,
         userId: canonicalUserId,
         customerId: existing.customerId || canonicalUserId,
         onboardingStatus: targetStatus,
-        lastVisitedScreen: targetScreen
+        lastVisitedScreen: targetScreen,
+        currentStep: targetScreen
       });
       if (backendRes?.token) {
         sessionManager.setSession(updated.userId, targetScreen, backendRes.token);
@@ -249,16 +241,17 @@ export const authService = {
     if (existing && (!backendRes || !backendRes.isNewUser)) {
       existing.emailVerified = true;
       existing.updatedAt = new Date().toISOString();
-      const hasBiz = Boolean(existing.businessName || existing.businessBrain?.businessName);
-      const targetStatus = existing.onboardingStatus || (hasBiz ? 'completed' : 'in_progress');
-      const targetScreen = existing.lastVisitedScreen || (hasBiz ? 'dashboard' : 'welcome');
+      
+      const targetStatus = 'completed';
+      const targetScreen = 'dashboard';
 
       const updated = profileService.saveProfile({
         ...existing,
         userId: canonicalUserId,
         customerId: canonicalUserId,
         onboardingStatus: targetStatus,
-        lastVisitedScreen: targetScreen
+        lastVisitedScreen: targetScreen,
+        currentStep: targetScreen
       });
       if (backendRes?.token) {
         sessionManager.setSession(updated.userId, targetScreen, backendRes.token);
@@ -311,7 +304,7 @@ export const authService = {
       ? { email: identifier, preferredUserId }
       : { phone: identifier, preferredUserId };
 
-    const result = await apiService.post(endpoint, body);
+    const result = await apiService.post(endpoint, body, { timeout: 1500 });
     return result;
   },
 

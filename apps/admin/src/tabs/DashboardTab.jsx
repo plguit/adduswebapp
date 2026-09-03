@@ -90,7 +90,7 @@ export function DashboardTab({ onNavigateTab, dataSource = 'localStorage', admin
     <div className="admin-tab-content fade-in">
       <div className="admin-section-header">
         <div>
-          <h2>Sprint 4 – Admin Operations Executive Dashboard</h2>
+          <h2>Admin Operations Executive Dashboard</h2>
           <p className="admin-section-sub">Operational status across review queues, creator assignments, active shoots, and Business Vault archives.</p>
         </div>
         <span className="admin-badge-live">● System Live</span>

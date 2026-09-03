@@ -36,7 +36,7 @@
   "missingAssets": [],
   "aiConfidenceScore": 45,
   "conversationStatus": "discovering",
-  "lastUpdated": "2026-09-01T11:29:12.794Z",
+  "lastUpdated": "2026-09-02T18:05:15.498Z",
   "websiteUrl": "addus.co.in",
   "websiteAnalyzedAt": "2026-09-01T11:28:38.677Z",
   "websiteContentHash": "3a3f00",
@@ -115,7 +115,7 @@
     "evidenceRefs": [],
     "insufficientEvidence": true,
     "humanReviewRequired": true,
-    "generatedAt": "2026-09-01T11:29:12.522Z",
+    "generatedAt": "2026-09-02T18:05:15.497Z",
     "recommendationSummary": {
       "total": 0,
       "recommended": 0,
@@ -129,7 +129,7 @@
       "Insufficient evidence for reliable analysis",
       "Expert review recommended before acting on recommendations"
     ],
-    "humanReviewFlaggedAt": "2026-09-01T11:29:12.522Z",
+    "humanReviewFlaggedAt": "2026-09-02T18:05:15.497Z",
     "userId": "customer_7878789999",
     "websiteInspectionPerformed": true,
     "budgetStatus": "requires_admin_pricing"
@@ -139,6 +139,61 @@
   "diagnosisGeneratedAt": null,
   "strategicIntelligence": [],
   "auditLog": [
+    {
+      "timestamp": "2026-09-02T18:05:15.498Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "addiRecommendations",
+        "strategicIntelligence"
+      ],
+      "data": {
+        "addiRecommendations": {
+          "summary": "AI analysis failed. Manual expert review required.",
+          "observations": [],
+          "strengths": [],
+          "gaps": [],
+          "recommendations": [],
+          "predictions": [],
+          "confidence": "UNKNOWN",
+          "evidenceRefs": [],
+          "insufficientEvidence": true,
+          "humanReviewRequired": true,
+          "generatedAt": "2026-09-02T18:05:15.497Z",
+          "recommendationSummary": {
+            "total": 0,
+            "recommended": 0,
+            "alreadySufficient": 0,
+            "notSuggested": 0,
+            "needsMoreInfo": 0,
+            "highPriority": 0
+          },
+          "requiresExpertReview": true,
+          "humanReviewReasons": [
+            "Insufficient evidence for reliable analysis",
+            "Expert review recommended before acting on recommendations"
+          ],
+          "humanReviewFlaggedAt": "2026-09-02T18:05:15.497Z",
+          "userId": "customer_7878789999",
+          "websiteInspectionPerformed": true,
+          "budgetStatus": "requires_admin_pricing"
+        },
+        "strategicIntelligence": []
+      },
+      "provenance": "AI_GENERATED"
+    },
+    {
+      "timestamp": "2026-09-02T18:05:04.723Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "customerProvidedDescription"
+      ],
+      "data": {
+        "customerProvidedDescription": "ADDUS. Industry: fintec. Segment: b2b. ADDUS is a business ADDUS coordinates everything needed to shape how your business is seen.."
+      },
+      "provenance": "AI_GENERATED"
+    },
     {
       "timestamp": "2026-09-01T11:29:12.794Z",
       "actor": "system",
@@ -1074,14 +1129,20 @@
     "addiRecommendations": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-09-01T11:29:12.523Z",
+      "lastVerifiedAt": "2026-09-02T18:05:15.498Z",
       "valueSummary": "{\"summary\":\"AI analysis failed. Manual expert review required.\",\"observations\":[],\"strengths\":[],\"ga"
     },
     "strategicIntelligence": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-09-01T11:29:12.523Z",
+      "lastVerifiedAt": "2026-09-02T18:05:15.498Z",
       "valueSummary": "0 items"
+    },
+    "customerProvidedDescription": {
+      "provenance": "AI_GENERATED",
+      "confidence": 0.4,
+      "lastVerifiedAt": "2026-09-02T18:05:04.723Z",
+      "valueSummary": "ADDUS. Industry: fintec. Segment: b2b. ADDUS is a business ADDUS coordinates everything needed to sh"
     }
   },
   "customerPreferences": {
@@ -1112,5 +1173,6 @@
   "classification": {
     "class": "DYNAMIC",
     "reason": "HEAVY_JS_OR_FRAMEWORK"
-  }
+  },
+  "customerProvidedDescription": "ADDUS. Industry: fintec. Segment: b2b. ADDUS is a business ADDUS coordinates everything needed to shape how your business is seen.."
 }

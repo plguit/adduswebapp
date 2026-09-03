@@ -37,13 +37,13 @@ export const otpService = {
           });
         }
 
-        // In Mock MVP mode, accept any 4-digit code
+        // In Mock MVP mode, accept any 4-digit code instantly
         return resolve({
           success: true,
           status: 'VERIFIED',
-          message: 'Perfect! 🎉 Your account is ready. Now let\'s understand your business.'
+          message: 'Perfect! 🎉 Your account is ready.'
         });
-      }, 300);
+      }, 40);
     });
   }
 };

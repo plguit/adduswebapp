@@ -29,7 +29,7 @@
   "missingAssets": [],
   "aiConfidenceScore": 10,
   "conversationStatus": "discovering",
-  "lastUpdated": "2026-08-17T12:56:26.262Z",
+  "lastUpdated": "2026-09-03T06:31:05.404Z",
   "websiteUrl": null,
   "websiteAnalyzedAt": null,
   "websiteContentHash": null,
@@ -41,6 +41,28 @@
   "diagnosisGeneratedAt": null,
   "strategicIntelligence": [],
   "auditLog": [
+    {
+      "timestamp": "2026-09-03T06:31:05.404Z",
+      "actor": "system",
+      "action": "vault_update",
+      "fields": [
+        "phoneNumber",
+        "authProvider",
+        "userId",
+        "onboardingStatus",
+        "lastVisitedScreen",
+        "lastLoginAt"
+      ],
+      "data": {
+        "phoneNumber": "7777777777",
+        "authProvider": "phone",
+        "userId": "customer_7777777777",
+        "onboardingStatus": "completed",
+        "lastVisitedScreen": "dashboard",
+        "lastLoginAt": "2026-09-03T06:31:05.404Z"
+      },
+      "provenance": "AI_GENERATED"
+    },
     {
       "timestamp": "2026-08-17T12:56:26.262Z",
       "actor": "system",
@@ -139,7 +161,7 @@
   "expertReviewCompletedAt": null,
   "expertNotes": null,
   "createdAt": "2026-08-17T12:56:26.238Z",
-  "lastLoginAt": "2026-08-17T12:56:26.262Z",
+  "lastLoginAt": "2026-09-03T06:31:05.404Z",
   "fieldProvenance": {
     "phoneNumber": {
       "provenance": "AI_GENERATED",
@@ -162,8 +184,8 @@
     "lastLoginAt": {
       "provenance": "AI_GENERATED",
       "confidence": 0.4,
-      "lastVerifiedAt": "2026-08-17T12:56:26.262Z",
-      "valueSummary": "2026-08-17T12:56:26.262Z"
+      "lastVerifiedAt": "2026-09-03T06:31:05.404Z",
+      "valueSummary": "2026-09-03T06:31:05.404Z"
     },
     "name": {
       "provenance": "AI_GENERATED",

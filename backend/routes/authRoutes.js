@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ADDUS Platform — Authentication Routes
  *
  * Phase 4 implementation:
@@ -13,6 +13,7 @@
 import express from 'express';
 import { generateToken, verifyToken, extractBearerToken } from '../utils/tokenService.js';
 import { getBusinessVault, updateBusinessVault, getAllVaults } from '../../ai/business-brain/vaultService.js';
+import { User, AuthIdentity } from '../models/index.js';
 
 const router = express.Router();
 
@@ -142,7 +143,7 @@ router.post('/check-duplicate', (req, res) => {
 // Customer Login
 // ─────────────────────────────────────────────────────────
 
-router.post('/login/customer', (req, res) => {
+router.post('/login/customer', async (req, res) => {
   const { phone, email, preferredUserId } = req.body || {};
 
   if (!phone && !email) {
@@ -221,13 +222,37 @@ router.post('/login/customer', (req, res) => {
     });
   }
 
+  // --- SEQUELIZE INJECTION (PHASE 2) ---
+  let dbUser = null;
+  const provider = phone ? 'OTP' : 'GOOGLE';
+  const providerId = phone ? cleanPhone : cleanEmail;
+  
+  try {
+    let identity = await AuthIdentity.findOne({ where: { providerId }, include: ['user'] });
+    if (identity) {
+      dbUser = identity.user;
+    } else {
+      dbUser = await User.create({ role: 'CUSTOMER' });
+      await AuthIdentity.create({
+        provider,
+        providerId,
+        userId: dbUser.id
+      });
+    }
+  } catch (err) {
+    console.error('Error creating/fetching DB User:', err);
+  }
+  
+  const canonicalUserId = dbUser ? dbUser.id : userId;
+  // ----------------------------------------
+
   if (isNewUser) {
-    const token = generateToken({ userId, role: 'CUSTOMER' });
+    const token = generateToken({ userId: canonicalUserId, role: 'CUSTOMER' });
     res.json({
       success: true,
       isNewUser: true,
       token,
-      userId,
+      userId: canonicalUserId,
       role: 'CUSTOMER',
       expiresIn: '7d',
       profile: {
@@ -272,19 +297,19 @@ router.post('/login/customer', (req, res) => {
 
   const updatedVault = updateBusinessVault(userId, {
     ...accountData,
-    userId,
+    userId: canonicalUserId, // Update vault to track canonical ID
     onboardingStatus: resolvedOnboardingStatus,
     lastVisitedScreen: resolvedLastVisitedScreen,
     lastLoginAt: new Date().toISOString()
   });
 
-  const token = generateToken({ userId, role: 'CUSTOMER' });
+  const token = generateToken({ userId: canonicalUserId, role: 'CUSTOMER' });
 
   res.json({
     success: true,
     isNewUser: false,
     token,
-    userId,
+    userId: canonicalUserId,
     role: 'CUSTOMER',
     expiresIn: '7d',
     profile: {
@@ -510,3 +535,4 @@ router.get('/me', (req, res) => {
 });
 
 export default router;
+

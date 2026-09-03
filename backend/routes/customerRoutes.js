@@ -1,6 +1,7 @@
-import express from 'express';
+﻿import express from 'express';
 import { getBusinessVault, updateBusinessVault } from '../../ai/business-brain/vaultService.js';
 import { requireAuth, requireActiveUser, requireOwnership } from '../middleware/auth.js';
+import { User, Business, Project } from '../models/index.js';
 
 const router = express.Router();
 
@@ -8,98 +9,186 @@ const router = express.Router();
 router.use(requireAuth);
 router.use(requireActiveUser);
 
-// Customer Profile Endpoint — reads from backend vault (canonical source)
-router.get('/profile/:userId', requireOwnership, (req, res) => {
+// Customer Profile Endpoint — reads from SQLite
+router.get('/profile/:userId', requireOwnership, async (req, res) => {
   const { userId } = req.params;
-  const vault = getBusinessVault(userId);
-  res.json({
-    success: true,
-    userId,
-    profile: {
-      businessName: vault.businessName || null,
-      industry: vault.industry || null,
-      businessStage: vault.businessStage || null,
-      businessDescription: vault.businessDescription || null,
-      products: vault.products || [],
-      services: vault.services || [],
-      targetAudience: vault.targetAudience || null,
-      website: vault.websiteUrl || vault.brandAssets?.website || null,
-      businessBrain: {
-        businessName: vault.businessName || null,
-        industry: vault.industry || null,
+  
+  try {
+    let business = await Business.findOne({ where: { ownerUserId: userId } });
+    if (!business) {
+      business = await Business.create({ ownerUserId: userId, name: null, industry: null });
+    }
+    
+    // Fallback to vault for unstructured businessBrain stuff to not break UI immediately
+    const vault = getBusinessVault(userId);
+
+    res.json({
+      success: true,
+      userId,
+      profile: {
+        businessName: business.name || vault.businessName || null,
+        industry: business.industry || vault.industry || null,
         businessStage: vault.businessStage || null,
         businessDescription: vault.businessDescription || null,
         products: vault.products || [],
         services: vault.services || [],
         targetAudience: vault.targetAudience || null,
-        website: vault.websiteUrl || null,
-        addiRecommendations: vault.addiRecommendations || null,
-        addiRecommendationsGeneratedAt: vault.addiRecommendationsGeneratedAt || null,
-        websiteEvidenceItems: vault.websiteEvidenceItems || [],
-        websiteRetrievalMeta: vault.websiteRetrievalMeta || null
+        website: vault.websiteUrl || vault.brandAssets?.website || null,
+        businessBrain: { ...vault.businessBrain }
       }
-    }
-  });
+    });
+  } catch (err) {
+    console.error('Error fetching profile:', err);
+    res.status(500).json({ error: 'Database error' });
+  }
 });
 
-// Customer Profile Update Endpoint — syncs customer data to backend vault
-router.post('/profile/:userId', requireOwnership, (req, res) => {
+// Customer Profile Update Endpoint — syncs customer data to DB
+router.post('/profile/:userId', requireOwnership, async (req, res) => {
   const { userId } = req.params;
   const { profile } = req.body;
   if (!profile || typeof profile !== 'object') {
     return res.status(400).json({ error: 'profile object is required.' });
   }
 
-  const vaultPatch = {
-    businessName: profile.businessName || profile.businessBrain?.businessName || undefined,
-    industry: profile.industry || profile.businessBrain?.industry || undefined,
-    businessStage: profile.businessStage || profile.businessBrain?.businessStage || undefined,
-    businessDescription: profile.businessDescription || profile.businessBrain?.businessDescription || undefined,
-    products: profile.products || profile.businessBrain?.products || undefined,
-    services: profile.services || profile.businessBrain?.services || undefined,
-    targetAudience: profile.targetAudience || profile.businessBrain?.targetAudience || undefined,
-    websiteUrl: profile.website || profile.businessBrain?.website || undefined,
-    addiRecommendations: profile.businessBrain?.addiRecommendations || undefined,
-    addiRecommendationsGeneratedAt: profile.businessBrain?.addiRecommendationsGeneratedAt || undefined,
-    websiteEvidenceItems: profile.businessBrain?.websiteEvidenceItems || undefined,
-    websiteRetrievalMeta: profile.businessBrain?.websiteRetrievalMeta || undefined
-  };
-  Object.keys(vaultPatch).forEach(k => { if (vaultPatch[k] === undefined) delete vaultPatch[k]; });
+  try {
+    let business = await Business.findOne({ where: { ownerUserId: userId } });
+    if (!business) {
+      business = await Business.create({ ownerUserId: userId });
+    }
+    
+    business.name = profile.businessName || business.name;
+    business.industry = profile.industry || business.industry;
+    await business.save();
 
-  const updatedVault = updateBusinessVault(userId, vaultPatch);
-  res.json({ success: true, userId, profile: updatedVault });
+    // Fallback sync to Vault for non-relational fields
+    const vaultPatch = {
+      businessName: business.name,
+      industry: business.industry,
+      businessStage: profile.businessStage,
+      businessDescription: profile.businessDescription,
+      websiteUrl: profile.website
+    };
+    Object.keys(vaultPatch).forEach(k => { if (vaultPatch[k] === undefined) delete vaultPatch[k]; });
+    updateBusinessVault(userId, vaultPatch);
+
+    if (req.io) req.io.emit('state_updated', { userId });
+    res.json({ success: true, userId, profile: business });
+  } catch (err) {
+    console.error('Error updating profile:', err);
+    res.status(500).json({ error: 'Database error' });
+  }
 });
 
-// Customer Projects Endpoint — reads projects from backend vault
-router.get('/projects/:userId', requireOwnership, (req, res) => {
+// Customer Projects Endpoint — reads projects from DB
+router.get('/projects/:userId', requireOwnership, async (req, res) => {
   const { userId } = req.params;
-  const vault = getBusinessVault(userId);
-  res.json({ success: true, projects: vault.projects || [] });
+  
+  try {
+    const business = await Business.findOne({ where: { ownerUserId: userId } });
+    if (!business) {
+      return res.json({ success: true, projects: [] });
+    }
+    
+    const projects = await Project.findAll({ where: { businessId: business.id } });
+    
+    // Map Sequelize objects to plain JSON for the UI
+    const mappedProjects = projects.map(p => ({
+      id: p.id,
+      service: p.service,
+      status: p.status,
+      creativeBrief: p.creativeBrief,
+      deliverables: p.deliverables
+    }));
+    
+    res.json({ success: true, projects: mappedProjects });
+  } catch (err) {
+    console.error('Error fetching projects:', err);
+    res.status(500).json({ error: 'Database error' });
+  }
 });
 
 // Customer Projects Update Endpoint
-router.post('/projects/:userId', requireOwnership, (req, res) => {
+router.post('/projects/:userId', requireOwnership, async (req, res) => {
   const { userId } = req.params;
   const { projects } = req.body;
   if (!Array.isArray(projects)) {
     return res.status(400).json({ error: 'projects must be an array.' });
   }
-  const updatedVault = updateBusinessVault(userId, { projects });
-  res.json({ success: true, projects: updatedVault.projects || [] });
+  
+  try {
+    let business = await Business.findOne({ where: { ownerUserId: userId } });
+    if (!business) {
+      business = await Business.create({ ownerUserId: userId });
+    }
+    
+    // For Phase 4, we just iterate and upsert projects
+    const savedProjects = [];
+    for (const p of projects) {
+      let proj = await Project.findOne({ where: { id: p.id } });
+      if (!proj) {
+        proj = await Project.create({
+          id: p.id,
+          businessId: business.id,
+          service: p.service || 'Unknown',
+          status: p.status || 'Draft',
+          creativeBrief: p.creativeBrief,
+          deliverables: p.deliverables
+        });
+      } else {
+        proj.status = p.status || proj.status;
+        proj.creativeBrief = p.creativeBrief || proj.creativeBrief;
+        proj.deliverables = p.deliverables || proj.deliverables;
+        await proj.save();
+      }
+      savedProjects.push(proj);
+    }
+    
+    // Fallback array to vault to not break non-migrated UI
+    updateBusinessVault(userId, { projects });
+    
+    if (req.io) req.io.emit('state_updated', { userId });
+    res.json({ success: true, projects: savedProjects });
+  } catch (err) {
+    console.error('Error updating projects:', err);
+    res.status(500).json({ error: 'Database error' });
+  }
 });
 
-// Customer Project Add Endpoint — adds a single project to the existing array
-router.post('/project/:userId', requireOwnership, (req, res) => {
+// Customer Project Add Endpoint
+router.post('/project/:userId', requireOwnership, async (req, res) => {
   const { userId } = req.params;
   const { project } = req.body;
   if (!project || typeof project !== 'object') {
     return res.status(400).json({ error: 'project object is required.' });
   }
-  const vault = getBusinessVault(userId);
-  const updatedVault = updateBusinessVault(userId, {
-    projects: [...(vault.projects || []), project]
-  });
-  res.json({ success: true, project, projects: updatedVault.projects || [] });
+  
+  try {
+    let business = await Business.findOne({ where: { ownerUserId: userId } });
+    if (!business) {
+      business = await Business.create({ ownerUserId: userId });
+    }
+    
+    const proj = await Project.create({
+      id: project.id || undefined,
+      businessId: business.id,
+      service: project.service || 'Unknown',
+      status: project.status || 'Draft',
+      creativeBrief: project.creativeBrief,
+      deliverables: project.deliverables
+    });
+    
+    const vault = getBusinessVault(userId);
+    const updatedVault = updateBusinessVault(userId, {
+      projects: [...(vault.projects || []), project]
+    });
+    
+    if (req.io) req.io.emit('state_updated', { userId });
+    res.json({ success: true, project: proj, projects: updatedVault.projects || [] });
+  } catch (err) {
+    console.error('Error adding project:', err);
+    res.status(500).json({ error: 'Database error' });
+  }
 });
 
 // Customer Recommendations Endpoint — reads persisted ADDI recommendations
@@ -182,96 +271,65 @@ router.put('/conversations/:userId/:conversationId', requireOwnership, (req, res
 });
 
 // ── Customer Chat ──────────────────────────────────────────────────────────
-router.get('/chat/messages/:userId', requireOwnership, (req, res) => {
+router.get('/chat/messages/:userId', requireOwnership, async (req, res) => {
   const { userId } = req.params;
-  let vault = getBusinessVault(userId);
-  if (!vault || (!vault.chatMessages && !vault.chatHistory)) {
-    const all = getAllVaults();
-    const normUser = userId.replace(/\D/g, '').slice(-10);
-    const matched = all.find(item => {
-      const vPhone = (item.vault?.phoneNumber || item.vault?.phone || '').replace(/\D/g, '').slice(-10);
-      return item.userId === userId ||
-        item.vault?.customerId === userId ||
-        (normUser && vPhone && normUser.length === 10 && vPhone.length === 10 && normUser === vPhone);
-    });
-    if (matched) {
-      vault = matched.vault;
+  
+  try {
+    let business = await Business.findOne({ where: { ownerUserId: userId } });
+    if (!business) {
+      return res.json({ success: true, messages: [] });
     }
-  }
+    
+    const dbMessages = await Message.findAll({
+      where: { businessId: business.id },
+      order: [['timestamp', 'ASC']]
+    });
 
-  const rawMessages = vault?.chatMessages || [];
-  const rawHistory = vault?.chatHistory || [];
-
-  // Merge chatMessages and chatHistory for complete coverage
-  const msgMap = new Map();
-  rawMessages.forEach(m => {
-    const key = m.id || `${m.content || m.text}_${m.timestamp}`;
-    msgMap.set(key, {
+    const messages = dbMessages.map(m => ({
       id: m.id,
-      senderId: m.senderId || (m.role === 'admin' || m.sender === 'admin' ? 'admin' : userId),
-      senderRole: m.senderRole || (m.role === 'admin' || m.sender === 'admin' ? 'ADMIN' : 'CUSTOMER'),
-      senderName: m.senderName || (m.role === 'admin' || m.sender === 'admin' ? 'Admin Team' : 'You'),
-      content: m.content || m.text || '',
-      timestamp: m.timestamp || new Date().toISOString()
-    });
-  });
-
-  rawHistory.forEach((h, idx) => {
-    const text = h.text || h.content || '';
-    const ts = h.timestamp || new Date().toISOString();
-    const key = h.id || `${text}_${ts}`;
-    if (!msgMap.has(key)) {
-      const isAdmin = h.role === 'admin' || h.sender === 'admin';
-      msgMap.set(key, {
-        id: h.id || `hist_${idx}`,
-        senderId: isAdmin ? 'admin' : (h.sender === 'user' ? userId : 'addi_bot'),
-        senderRole: isAdmin ? 'ADMIN' : (h.sender === 'user' ? 'CUSTOMER' : 'AI_STRATEGIST'),
-        senderName: h.senderName || (isAdmin ? 'Admin Team' : (h.sender === 'user' ? 'You' : 'ADDI')),
-        content: text,
-        timestamp: ts
-      });
-    }
-  });
-
-  const messages = Array.from(msgMap.values()).sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
-  res.json({ success: true, messages });
+      senderId: m.senderId,
+      senderRole: m.senderRole,
+      senderName: m.senderName,
+      content: m.content,
+      timestamp: m.timestamp
+    }));
+    
+    res.json({ success: true, messages });
+  } catch (err) {
+    console.error('Error fetching messages:', err);
+    res.status(500).json({ error: 'Database error' });
+  }
 });
 
-router.post('/chat/send/:userId', requireOwnership, (req, res) => {
+router.post('/chat/send/:userId', requireOwnership, async (req, res) => {
   const { userId } = req.params;
-  const { content, senderName, recipientId } = req.body || {};
+  const { content, senderName } = req.body || {};
+  
   if (!content || !content.trim()) {
     return res.status(400).json({ error: 'Message content is required.' });
   }
 
-  const vault = getBusinessVault(userId);
-  const messages = vault.chatMessages || [];
-  const chatHistory = vault.chatHistory || [];
-
-  const newMsg = {
-    id: `msg_cust_${Date.now()}_${Math.random().toString(36).substr(2, 5)}`,
-    senderId: userId,
-    senderRole: 'CUSTOMER',
-    senderName: senderName || vault.name || 'Customer',
-    recipientId: recipientId || 'admin',
-    recipientRole: 'ADMIN',
-    content: content.trim(),
-    timestamp: new Date().toISOString(),
-    conversationId: `admin_${userId}`
-  };
-
-  messages.push(newMsg);
-  chatHistory.push({
-    id: newMsg.id,
-    sender: 'user',
-    role: 'user',
-    senderName: newMsg.senderName,
-    text: newMsg.content,
-    timestamp: newMsg.timestamp
-  });
-
-  updateBusinessVault(userId, { chatMessages: messages, chatHistory });
-  res.json({ success: true, message: newMsg });
+  try {
+    let business = await Business.findOne({ where: { ownerUserId: userId } });
+    if (!business) {
+      business = await Business.create({ ownerUserId: userId });
+    }
+    
+    const newMsg = await Message.create({
+      senderId: userId,
+      senderRole: 'CUSTOMER',
+      senderName: senderName || 'Customer',
+      content: content.trim(),
+      businessId: business.id
+    });
+    
+    if (req.io) req.io.emit('state_updated', { userId });
+    res.json({ success: true, message: newMsg });
+  } catch (err) {
+    console.error('Error sending message:', err);
+    res.status(500).json({ error: 'Database error' });
+  }
 });
 
 export default router;
+
