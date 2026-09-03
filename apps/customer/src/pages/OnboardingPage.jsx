@@ -7,7 +7,6 @@ import { authService } from '../../../../shared/services/authService.js';
 import { syncService } from '../../../../src/services/syncService.js';
 import { getAuthoritativeState, resolveFlow } from '../../../../src/services/flowController.js';
 import { SplashScreen } from '../../../../src/components/onboarding/SplashScreen.jsx';
-import { AuthScreen } from '../../../../src/components/onboarding/AuthScreen.jsx';
 import { ConversationalOnboarding } from '../../../../src/components/chat/ConversationalOnboarding.jsx';
 import { DashboardPage } from './DashboardPage.jsx';
 import { ToastNotification } from '../../../../src/components/dashboard/ToastNotification.jsx';
@@ -75,7 +74,6 @@ export function Onboarding() {
       return true;
     }
   });
-  const [hasCompletedAuth, setHasCompletedAuth] = useState(() => sessionManager.isAuthenticated());
   const [toastMessage, setToastMessage] = useState('');
   const [forceDashboard, setForceDashboard] = useState(false);
 
@@ -108,33 +106,20 @@ export function Onboarding() {
     businessProfile: state.businessProfile || authoritativeState.businessProfile,
     project: authoritativeState.profile?.projects?.[0] || null,
     lastVisitedScreen: authoritativeState.lastVisitedScreen,
-    onboardingStatus: authoritativeState.profile?.onboardingStatus || state.onboardingStatus
+    onboardingStatus: authoritativeState.profile?.onboardingStatus
   });
 
-  const isExplicitlyCompleted = Boolean(
-    sessionManager.isAuthenticated() && (
-      (state.onboardingStatus === 'completed' && state.currentStep === 'dashboard') ||
-      (currentProfile?.onboardingStatus === 'completed' && currentProfile?.lastVisitedScreen === 'dashboard') ||
-      (flowResolution.appState === 'dashboard' && authoritativeState.onboardingStatus === 'completed')
-    )
-  );
+  const isDashboardStep = forceDashboard || flowResolution.appState === 'dashboard' || flowResolution.nextStep === 'dashboard' || state.currentStep === 'dashboard' || state.onboardingStatus === 'completed';
 
-  const isDashboardStep = forceDashboard || isExplicitlyCompleted;
-
-  const handleProjectCreated = async (project) => {
+  const handleProjectCreated = (project) => {
     const targetUserId = state.userId || session?.userId || `user_${Date.now()}`;
-    const existingSession = sessionManager.getSession();
-    if (existingSession?.token) {
-      sessionManager.setSession(targetUserId, 'dashboard', existingSession.token);
-    } else {
-      sessionManager.createSession({
-        userId: targetUserId,
-        phone: state.phone || state.phoneNumber || null,
-        email: state.email || null,
-        verified: true,
-        lastVisitedScreen: 'dashboard'
-      });
-    }
+    const sess = sessionManager.createSession({
+      userId: targetUserId,
+      phone: state.phone || state.phoneNumber || null,
+      email: state.email || null,
+      verified: true,
+      lastVisitedScreen: 'dashboard'
+    });
 
     if (targetUserId) {
       const profile = profileService.getProfileById(targetUserId) || {};
@@ -179,32 +164,17 @@ export function Onboarding() {
     window.location.reload();
   };
 
-  // 1. Splash screen (always first)
+  // Splash screen (always first)
   if (showSplash) {
     return <SplashScreen onComplete={() => setShowSplash(false)} />;
   }
 
-  // 2. Account Rejected / Restricted
+  // Account Rejected / Restricted
   if (isRejected) {
     return <AccountRestrictedScreen profile={currentProfile} onReapply={handleReapply} onLogout={handleLogout} />;
   }
 
-  // 3. Unauthenticated users -> Render CURRENT existing AuthScreen (Login/Sign-up)
-  // Guard uses ONLY hasCompletedAuth so that state.verified flipping inside AuthScreen's
-  // 1600ms setTimeout does NOT prematurely unmount the mascot celebration popup.
-  if (!hasCompletedAuth) {
-    return (
-      <AuthScreen 
-        onAuthSuccess={() => {
-          // Extra 500ms buffer (on top of AuthScreen's own 1600ms) so the
-          // mascot celebration popup completes its animation before unmount.
-          setTimeout(() => setHasCompletedAuth(true), 500);
-        }} 
-      />
-    );
-  }
-
-  // 4. Dashboard (for returning users who completed onboarding)
+  // Dashboard
   if (isDashboardStep) {
     return (
       <>
@@ -214,7 +184,7 @@ export function Onboarding() {
     );
   }
 
-  // 5. Onboarding flow for authenticated users
+  // Onboarding flow (ConversationalOnboarding handles auth internally)
   return (
     <>
       <ConversationalOnboarding onProjectCreated={handleProjectCreated} />
